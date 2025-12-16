@@ -6,6 +6,9 @@
     <title>QuietStor - Private File Manager for Android</title>
     <meta name="description" content="QuietStor is a privacy-first file manager with encrypted vault. Keep your files safe, offline, and private.">
     <link rel="icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -15,6 +18,7 @@
             --secondary: #4ECDC4;
             --green: #48BB78;
             --green-light: #68D391;
+            --teal: #38B2AC;
             --accent: #F6AD55;
             --bg-dark: #1A1A2E;
             --bg-card: #16213E;
@@ -23,7 +27,7 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
@@ -50,7 +54,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(72, 187, 120, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(72, 187, 120, 0.08) 0%, transparent 50%);
             animation: pulse 15s ease-in-out infinite;
         }
         
@@ -66,41 +70,52 @@
         }
         
         .logo {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 1rem;
+            width: 220px;
+            height: 220px;
+            margin-bottom: 1.5rem;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(72, 187, 120, 0.3));
+            filter: drop-shadow(0 15px 40px rgba(72, 187, 120, 0.25));
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
         }
         
         h1 {
-            font-size: 4rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text);
-            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(72, 187, 120, 0.3);
         }
         
         .main-tagline {
-            font-size: 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
             font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .main-tagline .highlight {
             color: var(--green);
-            margin-bottom: 2.5rem;
-            text-shadow: 0 0 30px rgba(72, 187, 120, 0.3);
         }
         
         .sub-tagline {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 600px;
+            margin-bottom: 2.5rem;
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
         
         .cta-buttons {
@@ -108,30 +123,31 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 1.1rem 2.2rem;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+            box-shadow: 0 4px 20px rgba(72, 187, 120, 0.4);
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(72, 187, 120, 0.5);
         }
         
         /* Key Benefits */
@@ -140,7 +156,7 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 3rem;
+            margin-top: 1rem;
         }
         
         .benefit {
@@ -149,11 +165,14 @@
             gap: 0.5rem;
             color: var(--text-muted);
             font-size: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         
         .benefit-icon {
-            color: var(--green);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         /* Features Section */
@@ -166,6 +185,8 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
         }
         
         .features-grid {
@@ -181,8 +202,8 @@
             padding: 2rem;
             border-radius: 1rem;
             text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(72, 187, 120, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(72, 187, 120, 0.15);
         }
         
         .feature-card:hover {
@@ -199,6 +220,8 @@
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--green);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
         }
         
         .feature-card p {
@@ -228,9 +251,9 @@
         }
         
         .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--green) 0%, var(--secondary) 100%);
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -239,10 +262,13 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1rem;
+            font-family: 'Outfit', sans-serif;
         }
         
         .step h3 {
             margin-bottom: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
         }
         
         .step p {
@@ -259,6 +285,8 @@
         .privacy-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
         }
         
         .privacy-section p {
@@ -279,11 +307,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(72, 187, 120, 0.15);
+            background: rgba(72, 187, 120, 0.12);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             font-weight: 500;
-            border: 1px solid rgba(72, 187, 120, 0.3);
+            border: 1px solid rgba(72, 187, 120, 0.25);
         }
         
         /* Footer */
@@ -324,13 +352,13 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .main-tagline { font-size: 1.4rem; }
-            .sub-tagline { font-size: 1.1rem; }
-            .logo { width: 140px; height: 140px; }
+            h1 { font-size: 3rem; letter-spacing: 3px; }
+            .main-tagline { font-size: 1.3rem; }
+            .sub-tagline { font-size: 1rem; }
+            .logo { width: 160px; height: 160px; }
             .section-title { font-size: 2rem; }
-            .key-benefits { gap: 1rem; }
-            .benefit { font-size: 0.9rem; }
+            .key-benefits { gap: 0.8rem; }
+            .benefit { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
         }
     </style>
 </head>
@@ -340,7 +368,7 @@
         <div class="hero-content">
             <img src="/logo.png" alt="QuietStor Logo" class="logo">
             <h1>QUIETSTOR</h1>
-            <p class="main-tagline">Private File Manager with Encrypted Vault for Android</p>
+            <p class="main-tagline">Private File Manager with <span class="highlight">Encrypted Vault</span></p>
             <p class="sub-tagline">Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">
