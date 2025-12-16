@@ -13,6 +13,8 @@
             --primary: #7B2D8E;
             --primary-light: #9F7AEA;
             --secondary: #4ECDC4;
+            --green: #48BB78;
+            --green-light: #68D391;
             --accent: #F6AD55;
             --bg-dark: #1A1A2E;
             --bg-card: #16213E;
@@ -48,7 +50,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(123, 45, 142, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(72, 187, 120, 0.1) 0%, transparent 50%);
             animation: pulse 15s ease-in-out infinite;
         }
         
@@ -60,15 +62,15 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 900px;
         }
         
         .logo {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 1.5rem;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 1rem;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.4));
+            filter: drop-shadow(0 10px 30px rgba(72, 187, 120, 0.3));
         }
         
         @keyframes float {
@@ -77,19 +79,28 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
+            letter-spacing: 2px;
         }
         
-        .tagline {
-            font-size: 1.5rem;
+        .main-tagline {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 30px rgba(72, 187, 120, 0.3);
+        }
+        
+        .sub-tagline {
+            font-size: 1.3rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cta-buttons {
@@ -97,7 +108,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         
         .btn {
@@ -113,14 +124,36 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(123, 45, 142, 0.4);
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(123, 45, 142, 0.6);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+        }
+        
+        /* Key Benefits */
+        .key-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .benefit-icon {
+            color: var(--green);
+            font-size: 1.2rem;
         }
         
         /* Features Section */
@@ -149,12 +182,12 @@
             border-radius: 1rem;
             text-align: center;
             transition: transform 0.3s ease;
-            border: 1px solid rgba(123, 45, 142, 0.2);
+            border: 1px solid rgba(72, 187, 120, 0.2);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
+            border-color: var(--green);
         }
         
         .feature-icon {
@@ -165,7 +198,7 @@
         .feature-card h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--secondary);
+            color: var(--green);
         }
         
         .feature-card p {
@@ -197,7 +230,7 @@
         .step-number {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--green) 0%, var(--secondary) 100%);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -219,7 +252,7 @@
         /* Privacy Section */
         .privacy-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+            background: linear-gradient(135deg, #1a3a2e 0%, var(--bg-dark) 100%);
             text-align: center;
         }
         
@@ -246,11 +279,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255,255,255,0.1);
+            background: rgba(72, 187, 120, 0.15);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             font-weight: 500;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(72, 187, 120, 0.3);
         }
         
         /* Footer */
@@ -281,7 +314,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--green);
         }
         
         .copyright {
@@ -291,10 +324,13 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .tagline { font-size: 1.2rem; }
-            .logo { width: 120px; height: 120px; }
+            h1 { font-size: 2.8rem; }
+            .main-tagline { font-size: 1.4rem; }
+            .sub-tagline { font-size: 1.1rem; }
+            .logo { width: 140px; height: 140px; }
             .section-title { font-size: 2rem; }
+            .key-benefits { gap: 1rem; }
+            .benefit { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -303,15 +339,33 @@
     <section class="hero">
         <div class="hero-content">
             <img src="/logo.png" alt="QuietStor Logo" class="logo">
-            <h1>QuietStor</h1>
-            <p class="tagline">Your files. Your privacy. Your control.</p>
+            <h1>QUIETSTOR</h1>
+            <p class="main-tagline">Private File Manager with Encrypted Vault for Android</p>
+            <p class="sub-tagline">Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
                     Coming Soon on Google Play
                 </a>
             </div>
-            <p style="color: var(--text-muted);">Private file manager with encrypted vault for Android</p>
+            <div class="key-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">🔒</span>
+                    <span>AES-256 Encryption</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">📴</span>
+                    <span>100% Offline</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🚫</span>
+                    <span>Zero Data Collection</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">👆</span>
+                    <span>Biometric Unlock</span>
+                </div>
+            </div>
         </div>
     </section>
 
