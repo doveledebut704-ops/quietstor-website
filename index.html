@@ -239,14 +239,14 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         .step {
             flex: 1;
-            min-width: 200px;
-            max-width: 300px;
+            min-width: 220px;
+            max-width: 280px;
             text-align: center;
         }
         
@@ -273,6 +273,25 @@
         
         .step p {
             color: var(--text-muted);
+        }
+        
+        .step.highlight-step {
+            background: rgba(72, 187, 120, 0.08);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(72, 187, 120, 0.2);
+        }
+        
+        .step.highlight-step .step-number {
+            background: linear-gradient(135deg, var(--accent) 0%, #F687B3 100%);
+        }
+        
+        .cloud-icons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            font-size: 1.5rem;
         }
         
         /* Privacy Section */
@@ -359,6 +378,7 @@
             .section-title { font-size: 2rem; }
             .key-benefits { gap: 0.8rem; }
             .benefit { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+            .step { min-width: 100%; }
         }
     </style>
 </head>
@@ -450,8 +470,20 @@
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Stay Protected</h3>
-                <p>Your files are encrypted instantly. Only you can access them.</p>
+                <h3>Files Are Encrypted</h3>
+                <p>Your files are instantly encrypted with AES-256. Only you can access them.</p>
+            </div>
+            <div class="step highlight-step">
+                <div class="step-number">4</div>
+                <h3>Upload Anywhere Safely</h3>
+                <p>Send your encrypted files to any cloud service. Even if someone accesses your cloud, your files stay unreadable.</p>
+                <div class="cloud-icons">
+                    <span title="Google Drive">📁</span>
+                    <span title="Dropbox">💧</span>
+                    <span title="OneDrive">☁️</span>
+                    <span title="iCloud">🍎</span>
+                    <span title="Any cloud">🌐</span>
+                </div>
             </div>
         </div>
     </section>
