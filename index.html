@@ -3,17 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuietStor - Private File Manager</title>
+    <title>QuietStor - Private File Manager for Android</title>
+    <meta name="description" content="QuietStor is a privacy-first file manager with encrypted vault. Keep your files safe, offline, and private.">
+    <link rel="icon" href="/logo.png">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; text-align: center; }
-        h1 { color: #2d3748; }
-        p { color: #718096; line-height: 1.6; }
-        a { color: #3182ce; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #7B2D8E;
+            --primary-light: #9F7AEA;
+            --secondary: #4ECDC4;
+            --accent: #F6AD55;
+            --bg-dark: #1A1A2E;
+            --bg-card: #16213E;
+            --text: #E2E8F0;
+            --text-muted: #A0AEC0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F23 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(123, 45, 142, 0.15) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(123, 45, 142, 0.4));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(123, 45, 142, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(123, 45, 142, 0.6);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--bg-card);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(123, 45, 142, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--bg-dark);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .step p {
+            color: var(--text-muted);
+        }
+        
+        /* Privacy Section */
+        .privacy-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
+            text-align: center;
+        }
+        
+        .privacy-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-section p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .privacy-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--bg-card);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .logo { width: 120px; height: 120px; }
+            .section-title { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
-    <h1>🔒 QuietStor</h1>
-    <p>A privacy-first file manager for Android.</p>
-    <p><a href="/privacy">Privacy Policy</a></p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="/logo.png" alt="QuietStor Logo" class="logo">
+            <h1>QuietStor</h1>
+            <p class="tagline">Your files. Your privacy. Your control.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Coming Soon on Google Play
+                </a>
+            </div>
+            <p style="color: var(--text-muted);">Private file manager with encrypted vault for Android</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose QuietStor?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Encrypted Vault</h3>
+                <p>Military-grade AES-256 encryption protects your sensitive files with a 6-digit PIN.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📴</div>
+                <h3>100% Offline</h3>
+                <p>No internet required. Your files never leave your device. No cloud, no servers, no tracking.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚫</div>
+                <h3>Zero Analytics</h3>
+                <p>We don't collect any data. No telemetry, no usage stats, no personal information.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👆</div>
+                <h3>Biometric Unlock</h3>
+                <p>Quick access with fingerprint or face recognition while maintaining security.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Secure Backup</h3>
+                <p>Export your encrypted vault to a portable .qsv file. Restore anytime, anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Clean Design</h3>
+                <p>Modern, intuitive interface that makes managing your private files effortless.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Your Vault</h3>
+                <p>Set up a 6-digit PIN to create your personal encrypted vault.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Add Your Files</h3>
+                <p>Import photos, documents, and any files you want to keep private.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Stay Protected</h3>
+                <p>Your files are encrypted instantly. Only you can access them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section">
+        <h2>Privacy by Design</h2>
+        <p>QuietStor was built from the ground up with one mission: protect your privacy without compromise.</p>
+        <div class="privacy-badges">
+            <div class="badge">✅ No Account Required</div>
+            <div class="badge">✅ No Internet Access</div>
+            <div class="badge">✅ No Data Collection</div>
+            <div class="badge">✅ GDPR & CCPA Compliant</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="/logo.png" alt="QuietStor" class="footer-logo">
+        <div class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/refund.html">Refund Policy</a>
+            <a href="mailto:app.quietstor@gmail.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 QuietStor. All rights reserved.</p>
+    </footer>
 </body>
 </html>

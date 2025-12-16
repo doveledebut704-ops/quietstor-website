@@ -4,42 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - QuietStor</title>
+    <link rel="icon" href="/logo.png">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 700px; margin: 50px auto; padding: 20px; line-height: 1.7; color: #2d3748; }
-        h1 { color: #1a202c; }
-        h2 { color: #2d3748; margin-top: 30px; }
-        a { color: #3182ce; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.7;
+            color: #333;
+            background: #fafafa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #7B2D8E;
+        }
+        .logo { width: 80px; height: 80px; margin-bottom: 1rem; }
+        h1 { margin-bottom: 0.5rem; color: #1a1a2e; }
+        .date { color: #666; }
+        h2 { margin-top: 2rem; margin-bottom: 1rem; color: #7B2D8E; }
+        h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; color: #553C9A; }
+        p, ul { margin-bottom: 1rem; }
+        ul { padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .highlight {
+            background: #f0e6ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #7B2D8E;
+            margin: 1.5rem 0;
+        }
+        .lang-switch {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .lang-switch a {
+            margin: 0 0.5rem;
+            color: #7B2D8E;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        .lang-switch a:hover { background: #e0d0ff; }
+        .section-fr { display: none; }
+        .back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #7B2D8E;
+            text-decoration: none;
+        }
+        .back:hover { text-decoration: underline; }
+        a { color: #7B2D8E; }
+        .ccpa-section {
+            background: #fff3e0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #F6AD55;
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p><strong>Last updated:</strong> December 2024</p>
+    <div class="header">
+        <img src="/logo.png" alt="QuietStor" class="logo">
+        <h1>Privacy Policy</h1>
+    </div>
 
-    <h2>Overview</h2>
-    <p>QuietStor is a privacy-first file manager. Your files stay on your device. We do not collect, transmit, or store any of your personal data.</p>
+    <div class="lang-switch">
+        <a onclick="showLang('en')">🇬🇧 English</a>
+        <a onclick="showLang('fr')">🇫🇷 Français</a>
+    </div>
 
-    <h2>Data Collection</h2>
-    <p>QuietStor does <strong>not</strong> collect:</p>
-    <ul>
-        <li>Personal information</li>
-        <li>File contents or metadata</li>
-        <li>Usage analytics</li>
-        <li>Location data</li>
-        <li>Device identifiers</li>
-    </ul>
+    <!-- ENGLISH VERSION -->
+    <div id="section-en" class="section-en">
+        <p class="date">Last updated: December 2025</p>
+        
+        <div class="highlight">
+            <strong>TL;DR:</strong> QuietStor collects absolutely no data. Everything stays on your device.
+        </div>
 
-    <h2>Data Storage</h2>
-    <p>All data remains locally on your device. QuietStor does not use cloud storage or external servers.</p>
+        <h2>1. Our Commitment</h2>
+        <p>QuietStor is designed with privacy as the core principle. We believe your personal files should remain personal – accessible only to you, stored only on your device.</p>
 
-    <h2>Third-Party Services</h2>
-    <p>QuietStor does not integrate any third-party analytics, advertising, or tracking services.</p>
+        <h2>2. Data We Collect</h2>
+        <p><strong>None.</strong> QuietStor does not collect, transmit, or store any personal data. Specifically:</p>
+        <ul>
+            <li>❌ No personal information</li>
+            <li>❌ No usage analytics</li>
+            <li>❌ No crash reports sent to servers</li>
+            <li>❌ No advertising identifiers</li>
+            <li>❌ No location data</li>
+            <li>❌ No contact information</li>
+        </ul>
 
-    <h2>Permissions</h2>
-    <p>QuietStor requests only the permissions necessary to manage files on your device. These permissions are used solely for local file operations.</p>
+        <h2>3. How Your Data is Stored</h2>
+        <p>All your files are encrypted using AES-256-GCM and stored locally on your device. Your PIN is never stored – instead, we use a derived key (PBKDF2) that cannot be reversed to find your PIN.</p>
 
-    <h2>Contact</h2>
-    <p>If you have questions about this Privacy Policy, contact us at: <a href="mailto:support@quietstor.app">support@quietstor.app</a></p>
+        <h2>4. Internet Access</h2>
+        <p>QuietStor <strong>does not require internet access</strong> to function. The app works entirely offline. No data ever leaves your device.</p>
 
-    <p><a href="/">← Back to home</a></p>
+        <h2>5. Third-Party Services</h2>
+        <p>QuietStor does not integrate with any third-party analytics, advertising, or tracking services.</p>
+
+        <h2>6. Your Rights (GDPR)</h2>
+        <p>Under the General Data Protection Regulation (GDPR), you have certain rights regarding your personal data. Since we don't collect any data, there's nothing to access, delete, export, or modify. Your data is entirely under your control on your device.</p>
+
+        <h2>7. California Privacy Rights (CCPA)</h2>
+        <div class="ccpa-section">
+            <p>Under the California Consumer Privacy Act (CCPA), California residents have specific rights regarding their personal information.</p>
+            <h3>Your CCPA Rights</h3>
+            <ul>
+                <li><strong>Right to Know:</strong> You have the right to know what personal information we collect. We collect none.</li>
+                <li><strong>Right to Delete:</strong> You have the right to request deletion of your personal information. Since we don't collect any, there's nothing to delete.</li>
+                <li><strong>Right to Opt-Out:</strong> You have the right to opt-out of the sale of your personal information. We do not sell any personal information.</li>
+                <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of your CCPA rights.</li>
+            </ul>
+            <p><strong>Do Not Sell My Personal Information:</strong> QuietStor does not sell, rent, or share any personal information with third parties for monetary or other valuable consideration.</p>
+        </div>
+
+        <h2>8. Children's Privacy (COPPA)</h2>
+        <p>QuietStor does not knowingly collect any information from anyone, including children under 13. The app does not require any personal information to function.</p>
+
+        <h2>9. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.</p>
+
+        <h2>10. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    </div>
+
+    <!-- FRENCH VERSION -->
+    <div id="section-fr" class="section-fr">
+        <p class="date">Dernière mise à jour : Décembre 2025</p>
+        
+        <div class="highlight">
+            <strong>En bref :</strong> QuietStor ne collecte absolument aucune donnée. Tout reste sur votre appareil.
+        </div>
+
+        <h2>1. Notre Engagement</h2>
+        <p>QuietStor est conçu avec la confidentialité comme principe fondamental. Nous croyons que vos fichiers personnels doivent rester personnels – accessibles uniquement par vous, stockés uniquement sur votre appareil.</p>
+
+        <h2>2. Données Collectées</h2>
+        <p><strong>Aucune.</strong> QuietStor ne collecte, ne transmet et ne stocke aucune donnée personnelle. Spécifiquement :</p>
+        <ul>
+            <li>❌ Aucune information personnelle</li>
+            <li>❌ Aucune analyse d'utilisation</li>
+            <li>❌ Aucun rapport de crash envoyé aux serveurs</li>
+            <li>❌ Aucun identifiant publicitaire</li>
+            <li>❌ Aucune donnée de localisation</li>
+            <li>❌ Aucune information de contact</li>
+        </ul>
+
+        <h2>3. Stockage de Vos Données</h2>
+        <p>Tous vos fichiers sont chiffrés en AES-256-GCM et stockés localement sur votre appareil. Votre code PIN n'est jamais stocké – nous utilisons une clé dérivée (PBKDF2) qui ne peut pas être inversée pour retrouver votre PIN.</p>
+
+        <h2>4. Accès Internet</h2>
+        <p>QuietStor <strong>ne nécessite pas d'accès Internet</strong> pour fonctionner. L'application fonctionne entièrement hors-ligne. Aucune donnée ne quitte jamais votre appareil.</p>
+
+        <h2>5. Services Tiers</h2>
+        <p>QuietStor n'intègre aucun service tiers d'analyse, de publicité ou de suivi.</p>
+
+        <h2>6. Vos Droits (RGPD)</h2>
+        <p>En vertu du Règlement Général sur la Protection des Données (RGPD), vous avez certains droits concernant vos données personnelles. Puisque nous ne collectons aucune donnée, il n'y a rien à accéder, supprimer, exporter ou modifier. Vos données sont entièrement sous votre contrôle sur votre appareil.</p>
+
+        <h2>7. Droits de Confidentialité en Californie (CCPA)</h2>
+        <div class="ccpa-section">
+            <p>En vertu du California Consumer Privacy Act (CCPA), les résidents de Californie ont des droits spécifiques concernant leurs informations personnelles.</p>
+            <p><strong>Ne pas vendre mes informations personnelles :</strong> QuietStor ne vend, ne loue et ne partage aucune information personnelle avec des tiers.</p>
+        </div>
+
+        <h2>8. Confidentialité des Enfants (COPPA)</h2>
+        <p>QuietStor ne collecte sciemment aucune information de quiconque, y compris les enfants de moins de 13 ans. L'application ne nécessite aucune information personnelle pour fonctionner.</p>
+
+        <h2>9. Modifications de cette Politique</h2>
+        <p>Nous pouvons mettre à jour cette Politique de Confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date mise à jour.</p>
+
+        <h2>10. Nous Contacter</h2>
+        <p>Si vous avez des questions concernant cette Politique de Confidentialité, contactez-nous à : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    </div>
+
+    <a href="/" class="back">← Back to QuietStor</a>
+
+    <script>
+        function showLang(lang) {
+            document.getElementById('section-en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('section-fr').style.display = lang === 'fr' ? 'block' : 'none';
+        }
+        showLang('en');
+    </script>
 </body>
 </html>
