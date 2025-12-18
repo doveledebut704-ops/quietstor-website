@@ -6,7 +6,9 @@
     <title>FAQ - QuietStor</title>
     <meta name="description" content="Frequently Asked Questions about QuietStor - Private File Manager for Android">
     <link rel="icon" href="/logo.png">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -14,17 +16,19 @@
             --primary: #7B2D8E;
             --primary-light: #9F7AEA;
             --secondary: #4ECDC4;
+            --green: #48BB78;
+            --green-light: #68D391;
+            --teal: #38B2AC;
             --accent: #F6AD55;
             --bg-dark: #1A1A2E;
             --bg-card: #16213E;
             --text: #E2E8F0;
             --text-muted: #A0AEC0;
             --error: #FC8181;
-            --success: #68D391;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
@@ -34,7 +38,7 @@
             text-align: center;
             padding: 3rem 2rem;
             background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F23 100%);
-            border-bottom: 1px solid rgba(123, 45, 142, 0.3);
+            border-bottom: 1px solid rgba(72, 187, 120, 0.2);
         }
         
         .header-logo {
@@ -45,7 +49,8 @@
         
         .header h1 {
             font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 100%);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -69,17 +74,18 @@
         
         .lang-btn {
             padding: 0.75rem 1.25rem;
-            border: 2px solid var(--primary);
+            border: 2px solid var(--green);
             background: transparent;
             color: var(--text);
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
         
         .lang-btn.active, .lang-btn:hover {
-            background: var(--primary);
+            background: var(--green);
             color: white;
         }
         
@@ -92,21 +98,15 @@
             font-size: 1.4rem;
             margin-bottom: 1rem;
             padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid var(--green);
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
         
-        .faq-category h2 i {
-            width: 24px;
-            height: 24px;
-            color: var(--secondary);
-        }
-        
         .faq-item {
             background: var(--bg-card);
-            border: 1px solid rgba(123, 45, 142, 0.2);
+            border: 1px solid rgba(72, 187, 120, 0.15);
             border-radius: 1rem;
             margin-bottom: 0.75rem;
             overflow: hidden;
@@ -114,8 +114,8 @@
         }
         
         .faq-item:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(123, 45, 142, 0.2);
+            border-color: var(--green);
+            box-shadow: 0 4px 20px rgba(72, 187, 120, 0.15);
         }
         
         .faq-question {
@@ -131,12 +131,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-family: 'Outfit', sans-serif;
         }
         
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
-            color: var(--secondary);
+            color: var(--green);
             transition: transform 0.3s ease;
         }
         
@@ -176,9 +177,10 @@
             margin: 1rem 0;
         }
         
+        /* Transfer Animation */
         .transfer-diagram {
             background: var(--bg-dark);
-            border: 1px solid rgba(123, 45, 142, 0.3);
+            border: 1px solid rgba(72, 187, 120, 0.2);
             border-radius: 1rem;
             padding: 2rem;
             margin: 1.5rem 0;
@@ -186,7 +188,7 @@
         }
         
         .transfer-diagram h3 {
-            color: var(--secondary);
+            color: var(--green);
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
@@ -232,8 +234,8 @@
             width: 50px;
             height: 50px;
             background: 
-                linear-gradient(90deg, var(--secondary) 30%, transparent 30%),
-                linear-gradient(180deg, var(--secondary) 30%, transparent 30%);
+                linear-gradient(90deg, var(--green) 30%, transparent 30%),
+                linear-gradient(180deg, var(--green) 30%, transparent 30%);
             background-size: 8px 8px;
             border-radius: 4px;
             animation: qrPulse 2s ease-in-out infinite;
@@ -247,7 +249,7 @@
         .code-display {
             font-family: monospace;
             font-size: 12px;
-            color: var(--secondary);
+            color: var(--green);
             margin-top: 8px;
             letter-spacing: 2px;
         }
@@ -261,7 +263,7 @@
         .arrow-line {
             width: 60px;
             height: 4px;
-            background: var(--primary);
+            background: var(--green);
             position: relative;
             border-radius: 2px;
         }
@@ -269,7 +271,7 @@
         .arrow-head {
             width: 0;
             height: 0;
-            border-left: 10px solid var(--primary);
+            border-left: 10px solid var(--green);
             border-top: 7px solid transparent;
             border-bottom: 7px solid transparent;
             position: absolute;
@@ -314,7 +316,7 @@
         .camera-viewfinder {
             width: 50px;
             height: 50px;
-            border: 3px solid var(--primary);
+            border: 3px solid var(--green);
             border-radius: 6px;
             position: relative;
             animation: cameraScan 2s ease-in-out infinite;
@@ -335,7 +337,7 @@
         }
         
         @keyframes cameraScan {
-            0%, 100% { border-color: var(--primary); }
+            0%, 100% { border-color: var(--green); }
             50% { border-color: var(--secondary); }
         }
         
@@ -350,7 +352,7 @@
         
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--green), var(--teal));
             border-radius: 3px;
             animation: progress 3s ease-in-out infinite;
         }
@@ -373,7 +375,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: rgba(123, 45, 142, 0.2);
+            background: rgba(72, 187, 120, 0.15);
             border-radius: 50px;
             font-size: 0.85rem;
         }
@@ -381,7 +383,7 @@
         .step-number {
             width: 22px;
             height: 22px;
-            background: var(--primary);
+            background: var(--green);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -395,7 +397,7 @@
             text-align: center;
             padding: 2rem;
             color: var(--text-muted);
-            border-top: 1px solid rgba(123, 45, 142, 0.2);
+            border-top: 1px solid rgba(72, 187, 120, 0.15);
             margin-top: 3rem;
         }
         
@@ -405,13 +407,13 @@
             transition: color 0.3s ease;
         }
         
-        footer a:hover { color: var(--secondary); }
+        footer a:hover { color: var(--green); }
         
         .back-link {
             display: inline-block;
             margin-top: 2rem;
             padding: 0.75rem 1.5rem;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
             color: white;
             text-decoration: none;
             border-radius: 50px;
@@ -420,8 +422,8 @@
         }
         
         .back-link:hover {
-            background: var(--primary-light);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
         }
         
         @media (max-width: 600px) {
@@ -454,17 +456,17 @@
         <div id="faq-en" class="faq-section">
             
             <div class="faq-category">
-                <h2><i data-lucide="rocket"></i> Getting Started</h2>
+                <h2>🚀 Getting Started</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">What is QuietStor?</button>
                     <div class="faq-answer">
                         <p>QuietStor is a privacy-first file manager for Android. It helps you browse your files, analyze storage usage, and protect sensitive files in an encrypted vault.</p>
                         <ul>
-                            <li>Clean file browsing interface</li>
-                            <li>Storage analysis by category</li>
-                            <li>Military-grade encrypted vault (AES-256)</li>
-                            <li>100% offline - no data leaves your device</li>
+                            <li>✅ Clean file browsing interface</li>
+                            <li>✅ Storage analysis by category</li>
+                            <li>✅ Military-grade encrypted vault (AES-256)</li>
+                            <li>✅ 100% offline - no data leaves your device</li>
                         </ul>
                     </div>
                 </div>
@@ -487,56 +489,56 @@
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="shield-check"></i> Private Vault & PIN</h2>
+                <h2>🔐 Private Vault & PIN</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">What is the Private Vault?</button>
                     <div class="faq-answer">
                         <p>The Private Vault is an encrypted space where you can store sensitive files:</p>
                         <ul>
-                            <li>Encrypted with military-grade encryption (AES-256-GCM)</li>
-                            <li>Protected by your 6-digit PIN</li>
-                            <li>Accessible with fingerprint (optional)</li>
-                            <li>Hidden from other apps and file managers</li>
+                            <li>🔐 Encrypted with military-grade encryption (AES-256-GCM)</li>
+                            <li>🔑 Protected by your 6-digit PIN</li>
+                            <li>👆 Accessible with fingerprint (optional)</li>
+                            <li>👁️ Hidden from other apps and file managers</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <button class="faq-question">What if I forget my PIN?</button>
+                    <button class="faq-question">⚠️ What if I forget my PIN?</button>
                     <div class="faq-answer">
                         <div class="error-box">
                             <strong>Your files will be permanently lost.</strong>
                         </div>
                         <p>This is not a bug — it's a security feature:</p>
                         <ul>
-                            <li>We never see your PIN</li>
-                            <li>There's no "Forgot PIN" option</li>
-                            <li>We can't help recover it</li>
+                            <li>❌ We never see your PIN</li>
+                            <li>❌ There's no "Forgot PIN" option</li>
+                            <li>❌ We can't help recover it</li>
                         </ul>
                         <p><strong>How to protect yourself:</strong></p>
                         <ul>
-                            <li>Choose a PIN you'll remember</li>
-                            <li>Enable fingerprint as backup</li>
-                            <li>Create a vault backup (.qsv file)</li>
+                            <li>✅ Choose a PIN you'll remember</li>
+                            <li>✅ Enable fingerprint as backup</li>
+                            <li>✅ Create a vault backup (.qsv file)</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="smartphone"></i> Changing Devices</h2>
+                <h2>📱 Changing Devices</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">How do I transfer my vault to a new phone?</button>
                     <div class="faq-answer">
                         <p>You have <strong>two options</strong>:</p>
                         
-                        <h4>Option A: Direct Transfer (Recommended)</h4>
+                        <h4>Option A: Direct Transfer (Recommended) 👍</h4>
                         <p>If you still have your old phone:</p>
                         
                         <div class="transfer-diagram">
-                            <h3>Direct Transfer via QR Code</h3>
+                            <h3>📲 Direct Transfer via QR Code</h3>
                             
                             <div class="devices-container">
                                 <div>
@@ -580,29 +582,21 @@
                                 <div class="step"><span class="step-number">1</span> Scan QR</div>
                                 <div class="step"><span class="step-number">2</span> Transfer</div>
                                 <div class="step"><span class="step-number">3</span> New PIN</div>
-                                <div class="step"><span class="step-number">4</span> Done!</div>
+                                <div class="step"><span class="step-number">4</span> Done! ✅</div>
                             </div>
                         </div>
                         
                         <h4>Option B: Restore from Backup</h4>
                         <p>If your old phone is lost or broken, you need a .qsv backup file created beforehand.</p>
                         <div class="warning-box">
-                            <strong>No backup = No recovery.</strong> Always create backups!
+                            ⚠️ <strong>No backup = No recovery.</strong> Always create backups!
                         </div>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Why do I need a new PIN on my new phone?</button>
-                    <div class="faq-answer">
-                        <p>Your PIN protects the encryption key stored in your phone's secure hardware. Each phone has its own secure hardware, so each phone needs its own PIN.</p>
-                        <p>This is actually more secure — if someone steals your old phone AND knows your PIN, they still can't access your new phone's vault.</p>
                     </div>
                 </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="database-backup"></i> Backup & Export</h2>
+                <h2>💾 Backup & Export</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">How do I create a vault backup?</button>
@@ -616,22 +610,10 @@
                         </ol>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">How often should I backup?</button>
-                    <div class="faq-answer">
-                        <ul>
-                            <li>After adding important files</li>
-                            <li>Before changing phones</li>
-                            <li>At least once a month</li>
-                        </ul>
-                        <p>QuietStor will remind you if you have files but no backup.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="shield"></i> Security & Privacy</h2>
+                <h2>🛡️ Security & Privacy</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">How secure is QuietStor?</button>
@@ -651,19 +633,18 @@
                     <div class="faq-answer">
                         <p><strong>None.</strong></p>
                         <ul>
-                            <li>No analytics</li>
-                            <li>No crash reports with personal data</li>
-                            <li>No usage tracking</li>
-                            <li>No advertising</li>
-                            <li>No network requests</li>
+                            <li>❌ No analytics</li>
+                            <li>❌ No crash reports with personal data</li>
+                            <li>❌ No usage tracking</li>
+                            <li>❌ No advertising</li>
+                            <li>❌ No network requests</li>
                         </ul>
-                        <p>We literally can't collect data because the app never connects to the internet.</p>
                     </div>
                 </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="wrench"></i> Troubleshooting</h2>
+                <h2>🔧 Troubleshooting</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">I'm locked out after wrong PIN attempts</button>
@@ -677,19 +658,6 @@
                         <p>Wait for the timer, then try with your correct PIN.</p>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Transfer to new device failed</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Make sure both phones are on the same WiFi network</li>
-                            <li>Check that the QR code hasn't expired (5 minutes)</li>
-                            <li>Try entering the 6-digit code manually</li>
-                            <li>Restart both apps and try again</li>
-                            <li>As a last resort, use the .qsv backup method</li>
-                        </ol>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -698,17 +666,17 @@
         <div id="faq-fr" class="faq-section" style="display: none;">
             
             <div class="faq-category">
-                <h2><i data-lucide="rocket"></i> Démarrage</h2>
+                <h2>🚀 Démarrage</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">Qu'est-ce que QuietStor ?</button>
                     <div class="faq-answer">
                         <p>QuietStor est un gestionnaire de fichiers axé sur la confidentialité pour Android. Il vous aide à parcourir vos fichiers, analyser l'utilisation du stockage et protéger vos fichiers sensibles dans un coffre-fort chiffré.</p>
                         <ul>
-                            <li>Interface de navigation claire</li>
-                            <li>Analyse du stockage par catégorie</li>
-                            <li>Coffre-fort avec chiffrement militaire (AES-256)</li>
-                            <li>100% hors-ligne - aucune donnée ne quitte votre appareil</li>
+                            <li>✅ Interface de navigation claire</li>
+                            <li>✅ Analyse du stockage par catégorie</li>
+                            <li>✅ Coffre-fort avec chiffrement militaire (AES-256)</li>
+                            <li>✅ 100% hors-ligne - aucune donnée ne quitte votre appareil</li>
                         </ul>
                     </div>
                 </div>
@@ -720,67 +688,45 @@
                         <p>Premium débloque les fichiers illimités et le support prioritaire.</p>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">QuietStor a-t-il besoin d'internet ?</button>
-                    <div class="faq-answer">
-                        <p><strong>Non.</strong> QuietStor fonctionne 100% hors-ligne. Vos fichiers ne quittent jamais votre appareil.</p>
-                        <p>Nous n'avons pas de serveurs. Nous ne collectons pas de données. Nous ne pouvons pas voir vos fichiers.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="shield-check"></i> Coffre-fort & PIN</h2>
+                <h2>🔐 Coffre-fort & PIN</h2>
                 
                 <div class="faq-item">
-                    <button class="faq-question">Qu'est-ce que le coffre-fort privé ?</button>
-                    <div class="faq-answer">
-                        <p>Le coffre-fort privé est un espace chiffré où vous pouvez stocker vos fichiers sensibles :</p>
-                        <ul>
-                            <li>Chiffrés avec un chiffrement de qualité militaire (AES-256-GCM)</li>
-                            <li>Protégés par votre code PIN à 6 chiffres</li>
-                            <li>Accessibles avec l'empreinte digitale (optionnel)</li>
-                            <li>Cachés des autres applications</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Que se passe-t-il si j'oublie mon PIN ?</button>
+                    <button class="faq-question">⚠️ Que se passe-t-il si j'oublie mon PIN ?</button>
                     <div class="faq-answer">
                         <div class="error-box">
                             <strong>Vos fichiers seront définitivement perdus.</strong>
                         </div>
                         <p>Ce n'est pas un bug — c'est une fonctionnalité de sécurité :</p>
                         <ul>
-                            <li>Nous ne voyons jamais votre PIN</li>
-                            <li>Il n'y a pas d'option "PIN oublié"</li>
-                            <li>Nous ne pouvons pas vous aider à le récupérer</li>
+                            <li>❌ Nous ne voyons jamais votre PIN</li>
+                            <li>❌ Il n'y a pas d'option "PIN oublié"</li>
+                            <li>❌ Nous ne pouvons pas vous aider à le récupérer</li>
                         </ul>
                         <p><strong>Comment vous protéger :</strong></p>
                         <ul>
-                            <li>Choisissez un PIN dont vous vous souviendrez</li>
-                            <li>Activez l'empreinte digitale comme secours</li>
-                            <li>Créez une sauvegarde du coffre-fort (fichier .qsv)</li>
+                            <li>✅ Choisissez un PIN dont vous vous souviendrez</li>
+                            <li>✅ Activez l'empreinte digitale comme secours</li>
+                            <li>✅ Créez une sauvegarde du coffre-fort (fichier .qsv)</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="smartphone"></i> Changement d'appareil</h2>
+                <h2>📱 Changement d'appareil</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">Comment transférer mon coffre-fort vers un nouveau téléphone ?</button>
                     <div class="faq-answer">
                         <p>Vous avez <strong>deux options</strong> :</p>
                         
-                        <h4>Option A : Transfert direct (Recommandé)</h4>
-                        <p>Si vous avez encore votre ancien téléphone :</p>
+                        <h4>Option A : Transfert direct (Recommandé) 👍</h4>
                         
                         <div class="transfer-diagram">
-                            <h3>Transfert direct via QR Code</h3>
+                            <h3>📲 Transfert direct via QR Code</h3>
                             
                             <div class="devices-container">
                                 <div>
@@ -824,114 +770,29 @@
                                 <div class="step"><span class="step-number">1</span> Scanner QR</div>
                                 <div class="step"><span class="step-number">2</span> Transfert</div>
                                 <div class="step"><span class="step-number">3</span> Nouveau PIN</div>
-                                <div class="step"><span class="step-number">4</span> Terminé !</div>
+                                <div class="step"><span class="step-number">4</span> Terminé ! ✅</div>
                             </div>
                         </div>
                         
                         <h4>Option B : Restaurer depuis une sauvegarde</h4>
-                        <p>Si votre ancien téléphone est perdu ou cassé, vous avez besoin d'un fichier .qsv créé au préalable.</p>
                         <div class="warning-box">
-                            <strong>Pas de sauvegarde = Pas de récupération.</strong> Créez toujours des sauvegardes !
+                            ⚠️ <strong>Pas de sauvegarde = Pas de récupération.</strong> Créez toujours des sauvegardes !
                         </div>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Pourquoi dois-je créer un nouveau PIN ?</button>
-                    <div class="faq-answer">
-                        <p>Votre PIN protège la clé de chiffrement stockée dans le matériel sécurisé de votre téléphone. Chaque téléphone a son propre matériel sécurisé, donc chaque téléphone a besoin de son propre PIN.</p>
-                        <p>C'est en fait plus sécurisé — si quelqu'un vole votre ancien téléphone ET connaît votre PIN, il ne pourra toujours pas accéder au coffre-fort de votre nouveau téléphone.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="database-backup"></i> Sauvegarde & Export</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Comment créer une sauvegarde ?</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Allez dans <strong>Paramètres > Exporter la sauvegarde</strong></li>
-                            <li>Entrez votre PIN</li>
-                            <li>Créez un <strong>mot de passe de sauvegarde</strong> (différent du PIN !)</li>
-                            <li>Choisissez où enregistrer le fichier .qsv</li>
-                            <li>Stockez ce fichier en sécurité (Google Drive, USB, etc.)</li>
-                        </ol>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">À quelle fréquence sauvegarder ?</button>
-                    <div class="faq-answer">
-                        <ul>
-                            <li>Après avoir ajouté des fichiers importants</li>
-                            <li>Avant de changer de téléphone</li>
-                            <li>Au moins une fois par mois</li>
-                        </ul>
-                        <p>QuietStor vous rappellera si vous avez des fichiers mais pas de sauvegarde.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2><i data-lucide="shield"></i> Sécurité & Confidentialité</h2>
+                <h2>🛡️ Sécurité</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">QuietStor est-il sécurisé ?</button>
                     <div class="faq-answer">
-                        <p>QuietStor utilise des standards de sécurité reconnus :</p>
                         <ul>
                             <li><strong>Chiffrement :</strong> AES-256-GCM (qualité militaire)</li>
                             <li><strong>Stockage des clés :</strong> Android Keystore (matériel sécurisé)</li>
                             <li><strong>Hachage du PIN :</strong> PBKDF2 avec 600 000 itérations</li>
-                            <li><strong>Biométrie :</strong> Android BiometricPrompt (Classe 3)</li>
                         </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Quelles données QuietStor collecte-t-il ?</button>
-                    <div class="faq-answer">
-                        <p><strong>Aucune.</strong></p>
-                        <ul>
-                            <li>Pas d'analytics</li>
-                            <li>Pas de rapports de crash avec données personnelles</li>
-                            <li>Pas de suivi d'utilisation</li>
-                            <li>Pas de publicité</li>
-                            <li>Pas de requêtes réseau</li>
-                        </ul>
-                        <p>Nous ne pouvons littéralement pas collecter de données car l'app ne se connecte jamais à internet.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2><i data-lucide="wrench"></i> Dépannage</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Je suis bloqué après plusieurs tentatives</button>
-                    <div class="faq-answer">
-                        <p>C'est une fonctionnalité de sécurité. Après des échecs :</p>
-                        <ul>
-                            <li>3 échecs → 30 secondes d'attente</li>
-                            <li>5 échecs → 2 minutes d'attente</li>
-                            <li>10 échecs → 30 minutes d'attente</li>
-                        </ul>
-                        <p>Attendez la fin du délai, puis réessayez avec votre PIN correct.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Le transfert a échoué</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Vérifiez que les deux téléphones sont sur le même réseau WiFi</li>
-                            <li>Vérifiez que le QR code n'a pas expiré (5 minutes)</li>
-                            <li>Essayez d'entrer le code à 6 chiffres manuellement</li>
-                            <li>Redémarrez les deux apps et réessayez</li>
-                            <li>En dernier recours, utilisez la méthode .qsv</li>
-                        </ol>
                     </div>
                 </div>
             </div>
@@ -942,17 +803,17 @@
         <div id="faq-es" class="faq-section" style="display: none;">
             
             <div class="faq-category">
-                <h2><i data-lucide="rocket"></i> Primeros pasos</h2>
+                <h2>🚀 Primeros pasos</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">¿Qué es QuietStor?</button>
                     <div class="faq-answer">
                         <p>QuietStor es un gestor de archivos centrado en la privacidad para Android. Te ayuda a explorar tus archivos, analizar el uso del almacenamiento y proteger archivos sensibles en una bóveda cifrada.</p>
                         <ul>
-                            <li>Interfaz de navegación limpia</li>
-                            <li>Análisis de almacenamiento por categoría</li>
-                            <li>Bóveda con cifrado militar (AES-256)</li>
-                            <li>100% sin conexión - ningún dato sale de tu dispositivo</li>
+                            <li>✅ Interfaz de navegación limpia</li>
+                            <li>✅ Análisis de almacenamiento por categoría</li>
+                            <li>✅ Bóveda con cifrado militar (AES-256)</li>
+                            <li>✅ 100% sin conexión - ningún dato sale de tu dispositivo</li>
                         </ul>
                     </div>
                 </div>
@@ -964,67 +825,45 @@
                         <p>Premium desbloquea archivos ilimitados y soporte prioritario.</p>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿QuietStor necesita internet?</button>
-                    <div class="faq-answer">
-                        <p><strong>No.</strong> QuietStor funciona 100% sin conexión. Tus archivos nunca salen de tu dispositivo.</p>
-                        <p>No tenemos servidores. No recopilamos datos. No podemos ver tus archivos.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="shield-check"></i> Bóveda privada y PIN</h2>
+                <h2>🔐 Bóveda privada y PIN</h2>
                 
                 <div class="faq-item">
-                    <button class="faq-question">¿Qué es la Bóveda Privada?</button>
-                    <div class="faq-answer">
-                        <p>La Bóveda Privada es un espacio cifrado donde puedes guardar archivos sensibles:</p>
-                        <ul>
-                            <li>Cifrados con encriptación de grado militar (AES-256-GCM)</li>
-                            <li>Protegidos por tu PIN de 6 dígitos</li>
-                            <li>Accesibles con huella digital (opcional)</li>
-                            <li>Ocultos de otras aplicaciones</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué pasa si olvido mi PIN?</button>
+                    <button class="faq-question">⚠️ ¿Qué pasa si olvido mi PIN?</button>
                     <div class="faq-answer">
                         <div class="error-box">
                             <strong>Tus archivos se perderán permanentemente.</strong>
                         </div>
                         <p>Esto no es un error — es una función de seguridad:</p>
                         <ul>
-                            <li>Nunca vemos tu PIN</li>
-                            <li>No hay opción "Olvidé mi PIN"</li>
-                            <li>No podemos ayudarte a recuperarlo</li>
+                            <li>❌ Nunca vemos tu PIN</li>
+                            <li>❌ No hay opción "Olvidé mi PIN"</li>
+                            <li>❌ No podemos ayudarte a recuperarlo</li>
                         </ul>
                         <p><strong>Cómo protegerte:</strong></p>
                         <ul>
-                            <li>Elige un PIN que recordarás</li>
-                            <li>Activa la huella digital como respaldo</li>
-                            <li>Crea una copia de seguridad (archivo .qsv)</li>
+                            <li>✅ Elige un PIN que recordarás</li>
+                            <li>✅ Activa la huella digital como respaldo</li>
+                            <li>✅ Crea una copia de seguridad (archivo .qsv)</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="smartphone"></i> Cambio de dispositivo</h2>
+                <h2>📱 Cambio de dispositivo</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">¿Cómo transfiero mi bóveda a un nuevo teléfono?</button>
                     <div class="faq-answer">
                         <p>Tienes <strong>dos opciones</strong>:</p>
                         
-                        <h4>Opción A: Transferencia directa (Recomendada)</h4>
-                        <p>Si aún tienes tu teléfono antiguo:</p>
+                        <h4>Opción A: Transferencia directa (Recomendada) 👍</h4>
                         
                         <div class="transfer-diagram">
-                            <h3>Transferencia directa vía código QR</h3>
+                            <h3>📲 Transferencia directa vía código QR</h3>
                             
                             <div class="devices-container">
                                 <div>
@@ -1068,114 +907,29 @@
                                 <div class="step"><span class="step-number">1</span> Escanear QR</div>
                                 <div class="step"><span class="step-number">2</span> Transferir</div>
                                 <div class="step"><span class="step-number">3</span> Nuevo PIN</div>
-                                <div class="step"><span class="step-number">4</span> ¡Listo!</div>
+                                <div class="step"><span class="step-number">4</span> ¡Listo! ✅</div>
                             </div>
                         </div>
                         
                         <h4>Opción B: Restaurar desde copia de seguridad</h4>
-                        <p>Si tu teléfono antiguo está perdido o roto, necesitas un archivo .qsv creado previamente.</p>
                         <div class="warning-box">
-                            <strong>Sin copia de seguridad = Sin recuperación.</strong> ¡Siempre crea copias de seguridad!
+                            ⚠️ <strong>Sin copia de seguridad = Sin recuperación.</strong> ¡Siempre crea copias de seguridad!
                         </div>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Por qué necesito un nuevo PIN?</button>
-                    <div class="faq-answer">
-                        <p>Tu PIN protege la clave de cifrado almacenada en el hardware seguro de tu teléfono. Cada teléfono tiene su propio hardware seguro, así que cada teléfono necesita su propio PIN.</p>
-                        <p>En realidad es más seguro — si alguien roba tu teléfono antiguo Y conoce tu PIN, aún no podrá acceder a la bóveda de tu nuevo teléfono.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="faq-category">
-                <h2><i data-lucide="database-backup"></i> Copia de seguridad</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Cómo creo una copia de seguridad?</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Ve a <strong>Ajustes > Exportar copia de seguridad</strong></li>
-                            <li>Ingresa tu PIN</li>
-                            <li>Crea una <strong>contraseña de respaldo</strong> (¡diferente del PIN!)</li>
-                            <li>Elige dónde guardar el archivo .qsv</li>
-                            <li>Guarda este archivo de forma segura (Google Drive, USB, etc.)</li>
-                        </ol>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Con qué frecuencia debo respaldar?</button>
-                    <div class="faq-answer">
-                        <ul>
-                            <li>Después de agregar archivos importantes</li>
-                            <li>Antes de cambiar de teléfono</li>
-                            <li>Al menos una vez al mes</li>
-                        </ul>
-                        <p>QuietStor te recordará si tienes archivos pero no tienes copia de seguridad.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2><i data-lucide="shield"></i> Seguridad y privacidad</h2>
+                <h2>🛡️ Seguridad</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">¿Qué tan seguro es QuietStor?</button>
                     <div class="faq-answer">
-                        <p>QuietStor utiliza estándares de seguridad de la industria:</p>
                         <ul>
                             <li><strong>Cifrado:</strong> AES-256-GCM (grado militar)</li>
-                            <li><strong>Almacenamiento de claves:</strong> Android Keystore (respaldado por hardware)</li>
+                            <li><strong>Almacenamiento de claves:</strong> Android Keystore (hardware)</li>
                             <li><strong>Hash del PIN:</strong> PBKDF2 con 600,000 iteraciones</li>
-                            <li><strong>Biometría:</strong> Android BiometricPrompt (Clase 3)</li>
                         </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué datos recopila QuietStor?</button>
-                    <div class="faq-answer">
-                        <p><strong>Ninguno.</strong></p>
-                        <ul>
-                            <li>Sin analíticas</li>
-                            <li>Sin informes de errores con datos personales</li>
-                            <li>Sin seguimiento de uso</li>
-                            <li>Sin publicidad</li>
-                            <li>Sin solicitudes de red</li>
-                        </ul>
-                        <p>Literalmente no podemos recopilar datos porque la app nunca se conecta a internet.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2><i data-lucide="wrench"></i> Solución de problemas</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Estoy bloqueado después de varios intentos</button>
-                    <div class="faq-answer">
-                        <p>Esto es una función de seguridad. Después de fallos:</p>
-                        <ul>
-                            <li>3 fallos → 30 segundos de espera</li>
-                            <li>5 fallos → 2 minutos de espera</li>
-                            <li>10 fallos → 30 minutos de espera</li>
-                        </ul>
-                        <p>Espera a que termine el temporizador, luego intenta con tu PIN correcto.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">La transferencia falló</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Asegúrate de que ambos teléfonos estén en la misma red WiFi</li>
-                            <li>Verifica que el código QR no haya expirado (5 minutos)</li>
-                            <li>Intenta ingresar el código de 6 dígitos manualmente</li>
-                            <li>Reinicia ambas apps e intenta de nuevo</li>
-                            <li>Como último recurso, usa el método de copia .qsv</li>
-                        </ol>
                     </div>
                 </div>
             </div>
@@ -1197,8 +951,6 @@
     </footer>
 
     <script>
-        lucide.createIcons();
-        
         function showLang(lang) {
             document.getElementById('faq-en').style.display = lang === 'en' ? 'block' : 'none';
             document.getElementById('faq-fr').style.display = lang === 'fr' ? 'block' : 'none';
@@ -1212,8 +964,6 @@
                     btn.classList.add('active');
                 }
             });
-            
-            lucide.createIcons();
         }
         
         document.querySelectorAll('.faq-question').forEach(button => {
@@ -1226,11 +976,8 @@
         });
         
         const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('fr')) {
-            showLang('fr');
-        } else if (userLang.startsWith('es')) {
-            showLang('es');
-        }
+        if (userLang.startsWith('fr')) showLang('fr');
+        else if (userLang.startsWith('es')) showLang('es');
     </script>
 
 </body>
