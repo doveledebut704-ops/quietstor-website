@@ -5,29 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuietStor - Private File Manager for Android</title>
     <meta name="description" content="QuietStor is a privacy-first file manager with encrypted vault. Keep your files safe, offline, and private.">
-    <link rel="icon" href="/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary: #7B2D8E;
-            --primary-light: #9F7AEA;
-            --secondary: #4ECDC4;
-            --green: #48BB78;
-            --green-light: #68D391;
-            --teal: #38B2AC;
-            --accent: #F6AD55;
+            --primary: #6B46C1;
+            --primary-dark: #553C9A;
+            --secondary: #9F7AEA;
             --bg-dark: #1A1A2E;
             --bg-card: #16213E;
             --text: #E2E8F0;
             --text-muted: #A0AEC0;
+            --accent: #F6AD55;
         }
         
         body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
@@ -54,7 +48,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(72, 187, 120, 0.08) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(107, 70, 193, 0.1) 0%, transparent 50%);
             animation: pulse 15s ease-in-out infinite;
         }
         
@@ -66,56 +60,34 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 900px;
+            max-width: 800px;
         }
         
         .logo {
-            width: 220px;
-            height: 220px;
-            margin-bottom: 1.5rem;
+            font-size: 5rem;
+            margin-bottom: 1rem;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 15px 40px rgba(72, 187, 120, 0.25));
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-10px); }
         }
         
         h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 0.8rem;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 60px rgba(72, 187, 120, 0.3);
         }
         
-        .main-tagline {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-        
-        .main-tagline .highlight {
-            color: var(--green);
-        }
-        
-        .sub-tagline {
-            font-size: 1.2rem;
+        .tagline {
+            font-size: 1.5rem;
             color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
+            margin-bottom: 2rem;
         }
         
         .cta-buttons {
@@ -123,58 +95,41 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1.1rem 2.2rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(72, 187, 120, 0.4);
+            box-shadow: 0 4px 15px rgba(107, 70, 193, 0.4);
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(72, 187, 120, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 70, 193, 0.6);
         }
         
-        /* Key Benefits */
-        .key-benefits {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
         }
         
-        .benefit {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--text-muted);
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.03);
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .benefit-icon {
-            width: 20px;
-            height: 20px;
-            color: var(--green);
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
         }
         
         /* Features Section */
@@ -187,8 +142,6 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
         }
         
         .features-grid {
@@ -204,31 +157,22 @@
             padding: 2rem;
             border-radius: 1rem;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            border: 1px solid rgba(72, 187, 120, 0.15);
+            transition: transform 0.3s ease;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            border-color: var(--green);
         }
         
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 1rem;
-            color: var(--green);
-            background: rgba(72, 187, 120, 0.1);
-            border-radius: 16px;
-            padding: 12px;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
         .feature-card h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--green);
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
+            color: var(--secondary);
         }
         
         .feature-card p {
@@ -246,21 +190,21 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
         .step {
             flex: 1;
-            min-width: 220px;
-            max-width: 280px;
+            min-width: 200px;
+            max-width: 300px;
             text-align: center;
         }
         
         .step-number {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -269,69 +213,26 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1rem;
-            font-family: 'Outfit', sans-serif;
         }
         
         .step h3 {
             margin-bottom: 0.5rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
         }
         
         .step p {
             color: var(--text-muted);
         }
         
-        .step.highlight-step {
-            background: rgba(72, 187, 120, 0.08);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(72, 187, 120, 0.2);
-        }
-        
-        .step.highlight-step .step-number {
-            background: linear-gradient(135deg, var(--accent) 0%, #F687B3 100%);
-        }
-        
-        .cloud-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .cloud-icon {
-            width: 32px;
-            height: 32px;
-            padding: 6px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .cloud-icon:hover {
-            background: rgba(255,255,255,0.1);
-            transform: scale(1.1);
-        }
-        
-        .cloud-icon.gdrive { color: #4285F4; }
-        .cloud-icon.dropbox { color: #0061FF; }
-        .cloud-icon.onedrive { color: #0078D4; }
-        .cloud-icon.icloud { color: #3693F3; }
-        .cloud-icon.aws { color: #FF9900; }
-        
         /* Privacy Section */
         .privacy-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1a3a2e 0%, var(--bg-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--bg-dark) 100%);
             text-align: center;
         }
         
         .privacy-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
         }
         
         .privacy-section p {
@@ -344,7 +245,7 @@
         .privacy-badges {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
         
@@ -352,17 +253,10 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(72, 187, 120, 0.12);
+            background: rgba(255,255,255,0.1);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             font-weight: 500;
-            border: 1px solid rgba(72, 187, 120, 0.25);
-        }
-        
-        .badge-icon {
-            width: 18px;
-            height: 18px;
-            color: var(--green);
         }
         
         /* Footer */
@@ -370,12 +264,6 @@
             padding: 3rem 2rem;
             background: var(--bg-card);
             text-align: center;
-        }
-        
-        .footer-logo {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
         }
         
         .footer-links {
@@ -393,7 +281,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--green);
+            color: var(--secondary);
         }
         
         .copyright {
@@ -403,14 +291,10 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; letter-spacing: 3px; }
-            .main-tagline { font-size: 1.3rem; }
-            .sub-tagline { font-size: 1rem; }
-            .logo { width: 160px; height: 160px; }
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .logo { font-size: 4rem; }
             .section-title { font-size: 2rem; }
-            .key-benefits { gap: 0.8rem; }
-            .benefit { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
-            .step { min-width: 100%; }
         }
     </style>
 </head>
@@ -418,34 +302,16 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <img src="/logo.png" alt="QuietStor Logo" class="logo">
-            <h1>QUIETSTOR</h1>
-            <p class="main-tagline">Private File Manager with <span class="highlight">Encrypted Vault</span></p>
-            <p class="sub-tagline">Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.</p>
+            <div class="logo">🔐</div>
+            <h1>QuietStor</h1>
+            <p class="tagline">Your files. Your privacy. Your control.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 2H6.477C5.768 2 5.2 2.768 5.2 3.477v17.045c0 .71.568 1.478 1.277 1.478h11.046c.71 0 1.277-.768 1.277-1.478V3.477C18.8 2.768 18.232 2 17.523 2zM12 20.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM17 16H7V5h10v11z"/></svg>
                     Coming Soon on Google Play
                 </a>
             </div>
-            <div class="key-benefits">
-                <div class="benefit">
-                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    <span>AES-256 Encryption</span>
-                </div>
-                <div class="benefit">
-                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path><path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                    <span>100% Offline</span>
-                </div>
-                <div class="benefit">
-                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                    <span>Zero Data Collection</span>
-                </div>
-                <div class="benefit">
-                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg>
-                    <span>Biometric Unlock</span>
-                </div>
-            </div>
+            <p style="color: var(--text-muted);">Private file manager with encrypted vault for Android</p>
         </div>
     </section>
 
@@ -454,32 +320,32 @@
         <h2 class="section-title">Why Choose QuietStor?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path><circle cx="12" cy="16" r="1"></circle></svg>
+                <div class="feature-icon">🔒</div>
                 <h3>Encrypted Vault</h3>
                 <p>Military-grade AES-256 encryption protects your sensitive files with a 6-digit PIN.</p>
             </div>
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path><path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                <div class="feature-icon">📴</div>
                 <h3>100% Offline</h3>
                 <p>No internet required. Your files never leave your device. No cloud, no servers, no tracking.</p>
             </div>
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <div class="feature-icon">🚫</div>
                 <h3>Zero Analytics</h3>
                 <p>We don't collect any data. No telemetry, no usage stats, no personal information.</p>
             </div>
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"></path><path d="M14 13.12c0 2.38 0 6.38-1 8.88"></path><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"></path><path d="M2 12a10 10 0 0 1 18-6"></path><path d="M2 16h.01"></path><path d="M21.8 16c.2-2 .131-5.354 0-6"></path><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"></path><path d="M8.65 22c.21-.66.45-1.32.57-2"></path><path d="M9 6.8a6 6 0 0 1 9 5.2v2"></path></svg>
+                <div class="feature-icon">👆</div>
                 <h3>Biometric Unlock</h3>
                 <p>Quick access with fingerprint or face recognition while maintaining security.</p>
             </div>
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <div class="feature-icon">💾</div>
                 <h3>Secure Backup</h3>
                 <p>Export your encrypted vault to a portable .qsv file. Restore anytime, anywhere.</p>
             </div>
             <div class="feature-card">
-                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z"></path></svg>
+                <div class="feature-icon">🎨</div>
                 <h3>Clean Design</h3>
                 <p>Modern, intuitive interface that makes managing your private files effortless.</p>
             </div>
@@ -502,25 +368,8 @@
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Files Are Encrypted</h3>
-                <p>Your files are instantly encrypted with AES-256. Only you can access them.</p>
-            </div>
-            <div class="step highlight-step">
-                <div class="step-number">4</div>
-                <h3>Upload Anywhere Safely</h3>
-                <p>Send your encrypted files to any cloud service. Even if someone accesses your cloud, your files stay unreadable.</p>
-                <div class="cloud-icons">
-                    <!-- Google Drive -->
-                    <svg class="cloud-icon gdrive" viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.828 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287c-1.04-1.81-1.89-3.287-1.89-3.296s-.41.016-.903.047zm4.036 9.483l-1.878 3.287-1.886 3.287h3.76l3.755-.005 1.89-3.282c1.04-1.805 1.89-3.282 1.885-3.287-.005-.005-1.708-.01-3.78-.01l-3.76.005z"/></svg>
-                    <!-- Dropbox -->
-                    <svg class="cloud-icon dropbox" viewBox="0 0 24 24" fill="currentColor"><path d="M6 1.807L0 5.629l6 3.822 6-3.822zM18 1.807l-6 3.822 6 3.822 6-3.822zM0 13.274l6 3.822 6-3.822-6-3.822zM18 9.452l-6 3.822 6 3.822 6-3.822zM6 18.371l6 3.822 6-3.822-6-3.822z"/></svg>
-                    <!-- OneDrive -->
-                    <svg class="cloud-icon onedrive" viewBox="0 0 24 24" fill="currentColor"><path d="M10.617 9.746a4.486 4.486 0 0 1 3.16-1.292c1.627 0 3.058.86 3.842 2.147a4.066 4.066 0 0 1 1.464-.268c2.293 0 4.152 1.873 4.152 4.184S21.376 18.7 19.083 18.7H5.67c-2.558 0-4.633-2.09-4.633-4.668s2.075-4.668 4.633-4.668c.496 0 .972.079 1.42.225a5.192 5.192 0 0 1 3.527-3.843z"/></svg>
-                    <!-- iCloud -->
-                    <svg class="cloud-icon icloud" viewBox="0 0 24 24" fill="currentColor"><path d="M13.762 4.29a6.51 6.51 0 0 0-5.669 3.332 3.571 3.571 0 0 0-1.558-.36 3.585 3.585 0 0 0-3.503 3.568c0 .107.01.212.018.317A4.405 4.405 0 0 0 0 15.383a4.4 4.4 0 0 0 4.401 4.4h14.668a4.931 4.931 0 0 0 4.931-4.931 4.931 4.931 0 0 0-4.931-4.931h-.012A6.494 6.494 0 0 0 13.762 4.29z"/></svg>
-                    <!-- AWS -->
-                    <svg class="cloud-icon aws" viewBox="0 0 24 24" fill="currentColor"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.27-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.385.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
-                </div>
+                <h3>Stay Protected</h3>
+                <p>Your files are encrypted instantly. Only you can access them.</p>
             </div>
         </div>
     </section>
@@ -530,29 +379,17 @@
         <h2>Privacy by Design</h2>
         <p>QuietStor was built from the ground up with one mission: protect your privacy without compromise.</p>
         <div class="privacy-badges">
-            <div class="badge">
-                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>No Account Required</span>
-            </div>
-            <div class="badge">
-                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>No Internet Access</span>
-            </div>
-            <div class="badge">
-                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>No Data Collection</span>
-            </div>
-            <div class="badge">
-                <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>GDPR & CCPA Compliant</span>
-            </div>
+            <div class="badge">✅ No Account Required</div>
+            <div class="badge">✅ No Internet Access</div>
+            <div class="badge">✅ No Data Collection</div>
+            <div class="badge">✅ GDPR Compliant</div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <img src="/logo.png" alt="QuietStor" class="footer-logo">
         <div class="footer-links">
+            <a href="/faq.html">FAQ</a>
             <a href="/privacy.html">Privacy Policy</a>
             <a href="/terms.html">Terms of Service</a>
             <a href="/refund.html">Refund Policy</a>
