@@ -10,200 +10,475 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --green: #48BB78;
+            --teal: #38B2AC;
+            --secondary: #4ECDC4;
+            --accent: #F6AD55;
+            --bg-dark: #1A1A2E;
+            --bg-card: #16213E;
+            --text: #E2E8F0;
+            --text-muted: #A0AEC0;
+        }
+        
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F23 100%);
+            border-bottom: 1px solid rgba(72, 187, 120, 0.2);
+        }
+        
+        .header-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p { color: var(--text-muted); margin-top: 0.5rem; }
+        
+        .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
-            line-height: 1.7;
-            color: #333;
-            background: #fafafa;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #48BB78;
+        
+        .content-section { margin: 2rem 0; }
+        
+        h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--green);
+            font-size: 1.4rem;
         }
-        .logo { width: 80px; height: 80px; margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.5rem; color: #1a1a2e; }
-        .date { color: #666; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; color: #48BB78; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; color: #38B2AC; }
-        p, ul { margin-bottom: 1rem; }
-        ul { padding-left: 1.5rem; }
+        
+        h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+        
+        p { margin-bottom: 1rem; }
+        
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
         li { margin-bottom: 0.5rem; }
+        
         .highlight {
-            background: #e8f8f5;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid #48BB78;
+            background: rgba(72, 187, 120, 0.15);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--green);
             margin: 1.5rem 0;
         }
+        
         .ccpa-section {
-            background: #fff3e0;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid #F6AD55;
+            background: rgba(246, 173, 85, 0.12);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--accent);
             margin: 1.5rem 0;
         }
-        .lang-switch {
+        
+        a { color: var(--green); }
+        a:hover { color: var(--teal); }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(72, 187, 120, 0.15);
+            margin-top: 3rem;
+            background: var(--bg-card);
+        }
+        
+        .lang-selector {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .lang-selector .globe {
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .lang-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .lang-btn.active {
+            background: var(--green);
+            color: white;
+        }
+        
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
-        .lang-switch a {
-            color: #48BB78;
-            font-weight: 500;
+        
+        footer a {
+            color: var(--text-muted);
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            border: 1px solid #48BB78;
+            transition: color 0.3s ease;
         }
-        .lang-switch a:hover, .lang-switch a.active { background: #48BB78; color: white; }
-        .section { display: none; }
-        .section.active { display: block; }
-        .back { display: inline-block; margin-top: 2rem; color: #48BB78; text-decoration: none; }
-        .back:hover { text-decoration: underline; }
-        a { color: #48BB78; }
+        
+        footer a:hover { color: var(--green); }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .container { padding: 1.5rem; }
+            .lang-btn span.lang-text { display: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="/logo.png" alt="QuietStor" class="logo">
-        <h1>Privacy Policy</h1>
-    </div>
 
-    <div class="lang-switch">
-        <a onclick="showLang('en')" class="active">🇬🇧 English</a>
-        <a onclick="showLang('fr')">🇫🇷 Français</a>
-        <a onclick="showLang('es')">🇪🇸 Español</a>
-    </div>
+    <header class="header">
+        <a href="/"><img src="/logo.png" alt="QuietStor" class="header-logo"></a>
+        <h1 data-i18n="page-title">Privacy Policy</h1>
+        <p data-i18n="last-updated">Last updated: December 2025</p>
+    </header>
 
-    <!-- ENGLISH -->
-    <div id="section-en" class="section active">
-        <p class="date">Last updated: December 2025</p>
-        
-        <div class="highlight">
-            <strong>TL;DR:</strong> QuietStor collects absolutely no data. Everything stays on your device.
-        </div>
+    <div class="container">
 
-        <h2>1. Our Commitment</h2>
-        <p>QuietStor is designed with privacy as the core principle. Your personal files remain personal – accessible only to you, stored only on your device.</p>
+        <!-- ENGLISH -->
+        <div id="content-en" class="content-section">
+            
+            <div class="highlight">
+                <strong>TL;DR:</strong> QuietStor collects absolutely no data. Everything stays on your device.
+            </div>
 
-        <h2>2. Data We Collect</h2>
-        <p><strong>None.</strong> QuietStor does not collect, transmit, or store any personal data:</p>
-        <ul>
-            <li>❌ No personal information</li>
-            <li>❌ No usage analytics</li>
-            <li>❌ No crash reports sent to servers</li>
-            <li>❌ No advertising identifiers</li>
-            <li>❌ No location data</li>
-        </ul>
+            <h2>1. Our Commitment</h2>
+            <p>QuietStor is designed with privacy as the core principle. Your personal files remain personal – accessible only to you, stored only on your device.</p>
 
-        <h2>3. How Your Data is Stored</h2>
-        <p>All your files are encrypted using AES-256-GCM and stored locally. Your PIN is never stored – we use a derived key (PBKDF2 with 600,000 iterations) that cannot be reversed.</p>
-
-        <h2>4. Internet Access</h2>
-        <p>QuietStor <strong>does not require internet access</strong>. The app works entirely offline. No data ever leaves your device.</p>
-
-        <h2>5. Third-Party Services</h2>
-        <p>QuietStor does not integrate with any third-party analytics, advertising, or tracking services.</p>
-
-        <h2>6. Your Rights (GDPR)</h2>
-        <p>Since we don't collect any data, there's nothing to access, delete, export, or modify. Your data is entirely under your control.</p>
-
-        <h2>7. California Privacy Rights (CCPA)</h2>
-        <div class="ccpa-section">
-            <p>Under the California Consumer Privacy Act (CCPA):</p>
+            <h2>2. Data We Collect</h2>
+            <p><strong>None.</strong> QuietStor does not collect, transmit, or store any personal data:</p>
             <ul>
-                <li><strong>Right to Know:</strong> We collect none of your personal information.</li>
-                <li><strong>Right to Delete:</strong> Nothing to delete since we don't collect any.</li>
-                <li><strong>Right to Opt-Out:</strong> We do not sell any personal information.</li>
+                <li>❌ No personal information</li>
+                <li>❌ No usage analytics</li>
+                <li>❌ No crash reports sent to servers</li>
+                <li>❌ No advertising identifiers</li>
+                <li>❌ No location data</li>
+                <li>❌ No contact information</li>
             </ul>
-            <p><strong>Do Not Sell My Personal Information:</strong> QuietStor does not sell, rent, or share any personal information with third parties.</p>
+
+            <h2>3. How Your Data is Stored</h2>
+            <p>All your files are encrypted using AES-256-GCM and stored locally on your device. Your PIN is never stored – instead, we use a derived key (PBKDF2 with 600,000 iterations) that cannot be reversed to find your PIN.</p>
+
+            <h2>4. Internet Access</h2>
+            <p>QuietStor <strong>does not require internet access</strong> to function. The app works entirely offline. No data ever leaves your device.</p>
+
+            <h2>5. Third-Party Services</h2>
+            <p>QuietStor does not integrate with any third-party analytics, advertising, or tracking services.</p>
+
+            <h2>6. Your Rights (GDPR)</h2>
+            <p>Under the General Data Protection Regulation (GDPR), you have certain rights regarding your personal data. Since we don't collect any data, there's nothing to access, delete, export, or modify. Your data is entirely under your control on your device.</p>
+
+            <h2>7. California Privacy Rights (CCPA)</h2>
+            <div class="ccpa-section">
+                <p>Under the California Consumer Privacy Act (CCPA), California residents have specific rights:</p>
+                <ul>
+                    <li><strong>Right to Know:</strong> You have the right to know what personal information we collect. We collect none.</li>
+                    <li><strong>Right to Delete:</strong> You have the right to request deletion. Since we don't collect any, there's nothing to delete.</li>
+                    <li><strong>Right to Opt-Out:</strong> We do not sell any personal information.</li>
+                    <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your rights.</li>
+                </ul>
+                <p><strong>Do Not Sell My Personal Information:</strong> QuietStor does not sell, rent, or share any personal information with third parties.</p>
+            </div>
+
+            <h2>8. Children's Privacy (COPPA)</h2>
+            <p>QuietStor does not knowingly collect any information from anyone, including children under 13. The app does not require any personal information to function.</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
         </div>
 
-        <h2>8. Children's Privacy (COPPA)</h2>
-        <p>QuietStor does not knowingly collect any information from anyone, including children under 13.</p>
+        <!-- FRANÇAIS -->
+        <div id="content-fr" class="content-section" style="display: none;">
+            
+            <div class="highlight">
+                <strong>En bref :</strong> QuietStor ne collecte absolument aucune donnée. Tout reste sur votre appareil.
+            </div>
 
-        <h2>9. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page.</p>
+            <h2>1. Notre Engagement</h2>
+            <p>QuietStor est conçu avec la confidentialité comme principe fondamental. Vos fichiers personnels restent personnels – accessibles uniquement par vous, stockés uniquement sur votre appareil.</p>
 
-        <h2>10. Contact Us</h2>
-        <p>Questions? Contact us at: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+            <h2>2. Données Collectées</h2>
+            <p><strong>Aucune.</strong> QuietStor ne collecte, ne transmet et ne stocke aucune donnée personnelle :</p>
+            <ul>
+                <li>❌ Aucune information personnelle</li>
+                <li>❌ Aucune analyse d'utilisation</li>
+                <li>❌ Aucun rapport de crash envoyé aux serveurs</li>
+                <li>❌ Aucun identifiant publicitaire</li>
+                <li>❌ Aucune donnée de localisation</li>
+                <li>❌ Aucune information de contact</li>
+            </ul>
+
+            <h2>3. Stockage de Vos Données</h2>
+            <p>Tous vos fichiers sont chiffrés en AES-256-GCM et stockés localement sur votre appareil. Votre code PIN n'est jamais stocké – nous utilisons une clé dérivée (PBKDF2 avec 600 000 itérations) qui ne peut pas être inversée pour retrouver votre PIN.</p>
+
+            <h2>4. Accès Internet</h2>
+            <p>QuietStor <strong>ne nécessite pas d'accès Internet</strong> pour fonctionner. L'application fonctionne entièrement hors-ligne. Aucune donnée ne quitte jamais votre appareil.</p>
+
+            <h2>5. Services Tiers</h2>
+            <p>QuietStor n'intègre aucun service tiers d'analyse, de publicité ou de suivi.</p>
+
+            <h2>6. Vos Droits (RGPD)</h2>
+            <p>En vertu du Règlement Général sur la Protection des Données (RGPD), vous avez certains droits concernant vos données personnelles. Puisque nous ne collectons aucune donnée, il n'y a rien à accéder, supprimer, exporter ou modifier. Vos données sont entièrement sous votre contrôle sur votre appareil.</p>
+
+            <h2>7. Droits de Confidentialité en Californie (CCPA)</h2>
+            <div class="ccpa-section">
+                <p>En vertu du California Consumer Privacy Act (CCPA), les résidents de Californie ont des droits spécifiques :</p>
+                <ul>
+                    <li><strong>Droit de savoir :</strong> Vous avez le droit de savoir quelles informations nous collectons. Nous n'en collectons aucune.</li>
+                    <li><strong>Droit de suppression :</strong> Vous avez le droit de demander la suppression. Puisque nous ne collectons rien, il n'y a rien à supprimer.</li>
+                    <li><strong>Droit de refus :</strong> Nous ne vendons aucune information personnelle.</li>
+                    <li><strong>Droit à la non-discrimination :</strong> Nous ne vous discriminerons pas pour avoir exercé vos droits.</li>
+                </ul>
+                <p><strong>Ne pas vendre mes informations personnelles :</strong> QuietStor ne vend, ne loue et ne partage aucune information personnelle avec des tiers.</p>
+            </div>
+
+            <h2>8. Confidentialité des Enfants (COPPA)</h2>
+            <p>QuietStor ne collecte sciemment aucune information de quiconque, y compris les enfants de moins de 13 ans. L'application ne nécessite aucune information personnelle pour fonctionner.</p>
+
+            <h2>9. Modifications de cette Politique</h2>
+            <p>Nous pouvons mettre à jour cette Politique de Confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date mise à jour.</p>
+
+            <h2>10. Nous Contacter</h2>
+            <p>Si vous avez des questions concernant cette Politique de Confidentialité, contactez-nous à : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
+        </div>
+
+        <!-- ESPAÑOL -->
+        <div id="content-es" class="content-section" style="display: none;">
+            
+            <div class="highlight">
+                <strong>En resumen:</strong> QuietStor no recopila absolutamente ningún dato. Todo permanece en tu dispositivo.
+            </div>
+
+            <h2>1. Nuestro Compromiso</h2>
+            <p>QuietStor está diseñado con la privacidad como principio fundamental. Tus archivos personales permanecen personales – accesibles solo por ti, almacenados solo en tu dispositivo.</p>
+
+            <h2>2. Datos que Recopilamos</h2>
+            <p><strong>Ninguno.</strong> QuietStor no recopila, transmite ni almacena ningún dato personal:</p>
+            <ul>
+                <li>❌ Sin información personal</li>
+                <li>❌ Sin análisis de uso</li>
+                <li>❌ Sin informes de errores enviados a servidores</li>
+                <li>❌ Sin identificadores publicitarios</li>
+                <li>❌ Sin datos de ubicación</li>
+                <li>❌ Sin información de contacto</li>
+            </ul>
+
+            <h2>3. Cómo se Almacenan tus Datos</h2>
+            <p>Todos tus archivos están cifrados usando AES-256-GCM y almacenados localmente en tu dispositivo. Tu PIN nunca se almacena – en su lugar, usamos una clave derivada (PBKDF2 con 600,000 iteraciones) que no puede revertirse para encontrar tu PIN.</p>
+
+            <h2>4. Acceso a Internet</h2>
+            <p>QuietStor <strong>no requiere acceso a Internet</strong> para funcionar. La app funciona completamente sin conexión. Ningún dato sale nunca de tu dispositivo.</p>
+
+            <h2>5. Servicios de Terceros</h2>
+            <p>QuietStor no integra ningún servicio de terceros para análisis, publicidad o seguimiento.</p>
+
+            <h2>6. Tus Derechos (GDPR)</h2>
+            <p>Bajo el Reglamento General de Protección de Datos (GDPR), tienes ciertos derechos sobre tus datos personales. Como no recopilamos ningún dato, no hay nada que acceder, eliminar, exportar o modificar. Tus datos están completamente bajo tu control en tu dispositivo.</p>
+
+            <h2>7. Derechos de Privacidad de California (CCPA)</h2>
+            <div class="ccpa-section">
+                <p>Bajo la Ley de Privacidad del Consumidor de California (CCPA), los residentes de California tienen derechos específicos:</p>
+                <ul>
+                    <li><strong>Derecho a saber:</strong> Tienes derecho a saber qué información personal recopilamos. No recopilamos ninguna.</li>
+                    <li><strong>Derecho a eliminar:</strong> Tienes derecho a solicitar la eliminación. Como no recopilamos nada, no hay nada que eliminar.</li>
+                    <li><strong>Derecho a optar por no participar:</strong> No vendemos ninguna información personal.</li>
+                    <li><strong>Derecho a no discriminación:</strong> No te discriminaremos por ejercer tus derechos.</li>
+                </ul>
+                <p><strong>No Vender Mi Información Personal:</strong> QuietStor no vende, alquila ni comparte ninguna información personal con terceros.</p>
+            </div>
+
+            <h2>8. Privacidad de los Niños (COPPA)</h2>
+            <p>QuietStor no recopila conscientemente ninguna información de nadie, incluidos los niños menores de 13 años. La app no requiere ninguna información personal para funcionar.</p>
+
+            <h2>9. Cambios a esta Política</h2>
+            <p>Podemos actualizar esta Política de Privacidad de vez en cuando. Cualquier cambio se publicará en esta página con una fecha actualizada.</p>
+
+            <h2>10. Contáctanos</h2>
+            <p>Si tienes preguntas sobre esta Política de Privacidad, contáctanos en: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
+        </div>
+
+        <a href="/" class="back-link" data-i18n="back">← Back to QuietStor</a>
+
     </div>
 
-    <!-- FRANÇAIS -->
-    <div id="section-fr" class="section">
-        <p class="date">Dernière mise à jour : Décembre 2025</p>
+    <footer>
+        <div class="lang-selector">
+            <span class="globe">🌐</span>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">
+                🇬🇧 <span class="lang-text">English</span>
+            </button>
+            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">
+                🇫🇷 <span class="lang-text">Français</span>
+            </button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">
+                🇪🇸 <span class="lang-text">Español</span>
+            </button>
+        </div>
         
-        <div class="highlight">
-            <strong>En bref :</strong> QuietStor ne collecte absolument aucune donnée. Tout reste sur votre appareil.
+        <div class="footer-links">
+            <a href="/faq.html" data-i18n="footer-faq">FAQ</a>
+            <a href="/terms.html" data-i18n="footer-terms">Terms of Service</a>
+            <a href="/refund.html" data-i18n="footer-refund">Refund Policy</a>
+            <a href="mailto:app.quietstor@gmail.com" data-i18n="footer-contact">Contact</a>
         </div>
-
-        <h2>1. Notre Engagement</h2>
-        <p>QuietStor est conçu avec la confidentialité comme principe fondamental. Vos fichiers personnels restent personnels.</p>
-
-        <h2>2. Données Collectées</h2>
-        <p><strong>Aucune.</strong> QuietStor ne collecte, ne transmet et ne stocke aucune donnée personnelle.</p>
-
-        <h2>3. Stockage de Vos Données</h2>
-        <p>Tous vos fichiers sont chiffrés en AES-256-GCM et stockés localement. Votre PIN n'est jamais stocké.</p>
-
-        <h2>4. Accès Internet</h2>
-        <p>QuietStor <strong>ne nécessite pas d'accès Internet</strong>. L'application fonctionne entièrement hors-ligne.</p>
-
-        <h2>5. Droits de Confidentialité (CCPA)</h2>
-        <div class="ccpa-section">
-            <p><strong>Ne pas vendre mes informations personnelles :</strong> QuietStor ne vend, ne loue et ne partage aucune information personnelle.</p>
-        </div>
-
-        <h2>6. Contact</h2>
-        <p>Questions ? Contactez-nous : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-    </div>
-
-    <!-- ESPAÑOL -->
-    <div id="section-es" class="section">
-        <p class="date">Última actualización: Diciembre 2025</p>
-        
-        <div class="highlight">
-            <strong>En resumen:</strong> QuietStor no recopila absolutamente ningún dato. Todo permanece en tu dispositivo.
-        </div>
-
-        <h2>1. Nuestro Compromiso</h2>
-        <p>QuietStor está diseñado con la privacidad como principio fundamental. Tus archivos personales permanecen personales.</p>
-
-        <h2>2. Datos que Recopilamos</h2>
-        <p><strong>Ninguno.</strong> QuietStor no recopila, transmite ni almacena ningún dato personal.</p>
-
-        <h2>3. Cómo se Almacenan tus Datos</h2>
-        <p>Todos tus archivos están cifrados usando AES-256-GCM y almacenados localmente. Tu PIN nunca se almacena.</p>
-
-        <h2>4. Derechos de Privacidad (CCPA)</h2>
-        <div class="ccpa-section">
-            <p><strong>No Vender Mi Información Personal:</strong> QuietStor no vende, alquila ni comparte ninguna información personal.</p>
-        </div>
-
-        <h2>5. Contacto</h2>
-        <p>¿Preguntas? Contáctanos: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-    </div>
-
-    <a href="/" class="back">← Back to QuietStor</a>
+        <p>© 2025 QuietStor. <span data-i18n="copyright">All rights reserved.</span></p>
+    </footer>
 
     <script>
-        function showLang(lang) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById('section-' + lang).classList.add('active');
-            document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
-            event.target.classList.add('active');
+        const TRANSLATIONS = {
+            en: {
+                'page-title': 'Privacy Policy',
+                'last-updated': 'Last updated: December 2025',
+                'back': '← Back to QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-terms': 'Terms of Service',
+                'footer-refund': 'Refund Policy',
+                'footer-contact': 'Contact',
+                'copyright': 'All rights reserved.'
+            },
+            fr: {
+                'page-title': 'Politique de Confidentialité',
+                'last-updated': 'Dernière mise à jour : Décembre 2025',
+                'back': '← Retour à QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-terms': "Conditions d'utilisation",
+                'footer-refund': 'Politique de remboursement',
+                'footer-contact': 'Contact',
+                'copyright': 'Tous droits réservés.'
+            },
+            es: {
+                'page-title': 'Política de Privacidad',
+                'last-updated': 'Última actualización: Diciembre 2025',
+                'back': '← Volver a QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-terms': 'Términos de servicio',
+                'footer-refund': 'Política de reembolso',
+                'footer-contact': 'Contacto',
+                'copyright': 'Todos los derechos reservados.'
+            }
+        };
+
+        function getLang() {
+            const stored = localStorage.getItem('quietstor-lang');
+            if (stored) return stored;
+            const nav = navigator.language || navigator.userLanguage;
+            if (nav.startsWith('fr')) return 'fr';
+            if (nav.startsWith('es')) return 'es';
+            return 'en';
         }
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('fr')) showLang('fr');
-        else if (userLang.startsWith('es')) showLang('es');
+
+        function setLang(lang) {
+            localStorage.setItem('quietstor-lang', lang);
+            applyLang(lang);
+        }
+
+        function applyLang(lang) {
+            const t = TRANSLATIONS[lang];
+            
+            // Show/hide content sections
+            document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('content-fr').style.display = lang === 'fr' ? 'block' : 'none';
+            document.getElementById('content-es').style.display = lang === 'es' ? 'block' : 'none';
+            
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLang(getLang());
+        });
     </script>
+
 </body>
 </html>

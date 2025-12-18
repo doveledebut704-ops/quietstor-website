@@ -10,168 +10,451 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --green: #48BB78;
+            --teal: #38B2AC;
+            --secondary: #4ECDC4;
+            --accent: #F6AD55;
+            --bg-dark: #1A1A2E;
+            --bg-card: #16213E;
+            --text: #E2E8F0;
+            --text-muted: #A0AEC0;
+        }
+        
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F23 100%);
+            border-bottom: 1px solid rgba(72, 187, 120, 0.2);
+        }
+        
+        .header-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p { color: var(--text-muted); margin-top: 0.5rem; }
+        
+        .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
-            line-height: 1.7;
-            color: #333;
-            background: #fafafa;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #48BB78;
+        
+        .content-section { margin: 2rem 0; }
+        
+        h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--green);
+            font-size: 1.4rem;
         }
-        .logo { width: 80px; height: 80px; margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.5rem; color: #1a1a2e; }
-        .date { color: #666; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; color: #48BB78; }
-        p, ul { margin-bottom: 1rem; }
-        ul { padding-left: 1.5rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
         li { margin-bottom: 0.5rem; }
+        
         .warning {
-            background: #fff3cd;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid #F6AD55;
+            background: rgba(246, 173, 85, 0.15);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--accent);
             margin: 1.5rem 0;
         }
-        .lang-switch {
+        
+        a { color: var(--green); }
+        a:hover { color: var(--teal); }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(72, 187, 120, 0.15);
+            margin-top: 3rem;
+            background: var(--bg-card);
+        }
+        
+        .lang-selector {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .lang-selector .globe {
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .lang-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .lang-btn.active {
+            background: var(--green);
+            color: white;
+        }
+        
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
-        .lang-switch a {
-            color: #48BB78;
-            font-weight: 500;
+        
+        footer a {
+            color: var(--text-muted);
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            border: 1px solid #48BB78;
+            transition: color 0.3s ease;
         }
-        .lang-switch a:hover, .lang-switch a.active { background: #48BB78; color: white; }
-        .section { display: none; }
-        .section.active { display: block; }
-        .back { display: inline-block; margin-top: 2rem; color: #48BB78; text-decoration: none; }
-        .back:hover { text-decoration: underline; }
-        a { color: #48BB78; }
+        
+        footer a:hover { color: var(--green); }
+        
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .container { padding: 1.5rem; }
+            .lang-btn span.lang-text { display: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="/logo.png" alt="QuietStor" class="logo">
-        <h1>Terms of Service</h1>
-    </div>
 
-    <div class="lang-switch">
-        <a onclick="showLang('en')" class="active">🇬🇧 English</a>
-        <a onclick="showLang('fr')">🇫🇷 Français</a>
-        <a onclick="showLang('es')">🇪🇸 Español</a>
-    </div>
+    <header class="header">
+        <a href="/"><img src="/logo.png" alt="QuietStor" class="header-logo"></a>
+        <h1 data-i18n="page-title">Terms of Service</h1>
+        <p data-i18n="last-updated">Last updated: December 2025</p>
+    </header>
 
-    <!-- ENGLISH -->
-    <div id="section-en" class="section active">
-        <p class="date">Last updated: December 2025</p>
+    <div class="container">
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By downloading, installing, or using QuietStor, you agree to be bound by these Terms of Service.</p>
+        <!-- ENGLISH -->
+        <div id="content-en" class="content-section">
 
-        <h2>2. Description of Service</h2>
-        <p>QuietStor is a file management application for Android that provides encrypted vault storage. The app operates entirely offline.</p>
+            <h2>1. Acceptance of Terms</h2>
+            <p>By downloading, installing, or using QuietStor ("the app"), you agree to be bound by these Terms of Service. If you do not agree, do not use the app.</p>
 
-        <h2>3. User Responsibilities</h2>
-        <ul>
-            <li>Remembering your PIN code. We cannot recover lost PINs.</li>
-            <li>Creating backups of your encrypted files.</li>
-            <li>Using the app in compliance with local laws.</li>
-        </ul>
+            <h2>2. Description of Service</h2>
+            <p>QuietStor is a file management application for Android that provides encrypted vault storage. The app operates entirely offline and does not require an internet connection.</p>
 
-        <h2>4. PIN Recovery</h2>
-        <div class="warning">
-            <strong>⚠️ Important:</strong> There is no way to recover a forgotten PIN code. If you forget your PIN and have no backup, your encrypted files will be permanently inaccessible.
+            <h2>3. User Responsibilities</h2>
+            <p>You are responsible for:</p>
+            <ul>
+                <li>Remembering your PIN code. We cannot recover lost PINs.</li>
+                <li>Creating backups of your encrypted files.</li>
+                <li>Using the app in compliance with local laws.</li>
+                <li>Not using the app to store illegal content.</li>
+            </ul>
+
+            <h2>4. PIN Recovery</h2>
+            <div class="warning">
+                <strong>⚠️ Important:</strong> By design, there is no way to recover a forgotten PIN code. This is a security feature, not a bug. If you forget your PIN and have no backup, your encrypted files will be permanently inaccessible.
+            </div>
+
+            <h2>5. Intellectual Property</h2>
+            <p>QuietStor and its original content, features, and functionality are owned by QuietStor and are protected by international copyright, trademark, and other intellectual property laws.</p>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>QuietStor is provided "as is" without warranty of any kind. We are not liable for:</p>
+            <ul>
+                <li>Data loss due to forgotten PIN codes</li>
+                <li>Data loss due to device failure or app uninstallation</li>
+                <li>Any indirect, incidental, or consequential damages</li>
+            </ul>
+
+            <h2>7. Premium Subscription</h2>
+            <p>Premium features are available through Google Play subscriptions:</p>
+            <ul>
+                <li>You agree to Google Play's terms of service</li>
+                <li>Subscriptions auto-renew unless canceled</li>
+                <li>Refunds are handled by Google Play (see our <a href="/refund.html">Refund Policy</a>)</li>
+            </ul>
+
+            <h2>8. Modifications</h2>
+            <p>We reserve the right to modify or discontinue the app at any time. We may also update these Terms. Continued use after changes constitutes acceptance.</p>
+
+            <h2>9. Governing Law</h2>
+            <p>These Terms are governed by the laws of France, without regard to conflict of law provisions.</p>
+
+            <h2>10. Contact</h2>
+            <p>For questions about these Terms, contact us at: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
         </div>
 
-        <h2>5. Limitation of Liability</h2>
-        <p>QuietStor is provided "as is" without warranty. We are not liable for data loss due to forgotten PINs or device failure.</p>
+        <!-- FRANÇAIS -->
+        <div id="content-fr" class="content-section" style="display: none;">
 
-        <h2>6. Premium Subscription</h2>
-        <p>Premium features are available through Google Play subscriptions. See our <a href="/refund.html">Refund Policy</a>.</p>
+            <h2>1. Acceptation des Conditions</h2>
+            <p>En téléchargeant, installant ou utilisant QuietStor ("l'application"), vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas, n'utilisez pas l'application.</p>
 
-        <h2>7. Governing Law</h2>
-        <p>These Terms are governed by the laws of France.</p>
+            <h2>2. Description du Service</h2>
+            <p>QuietStor est une application de gestion de fichiers pour Android qui fournit un stockage de coffre-fort chiffré. L'application fonctionne entièrement hors-ligne et ne nécessite pas de connexion Internet.</p>
 
-        <h2>8. Contact</h2>
-        <p>Questions: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-    </div>
+            <h2>3. Responsabilités de l'Utilisateur</h2>
+            <p>Vous êtes responsable de :</p>
+            <ul>
+                <li>Mémoriser votre code PIN. Nous ne pouvons pas récupérer les PIN perdus.</li>
+                <li>Créer des sauvegardes de vos fichiers chiffrés.</li>
+                <li>Utiliser l'application conformément aux lois locales.</li>
+                <li>Ne pas utiliser l'application pour stocker du contenu illégal.</li>
+            </ul>
 
-    <!-- FRANÇAIS -->
-    <div id="section-fr" class="section">
-        <p class="date">Dernière mise à jour : Décembre 2025</p>
+            <h2>4. Récupération du PIN</h2>
+            <div class="warning">
+                <strong>⚠️ Important :</strong> Par conception, il n'existe aucun moyen de récupérer un code PIN oublié. C'est une fonctionnalité de sécurité, pas un bug. Si vous oubliez votre PIN et n'avez pas de sauvegarde, vos fichiers chiffrés seront définitivement inaccessibles.
+            </div>
 
-        <h2>1. Acceptation des Conditions</h2>
-        <p>En utilisant QuietStor, vous acceptez ces Conditions d'Utilisation.</p>
+            <h2>5. Propriété Intellectuelle</h2>
+            <p>QuietStor et son contenu original, ses fonctionnalités et ses fonctions sont la propriété de QuietStor et sont protégés par les lois internationales sur le droit d'auteur, les marques et autres lois sur la propriété intellectuelle.</p>
 
-        <h2>2. Responsabilités de l'Utilisateur</h2>
-        <ul>
-            <li>Mémoriser votre code PIN.</li>
-            <li>Créer des sauvegardes de vos fichiers.</li>
-        </ul>
+            <h2>6. Limitation de Responsabilité</h2>
+            <p>QuietStor est fourni "tel quel" sans garantie d'aucune sorte. Nous ne sommes pas responsables de :</p>
+            <ul>
+                <li>La perte de données due à des codes PIN oubliés</li>
+                <li>La perte de données due à une défaillance de l'appareil ou à la désinstallation de l'application</li>
+                <li>Tout dommage indirect, accessoire ou consécutif</li>
+            </ul>
 
-        <h2>3. Récupération du PIN</h2>
-        <div class="warning">
-            <strong>⚠️ Important :</strong> Il n'existe aucun moyen de récupérer un code PIN oublié.
+            <h2>7. Abonnement Premium</h2>
+            <p>Les fonctionnalités Premium sont disponibles via les abonnements Google Play :</p>
+            <ul>
+                <li>Vous acceptez les conditions d'utilisation de Google Play</li>
+                <li>Les abonnements se renouvellent automatiquement sauf annulation</li>
+                <li>Les remboursements sont gérés par Google Play (voir notre <a href="/refund.html">Politique de Remboursement</a>)</li>
+            </ul>
+
+            <h2>8. Modifications</h2>
+            <p>Nous nous réservons le droit de modifier ou d'interrompre l'application à tout moment. Nous pouvons également mettre à jour ces Conditions. L'utilisation continue après les modifications constitue une acceptation.</p>
+
+            <h2>9. Droit Applicable</h2>
+            <p>Ces Conditions sont régies par les lois de la France, sans égard aux dispositions relatives aux conflits de lois.</p>
+
+            <h2>10. Contact</h2>
+            <p>Pour toute question concernant ces Conditions, contactez-nous à : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
         </div>
 
-        <h2>4. Droit Applicable</h2>
-        <p>Ces Conditions sont régies par les lois de la France.</p>
+        <!-- ESPAÑOL -->
+        <div id="content-es" class="content-section" style="display: none;">
 
-        <h2>5. Contact</h2>
-        <p>Questions : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-    </div>
+            <h2>1. Aceptación de Términos</h2>
+            <p>Al descargar, instalar o usar QuietStor ("la app"), aceptas estar sujeto a estos Términos de Servicio. Si no estás de acuerdo, no uses la app.</p>
 
-    <!-- ESPAÑOL -->
-    <div id="section-es" class="section">
-        <p class="date">Última actualización: Diciembre 2025</p>
+            <h2>2. Descripción del Servicio</h2>
+            <p>QuietStor es una aplicación de gestión de archivos para Android que proporciona almacenamiento en bóveda cifrada. La app funciona completamente sin conexión y no requiere conexión a Internet.</p>
 
-        <h2>1. Aceptación de Términos</h2>
-        <p>Al usar QuietStor, aceptas estos Términos de Servicio.</p>
+            <h2>3. Responsabilidades del Usuario</h2>
+            <p>Eres responsable de:</p>
+            <ul>
+                <li>Recordar tu código PIN. No podemos recuperar PINs perdidos.</li>
+                <li>Crear copias de seguridad de tus archivos cifrados.</li>
+                <li>Usar la app de acuerdo con las leyes locales.</li>
+                <li>No usar la app para almacenar contenido ilegal.</li>
+            </ul>
 
-        <h2>2. Responsabilidades del Usuario</h2>
-        <ul>
-            <li>Recordar tu código PIN.</li>
-            <li>Crear copias de seguridad de tus archivos.</li>
-        </ul>
+            <h2>4. Recuperación del PIN</h2>
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> Por diseño, no hay forma de recuperar un código PIN olvidado. Esto es una función de seguridad, no un error. Si olvidas tu PIN y no tienes copia de seguridad, tus archivos cifrados serán permanentemente inaccesibles.
+            </div>
 
-        <h2>3. Recuperación del PIN</h2>
-        <div class="warning">
-            <strong>⚠️ Importante:</strong> No hay forma de recuperar un código PIN olvidado.
+            <h2>5. Propiedad Intelectual</h2>
+            <p>QuietStor y su contenido original, características y funcionalidad son propiedad de QuietStor y están protegidos por leyes internacionales de derechos de autor, marcas y otras leyes de propiedad intelectual.</p>
+
+            <h2>6. Limitación de Responsabilidad</h2>
+            <p>QuietStor se proporciona "tal cual" sin garantía de ningún tipo. No somos responsables de:</p>
+            <ul>
+                <li>Pérdida de datos debido a códigos PIN olvidados</li>
+                <li>Pérdida de datos debido a fallas del dispositivo o desinstalación de la app</li>
+                <li>Cualquier daño indirecto, incidental o consecuente</li>
+            </ul>
+
+            <h2>7. Suscripción Premium</h2>
+            <p>Las funciones Premium están disponibles a través de suscripciones de Google Play:</p>
+            <ul>
+                <li>Aceptas los términos de servicio de Google Play</li>
+                <li>Las suscripciones se renuevan automáticamente a menos que se cancelen</li>
+                <li>Los reembolsos son manejados por Google Play (ver nuestra <a href="/refund.html">Política de Reembolso</a>)</li>
+            </ul>
+
+            <h2>8. Modificaciones</h2>
+            <p>Nos reservamos el derecho de modificar o discontinuar la app en cualquier momento. También podemos actualizar estos Términos. El uso continuado después de los cambios constituye aceptación.</p>
+
+            <h2>9. Ley Aplicable</h2>
+            <p>Estos Términos se rigen por las leyes de Francia, sin tener en cuenta las disposiciones sobre conflictos de leyes.</p>
+
+            <h2>10. Contacto</h2>
+            <p>Para preguntas sobre estos Términos, contáctanos en: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+
         </div>
 
-        <h2>4. Ley Aplicable</h2>
-        <p>Estos Términos se rigen por las leyes de Francia.</p>
+        <a href="/" class="back-link" data-i18n="back">← Back to QuietStor</a>
 
-        <h2>5. Contacto</h2>
-        <p>Preguntas: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
     </div>
 
-    <a href="/" class="back">← Back to QuietStor</a>
+    <footer>
+        <div class="lang-selector">
+            <span class="globe">🌐</span>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">
+                🇬🇧 <span class="lang-text">English</span>
+            </button>
+            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">
+                🇫🇷 <span class="lang-text">Français</span>
+            </button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">
+                🇪🇸 <span class="lang-text">Español</span>
+            </button>
+        </div>
+        
+        <div class="footer-links">
+            <a href="/faq.html" data-i18n="footer-faq">FAQ</a>
+            <a href="/privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
+            <a href="/refund.html" data-i18n="footer-refund">Refund Policy</a>
+            <a href="mailto:app.quietstor@gmail.com" data-i18n="footer-contact">Contact</a>
+        </div>
+        <p>© 2025 QuietStor. <span data-i18n="copyright">All rights reserved.</span></p>
+    </footer>
 
     <script>
-        function showLang(lang) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById('section-' + lang).classList.add('active');
-            document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
-            event.target.classList.add('active');
+        const TRANSLATIONS = {
+            en: {
+                'page-title': 'Terms of Service',
+                'last-updated': 'Last updated: December 2025',
+                'back': '← Back to QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Privacy Policy',
+                'footer-refund': 'Refund Policy',
+                'footer-contact': 'Contact',
+                'copyright': 'All rights reserved.'
+            },
+            fr: {
+                'page-title': "Conditions d'Utilisation",
+                'last-updated': 'Dernière mise à jour : Décembre 2025',
+                'back': '← Retour à QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Politique de confidentialité',
+                'footer-refund': 'Politique de remboursement',
+                'footer-contact': 'Contact',
+                'copyright': 'Tous droits réservés.'
+            },
+            es: {
+                'page-title': 'Términos de Servicio',
+                'last-updated': 'Última actualización: Diciembre 2025',
+                'back': '← Volver a QuietStor',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Política de privacidad',
+                'footer-refund': 'Política de reembolso',
+                'footer-contact': 'Contacto',
+                'copyright': 'Todos los derechos reservados.'
+            }
+        };
+
+        function getLang() {
+            const stored = localStorage.getItem('quietstor-lang');
+            if (stored) return stored;
+            const nav = navigator.language || navigator.userLanguage;
+            if (nav.startsWith('fr')) return 'fr';
+            if (nav.startsWith('es')) return 'es';
+            return 'en';
         }
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('fr')) showLang('fr');
-        else if (userLang.startsWith('es')) showLang('es');
+
+        function setLang(lang) {
+            localStorage.setItem('quietstor-lang', lang);
+            applyLang(lang);
+        }
+
+        function applyLang(lang) {
+            const t = TRANSLATIONS[lang];
+            
+            // Show/hide content sections
+            document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('content-fr').style.display = lang === 'fr' ? 'block' : 'none';
+            document.getElementById('content-es').style.display = lang === 'es' ? 'block' : 'none';
+            
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLang(getLang());
+        });
     </script>
+
 </body>
 </html>

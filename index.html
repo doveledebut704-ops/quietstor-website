@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -34,6 +33,7 @@
             line-height: 1.6;
         }
         
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -150,6 +150,7 @@
             box-shadow: 0 8px 30px rgba(72, 187, 120, 0.5);
         }
         
+        /* Key Benefits */
         .key-benefits {
             display: flex;
             justify-content: center;
@@ -170,12 +171,11 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
         
-        .benefit i {
-            width: 20px;
-            height: 20px;
-            color: var(--green);
+        .benefit-icon {
+            font-size: 1.1rem;
         }
         
+        /* Features Section */
         .features {
             padding: 5rem 2rem;
             background: var(--bg-card);
@@ -212,10 +212,8 @@
         }
         
         .feature-icon {
-            width: 48px;
-            height: 48px;
-            color: var(--green);
-            margin: 0 auto 1rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
         .feature-card h3 {
@@ -230,6 +228,7 @@
             color: var(--text-muted);
         }
         
+        /* How It Works */
         .how-it-works {
             padding: 5rem 2rem;
             background: var(--bg-dark);
@@ -240,14 +239,14 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         .step {
             flex: 1;
-            min-width: 200px;
-            max-width: 300px;
+            min-width: 220px;
+            max-width: 280px;
             text-align: center;
         }
         
@@ -272,8 +271,30 @@
             font-weight: 600;
         }
         
-        .step p { color: var(--text-muted); }
+        .step p {
+            color: var(--text-muted);
+        }
         
+        .step.highlight-step {
+            background: rgba(72, 187, 120, 0.08);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(72, 187, 120, 0.2);
+        }
+        
+        .step.highlight-step .step-number {
+            background: linear-gradient(135deg, var(--accent) 0%, #F687B3 100%);
+        }
+        
+        .cloud-icons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Privacy Section */
         .privacy-section {
             padding: 5rem 2rem;
             background: linear-gradient(135deg, #1a3a2e 0%, var(--bg-dark) 100%);
@@ -287,7 +308,7 @@
             font-weight: 700;
         }
         
-        .privacy-section p {
+        .privacy-section > p {
             font-size: 1.2rem;
             color: var(--text-muted);
             max-width: 600px;
@@ -312,12 +333,7 @@
             border: 1px solid rgba(72, 187, 120, 0.25);
         }
         
-        .badge i {
-            width: 18px;
-            height: 18px;
-            color: var(--green);
-        }
-        
+        /* Footer */
         footer {
             padding: 3rem 2rem;
             background: var(--bg-card);
@@ -327,7 +343,50 @@
         .footer-logo {
             width: 60px;
             height: 60px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Language Selector */
+        .lang-selector {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .lang-selector .globe {
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .lang-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .lang-btn.active {
+            background: var(--green);
+            color: white;
         }
         
         .footer-links {
@@ -344,13 +403,16 @@
             transition: color 0.3s ease;
         }
         
-        .footer-links a:hover { color: var(--green); }
+        .footer-links a:hover {
+            color: var(--green);
+        }
         
         .copyright {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             h1 { font-size: 3rem; letter-spacing: 3px; }
             .main-tagline { font-size: 1.3rem; }
@@ -359,111 +421,336 @@
             .section-title { font-size: 2rem; }
             .key-benefits { gap: 0.8rem; }
             .benefit { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+            .step { min-width: 100%; }
+            .lang-btn span.lang-text { display: none; }
         }
     </style>
 </head>
 <body>
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <img src="/logo.png" alt="QuietStor Logo" class="logo">
             <h1>QUIETSTOR</h1>
-            <p class="main-tagline">Private File Manager with <span class="highlight">Encrypted Vault</span></p>
-            <p class="sub-tagline">Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.</p>
+            <p class="main-tagline" data-i18n="tagline">Private File Manager with <span class="highlight" data-i18n="tagline-highlight">Encrypted Vault</span></p>
+            <p class="sub-tagline" data-i18n="subtagline">Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                    Coming Soon on Google Play
+                    <span data-i18n="cta">Coming Soon on Google Play</span>
                 </a>
             </div>
             <div class="key-benefits">
-                <div class="benefit"><i data-lucide="lock-keyhole"></i><span>AES-256 Encryption</span></div>
-                <div class="benefit"><i data-lucide="wifi-off"></i><span>100% Offline</span></div>
-                <div class="benefit"><i data-lucide="eye-off"></i><span>Zero Data Collection</span></div>
-                <div class="benefit"><i data-lucide="fingerprint"></i><span>Biometric Unlock</span></div>
+                <div class="benefit">
+                    <span class="benefit-icon">🔒</span>
+                    <span data-i18n="benefit1">AES-256 Encryption</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">📴</span>
+                    <span data-i18n="benefit2">100% Offline</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🚫</span>
+                    <span data-i18n="benefit3">Zero Data Collection</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">👆</span>
+                    <span data-i18n="benefit4">Biometric Unlock</span>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Features Section -->
     <section class="features">
-        <h2 class="section-title">Why Choose QuietStor?</h2>
+        <h2 class="section-title" data-i18n="features-title">Why Choose QuietStor?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <i data-lucide="lock-keyhole" class="feature-icon"></i>
-                <h3>Encrypted Vault</h3>
-                <p>Military-grade AES-256 encryption protects your sensitive files with a 6-digit PIN.</p>
+                <div class="feature-icon">🔒</div>
+                <h3 data-i18n="feature1-title">Encrypted Vault</h3>
+                <p data-i18n="feature1-desc">Military-grade AES-256 encryption protects your sensitive files with a 6-digit PIN.</p>
             </div>
             <div class="feature-card">
-                <i data-lucide="wifi-off" class="feature-icon"></i>
-                <h3>100% Offline</h3>
-                <p>No internet required. Your files never leave your device. No cloud, no servers, no tracking.</p>
+                <div class="feature-icon">📴</div>
+                <h3 data-i18n="feature2-title">100% Offline</h3>
+                <p data-i18n="feature2-desc">No internet required. Your files never leave your device. No cloud, no servers, no tracking.</p>
             </div>
             <div class="feature-card">
-                <i data-lucide="eye-off" class="feature-icon"></i>
-                <h3>Zero Analytics</h3>
-                <p>We don't collect any data. No telemetry, no usage stats, no personal information.</p>
+                <div class="feature-icon">🚫</div>
+                <h3 data-i18n="feature3-title">Zero Analytics</h3>
+                <p data-i18n="feature3-desc">We don't collect any data. No telemetry, no usage stats, no personal information.</p>
             </div>
             <div class="feature-card">
-                <i data-lucide="fingerprint" class="feature-icon"></i>
-                <h3>Biometric Unlock</h3>
-                <p>Quick access with fingerprint or face recognition while maintaining security.</p>
+                <div class="feature-icon">👆</div>
+                <h3 data-i18n="feature4-title">Biometric Unlock</h3>
+                <p data-i18n="feature4-desc">Quick access with fingerprint or face recognition while maintaining security.</p>
             </div>
             <div class="feature-card">
-                <i data-lucide="hard-drive-download" class="feature-icon"></i>
-                <h3>Secure Backup</h3>
-                <p>Export your encrypted vault to a portable .qsv file. Restore anytime, anywhere.</p>
+                <div class="feature-icon">💾</div>
+                <h3 data-i18n="feature5-title">Secure Backup</h3>
+                <p data-i18n="feature5-desc">Export your encrypted vault to a portable .qsv file. Restore anytime, anywhere.</p>
             </div>
             <div class="feature-card">
-                <i data-lucide="palette" class="feature-icon"></i>
-                <h3>Clean Design</h3>
-                <p>Modern, intuitive interface that makes managing your private files effortless.</p>
+                <div class="feature-icon">🎨</div>
+                <h3 data-i18n="feature6-title">Clean Design</h3>
+                <p data-i18n="feature6-desc">Modern, intuitive interface that makes managing your private files effortless.</p>
             </div>
         </div>
     </section>
 
+    <!-- How It Works -->
     <section class="how-it-works">
-        <h2 class="section-title">How It Works</h2>
+        <h2 class="section-title" data-i18n="how-title">How It Works</h2>
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3>Create Your Vault</h3>
-                <p>Set up a 6-digit PIN to create your personal encrypted vault.</p>
+                <h3 data-i18n="step1-title">Create Your Vault</h3>
+                <p data-i18n="step1-desc">Set up a 6-digit PIN to create your personal encrypted vault.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3>Add Your Files</h3>
-                <p>Import photos, documents, and any files you want to keep private.</p>
+                <h3 data-i18n="step2-title">Add Your Files</h3>
+                <p data-i18n="step2-desc">Import photos, documents, and any files you want to keep private.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Stay Protected</h3>
-                <p>Your files are encrypted instantly. Only you can access them.</p>
+                <h3 data-i18n="step3-title">Files Are Encrypted</h3>
+                <p data-i18n="step3-desc">Your files are instantly encrypted with AES-256. Only you can access them.</p>
+            </div>
+            <div class="step highlight-step">
+                <div class="step-number">4</div>
+                <h3 data-i18n="step4-title">Upload Anywhere Safely</h3>
+                <p data-i18n="step4-desc">Send your encrypted files to any cloud service. Even if someone accesses your cloud, your files stay unreadable.</p>
+                <div class="cloud-icons">
+                    <span title="Google Drive">📁</span>
+                    <span title="Dropbox">💧</span>
+                    <span title="OneDrive">☁️</span>
+                    <span title="iCloud">🍎</span>
+                    <span title="Any cloud">🌐</span>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Privacy Section -->
     <section class="privacy-section">
-        <h2>Privacy by Design</h2>
-        <p>QuietStor was built from the ground up with one mission: protect your privacy without compromise.</p>
+        <h2 data-i18n="privacy-title">Privacy by Design</h2>
+        <p data-i18n="privacy-desc">QuietStor was built from the ground up with one mission: protect your privacy without compromise.</p>
         <div class="privacy-badges">
-            <div class="badge"><i data-lucide="user-x"></i> No Account Required</div>
-            <div class="badge"><i data-lucide="wifi-off"></i> No Internet Access</div>
-            <div class="badge"><i data-lucide="database"></i> No Data Collection</div>
-            <div class="badge"><i data-lucide="shield-check"></i> GDPR & CCPA Compliant</div>
+            <div class="badge">✅ <span data-i18n="badge1">No Account Required</span></div>
+            <div class="badge">✅ <span data-i18n="badge2">No Internet Access</span></div>
+            <div class="badge">✅ <span data-i18n="badge3">No Data Collection</span></div>
+            <div class="badge">✅ <span data-i18n="badge4">GDPR & CCPA Compliant</span></div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <img src="/logo.png" alt="QuietStor" class="footer-logo">
-        <div class="footer-links">
-            <a href="/faq.html">FAQ</a>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/terms.html">Terms of Service</a>
-            <a href="/refund.html">Refund Policy</a>
-            <a href="mailto:app.quietstor@gmail.com">Contact</a>
+        
+        <div class="lang-selector">
+            <span class="globe">🌐</span>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">
+                🇬🇧 <span class="lang-text">English</span>
+            </button>
+            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">
+                🇫🇷 <span class="lang-text">Français</span>
+            </button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">
+                🇪🇸 <span class="lang-text">Español</span>
+            </button>
         </div>
-        <p class="copyright">© 2025 QuietStor. All rights reserved.</p>
+        
+        <div class="footer-links">
+            <a href="/faq.html" data-i18n="footer-faq">FAQ</a>
+            <a href="/privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
+            <a href="/terms.html" data-i18n="footer-terms">Terms of Service</a>
+            <a href="/refund.html" data-i18n="footer-refund">Refund Policy</a>
+            <a href="mailto:app.quietstor@gmail.com" data-i18n="footer-contact">Contact</a>
+        </div>
+        <p class="copyright">© 2025 QuietStor. <span data-i18n="copyright">All rights reserved.</span></p>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        const TRANSLATIONS = {
+            en: {
+                'tagline': 'Private File Manager with',
+                'tagline-highlight': 'Encrypted Vault',
+                'subtagline': 'Keep your sensitive files safe, offline, and accessible only by you. No cloud. No tracking. Just privacy.',
+                'cta': 'Coming Soon on Google Play',
+                'benefit1': 'AES-256 Encryption',
+                'benefit2': '100% Offline',
+                'benefit3': 'Zero Data Collection',
+                'benefit4': 'Biometric Unlock',
+                'features-title': 'Why Choose QuietStor?',
+                'feature1-title': 'Encrypted Vault',
+                'feature1-desc': 'Military-grade AES-256 encryption protects your sensitive files with a 6-digit PIN.',
+                'feature2-title': '100% Offline',
+                'feature2-desc': 'No internet required. Your files never leave your device. No cloud, no servers, no tracking.',
+                'feature3-title': 'Zero Analytics',
+                'feature3-desc': "We don't collect any data. No telemetry, no usage stats, no personal information.",
+                'feature4-title': 'Biometric Unlock',
+                'feature4-desc': 'Quick access with fingerprint or face recognition while maintaining security.',
+                'feature5-title': 'Secure Backup',
+                'feature5-desc': 'Export your encrypted vault to a portable .qsv file. Restore anytime, anywhere.',
+                'feature6-title': 'Clean Design',
+                'feature6-desc': 'Modern, intuitive interface that makes managing your private files effortless.',
+                'how-title': 'How It Works',
+                'step1-title': 'Create Your Vault',
+                'step1-desc': 'Set up a 6-digit PIN to create your personal encrypted vault.',
+                'step2-title': 'Add Your Files',
+                'step2-desc': 'Import photos, documents, and any files you want to keep private.',
+                'step3-title': 'Files Are Encrypted',
+                'step3-desc': 'Your files are instantly encrypted with AES-256. Only you can access them.',
+                'step4-title': 'Upload Anywhere Safely',
+                'step4-desc': 'Send your encrypted files to any cloud service. Even if someone accesses your cloud, your files stay unreadable.',
+                'privacy-title': 'Privacy by Design',
+                'privacy-desc': 'QuietStor was built from the ground up with one mission: protect your privacy without compromise.',
+                'badge1': 'No Account Required',
+                'badge2': 'No Internet Access',
+                'badge3': 'No Data Collection',
+                'badge4': 'GDPR & CCPA Compliant',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms of Service',
+                'footer-refund': 'Refund Policy',
+                'footer-contact': 'Contact',
+                'copyright': 'All rights reserved.'
+            },
+            fr: {
+                'tagline': 'Gestionnaire de fichiers privé avec',
+                'tagline-highlight': 'Coffre-fort chiffré',
+                'subtagline': 'Gardez vos fichiers sensibles en sécurité, hors-ligne, accessibles uniquement par vous. Pas de cloud. Pas de tracking. Juste la confidentialité.',
+                'cta': 'Bientôt sur Google Play',
+                'benefit1': 'Chiffrement AES-256',
+                'benefit2': '100% Hors-ligne',
+                'benefit3': 'Zéro collecte de données',
+                'benefit4': 'Déverrouillage biométrique',
+                'features-title': 'Pourquoi choisir QuietStor ?',
+                'feature1-title': 'Coffre-fort chiffré',
+                'feature1-desc': 'Chiffrement AES-256 de qualité militaire pour protéger vos fichiers avec un code PIN à 6 chiffres.',
+                'feature2-title': '100% Hors-ligne',
+                'feature2-desc': "Pas d'internet requis. Vos fichiers ne quittent jamais votre appareil. Pas de cloud, pas de serveurs.",
+                'feature3-title': 'Zéro analytics',
+                'feature3-desc': "Nous ne collectons aucune donnée. Pas de télémétrie, pas de statistiques, pas d'informations personnelles.",
+                'feature4-title': 'Déverrouillage biométrique',
+                'feature4-desc': 'Accès rapide avec empreinte digitale ou reconnaissance faciale tout en maintenant la sécurité.',
+                'feature5-title': 'Sauvegarde sécurisée',
+                'feature5-desc': 'Exportez votre coffre-fort chiffré vers un fichier .qsv portable. Restaurez à tout moment.',
+                'feature6-title': 'Design épuré',
+                'feature6-desc': 'Interface moderne et intuitive qui rend la gestion de vos fichiers privés simple et agréable.',
+                'how-title': 'Comment ça marche',
+                'step1-title': 'Créez votre coffre-fort',
+                'step1-desc': 'Configurez un code PIN à 6 chiffres pour créer votre coffre-fort chiffré personnel.',
+                'step2-title': 'Ajoutez vos fichiers',
+                'step2-desc': 'Importez photos, documents et tous les fichiers que vous souhaitez garder privés.',
+                'step3-title': 'Fichiers chiffrés',
+                'step3-desc': 'Vos fichiers sont instantanément chiffrés en AES-256. Vous seul pouvez y accéder.',
+                'step4-title': 'Uploadez partout en sécurité',
+                'step4-desc': 'Envoyez vos fichiers chiffrés vers n\'importe quel cloud. Même si quelqu\'un accède à votre cloud, vos fichiers restent illisibles.',
+                'privacy-title': 'Confidentialité par conception',
+                'privacy-desc': 'QuietStor a été conçu dès le départ avec une mission : protéger votre vie privée sans compromis.',
+                'badge1': 'Pas de compte requis',
+                'badge2': "Pas d'accès internet",
+                'badge3': 'Aucune collecte de données',
+                'badge4': 'Conforme RGPD & CCPA',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Politique de confidentialité',
+                'footer-terms': "Conditions d'utilisation",
+                'footer-refund': 'Politique de remboursement',
+                'footer-contact': 'Contact',
+                'copyright': 'Tous droits réservés.'
+            },
+            es: {
+                'tagline': 'Gestor de archivos privado con',
+                'tagline-highlight': 'Bóveda cifrada',
+                'subtagline': 'Mantén tus archivos sensibles seguros, sin conexión, accesibles solo por ti. Sin nube. Sin rastreo. Solo privacidad.',
+                'cta': 'Próximamente en Google Play',
+                'benefit1': 'Cifrado AES-256',
+                'benefit2': '100% Sin conexión',
+                'benefit3': 'Cero recopilación de datos',
+                'benefit4': 'Desbloqueo biométrico',
+                'features-title': '¿Por qué elegir QuietStor?',
+                'feature1-title': 'Bóveda cifrada',
+                'feature1-desc': 'Cifrado AES-256 de grado militar protege tus archivos sensibles con un PIN de 6 dígitos.',
+                'feature2-title': '100% Sin conexión',
+                'feature2-desc': 'No requiere internet. Tus archivos nunca salen de tu dispositivo. Sin nube, sin servidores.',
+                'feature3-title': 'Cero analytics',
+                'feature3-desc': 'No recopilamos ningún dato. Sin telemetría, sin estadísticas de uso, sin información personal.',
+                'feature4-title': 'Desbloqueo biométrico',
+                'feature4-desc': 'Acceso rápido con huella digital o reconocimiento facial manteniendo la seguridad.',
+                'feature5-title': 'Copia de seguridad',
+                'feature5-desc': 'Exporta tu bóveda cifrada a un archivo .qsv portátil. Restaura en cualquier momento.',
+                'feature6-title': 'Diseño limpio',
+                'feature6-desc': 'Interfaz moderna e intuitiva que hace que gestionar tus archivos privados sea sencillo.',
+                'how-title': 'Cómo funciona',
+                'step1-title': 'Crea tu bóveda',
+                'step1-desc': 'Configura un PIN de 6 dígitos para crear tu bóveda cifrada personal.',
+                'step2-title': 'Añade tus archivos',
+                'step2-desc': 'Importa fotos, documentos y cualquier archivo que quieras mantener privado.',
+                'step3-title': 'Archivos cifrados',
+                'step3-desc': 'Tus archivos se cifran instantáneamente con AES-256. Solo tú puedes acceder.',
+                'step4-title': 'Sube a cualquier nube',
+                'step4-desc': 'Envía tus archivos cifrados a cualquier servicio en la nube. Incluso si alguien accede a tu nube, tus archivos permanecen ilegibles.',
+                'privacy-title': 'Privacidad por diseño',
+                'privacy-desc': 'QuietStor fue construido desde cero con una misión: proteger tu privacidad sin compromisos.',
+                'badge1': 'Sin cuenta requerida',
+                'badge2': 'Sin acceso a internet',
+                'badge3': 'Sin recopilación de datos',
+                'badge4': 'Cumple GDPR y CCPA',
+                'footer-faq': 'FAQ',
+                'footer-privacy': 'Política de privacidad',
+                'footer-terms': 'Términos de servicio',
+                'footer-refund': 'Política de reembolso',
+                'footer-contact': 'Contacto',
+                'copyright': 'Todos los derechos reservados.'
+            }
+        };
+
+        function getLang() {
+            const stored = localStorage.getItem('quietstor-lang');
+            if (stored) return stored;
+            const nav = navigator.language || navigator.userLanguage;
+            if (nav.startsWith('fr')) return 'fr';
+            if (nav.startsWith('es')) return 'es';
+            return 'en';
+        }
+
+        function setLang(lang) {
+            localStorage.setItem('quietstor-lang', lang);
+            applyLang(lang);
+        }
+
+        function applyLang(lang) {
+            const t = TRANSLATIONS[lang];
+            
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            // Special case for tagline with highlight
+            const tagline = document.querySelector('.main-tagline');
+            if (tagline) {
+                tagline.innerHTML = t['tagline'] + ' <span class="highlight">' + t['tagline-highlight'] + '</span>';
+            }
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLang(getLang());
+        });
+    </script>
 </body>
 </html>

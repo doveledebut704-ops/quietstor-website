@@ -64,31 +64,6 @@
             padding: 2rem;
         }
         
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .lang-btn {
-            padding: 0.75rem 1.25rem;
-            border: 2px solid var(--green);
-            background: transparent;
-            color: var(--text);
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-        }
-        
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--green);
-            color: white;
-        }
-        
         .faq-section { margin: 2rem 0; }
         
         .faq-category { margin-bottom: 2.5rem; }
@@ -152,7 +127,7 @@
         }
         
         .faq-item.open .faq-answer {
-            max-height: 1500px;
+            max-height: 2000px;
             padding: 0 1.5rem 1.5rem;
         }
         
@@ -393,22 +368,6 @@
             font-size: 0.75rem;
         }
         
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(72, 187, 120, 0.15);
-            margin-top: 3rem;
-        }
-        
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover { color: var(--green); }
-        
         .back-link {
             display: inline-block;
             margin-top: 2rem;
@@ -426,6 +385,74 @@
             box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
         }
         
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(72, 187, 120, 0.15);
+            margin-top: 3rem;
+            background: var(--bg-card);
+        }
+        
+        .lang-selector {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .lang-selector .globe {
+            padding: 0.5rem 0.75rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .lang-btn:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .lang-btn.active {
+            background: var(--green);
+            color: white;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover { color: var(--green); }
+        
         @media (max-width: 600px) {
             .devices-container { flex-direction: column; gap: 1.5rem; }
             .transfer-arrow { transform: rotate(90deg); margin: 1rem 0; }
@@ -433,24 +460,19 @@
             .device-screen { height: 120px; }
             .header h1 { font-size: 2rem; }
             .transfer-steps { flex-direction: column; align-items: center; }
+            .lang-btn span.lang-text { display: none; }
         }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <img src="/logo.png" alt="QuietStor" class="header-logo">
+        <a href="/"><img src="/logo.png" alt="QuietStor" class="header-logo"></a>
         <h1>FAQ</h1>
-        <p>Frequently Asked Questions</p>
+        <p data-i18n="header-subtitle">Frequently Asked Questions</p>
     </header>
 
     <div class="container">
-        
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="showLang('en')">🇬🇧 English</button>
-            <button class="lang-btn" onclick="showLang('fr')">🇫🇷 Français</button>
-            <button class="lang-btn" onclick="showLang('es')">🇪🇸 Español</button>
-        </div>
 
         <!-- ENGLISH -->
         <div id="faq-en" class="faq-section">
@@ -688,10 +710,31 @@
                         <p>Premium débloque les fichiers illimités et le support prioritaire.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">QuietStor a-t-il besoin d'internet ?</button>
+                    <div class="faq-answer">
+                        <p><strong>Non.</strong> QuietStor fonctionne 100% hors-ligne. Vos fichiers ne quittent jamais votre appareil.</p>
+                        <p>Nous n'avons pas de serveurs. Nous ne collectons pas de données. Nous ne pouvons pas voir vos fichiers.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="faq-category">
                 <h2>🔐 Coffre-fort & PIN</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Qu'est-ce que le coffre-fort privé ?</button>
+                    <div class="faq-answer">
+                        <p>Le coffre-fort privé est un espace chiffré où vous pouvez stocker vos fichiers sensibles :</p>
+                        <ul>
+                            <li>🔐 Chiffrés avec un chiffrement de qualité militaire (AES-256-GCM)</li>
+                            <li>🔑 Protégés par votre code PIN à 6 chiffres</li>
+                            <li>👆 Accessibles avec l'empreinte digitale (optionnel)</li>
+                            <li>👁️ Cachés des autres applications</li>
+                        </ul>
+                    </div>
+                </div>
                 
                 <div class="faq-item">
                     <button class="faq-question">⚠️ Que se passe-t-il si j'oublie mon PIN ?</button>
@@ -724,6 +767,7 @@
                         <p>Vous avez <strong>deux options</strong> :</p>
                         
                         <h4>Option A : Transfert direct (Recommandé) 👍</h4>
+                        <p>Si vous avez encore votre ancien téléphone :</p>
                         
                         <div class="transfer-diagram">
                             <h3>📲 Transfert direct via QR Code</h3>
@@ -775,6 +819,7 @@
                         </div>
                         
                         <h4>Option B : Restaurer depuis une sauvegarde</h4>
+                        <p>Si votre ancien téléphone est perdu ou cassé, vous avez besoin d'un fichier .qsv créé au préalable.</p>
                         <div class="warning-box">
                             ⚠️ <strong>Pas de sauvegarde = Pas de récupération.</strong> Créez toujours des sauvegardes !
                         </div>
@@ -783,16 +828,66 @@
             </div>
 
             <div class="faq-category">
-                <h2>🛡️ Sécurité</h2>
+                <h2>💾 Sauvegarde & Export</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Comment créer une sauvegarde ?</button>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Allez dans <strong>Paramètres > Exporter la sauvegarde</strong></li>
+                            <li>Entrez votre PIN</li>
+                            <li>Créez un <strong>mot de passe de sauvegarde</strong> (différent du PIN !)</li>
+                            <li>Choisissez où enregistrer le fichier .qsv</li>
+                            <li>Stockez ce fichier en sécurité (Google Drive, USB, etc.)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2>🛡️ Sécurité & Confidentialité</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">QuietStor est-il sécurisé ?</button>
                     <div class="faq-answer">
+                        <p>QuietStor utilise des standards de sécurité reconnus :</p>
                         <ul>
                             <li><strong>Chiffrement :</strong> AES-256-GCM (qualité militaire)</li>
                             <li><strong>Stockage des clés :</strong> Android Keystore (matériel sécurisé)</li>
                             <li><strong>Hachage du PIN :</strong> PBKDF2 avec 600 000 itérations</li>
+                            <li><strong>Biométrie :</strong> Android BiometricPrompt (Classe 3)</li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Quelles données QuietStor collecte-t-il ?</button>
+                    <div class="faq-answer">
+                        <p><strong>Aucune.</strong></p>
+                        <ul>
+                            <li>❌ Pas d'analytics</li>
+                            <li>❌ Pas de rapports de crash avec données personnelles</li>
+                            <li>❌ Pas de suivi d'utilisation</li>
+                            <li>❌ Pas de publicité</li>
+                            <li>❌ Pas de requêtes réseau</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2>🔧 Dépannage</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Je suis bloqué après plusieurs tentatives</button>
+                    <div class="faq-answer">
+                        <p>C'est une fonctionnalité de sécurité. Après des échecs :</p>
+                        <ul>
+                            <li>3 échecs → 30 secondes d'attente</li>
+                            <li>5 échecs → 2 minutes d'attente</li>
+                            <li>10 échecs → 30 minutes d'attente</li>
+                        </ul>
+                        <p>Attendez la fin du délai, puis réessayez avec votre PIN correct.</p>
                     </div>
                 </div>
             </div>
@@ -825,10 +920,31 @@
                         <p>Premium desbloquea archivos ilimitados y soporte prioritario.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">¿QuietStor necesita internet?</button>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> QuietStor funciona 100% sin conexión. Tus archivos nunca salen de tu dispositivo.</p>
+                        <p>No tenemos servidores. No recopilamos datos. No podemos ver tus archivos.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="faq-category">
                 <h2>🔐 Bóveda privada y PIN</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué es la Bóveda Privada?</button>
+                    <div class="faq-answer">
+                        <p>La Bóveda Privada es un espacio cifrado donde puedes guardar archivos sensibles:</p>
+                        <ul>
+                            <li>🔐 Cifrados con encriptación de grado militar (AES-256-GCM)</li>
+                            <li>🔑 Protegidos por tu PIN de 6 dígitos</li>
+                            <li>👆 Accesibles con huella digital (opcional)</li>
+                            <li>👁️ Ocultos de otras aplicaciones</li>
+                        </ul>
+                    </div>
+                </div>
                 
                 <div class="faq-item">
                     <button class="faq-question">⚠️ ¿Qué pasa si olvido mi PIN?</button>
@@ -861,6 +977,7 @@
                         <p>Tienes <strong>dos opciones</strong>:</p>
                         
                         <h4>Opción A: Transferencia directa (Recomendada) 👍</h4>
+                        <p>Si aún tienes tu teléfono antiguo:</p>
                         
                         <div class="transfer-diagram">
                             <h3>📲 Transferencia directa vía código QR</h3>
@@ -912,6 +1029,7 @@
                         </div>
                         
                         <h4>Opción B: Restaurar desde copia de seguridad</h4>
+                        <p>Si tu teléfono antiguo está perdido o roto, necesitas un archivo .qsv creado previamente.</p>
                         <div class="warning-box">
                             ⚠️ <strong>Sin copia de seguridad = Sin recuperación.</strong> ¡Siempre crea copias de seguridad!
                         </div>
@@ -920,52 +1038,170 @@
             </div>
 
             <div class="faq-category">
-                <h2>🛡️ Seguridad</h2>
+                <h2>💾 Copia de seguridad</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo creo una copia de seguridad?</button>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Ve a <strong>Ajustes > Exportar copia de seguridad</strong></li>
+                            <li>Ingresa tu PIN</li>
+                            <li>Crea una <strong>contraseña de respaldo</strong> (¡diferente del PIN!)</li>
+                            <li>Elige dónde guardar el archivo .qsv</li>
+                            <li>Guarda este archivo de forma segura (Google Drive, USB, etc.)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2>🛡️ Seguridad y privacidad</h2>
                 
                 <div class="faq-item">
                     <button class="faq-question">¿Qué tan seguro es QuietStor?</button>
                     <div class="faq-answer">
+                        <p>QuietStor utiliza estándares de seguridad de la industria:</p>
                         <ul>
                             <li><strong>Cifrado:</strong> AES-256-GCM (grado militar)</li>
-                            <li><strong>Almacenamiento de claves:</strong> Android Keystore (hardware)</li>
+                            <li><strong>Almacenamiento de claves:</strong> Android Keystore (respaldado por hardware)</li>
                             <li><strong>Hash del PIN:</strong> PBKDF2 con 600,000 iteraciones</li>
+                            <li><strong>Biometría:</strong> Android BiometricPrompt (Clase 3)</li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué datos recopila QuietStor?</button>
+                    <div class="faq-answer">
+                        <p><strong>Ninguno.</strong></p>
+                        <ul>
+                            <li>❌ Sin analíticas</li>
+                            <li>❌ Sin informes de errores con datos personales</li>
+                            <li>❌ Sin seguimiento de uso</li>
+                            <li>❌ Sin publicidad</li>
+                            <li>❌ Sin solicitudes de red</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2>🔧 Solución de problemas</h2>
+                
+                <div class="faq-item">
+                    <button class="faq-question">Estoy bloqueado después de varios intentos</button>
+                    <div class="faq-answer">
+                        <p>Esto es una función de seguridad. Después de fallos:</p>
+                        <ul>
+                            <li>3 fallos → 30 segundos de espera</li>
+                            <li>5 fallos → 2 minutos de espera</li>
+                            <li>10 fallos → 30 minutos de espera</li>
+                        </ul>
+                        <p>Espera a que termine el temporizador, luego intenta con tu PIN correcto.</p>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <a href="/" class="back-link">← Back to QuietStor</a>
+        <a href="/" class="back-link" data-i18n="back">← Back to QuietStor</a>
 
     </div>
 
     <footer>
-        <p>QuietStor — Your files. Your privacy. Your control.</p>
-        <p style="margin-top: 0.75rem;">
-            <a href="/privacy.html">Privacy Policy</a> · 
-            <a href="/terms.html">Terms of Service</a> · 
-            <a href="/refund.html">Refund Policy</a>
-        </p>
-        <p style="margin-top: 0.75rem; font-size: 0.85rem;">© 2025 QuietStor. All rights reserved.</p>
+        <div class="lang-selector">
+            <span class="globe">🌐</span>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">
+                🇬🇧 <span class="lang-text">English</span>
+            </button>
+            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">
+                🇫🇷 <span class="lang-text">Français</span>
+            </button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">
+                🇪🇸 <span class="lang-text">Español</span>
+            </button>
+        </div>
+        
+        <div class="footer-links">
+            <a href="/privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
+            <a href="/terms.html" data-i18n="footer-terms">Terms of Service</a>
+            <a href="/refund.html" data-i18n="footer-refund">Refund Policy</a>
+            <a href="mailto:app.quietstor@gmail.com" data-i18n="footer-contact">Contact</a>
+        </div>
+        <p>© 2025 QuietStor. <span data-i18n="copyright">All rights reserved.</span></p>
     </footer>
 
     <script>
-        function showLang(lang) {
+        const TRANSLATIONS = {
+            en: {
+                'header-subtitle': 'Frequently Asked Questions',
+                'back': '← Back to QuietStor',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms of Service',
+                'footer-refund': 'Refund Policy',
+                'footer-contact': 'Contact',
+                'copyright': 'All rights reserved.'
+            },
+            fr: {
+                'header-subtitle': 'Questions fréquentes',
+                'back': '← Retour à QuietStor',
+                'footer-privacy': 'Politique de confidentialité',
+                'footer-terms': "Conditions d'utilisation",
+                'footer-refund': 'Politique de remboursement',
+                'footer-contact': 'Contact',
+                'copyright': 'Tous droits réservés.'
+            },
+            es: {
+                'header-subtitle': 'Preguntas frecuentes',
+                'back': '← Volver a QuietStor',
+                'footer-privacy': 'Política de privacidad',
+                'footer-terms': 'Términos de servicio',
+                'footer-refund': 'Política de reembolso',
+                'footer-contact': 'Contacto',
+                'copyright': 'Todos los derechos reservados.'
+            }
+        };
+
+        function getLang() {
+            const stored = localStorage.getItem('quietstor-lang');
+            if (stored) return stored;
+            const nav = navigator.language || navigator.userLanguage;
+            if (nav.startsWith('fr')) return 'fr';
+            if (nav.startsWith('es')) return 'es';
+            return 'en';
+        }
+
+        function setLang(lang) {
+            localStorage.setItem('quietstor-lang', lang);
+            applyLang(lang);
+        }
+
+        function applyLang(lang) {
+            const t = TRANSLATIONS[lang];
+            
+            // Show/hide FAQ sections
             document.getElementById('faq-en').style.display = lang === 'en' ? 'block' : 'none';
             document.getElementById('faq-fr').style.display = lang === 'fr' ? 'block' : 'none';
             document.getElementById('faq-es').style.display = lang === 'es' ? 'block' : 'none';
             
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if ((lang === 'en' && btn.textContent.includes('English')) ||
-                    (lang === 'fr' && btn.textContent.includes('Français')) ||
-                    (lang === 'es' && btn.textContent.includes('Español'))) {
-                    btn.classList.add('active');
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) {
+                    el.textContent = t[key];
                 }
             });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update html lang attribute
+            document.documentElement.lang = lang;
         }
-        
+
+        // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
@@ -974,10 +1210,11 @@
                 if (!isOpen) item.classList.add('open');
             });
         });
-        
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('fr')) showLang('fr');
-        else if (userLang.startsWith('es')) showLang('es');
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLang(getLang());
+        });
     </script>
 
 </body>
