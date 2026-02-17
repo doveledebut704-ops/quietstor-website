@@ -61,8 +61,8 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Is QuietStor free?</button>
         <div class="faq-a">
-          Yes! Core features are completely free: full file manager, encrypted vault (up to <strong>500 MB</strong>), PIN + biometric unlock, and 4 cleaning tools.<br><br>
-          <strong>Premium (€1.99 / $1.99 — one-time purchase, no subscription)</strong> unlocks unlimited vault storage, ZIP export, Mood Stickers, duplicate finder, WhatsApp cleaner, and break-in alerts.
+          Yes! Core features are completely free: full file manager, encrypted vault (up to <strong>500 MB</strong>), password + biometric unlock, and 4 cleaning tools.<br><br>
+          <strong>Premium (€1.99 / $1.99 — one-time purchase, no subscription)</strong> unlocks unlimited vault storage, ZIP export, Mood Stickers, duplicate finder, WhatsApp cleaner, and screenshot protection.
         </div>
       </div>
 
@@ -82,7 +82,7 @@
           <ul>
             <li><strong>AES-256-GCM</strong> — the same standard used by banks and governments</li>
             <li><strong>Unique key per file</strong> — derived via HKDF from your device's hardware Keystore</li>
-            <li><strong>PIN hashing:</strong> PBKDF2 with 600,000 iterations</li>
+            <li><strong>Password hashing:</strong> PBKDF2 with 600,000 iterations</li>
             <li><strong>Biometric unlock</strong> via Android BiometricPrompt</li>
           </ul>
           Keys are stored in your device's <strong>Trusted Execution Environment (TEE)</strong> or <strong>StrongBox</strong> — they never leave the hardware.
@@ -90,15 +90,15 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">⚠️ What if I forget my PIN?</button>
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ What if I forget my password?</button>
         <div class="faq-a">
           <strong>Your data is permanently lost.</strong> This is by design (zero-knowledge architecture):
           <ul>
-            <li>❌ We never see your PIN</li>
-            <li>❌ There's no "Forgot PIN" option</li>
+            <li>❌ We never see your password</li>
+            <li>❌ There's no "Forgot Password" option</li>
             <li>❌ No backdoor, no recovery, no server to contact</li>
           </ul>
-          <strong>Tip:</strong> Choose a PIN you'll remember, and create a ZIP backup (Premium) stored safely on your PC.
+          <strong>Tip:</strong> Choose a password you'll remember, and create a ZIP backup (Premium) stored safely on your PC.
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">How does ZIP export work?</button>
         <div class="faq-a">
-          Premium users can export their vault as a <strong>standard encrypted ZIP file</strong> protected by a strong password (8+ characters, at least 1 letter + 1 digit — separate from your vault PIN).<br><br>
+          Premium users can export their vault as a <strong>standard encrypted ZIP file</strong> protected by a strong password (8+ characters, at least 1 letter + 1 digit — different from your vault password).<br><br>
           This ZIP can be opened with <strong>7-Zip, WinRAR, or macOS native</strong> — no special software needed. Save it to USB, Google Drive, Dropbox, or anywhere. <strong>Your files work everywhere, forever.</strong>
         </div>
       </div>
@@ -177,8 +177,8 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">QuietStor est-il gratuit ?</button>
         <div class="faq-a">
-          Oui ! Les fonctionnalités principales sont gratuites : gestionnaire de fichiers complet, coffre-fort chiffré (jusqu'à <strong>500 Mo</strong>), PIN + biométrie, et 4 outils de nettoyage.<br><br>
-          <strong>Premium (1,99 € / $1.99 — achat unique, aucun abonnement)</strong> débloque le stockage illimité, l'export ZIP, les Mood Stickers, le détecteur de doublons, le nettoyeur WhatsApp et les alertes intrusion.
+          Oui ! Les fonctionnalités principales sont gratuites : gestionnaire de fichiers complet, coffre-fort chiffré (jusqu'à <strong>500 Mo</strong>), mot de passe + biométrie, et 4 outils de nettoyage.<br><br>
+          <strong>Premium (1,99 € / $1.99 — achat unique, aucun abonnement)</strong> débloque le stockage illimité, l'export ZIP, les Mood Stickers, le détecteur de doublons, le nettoyeur WhatsApp et la protection anti-capture d'écran.
         </div>
       </div>
 
@@ -198,7 +198,7 @@
           <ul>
             <li><strong>AES-256-GCM</strong> — le même standard utilisé par les banques et gouvernements</li>
             <li><strong>Clé unique par fichier</strong> — dérivée via HKDF depuis le Keystore matériel</li>
-            <li><strong>Hachage du PIN :</strong> PBKDF2 avec 600 000 itérations</li>
+            <li><strong>Hachage du mot de passe :</strong> PBKDF2 avec 600 000 itérations</li>
             <li><strong>Déverrouillage biométrique</strong> via Android BiometricPrompt</li>
           </ul>
           Les clés sont stockées dans le <strong>TEE</strong> (Trusted Execution Environment) ou <strong>StrongBox</strong> de votre appareil — elles ne quittent jamais le matériel.
@@ -206,15 +206,15 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Que se passe-t-il si j'oublie mon PIN ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Que se passe-t-il si j'oublie mon mot de passe ?</button>
         <div class="faq-a">
           <strong>Vos données sont définitivement perdues.</strong> C'est voulu (architecture zero-knowledge) :
           <ul>
-            <li>❌ Nous ne voyons jamais votre PIN</li>
-            <li>❌ Pas d'option « PIN oublié »</li>
+            <li>❌ Nous ne voyons jamais votre mot de passe</li>
+            <li>❌ Pas d'option « Mot de passe oublié »</li>
             <li>❌ Aucune porte dérobée, aucune récupération, aucun serveur à contacter</li>
           </ul>
-          <strong>Conseil :</strong> Choisissez un PIN mémorable et créez une sauvegarde ZIP (Premium) stockée en sécurité sur votre PC.
+          <strong>Conseil :</strong> Choisissez un mot de passe mémorable et créez une sauvegarde ZIP (Premium) stockée en sécurité sur votre PC.
         </div>
       </div>
     </div>
@@ -245,7 +245,7 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Comment fonctionne l'export ZIP ?</button>
         <div class="faq-a">
-          Les utilisateurs Premium peuvent exporter leur coffre-fort en <strong>fichier ZIP chiffré standard</strong> protégé par un mot de passe fort (8+ caractères, au moins 1 lettre + 1 chiffre — différent de votre PIN).<br><br>
+          Les utilisateurs Premium peuvent exporter leur coffre-fort en <strong>fichier ZIP chiffré standard</strong> protégé par un mot de passe fort (8+ caractères, au moins 1 lettre + 1 chiffre — différent de votre mot de passe vault).<br><br>
           Ce ZIP s'ouvre avec <strong>7-Zip, WinRAR ou macOS nativement</strong> — aucun logiciel spécial nécessaire. Sauvegardez-le sur USB, Google Drive, Dropbox, ou ailleurs. <strong>Vos fichiers marchent partout, pour toujours.</strong>
         </div>
       </div>
@@ -293,8 +293,8 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">¿Es QuietStor gratis?</button>
         <div class="faq-a">
-          ¡Sí! Las funciones principales son gratis: gestor de archivos completo, bóveda cifrada (hasta <strong>500 MB</strong>), PIN + biometría, y 4 herramientas de limpieza.<br><br>
-          <strong>Premium (1,99 € / $1.99 — compra única, sin suscripción)</strong> desbloquea almacenamiento ilimitado, exportación ZIP, Mood Stickers, detector de duplicados, limpiador WhatsApp y alertas de intrusión.
+          ¡Sí! Las funciones principales son gratis: gestor de archivos completo, bóveda cifrada (hasta <strong>500 MB</strong>), contraseña + biometría, y 4 herramientas de limpieza.<br><br>
+          <strong>Premium (1,99 € / $1.99 — compra única, sin suscripción)</strong> desbloquea almacenamiento ilimitado, exportación ZIP, Mood Stickers, detector de duplicados, limpiador WhatsApp y protección anti-captura de pantalla.
         </div>
       </div>
 
@@ -314,22 +314,22 @@
           <ul>
             <li><strong>AES-256-GCM</strong> — el mismo estándar de bancos y gobiernos</li>
             <li><strong>Clave única por archivo</strong> — derivada via HKDF desde el Keystore hardware</li>
-            <li><strong>Hash del PIN:</strong> PBKDF2 con 600.000 iteraciones</li>
+            <li><strong>Hash de contraseña:</strong> PBKDF2 con 600.000 iteraciones</li>
             <li><strong>Desbloqueo biométrico</strong> vía Android BiometricPrompt</li>
           </ul>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">⚠️ ¿Qué pasa si olvido mi PIN?</button>
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ ¿Qué pasa si olvido mi contraseña?</button>
         <div class="faq-a">
           <strong>Tus datos se pierden permanentemente.</strong> Es por diseño (arquitectura zero-knowledge):
           <ul>
-            <li>❌ Nunca vemos tu PIN</li>
-            <li>❌ No hay opción "Olvidé mi PIN"</li>
+            <li>❌ Nunca vemos tu contraseña</li>
+            <li>❌ No hay opción "Olvidé mi contraseña"</li>
             <li>❌ Sin puerta trasera, sin recuperación</li>
           </ul>
-          <strong>Consejo:</strong> Elige un PIN memorable y crea un backup ZIP (Premium) guardado en tu PC.
+          <strong>Consejo:</strong> Elige una contraseña memorable y crea un backup ZIP (Premium) guardado en tu PC.
         </div>
       </div>
     </div>
@@ -380,8 +380,8 @@
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Ist QuietStor kostenlos?</button>
         <div class="faq-a">
-          Ja! Die Kernfunktionen sind komplett kostenlos: vollständiger Dateimanager, verschlüsselter Tresor (bis <strong>500 MB</strong>), PIN + Biometrie und 4 Reinigungstools.<br><br>
-          <strong>Premium (1,99 € / $1.99 — Einmalkauf, kein Abo)</strong> schaltet unbegrenzten Tresor, ZIP-Export, Mood Stickers, Duplikat-Finder, WhatsApp-Reiniger und Einbruch-Warnungen frei.
+          Ja! Die Kernfunktionen sind komplett kostenlos: vollständiger Dateimanager, verschlüsselter Tresor (bis <strong>500 MB</strong>), Passwort + Biometrie und 4 Reinigungstools.<br><br>
+          <strong>Premium (1,99 € / $1.99 — Einmalkauf, kein Abo)</strong> schaltet unbegrenzten Tresor, ZIP-Export, Mood Stickers, Duplikat-Finder, WhatsApp-Reiniger und Screenshot-Schutz frei.
         </div>
       </div>
 
@@ -401,22 +401,22 @@
           <ul>
             <li><strong>AES-256-GCM</strong> — derselbe Standard wie bei Banken und Behörden</li>
             <li><strong>Einzigartiger Schlüssel pro Datei</strong> — abgeleitet via HKDF aus dem Hardware-Keystore</li>
-            <li><strong>PIN-Hashing:</strong> PBKDF2 mit 600.000 Iterationen</li>
+            <li><strong>Passwort-Hashing:</strong> PBKDF2 mit 600.000 Iterationen</li>
             <li><strong>Biometrische Entsperrung</strong> über Android BiometricPrompt</li>
           </ul>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Was passiert, wenn ich meine PIN vergesse?</button>
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Was passiert, wenn ich mein Passwort vergesse?</button>
         <div class="faq-a">
           <strong>Ihre Daten sind dauerhaft verloren.</strong> Das ist beabsichtigt (Zero-Knowledge-Architektur):
           <ul>
-            <li>❌ Wir sehen Ihre PIN nie</li>
-            <li>❌ Keine „PIN vergessen"-Option</li>
+            <li>❌ Wir sehen Ihr Passwort nie</li>
+            <li>❌ Keine „Passwort vergessen"-Option</li>
             <li>❌ Keine Hintertür, keine Wiederherstellung</li>
           </ul>
-          <strong>Tipp:</strong> Wählen Sie eine einprägsame PIN und erstellen Sie ein ZIP-Backup (Premium), das sicher auf Ihrem PC gespeichert ist.
+          <strong>Tipp:</strong> Wählen Sie ein einprägsames Passwort und erstellen Sie ein ZIP-Backup (Premium), das sicher auf Ihrem PC gespeichert ist.
         </div>
       </div>
     </div>
