@@ -110,15 +110,15 @@ body::before {
 }
 
 .hero-logo {
-  width: 76px; height: 76px;
-  border: 1.5px solid rgba(34,197,94,0.2);
-  border-radius: 20px;
+  width: 96px; height: 96px;
+  border: none;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 2.5rem;
-  background: rgba(34,197,94,0.03);
-  overflow: hidden;
+  background: transparent;
+  overflow: visible;
   position: relative;
   animation: logoFloat 6s ease-in-out infinite;
 }
@@ -131,13 +131,13 @@ body::before {
 .hero-logo::after {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: 21px;
-  background: linear-gradient(135deg, rgba(34,197,94,0.25), transparent 50%, rgba(34,197,94,0.1));
+  inset: -12px;
+  border-radius: 36px;
+  background: radial-gradient(circle, rgba(34,197,94,0.08), transparent 70%);
   z-index: -1;
 }
 
-.hero-logo img { width: 56px; height: 56px; border-radius: 14px; }
+.hero-logo img { width: 96px; height: 96px; border-radius: 24px; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4)); }
 
 .hero h1 {
   font-size: clamp(2.6rem, 5.5vw, 4.5rem);
@@ -553,7 +553,7 @@ body::before {
 <header class="site-header">
   <a href="/" class="site-logo">
     <img src="/logo.svg" alt="QuietStor" width="36" height="36">
-    <span>QuietStor</span>
+    <span><span class="brand-q">Quiet</span>Stor</span>
   </a>
   <nav class="site-nav">
     <a href="/faq.html" class="hide-mobile" data-i18n="nav-faq">FAQ</a>
@@ -574,7 +574,7 @@ body::before {
   <div class="blob blob-3"></div>
   <div class="hero-content">
     <div class="hero-logo">
-      <img src="/logo.svg" alt="QuietStor Shield">
+      <img src="/hero-icon.svg" alt="QuietStor Shield">
     </div>
     <h1 class="t-display" data-i18n-html="hero-title">Your files.<br>Your format.<br><em class="t-accent">Forever portable.</em></h1>
     <p class="hero-sub" data-i18n="hero-sub">The private file manager that respects you. AES-256 encrypted vault, standard ZIP export, zero tracking. €1.99 once — no subscription.</p>
@@ -798,7 +798,7 @@ body::before {
   <div>
     <div class="footer-brand">
       <img src="/logo.svg" alt="QuietStor" width="28" height="28">
-      <span>QuietStor</span>
+      <span><span class="brand-q">Quiet</span>Stor</span>
     </div>
     <p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p>
   </div>

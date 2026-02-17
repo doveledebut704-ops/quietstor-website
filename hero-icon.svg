@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- QuietStor — Website Hero Icon (Frost Crown) -->
+<!-- Larger version for the hero section center -->
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <title>QuietStor</title>
+
+  <defs>
+    <linearGradient id="h-bg" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0e0e0e"/>
+    </linearGradient>
+
+    <linearGradient id="h-shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="25%" stop-color="#dcfce7"/>
+      <stop offset="50%" stop-color="#4ade80"/>
+      <stop offset="75%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+
+    <linearGradient id="h-shine" x1="0.5" y1="0" x2="0.5" y2="0.5">
+      <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="h-clip">
+      <path d="M60 22C60 22 94 33 94 33V67C94 87.5 60 105 60 105C60 105 26 87.5 26 67V33Z"/>
+    </clipPath>
+
+    <!-- Subtle outer shadow -->
+    <filter id="h-shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+  </defs>
+
+  <!-- Rounded square container with shadow -->
+  <rect x="4" y="4" width="112" height="112" rx="26" fill="url(#h-bg)" filter="url(#h-shadow)"/>
+
+  <!-- Subtle border on container -->
+  <rect x="4" y="4" width="112" height="112" rx="26" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Shield -->
+  <path
+    d="M60 22C60 22 94 33 94 33V67C94 87.5 60 105 60 105C60 105 26 87.5 26 67V33Z"
+    fill="url(#h-shield)"
+  />
+
+  <!-- Glass shine -->
+  <g clip-path="url(#h-clip)">
+    <ellipse cx="60" cy="32" rx="38" ry="22" fill="url(#h-shine)"/>
+  </g>
+
+  <!-- Edge highlight -->
+  <path
+    d="M60 22C60 22 94 33 94 33V67C94 87.5 60 105 60 105C60 105 26 87.5 26 67V33Z"
+    fill="none" stroke="white" stroke-width="1" stroke-opacity="0.2"
+  />
+</svg>

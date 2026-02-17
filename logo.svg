@@ -1,53 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- QuietStor — PLAY STORE ICON (512×512px) -->
-<!-- Design: "Glass Shield" — combined layers, full square -->
-<!-- Google Play applies rounded corners automatically (30% radius) -->
-<!-- Do NOT add rounded corners or shadows -->
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <title>QuietStor — Play Store Icon (Glass Shield)</title>
+<!-- QuietStor — Website Logo (Frost Crown) -->
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <title>QuietStor</title>
 
   <defs>
-    <linearGradient id="ps-bg" x1="0.5" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#111111" />
-      <stop offset="100%" stop-color="#0a0a0a" />
+    <linearGradient id="w-bg" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
     </linearGradient>
 
-    <linearGradient id="ps-shield" x1="0.5" y1="0" x2="0.5" y2="1">
-      <stop offset="0%" stop-color="#4ade80" />
-      <stop offset="40%" stop-color="#22c55e" />
-      <stop offset="100%" stop-color="#15803d" />
+    <linearGradient id="w-shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="25%" stop-color="#dcfce7"/>
+      <stop offset="50%" stop-color="#4ade80"/>
+      <stop offset="75%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
     </linearGradient>
 
-    <linearGradient id="ps-shine" x1="0.5" y1="0" x2="0.5" y2="0.6">
-      <stop offset="0%" stop-color="white" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="white" stop-opacity="0" />
+    <linearGradient id="w-shine" x1="0.5" y1="0" x2="0.5" y2="0.5">
+      <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
     </linearGradient>
 
-    <clipPath id="ps-clip">
-      <path d="M256 104 C256 104 370 137 370 137 C370 137 370 261 370 261 C370 337 256 403 256 403 C256 403 142 337 142 261 C142 261 142 137 142 137 Z" />
+    <clipPath id="w-clip">
+      <path d="M20 7C20 7 32 11 32 11V23C32 30 20 36 20 36C20 36 8 30 8 23V11Z"/>
     </clipPath>
   </defs>
 
-  <!-- Background -->
-  <rect width="512" height="512" fill="url(#ps-bg)" />
+  <!-- Rounded square background -->
+  <rect width="40" height="40" rx="9" fill="url(#w-bg)"/>
 
-  <!-- Shield (scaled to 512: centered, ~228px wide) -->
+  <!-- Shield -->
   <path
-    d="M256 104 C256 104 370 137 370 137 C370 137 370 261 370 261 C370 337 256 403 256 403 C256 403 142 337 142 261 C142 261 142 137 142 137 Z"
-    fill="url(#ps-shield)"
+    d="M20 7C20 7 32 11 32 11V23C32 30 20 36 20 36C20 36 8 30 8 23V11Z"
+    fill="url(#w-shield)"
   />
 
   <!-- Glass shine -->
-  <g clip-path="url(#ps-clip)">
-    <ellipse cx="256" cy="152" rx="124" ry="95" fill="url(#ps-shine)" />
+  <g clip-path="url(#w-clip)">
+    <ellipse cx="20" cy="11" rx="13" ry="8" fill="url(#w-shine)"/>
   </g>
 
-  <!-- Edge highlight -->
+  <!-- Edge -->
   <path
-    d="M256 104 C256 104 370 137 370 137 C370 137 370 261 370 261 C370 337 256 403 256 403 C256 403 142 337 142 261 C142 261 142 137 142 137 Z"
-    fill="none"
-    stroke="white"
-    stroke-width="2"
-    stroke-opacity="0.12"
+    d="M20 7C20 7 32 11 32 11V23C32 30 20 36 20 36C20 36 8 30 8 23V11Z"
+    fill="none" stroke="white" stroke-width="0.6" stroke-opacity="0.2"
   />
 </svg>
