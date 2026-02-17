@@ -11,21 +11,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
-<style>
-  .faq-wrap { max-width: 720px; margin: 0 auto; padding: 8rem 2rem 4rem; }
-  .faq-wrap > h1 { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; }
-  .faq-intro { font-size: 1rem; color: var(--text-mid); margin-bottom: 3rem; line-height: 1.8; }
-  .lang-content { display: none; }
-  .lang-content.active { display: block; }
-</style>
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span>QuietStor</span></a>
   <nav class="site-nav">
-    <a href="/">Home</a>
-    <a href="/privacy.html" class="hide-mobile">Privacy</a>
+    <a href="/" data-i18n="nav-home">Home</a>
+    <a href="/privacy.html" class="hide-mobile" data-i18n="nav-privacy">Privacy</a>
     <div class="lang-sel">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('fr')">FR</button>
@@ -151,24 +144,33 @@
 </div>
 
 <footer class="site-footer">
-  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div><p class="footer-tagline">Your files. Your format. Forever portable.</p></div>
-  <div class="footer-links"><a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a></div>
+  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div><p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p></div>
+  <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/privacy.html" data-i18n="nav-privacy">Privacy</a><a href="/terms.html" data-i18n="nav-terms">Terms</a><a href="/refund.html" data-i18n="nav-refund">Refund</a></div>
   <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('qs-lang') || (navigator.language || '').slice(0,2);
+const UI = {
+  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
+  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
+  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
+  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
+};
+
+let currentLang = (()=>{try{return localStorage.getItem('qs-lang')}catch(e){return null}})() || (navigator.language || '').slice(0,2);
 if (!['en','fr','es','de'].includes(currentLang)) currentLang = 'en';
 
 function setLang(lang) {
   currentLang = lang;
-  localStorage.setItem('qs-lang', lang);
+  try{localStorage.setItem('qs-lang',lang)}catch(e){}
   applyLang();
 }
 
 function applyLang() {
   document.querySelectorAll('.lang-content').forEach(el => el.classList.toggle('active', el.dataset.lang === currentLang));
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === currentLang));
+  const u = UI[currentLang] || UI.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k=el.getAttribute('data-i18n'); if(u[k]) el.textContent=u[k]; });
   document.documentElement.lang = currentLang;
 }
 

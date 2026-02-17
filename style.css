@@ -479,6 +479,32 @@ img { max-width: 100%; display: block; }
 .faq-a-inner ul { margin: 0.5rem 0; padding-left: 1rem; }
 .faq-a-inner li { margin-bottom: 0.3rem; }
 
+/* --- Language content blocks --- */
+.lang-content { display: none; }
+.lang-content.active { display: block; }
+
+/* --- FAQ page --- */
+.faq-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+}
+
+.faq-wrap > h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+.faq-intro {
+  font-size: 1rem;
+  color: var(--text-mid);
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
 /* --- Legal pages --- */
 .legal-wrap {
   max-width: 720px;
@@ -492,6 +518,8 @@ img { max-width: 100%; display: block; }
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 0.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .legal-updated {
@@ -549,4 +577,8 @@ img { max-width: 100%; display: block; }
   .site-nav a.hide-mobile { display: none; }
   .lang-sel { gap: 0; }
   .lang-btn { padding: 5px 7px; font-size: 0.6rem; }
+  .legal-wrap h1 { font-size: 1.8rem; letter-spacing: -0.5px; }
+  .legal-wrap { padding: 6rem 1.5rem 3rem; }
+  .faq-wrap > h1 { font-size: 2rem; }
+  .faq-wrap { padding: 6rem 1.5rem 3rem; }
 }

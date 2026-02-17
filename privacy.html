@@ -15,7 +15,7 @@
 <header class="site-header">
   <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span>QuietStor</span></a>
   <nav class="site-nav">
-    <a href="/">Home</a><a href="/faq.html" class="hide-mobile">FAQ</a>
+    <a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" class="hide-mobile" data-i18n="nav-faq">FAQ</a>
     <div class="lang-sel"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('de')">DE</button></div>
   </nav>
 </header>
@@ -48,6 +48,8 @@
     <div class="warn-box"><strong>⚠️ Zero-knowledge signifie zéro récupération.</strong> Si vous oubliez votre mot de passe, vos données chiffrées sont définitivement perdues. Pas d'option « Mot de passe oublié », pas de porte dérobée.</div>
     <h2>Crashlytics optionnel</h2>
     <p>Firebase Crashlytics est inclus mais <strong>désactivé par défaut</strong>. Si activé dans les Paramètres, seuls les rapports de crash sont envoyés. Aucun contenu, nom de fichier, mot de passe ou clé n'est jamais inclus.</p>
+    <h2>Google Play Billing</h2>
+    <p>Les achats Premium sont traités par Google Play. Nous ne recevons et ne stockons aucune information de paiement. La vérification d'achat est effectuée localement sur l'appareil.</p>
     <h2>Vos droits</h2>
     <p>En vertu du RGPD et réglementations similaires, vous avez le droit d'accès, correction et suppression. Comme nous ne collectons rien, il n'y a rien à supprimer. Vos données n'existent que sur votre appareil.</p>
     <div class="legal-contact">Questions ? Contactez-nous à <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
@@ -60,7 +62,11 @@
     <p><strong>QuietStor no recopila datos de usuario.</strong> Sin cuentas, sin analíticas, sin telemetría. La app es 100% sin conexión.</p>
     <h2>Cifrado</h2>
     <p>Todos los archivos están cifrados con <strong>AES-256-GCM</strong> y almacenados exclusivamente en tu dispositivo. Las claves están en el Android Keystore (TEE/StrongBox).</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanentemente.</div>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanentemente. No hay opción "Olvidé mi contraseña", ni puerta trasera.</div>
+    <h2>Crashlytics opcional</h2>
+    <p>QuietStor incluye Firebase Crashlytics para informes de errores, <strong>desactivado por defecto</strong>. Si decides activarlo en Ajustes, solo se envían informes de errores (stack traces, modelo del dispositivo, versión del SO). Nunca se incluyen contenidos, nombres, contraseñas ni claves.</p>
+    <h2>Google Play Billing</h2>
+    <p>Las compras Premium se procesan a través de Google Play. No recibimos ni almacenamos información de pago. La verificación de compra se realiza localmente en el dispositivo.</p>
     <h2>Tus derechos</h2>
     <p>Bajo GDPR/CCPA, tienes derecho a acceder, corregir y eliminar tus datos. Como no recopilamos nada, no hay nada que eliminar.</p>
     <div class="legal-contact">¿Preguntas? Contáctanos en <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
@@ -73,7 +79,11 @@
     <p><strong>QuietStor erfasst keine Nutzerdaten.</strong> Keine Konten, keine Analytik, keine Telemetrie. Die App ist 100% offline.</p>
     <h2>Verschlüsselung</h2>
     <p>Alle Dateien werden mit <strong>AES-256-GCM</strong> verschlüsselt und ausschließlich auf Ihrem Gerät gespeichert. Schlüssel im Android Keystore (TEE/StrongBox).</p>
-    <div class="warn-box"><strong>⚠️ Zero-Knowledge bedeutet keine Wiederherstellung.</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre Daten dauerhaft verloren.</div>
+    <div class="warn-box"><strong>⚠️ Zero-Knowledge bedeutet keine Wiederherstellung.</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre Daten dauerhaft verloren. Keine „Passwort vergessen"-Option, keine Hintertür.</div>
+    <h2>Optionale Crashlytics</h2>
+    <p>QuietStor enthält Firebase Crashlytics für Fehlerberichte, <strong>standardmäßig deaktiviert</strong>. Wenn Sie es in den Einstellungen aktivieren, werden nur Absturzberichte (Stack-Traces, Gerätemodell, OS-Version) gesendet. Keine Dateiinhalte, Namen, Passwörter oder Schlüssel.</p>
+    <h2>Google Play Billing</h2>
+    <p>Premium-Käufe werden über Google Play abgewickelt. Wir erhalten oder speichern keine Zahlungsinformationen. Die Kaufverifizierung erfolgt lokal auf dem Gerät.</p>
     <h2>Ihre Rechte</h2>
     <p>Unter DSGVO haben Sie das Recht auf Zugang, Berichtigung und Löschung. Da wir nichts erfassen, gibt es nichts zu löschen.</p>
     <div class="legal-contact">Fragen? Kontakt: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
@@ -81,18 +91,27 @@
 </div>
 
 <footer class="site-footer">
-  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div></div>
-  <div class="footer-links"><a href="/">Home</a><a href="/faq.html">FAQ</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a></div>
+  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div><p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p></div>
+  <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" data-i18n="nav-faq">FAQ</a><a href="/terms.html" data-i18n="nav-terms">Terms</a><a href="/refund.html" data-i18n="nav-refund">Refund</a></div>
   <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('qs-lang') || (navigator.language||'').slice(0,2);
+const UI = {
+  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
+  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
+  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
+  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
+};
+
+let currentLang = (()=>{try{return localStorage.getItem('qs-lang')}catch(e){return null}})() || (navigator.language||'').slice(0,2);
 if (!['en','fr','es','de'].includes(currentLang)) currentLang = 'en';
-function setLang(l) { currentLang=l; localStorage.setItem('qs-lang',l); applyLang(); }
+function setLang(l) { currentLang=l; try{localStorage.setItem('qs-lang',l)}catch(e){} applyLang(); }
 function applyLang() {
   document.querySelectorAll('.lang-content').forEach(e => e.classList.toggle('active', e.dataset.lang===currentLang));
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase()===currentLang));
+  const u = UI[currentLang] || UI.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (u[k]) el.textContent = u[k]; });
   document.documentElement.lang = currentLang;
 }
 applyLang();

@@ -15,7 +15,7 @@
 <header class="site-header">
   <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span>QuietStor</span></a>
   <nav class="site-nav">
-    <a href="/">Home</a><a href="/faq.html" class="hide-mobile">FAQ</a>
+    <a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" class="hide-mobile" data-i18n="nav-faq">FAQ</a>
     <div class="lang-sel"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('de')">DE</button></div>
   </nav>
 </header>
@@ -75,6 +75,9 @@
     <h2>6. Limitation de responsabilité</h2>
     <p>QuietStor est fourni « en l'état ». Nous ne sommes pas responsables des pertes de données. Responsabilité maximale limitée au prix d'achat (1,99 €).</p>
 
+    <h2>7. Modifications</h2>
+    <p>Nous pouvons mettre à jour ces conditions. L'utilisation continue après modification vaut acceptation.</p>
+
     <div class="legal-contact">Questions ? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
@@ -94,8 +97,14 @@
     <h2>4. Tu responsabilidad</h2>
     <div class="warn-box"><strong>⚠️ Eres responsable de tu contraseña.</strong> Cifrado zero-knowledge. Contraseña olvidada = datos perdidos permanentemente.</div>
 
-    <h2>5. Limitación de responsabilidad</h2>
+    <h2>5. Propiedad intelectual</h2>
+    <p>QuietStor, su diseño, código y marca son propiedad de QuietStor. Tus archivos son tuyos — no tenemos acceso a ellos.</p>
+
+    <h2>6. Limitación de responsabilidad</h2>
     <p>QuietStor se proporciona "tal cual". Responsabilidad máxima: precio de compra (1,99 €).</p>
+
+    <h2>7. Cambios</h2>
+    <p>Podemos actualizar estos términos. El uso continuado tras los cambios constituye aceptación.</p>
 
     <div class="legal-contact">¿Preguntas? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
@@ -116,26 +125,41 @@
     <h2>4. Ihre Verantwortung</h2>
     <div class="warn-box"><strong>⚠️ Sie sind allein verantwortlich für Ihr Passwort.</strong> Zero-Knowledge-Verschlüsselung. Passwort vergessen = Daten dauerhaft verloren.</div>
 
-    <h2>5. Haftungsbeschränkung</h2>
+    <h2>5. Geistiges Eigentum</h2>
+    <p>QuietStor, sein Design, Code und Marke sind Eigentum von QuietStor. Ihre Dateien gehören Ihnen — wir haben keinen Zugang.</p>
+
+    <h2>6. Haftungsbeschränkung</h2>
     <p>QuietStor wird "wie besehen" bereitgestellt. Maximale Haftung: Kaufpreis (1,99 €).</p>
+
+    <h2>7. Änderungen</h2>
+    <p>Wir können diese Bedingungen aktualisieren. Fortgesetzte Nutzung nach Änderungen gilt als Zustimmung.</p>
 
     <div class="legal-contact">Fragen? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 </div>
 
 <footer class="site-footer">
-  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div></div>
-  <div class="footer-links"><a href="/">Home</a><a href="/faq.html">FAQ</a><a href="/privacy.html">Privacy</a><a href="/refund.html">Refund</a></div>
+  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div><p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p></div>
+  <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" data-i18n="nav-faq">FAQ</a><a href="/privacy.html" data-i18n="nav-privacy">Privacy</a><a href="/refund.html" data-i18n="nav-refund">Refund</a></div>
   <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('qs-lang') || (navigator.language||'').slice(0,2);
+const UI = {
+  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
+  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
+  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
+  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
+};
+
+let currentLang = (()=>{try{return localStorage.getItem('qs-lang')}catch(e){return null}})() || (navigator.language||'').slice(0,2);
 if (!['en','fr','es','de'].includes(currentLang)) currentLang = 'en';
-function setLang(l) { currentLang=l; localStorage.setItem('qs-lang',l); applyLang(); }
+function setLang(l) { currentLang=l; try{localStorage.setItem('qs-lang',l)}catch(e){} applyLang(); }
 function applyLang() {
   document.querySelectorAll('.lang-content').forEach(e => e.classList.toggle('active', e.dataset.lang===currentLang));
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase()===currentLang));
+  const u = UI[currentLang] || UI.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (u[k]) el.textContent = u[k]; });
   document.documentElement.lang = currentLang;
 }
 applyLang();
