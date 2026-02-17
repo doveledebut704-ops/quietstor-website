@@ -1,207 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — QuietStor</title>
-  <meta name="description" content="QuietStor terms of service. One-time purchase, 100% offline, zero-knowledge encryption.">
-  <link rel="icon" href="/logo.svg">
-  <link rel="canonical" href="https://quietstor.app/terms.html">
-  <meta property="og:title" content="Terms of Service — QuietStor">
-  <meta property="og:url" content="https://quietstor.app/terms.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
-  <style>[data-content-lang] { display: none; } [data-content-lang].active { display: block; }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuietStor — Terms of Service</title>
+<link rel="canonical" href="https://quietstor.app/terms.html">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span>QuietStor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a><a href="/faq.html" class="hide-mobile">FAQ</a>
+    <div class="lang-sel"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('de')">DE</button></div>
+  </nav>
+</header>
 
-  <div class="page-header">
-    <a href="/"><img src="/logo.svg" alt="QuietStor" class="header-logo"></a>
-    <h1 data-i18n="title">Terms of Service</h1>
-    <p class="last-updated" data-i18n="updated">Last updated: February 16, 2026</p>
+<div class="legal-wrap">
+  <div class="lang-content active" data-lang="en">
+    <h1>Terms of Service</h1>
+    <p class="legal-updated">Last updated: February 16, 2026</p>
+
+    <h2>1. Acceptance</h2>
+    <p>By installing or using QuietStor, you accept these Terms. If you disagree, please uninstall the app.</p>
+
+    <h2>2. Service Description</h2>
+    <p>QuietStor is a <strong>privacy-first Android file manager</strong> with an AES-256 encrypted vault. The app operates 100% offline — no internet connection is required or used.</p>
+
+    <h2>3. Free & Premium</h2>
+    <p>QuietStor is free to use with core features including file management, encrypted vault (500 MB limit), password + biometric authentication, and 4 cleaning tools.</p>
+    <p><strong>Premium</strong> is a one-time purchase (€1.99 / $1.99) via Google Play that unlocks unlimited vault storage, ZIP export, Mood Stickers, duplicate finder, WhatsApp cleaner, and auto-backup camera. No subscription, no recurring charges.</p>
+
+    <h2>4. Your Responsibility</h2>
+    <div class="warn-box"><strong>⚠️ You are solely responsible for your vault password.</strong> QuietStor uses zero-knowledge encryption. We never see your password and cannot recover it. If you forget your password, your encrypted data is permanently and irrevocably lost.</div>
+    <p>You are responsible for creating backups (ZIP export) to protect against data loss.</p>
+
+    <h2>5. Intellectual Property</h2>
+    <p>QuietStor, its design, code, and branding are the intellectual property of QuietStor. Your files remain yours — we have no access to them and claim no rights over them.</p>
+
+    <h2>6. Limitation of Liability</h2>
+    <p>QuietStor is provided "as is" without warranties. We are not liable for data loss resulting from forgotten passwords, device failure, or any other cause. Maximum liability is limited to the purchase price (€1.99).</p>
+
+    <h2>7. Changes</h2>
+    <p>We may update these terms. Continued use after changes constitutes acceptance.</p>
+
+    <div class="legal-contact">Questions? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- EN -->
-  <div class="page-content" data-content-lang="en">
-    <h2>1. Acceptance of Terms</h2>
-    <p>By downloading, installing, or using QuietStor ("the App"), you agree to these Terms of Service. If you do not agree, please do not use the App.</p>
+  <div class="lang-content" data-lang="fr">
+    <h1>Conditions d'utilisation</h1>
+    <p class="legal-updated">Dernière mise à jour : 16 février 2026</p>
 
-    <h2>2. Description of Service</h2>
-    <p>QuietStor is a privacy-first Android file manager with an encrypted vault, storage cleaning tools, and portable ZIP export. The App operates <strong>100% offline</strong> and does not communicate with any server.</p>
-
-    <h2>3. Free & Premium Tiers</h2>
-    <p>QuietStor offers a free tier with core functionality (file manager, encrypted vault up to 500 MB, password + biometric unlock, 4 cleaning tools). Premium features are available through a <strong>one-time purchase of €1.99 / $1.99</strong> via Google Play Billing. There is no subscription and no recurring charge.</p>
-
-    <h2>4. Zero-Knowledge Architecture</h2>
-    <div class="warning-box">
-      <strong>⚠️ Important:</strong> QuietStor uses zero-knowledge encryption. We cannot access, recover, or reset your vault password or data under any circumstances. If you forget your password, your encrypted data is permanently and irreversibly lost. By using the vault, you acknowledge and accept this risk.
-    </div>
-
-    <h2>5. User Responsibilities</h2>
-    <p>You are solely responsible for remembering your vault password, creating regular backups (via ZIP export), ensuring your device is secure (screen lock, up-to-date OS), and using the App in compliance with applicable laws.</p>
-
-    <h2>6. Intellectual Property</h2>
-    <p>QuietStor, its code, design, and assets are the property of the developer. You may not reverse engineer, decompile, or distribute the App except as permitted by applicable law.</p>
-
-    <h2>7. Limitation of Liability</h2>
-    <p>QuietStor is provided "as is" without warranty. To the maximum extent permitted by law, the developer is not liable for any data loss, damage, or other consequences arising from use of the App, including but not limited to forgotten passwords, device failures, or data corruption.</p>
-
-    <h2>8. Changes to Terms</h2>
-    <p>We may update these terms. Changes will be posted on this page. Continued use constitutes acceptance.</p>
-
-    <h2>9. Governing Law</h2>
-    <p>These terms are governed by the laws of the European Union and applicable member state law.</p>
-
-    <h2>10. Contact</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-  </div>
-
-  <!-- FR -->
-  <div class="page-content" data-content-lang="fr">
-    <h2>1. Acceptation des conditions</h2>
-    <p>En téléchargeant, installant ou utilisant QuietStor (« l'Application »), vous acceptez ces Conditions d'utilisation. Si vous n'acceptez pas, veuillez ne pas utiliser l'Application.</p>
+    <h2>1. Acceptation</h2>
+    <p>En installant ou utilisant QuietStor, vous acceptez ces conditions. Si vous n'êtes pas d'accord, désinstallez l'application.</p>
 
     <h2>2. Description du service</h2>
-    <p>QuietStor est un gestionnaire de fichiers Android axé sur la confidentialité, avec coffre-fort chiffré, outils de nettoyage et export ZIP portable. L'Application fonctionne <strong>100% hors-ligne</strong>.</p>
+    <p>QuietStor est un <strong>gestionnaire de fichiers Android axé sur la vie privée</strong> avec coffre-fort chiffré AES-256. L'app fonctionne 100% hors-ligne.</p>
 
-    <h2>3. Offre gratuite & Premium</h2>
-    <p>QuietStor propose une offre gratuite (gestionnaire, coffre-fort jusqu'à 500 Mo, mot de passe + biométrie, 4 outils de nettoyage). Les fonctionnalités Premium sont disponibles via un <strong>achat unique de 1,99 €</strong> sur Google Play. Aucun abonnement, aucun frais récurrent.</p>
+    <h2>3. Gratuit & Premium</h2>
+    <p>QuietStor est gratuit avec : gestion de fichiers, coffre chiffré (limite 500 Mo), mot de passe + biométrie, et 4 outils de nettoyage.</p>
+    <p><strong>Premium</strong> est un achat unique (1,99 € / $1.99) via Google Play : stockage illimité, export ZIP, Mood Stickers, détecteur de doublons, nettoyeur WhatsApp et sauvegarde auto caméra. Aucun abonnement.</p>
 
-    <h2>4. Architecture zero-knowledge</h2>
-    <div class="warning-box">
-      <strong>⚠️ Important :</strong> QuietStor utilise un chiffrement zero-knowledge. Nous ne pouvons ni accéder, ni récupérer, ni réinitialiser votre mot de passe ou vos données. Si vous oubliez votre mot de passe, vos données chiffrées sont définitivement et irréversiblement perdues.
-    </div>
+    <h2>4. Votre responsabilité</h2>
+    <div class="warn-box"><strong>⚠️ Vous êtes seul responsable de votre mot de passe.</strong> QuietStor utilise le chiffrement zero-knowledge. Nous ne voyons jamais votre mot de passe et ne pouvons pas le récupérer. Mot de passe oublié = données perdues définitivement.</div>
+    <p>Il est de votre responsabilité de créer des sauvegardes (export ZIP).</p>
 
-    <h2>5. Responsabilités de l'utilisateur</h2>
-    <p>Vous êtes seul responsable de la mémorisation de votre mot de passe, de la création de sauvegardes régulières (export ZIP), de la sécurité de votre appareil et de l'utilisation conforme aux lois applicables.</p>
+    <h2>5. Propriété intellectuelle</h2>
+    <p>QuietStor, son design, son code et sa marque sont notre propriété. Vos fichiers restent les vôtres — nous n'y avons aucun accès.</p>
 
-    <h2>6. Propriété intellectuelle</h2>
-    <p>QuietStor, son code, son design et ses éléments sont la propriété du développeur.</p>
+    <h2>6. Limitation de responsabilité</h2>
+    <p>QuietStor est fourni « en l'état ». Nous ne sommes pas responsables des pertes de données. Responsabilité maximale limitée au prix d'achat (1,99 €).</p>
 
-    <h2>7. Limitation de responsabilité</h2>
-    <p>QuietStor est fourni « en l'état », sans garantie. Le développeur ne saurait être tenu responsable de toute perte de données.</p>
-
-    <h2>8. Modifications</h2>
-    <p>Ces conditions peuvent être modifiées. Les changements seront publiés sur cette page.</p>
-
-    <h2>9. Droit applicable</h2>
-    <p>Ces conditions sont régies par le droit de l'Union européenne et le droit de l'État membre applicable.</p>
-
-    <h2>10. Contact</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    <div class="legal-contact">Questions ? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- ES -->
-  <div class="page-content" data-content-lang="es">
-    <h2>1. Aceptación de términos</h2>
-    <p>Al descargar, instalar o usar QuietStor ("la App"), aceptas estos Términos de Servicio.</p>
+  <div class="lang-content" data-lang="es">
+    <h1>Términos de Servicio</h1>
+    <p class="legal-updated">Última actualización: 16 de febrero de 2026</p>
 
-    <h2>2. Descripción del servicio</h2>
-    <p>QuietStor es un gestor de archivos Android con bóveda cifrada, herramientas de limpieza y exportación ZIP. Funciona <strong>100% sin conexión</strong>.</p>
+    <h2>1. Aceptación</h2>
+    <p>Al instalar o usar QuietStor, aceptas estos términos.</p>
 
-    <h2>3. Plan gratuito y Premium</h2>
-    <p>Funciones gratuitas: gestor de archivos, bóveda hasta 500 MB, contraseña + biometría, 4 herramientas. Premium: <strong>compra única de 1,99 €/$1.99</strong> via Google Play. Sin suscripción.</p>
+    <h2>2. Descripción</h2>
+    <p>QuietStor es un <strong>gestor de archivos Android orientado a la privacidad</strong> con bóveda cifrada AES-256. 100% sin conexión.</p>
 
-    <h2>4. Arquitectura zero-knowledge</h2>
-    <div class="warning-box">
-      <strong>⚠️ Importante:</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanente e irreversiblemente. No podemos recuperarlos.
-    </div>
+    <h2>3. Gratis & Premium</h2>
+    <p>Gratis: gestor de archivos, bóveda (500 MB), contraseña + biometría, 4 herramientas. <strong>Premium (1,99 € / $1.99, compra única)</strong>: almacenamiento ilimitado, exportación ZIP, Mood Stickers, detector de duplicados, limpiador WhatsApp y respaldo automático de cámara.</p>
 
-    <h2>5. Responsabilidades del usuario</h2>
-    <p>Eres responsable de recordar tu contraseña, crear backups regulares y mantener tu dispositivo seguro.</p>
+    <h2>4. Tu responsabilidad</h2>
+    <div class="warn-box"><strong>⚠️ Eres responsable de tu contraseña.</strong> Cifrado zero-knowledge. Contraseña olvidada = datos perdidos permanentemente.</div>
 
-    <h2>6. Propiedad intelectual</h2>
-    <p>QuietStor y sus componentes son propiedad del desarrollador.</p>
+    <h2>5. Limitación de responsabilidad</h2>
+    <p>QuietStor se proporciona "tal cual". Responsabilidad máxima: precio de compra (1,99 €).</p>
 
-    <h2>7. Limitación de responsabilidad</h2>
-    <p>QuietStor se proporciona "tal cual". El desarrollador no es responsable de pérdida de datos.</p>
-
-    <h2>8. Cambios</h2>
-    <p>Estos términos pueden actualizarse. Los cambios se publicarán aquí.</p>
-
-    <h2>9. Ley aplicable</h2>
-    <p>Legislación de la Unión Europea.</p>
-
-    <h2>10. Contacto</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    <div class="legal-contact">¿Preguntas? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- DE -->
-  <div class="page-content" data-content-lang="de">
-    <h2>1. Annahme der Bedingungen</h2>
-    <p>Durch das Herunterladen, Installieren oder Verwenden von QuietStor („die App") stimmen Sie diesen Nutzungsbedingungen zu.</p>
+  <div class="lang-content" data-lang="de">
+    <h1>Nutzungsbedingungen</h1>
+    <p class="legal-updated">Zuletzt aktualisiert: 16. Februar 2026</p>
 
-    <h2>2. Beschreibung des Dienstes</h2>
-    <p>QuietStor ist ein datenschutzorientierter Android-Dateimanager mit verschlüsseltem Tresor, Reinigungstools und ZIP-Export. Die App funktioniert <strong>100% offline</strong>.</p>
+    <h2>1. Akzeptanz</h2>
+    <p>Mit der Installation oder Nutzung von QuietStor akzeptieren Sie diese Bedingungen.</p>
+
+    <h2>2. Beschreibung</h2>
+    <p>QuietStor ist ein <strong>datenschutzorientierter Android-Dateimanager</strong> mit AES-256-verschlüsseltem Tresor. 100% offline.</p>
 
     <h2>3. Kostenlos & Premium</h2>
-    <p>Kostenlose Funktionen: Dateimanager, Tresor bis 500 MB, Passwort + Biometrie, 4 Reinigungstools. Premium: <strong>Einmalkauf für 1,99 €</strong> über Google Play. Kein Abo.</p>
+    <p>Kostenlos: Dateimanager, Tresor (500 MB), Passwort + Biometrie, 4 Reinigungstools. <strong>Premium (1,99 € / $1.99, Einmalkauf)</strong>: unbegrenzter Tresor, ZIP-Export, Mood Stickers, Duplikat-Finder, WhatsApp-Reiniger und Auto-Backup Kamera.</p>
 
-    <h2>4. Zero-Knowledge-Architektur</h2>
-    <div class="warning-box">
-      <strong>⚠️ Wichtig:</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre verschlüsselten Daten dauerhaft und unwiderruflich verloren. Wir können sie nicht wiederherstellen.
-    </div>
+    <h2>4. Ihre Verantwortung</h2>
+    <div class="warn-box"><strong>⚠️ Sie sind allein verantwortlich für Ihr Passwort.</strong> Zero-Knowledge-Verschlüsselung. Passwort vergessen = Daten dauerhaft verloren.</div>
 
-    <h2>5. Pflichten des Nutzers</h2>
-    <p>Sie sind allein verantwortlich für die Erinnerung an Ihr Passwort, regelmäßige Backups und die Sicherheit Ihres Geräts.</p>
+    <h2>5. Haftungsbeschränkung</h2>
+    <p>QuietStor wird "wie besehen" bereitgestellt. Maximale Haftung: Kaufpreis (1,99 €).</p>
 
-    <h2>6. Geistiges Eigentum</h2>
-    <p>QuietStor und seine Komponenten sind Eigentum des Entwicklers.</p>
-
-    <h2>7. Haftungsbeschränkung</h2>
-    <p>QuietStor wird „wie besehen" bereitgestellt. Der Entwickler haftet nicht für Datenverlust.</p>
-
-    <h2>8. Änderungen</h2>
-    <p>Diese Bedingungen können aktualisiert werden. Änderungen werden hier veröffentlicht.</p>
-
-    <h2>9. Anwendbares Recht</h2>
-    <p>Recht der Europäischen Union und des jeweiligen Mitgliedstaats.</p>
-
-    <h2>10. Kontakt</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    <div class="legal-contact">Fragen? <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <img src="/logo.svg" alt="QuietStor" class="footer-logo">
-    <div class="lang-selector">
-      <span class="globe">🌐</span>
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 <span class="lang-text">English</span></button>
-      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">🇫🇷 <span class="lang-text">Français</span></button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸 <span class="lang-text">Español</span></button>
-      <button class="lang-btn" data-lang="de" onclick="setLang('de')">🇩🇪 <span class="lang-text">Deutsch</span></button>
-    </div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/refund.html">Refund</a>
-    </div>
-    <div class="footer-contact"><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
-    <p class="copyright">© 2025–2026 QuietStor. All rights reserved.</p>
-  </footer>
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/faq.html">FAQ</a><a href="/privacy.html">Privacy</a><a href="/refund.html">Refund</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+</footer>
 
-  <script>
-    const TITLES = { en: 'Terms of Service', fr: "Conditions d'utilisation", es: 'Términos de servicio', de: 'Nutzungsbedingungen' };
-    const UPDATED = { en: 'Last updated: February 16, 2026', fr: 'Dernière mise à jour : 16 février 2026', es: 'Última actualización: 16 de febrero de 2026', de: 'Zuletzt aktualisiert: 16. Februar 2026' };
-
-    function getLang() {
-      const s = localStorage.getItem('quietstor-lang');
-      if (s && ['en','fr','es','de'].includes(s)) return s;
-      const n = (navigator.language || '').slice(0, 2);
-      return ['fr','es','de'].includes(n) ? n : 'en';
-    }
-    function setLang(l) { localStorage.setItem('quietstor-lang', l); applyLang(l); }
-    function applyLang(l) {
-      document.querySelectorAll('[data-content-lang]').forEach(el => el.classList.toggle('active', el.dataset.contentLang === l));
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
-      const t = document.querySelector('[data-i18n="title"]'); if (t) t.textContent = TITLES[l];
-      const u = document.querySelector('[data-i18n="updated"]'); if (u) u.textContent = UPDATED[l];
-      document.documentElement.lang = l;
-    }
-    document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
-  </script>
+<script>
+let currentLang = localStorage.getItem('qs-lang') || (navigator.language||'').slice(0,2);
+if (!['en','fr','es','de'].includes(currentLang)) currentLang = 'en';
+function setLang(l) { currentLang=l; localStorage.setItem('qs-lang',l); applyLang(); }
+function applyLang() {
+  document.querySelectorAll('.lang-content').forEach(e => e.classList.toggle('active', e.dataset.lang===currentLang));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase()===currentLang));
+  document.documentElement.lang = currentLang;
+}
+applyLang();
+</script>
 </body>
 </html>

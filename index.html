@@ -1,726 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuietStor — Your files. Your format. Forever portable.</title>
-  <meta name="description" content="Privacy-first Android file manager with AES-256 encrypted vault. Export to standard ZIP. 100% offline. No tracking. €1.99 one-time.">
-  <link rel="icon" href="/logo.svg">
-  <link rel="canonical" href="https://quietstor.app/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuietStor — Private File Manager & Encrypted Vault</title>
+<meta name="description" content="Privacy-first Android file manager with AES-256 encrypted vault and standard ZIP export. 100% offline, zero tracking. €1.99 one-time.">
+<meta property="og:title" content="QuietStor — Your files. Your format. Forever portable.">
+<meta property="og:description" content="AES-256 encrypted vault · ZIP Standard export · 100% offline · €1.99 one-time">
+<meta property="og:image" content="https://quietstor.app/og-image.png">
+<meta property="og:url" content="https://quietstor.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://quietstor.app">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+/* ============================
+   PAGE-SPECIFIC: INDEX
+   Liquid Noir — Premium Polish
+   ============================ */
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://quietstor.app/">
-  <meta property="og:title" content="QuietStor — Your files. Your format. Forever portable.">
-  <meta property="og:description" content="Privacy-first Android file manager with AES-256 encrypted vault. Export to standard ZIP. 100% offline. €1.99 one-time.">
-  <meta property="og:image" content="https://quietstor.app/og-image.png">
+/* --- Grain overlay --- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="QuietStor — Your files. Your format. Forever portable.">
-  <meta name="twitter:description" content="Privacy-first Android file manager with AES-256 encrypted vault. 100% offline. €1.99 one-time.">
-  <meta name="twitter:image" content="https://quietstor.app/og-image.png">
+/* --- Reveal animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  <style>
-    /* === HERO === */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
+/* Stagger children */
+.stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+.stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      left: -40%;
-      width: 180%;
-      height: 180%;
-      background: radial-gradient(ellipse at 50% 50%, rgba(34, 197, 94, 0.06) 0%, transparent 60%);
-      animation: heroPulse 20s ease-in-out infinite;
-    }
+/* --- Hero --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 7rem 2rem 5rem;
+  overflow: hidden;
+}
 
-    @keyframes heroPulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.05); opacity: 0.3; }
-    }
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--bg), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-    }
+.hero .blob-1 {
+  width: 700px; height: 700px;
+  top: 5%; left: 15%;
+  background: radial-gradient(circle at 30% 40%, rgba(34,197,94,0.09) 0%, rgba(34,197,94,0.02) 45%, transparent 70%);
+}
 
-    .logo {
-      width: 160px;
-      height: 160px;
-      margin-bottom: 1.5rem;
-      animation: logoFloat 4s ease-in-out infinite;
-      filter: drop-shadow(0 12px 32px var(--accent-glow));
-    }
+.hero .blob-2 {
+  width: 500px; height: 500px;
+  top: 20%; right: 5%;
+  background: radial-gradient(circle, rgba(34,197,94,0.05), transparent 65%);
+  animation-delay: -8s;
+  animation-duration: 18s;
+}
 
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.hero .blob-3 {
+  width: 300px; height: 300px;
+  bottom: 10%; left: 40%;
+  background: radial-gradient(circle, rgba(34,197,94,0.04), transparent 60%);
+  animation-delay: -13s;
+  animation-duration: 22s;
+}
 
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: 5px;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+}
 
-    .hero-tagline {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      opacity: 0.95;
-    }
+.hero-logo {
+  width: 76px; height: 76px;
+  border: 1.5px solid rgba(34,197,94,0.2);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+  background: rgba(34,197,94,0.03);
+  overflow: hidden;
+  position: relative;
+  animation: logoFloat 6s ease-in-out infinite;
+}
 
-    .hero-tagline .highlight { color: var(--accent); }
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--text2);
-      margin-bottom: 2.5rem;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.hero-logo::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.25), transparent 50%, rgba(34,197,94,0.1));
+  z-index: -1;
+}
 
-    .hero-cta { margin-bottom: 2.5rem; }
+.hero-logo img { width: 56px; height: 56px; border-radius: 14px; }
 
-    .hero-benefits {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
+.hero h1 {
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: heroTextIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
 
-    .benefit {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text2);
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      background: rgba(255, 252, 248, 0.03);
-      border-radius: 50px;
-      border: 1px solid var(--border);
-    }
+@keyframes heroTextIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* === FEATURES === */
-    .features {
-      padding: 5rem 2rem;
-      background: var(--bg2);
-    }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  line-height: 1.9;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  opacity: 0;
+  animation: heroTextIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroTextIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+}
 
-    .feature-card {
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
+/* --- Trust Bar --- */
+.trust-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  opacity: 0;
+  animation: heroTextIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+}
 
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-    }
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-    .feature-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
+.trust-badge:hover { color: var(--text-mid); }
 
-    .feature-card p {
-      color: var(--text2);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
+.trust-badge .icon-svg { width: 16px; height: 16px; stroke: var(--green); stroke-width: 2; }
 
-    .feature-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-    }
+/* --- Sections --- */
+.section {
+  padding: 7rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    .badge-unique {
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-    }
+.section-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
 
-    .badge-premium {
-      background: rgba(163, 113, 247, 0.15);
-      color: var(--premium);
-      border: 1px solid rgba(163, 113, 247, 0.3);
-    }
+.section-header .label { margin-bottom: 1rem; }
 
-    /* === HOW IT WORKS === */
-    .how-section {
-      padding: 5rem 2rem;
-    }
+/* --- Feature Grid --- */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.feat-card {
+  padding: 2.75rem 2.25rem;
+  background: var(--bg);
+  transition: background 0.5s ease, transform 0.4s ease;
+  position: relative;
+}
 
-    .step { text-align: center; }
+.feat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
 
-    .step-num {
-      width: 48px;
-      height: 48px;
-      background: var(--accent);
-      color: var(--text-inv);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 0 auto 1rem;
-    }
+.feat-card:hover { background: var(--bg-raised); }
+.feat-card:hover::after { opacity: 0.3; }
 
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
+.feat-card .icon-wrap {
+  width: 52px; height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-subtle);
+  border: 1px solid rgba(34,197,94,0.12);
+  border-radius: 14px;
+  margin-bottom: 1.4rem;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
 
-    .step p {
-      color: var(--text2);
-      font-size: 0.88rem;
-    }
+.feat-card:hover .icon-wrap {
+  border-color: rgba(34,197,94,0.3);
+  box-shadow: 0 0 24px rgba(34,197,94,0.08);
+}
 
-    .step-highlight {
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      border-radius: 16px;
-      padding: 1.5rem 1rem;
-    }
+.feat-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.3px;
+}
 
-    .step-highlight .step-num {
-      background: var(--premium);
-    }
+.feat-card p {
+  font-size: 0.84rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
 
-    .compat-icons {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-      font-size: 0.8rem;
-      color: var(--text3);
-    }
+/* --- How It Works --- */
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  position: relative;
+}
 
-    .compat-icons span {
-      background: var(--bg3);
-      padding: 3px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
+.steps-row::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-green), var(--border-green), transparent);
+}
 
-    /* === PRICING === */
-    .pricing {
-      padding: 5rem 2rem;
-      background: var(--bg2);
-    }
+.step {
+  text-align: center;
+  position: relative;
+}
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+.step-num {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  background: var(--bg);
+  border: 1px solid rgba(34,197,94,0.15);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.4s, box-shadow 0.4s;
+}
 
-    .pricing-card {
-      padding: 2rem;
-      border-radius: 16px;
-      position: relative;
-    }
+.step:hover .step-num {
+  border-color: rgba(34,197,94,0.4);
+  box-shadow: 0 0 32px rgba(34,197,94,0.1);
+}
 
-    .pricing-card.free {
-      background: rgba(255, 252, 248, 0.03);
-      border: 1px solid var(--border);
-    }
+.step-num .icon-svg { width: 26px; height: 26px; }
 
-    .pricing-card.premium {
-      background: var(--accent-dim);
-      border: 2px solid var(--accent-border);
-    }
+.step-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.5rem;
+}
 
-    .pricing-card.premium::before {
-      content: '★';
-      position: absolute;
-      top: -12px;
-      right: 16px;
-      background: var(--accent);
-      color: var(--text-inv);
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-    }
+.step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.2px;
+}
 
-    .pricing-tier {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text3);
-      margin-bottom: 0.5rem;
-    }
+.step p {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
 
-    .pricing-card.premium .pricing-tier { color: var(--accent); }
+/* --- Pricing --- */
+.price-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: stretch;
+}
 
-    .pricing-price {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 0.25rem;
-    }
+.price-card {
+  flex: 1;
+  max-width: 360px;
+  padding: 2.75rem 2.25rem;
+  border-radius: var(--radius-lg);
+  text-align: left;
+  transition: transform 0.4s ease;
+}
 
-    .pricing-card.premium .pricing-price { color: var(--accent); }
+.price-card:hover { transform: translateY(-4px); }
 
-    .pricing-note {
-      font-size: 0.8rem;
-      color: var(--text3);
-      margin-bottom: 1.25rem;
-    }
+.price-card.free {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
 
-    .pricing-list {
-      list-style: none;
-      font-size: 0.88rem;
-      color: var(--text2);
-    }
+.price-card.premium {
+  background: rgba(34,197,94,0.04);
+  border: 1px solid rgba(34,197,94,0.18);
+  position: relative;
+  overflow: hidden;
+}
 
-    .pricing-list li {
-      padding: 0.3rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+.price-card.premium::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(34,197,94,0.08), transparent 70%);
+  pointer-events: none;
+}
 
-    .pricing-list li::before { content: '✓'; color: var(--accent); font-weight: 700; }
-    .pricing-list li.locked::before { content: '—'; color: var(--text3); }
-    .pricing-list li.locked { color: var(--text3); }
+.price-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
 
-    /* === PRIVACY === */
-    .privacy-section {
-      padding: 5rem 2rem;
-      text-align: center;
-    }
+.price-card.premium .price-tag { color: var(--green); }
 
-    .privacy-badges {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
+.price-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  letter-spacing: -2px;
+}
 
-    .p-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--accent-dim);
-      padding: 0.6rem 1.25rem;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      border: 1px solid var(--accent-border);
-    }
+.price-card.premium .price-amount { color: var(--green); }
 
-    /* === RESPONSIVE === */
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
-    }
+.price-note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 1.75rem;
+}
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.5rem; letter-spacing: 3px; }
-      .hero-tagline { font-size: 1.2rem; }
-      .hero-sub { font-size: 0.95rem; }
-      .features-grid { grid-template-columns: 1fr; max-width: 400px; }
-      .steps { grid-template-columns: 1fr; max-width: 320px; }
-      .hero-benefits { gap: 0.5rem; }
-      .benefit { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
-    }
-  </style>
+.price-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+
+.price-list li {
+  padding: 0.45rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-list li .check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-subtle);
+  flex-shrink: 0;
+}
+
+.price-list li .check svg { width: 10px; height: 10px; stroke: var(--green); stroke-width: 2.5; fill: none; }
+
+.price-list li.dim { opacity: 0.28; }
+.price-list li.dim .check { background: rgba(255,255,255,0.04); }
+.price-list li.dim .check svg { stroke: var(--text-dim); }
+
+/* --- Privacy Badges --- */
+.privacy-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.priv-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 2.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-width: 155px;
+  text-align: center;
+  transition: border-color 0.4s, transform 0.4s;
+}
+
+.priv-badge:hover {
+  border-color: rgba(34,197,94,0.2);
+  transform: translateY(-3px);
+}
+
+.priv-badge .icon-wrap {
+  width: 50px; height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-subtle);
+  border-radius: 14px;
+  transition: box-shadow 0.4s;
+}
+
+.priv-badge:hover .icon-wrap {
+  box-shadow: 0 0 20px rgba(34,197,94,0.1);
+}
+
+.priv-badge span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* --- CTA Banner --- */
+.cta-banner {
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta-banner h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.cta-banner p {
+  color: var(--text-mid);
+  margin-bottom: 2.25rem;
+  font-size: 1rem;
+  position: relative;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .steps-row { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .steps-row::before { display: none; }
+  .privacy-badges { gap: 0.75rem; }
+  .priv-badge { min-width: 140px; padding: 1.75rem 1rem; }
+  .section { padding: 5rem 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .feat-grid { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: 1fr; gap: 1.5rem; }
+  .trust-bar { gap: 1.25rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-sub { font-size: 0.92rem; }
+  .hero { padding: 6rem 1.25rem 3rem; }
+  .privacy-badges { flex-direction: column; align-items: center; }
+  .priv-badge { width: 100%; max-width: 280px; }
+}
+</style>
 </head>
 <body>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="/logo.svg" alt="QuietStor" class="logo">
-      <h1>QUIETSTOR</h1>
-      <p class="hero-tagline" data-i18n="tagline">Your files. Your format. <span class="highlight" data-i18n-html="tagline">Forever portable.</span></p>
-      <p class="hero-sub" data-i18n="sub">Keep your sensitive files safe, offline, and accessible only by you. Export to standard ZIP — open on any PC or Mac.</p>
+<!-- ======== HEADER ======== -->
+<header class="site-header">
+  <a href="/" class="site-logo">
+    <img src="/logo.svg" alt="QuietStor" width="36" height="36">
+    <span>QuietStor</span>
+  </a>
+  <nav class="site-nav">
+    <a href="/faq.html" class="hide-mobile" data-i18n="nav-faq">FAQ</a>
+    <a href="/privacy.html" class="hide-mobile" data-i18n="nav-privacy">Privacy</a>
+    <div class="lang-sel">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+  </nav>
+</header>
 
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-          <span data-i18n="cta">Coming Soon on Google Play</span>
-        </a>
+<!-- ======== HERO ======== -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <img src="/logo.svg" alt="QuietStor Shield">
+    </div>
+    <h1 class="t-display" data-i18n-html="hero-title">Your files.<br>Your format.<br><em class="t-accent">Forever portable.</em></h1>
+    <p class="hero-sub" data-i18n="hero-sub">The private file manager that respects you. AES-256 encrypted vault, standard ZIP export, zero tracking. €1.99 once — no subscription.</p>
+    <div class="cta-row">
+      <a href="#" class="btn-primary" data-i18n-html="hero-cta">
+        <svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg>
+        Coming Soon
+      </a>
+      <a href="#features" class="btn-ghost" data-i18n="hero-cta2">Learn more</a>
+    </div>
+    <div class="trust-bar">
+      <div class="trust-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span data-i18n="trust-1">AES-256</span>
       </div>
-
-      <div class="hero-benefits">
-        <div class="benefit"><span>🔒</span> <span data-i18n="b1">AES-256 Encryption</span></div>
-        <div class="benefit"><span>📴</span> <span data-i18n="b2">100% Offline</span></div>
-        <div class="benefit"><span>📦</span> <span data-i18n="b3">Standard ZIP Export</span></div>
-        <div class="benefit"><span>💰</span> <span data-i18n="b4">€1.99 One-Time</span></div>
+      <div class="trust-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><path d="M10.71 5.05A16 16 0 0122.56 9"/><path d="M1.42 9a15.91 15.91 0 014.7-2.88"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        <span data-i18n="trust-2">100% Offline</span>
+      </div>
+      <div class="trust-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 8V5a2 2 0 00-2-2H5a2 2 0 00-2 2v3"/><path d="M21 16v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3"/><path d="M4 12h16"/><path d="M12 3v18"/></svg>
+        <span data-i18n="trust-3">ZIP Standard</span>
+      </div>
+      <div class="trust-badge">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span data-i18n="trust-4">Made in EU</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ FEATURES ============ -->
-  <section class="features">
-    <h2 class="section-title" data-i18n="feat-title">Why QuietStor?</h2>
-    <p class="section-subtitle" data-i18n="feat-sub">Six reasons users choose us over the rest.</p>
+<!-- ======== FEATURES ======== -->
+<section class="section" id="features">
+  <div class="section-header reveal">
+    <div class="label" data-i18n="feat-label">// Features</div>
+    <h2 class="t-section" data-i18n="feat-title">Six reasons to switch.</h2>
+  </div>
 
-    <div class="features-grid">
-      <div class="glass-card feature-card">
-        <span class="feature-badge badge-unique" data-i18n="unique">Unique</span>
-        <div class="feature-icon">📦</div>
-        <h3 data-i18n="f1-t">ZIP Standard Export</h3>
-        <p data-i18n="f1-d">Export your vault to a standard encrypted ZIP. Open with 7-Zip, WinRAR, or macOS — no lock-in, ever.</p>
+  <div class="feat-grid stagger">
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 8V5a2 2 0 00-2-2H5a2 2 0 00-2 2v3"/><path d="M21 16v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3"/><path d="M4 12h16"/><path d="M12 3v18"/></svg>
       </div>
-      <div class="glass-card feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3 data-i18n="f2-t">Encrypted Vault</h3>
-        <p data-i18n="f2-d">AES-256-GCM encryption with password and biometric unlock. Zero-knowledge — forgot your password? Data is gone. By design.</p>
-      </div>
-      <div class="glass-card feature-card">
-        <div class="feature-icon">🧹</div>
-        <h3 data-i18n="f3-t">Storage Guardian</h3>
-        <p data-i18n="f3-d">6 smart cleaning tools: duplicates, large files, old screenshots, APKs, empty folders, WhatsApp media.</p>
-      </div>
-      <div class="glass-card feature-card">
-        <div class="feature-icon">📴</div>
-        <h3 data-i18n="f4-t">100% Offline</h3>
-        <p data-i18n="f4-d">No internet, no cloud, no servers, no tracking. Your files never leave your device.</p>
-      </div>
-      <div class="glass-card feature-card">
-        <span class="feature-badge badge-premium">Premium</span>
-        <div class="feature-icon">😊</div>
-        <h3 data-i18n="f5-t">Mood Stickers</h3>
-        <p data-i18n="f5-d">Tag your vault files with 6 emotional stickers for visual organization. A feature no competitor has.</p>
-      </div>
-      <div class="glass-card feature-card">
-        <div class="feature-icon">🚫</div>
-        <h3 data-i18n="f6-t">Zero Analytics</h3>
-        <p data-i18n="f6-d">No telemetry, no usage stats, no personal data. We literally cannot see your files.</p>
-      </div>
+      <h3 data-i18n="f1-t">ZIP Standard Export</h3>
+      <p data-i18n="f1-d">Export to encrypted ZIP. Open with 7-Zip, WinRAR, macOS. No vendor lock-in, ever.</p>
     </div>
-  </section>
-
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="how-section">
-    <h2 class="section-title" data-i18n="how-title">How It Works</h2>
-    <p class="section-subtitle" data-i18n="how-sub">From install to secure backup in 4 steps.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3 data-i18n="s1-t">Create Your Vault</h3>
-        <p data-i18n="s1-d">Set a strong password. Your encrypted vault is ready.</p>
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3 data-i18n="s2-t">Add Your Files</h3>
-        <p data-i18n="s2-d">Import photos, documents, videos — anything you want private.</p>
+      <h3 data-i18n="f2-t">Encrypted Vault</h3>
+      <p data-i18n="f2-d">AES-256-GCM encryption with password and biometric unlock. Zero-knowledge — forgot your password? Data is gone. By design.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3 data-i18n="s3-t">Files Are Encrypted</h3>
-        <p data-i18n="s3-d">AES-256-GCM encrypts each file instantly. Only you can access them.</p>
+      <h3 data-i18n="f3-t">Storage Guardian</h3>
+      <p data-i18n="f3-d">6 smart cleaning tools: duplicates, large files, old screenshots, APKs, empty folders, WhatsApp media.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><path d="M10.71 5.05A16 16 0 0122.56 9"/><path d="M1.42 9a15.91 15.91 0 014.7-2.88"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
       </div>
-      <div class="step step-highlight">
-        <div class="step-num">4</div>
-        <h3 data-i18n="s4-t">Export as Standard ZIP</h3>
-        <p data-i18n="s4-d">Export to a password-protected ZIP you can open on any computer. Your files work everywhere.</p>
-        <div class="compat-icons">
-          <span>7-Zip</span>
-          <span>WinRAR</span>
-          <span>macOS</span>
-        </div>
+      <h3 data-i18n="f4-t">100% Offline</h3>
+      <p data-i18n="f4-d">No internet. No cloud. No servers. Your files never leave your device.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
       </div>
+      <h3 data-i18n="f5-t">Mood Stickers</h3>
+      <p data-i18n="f5-d">Tag vault files with 6 emotional stickers. Visual organization — a feature no competitor has.</p>
     </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section class="pricing">
-    <h2 class="section-title" data-i18n="price-title">Simple Pricing</h2>
-    <p class="section-subtitle" data-i18n="price-sub">Privacy is free. Power is €1.99 — once, forever.</p>
-
-    <div class="pricing-grid">
-      <div class="pricing-card free">
-        <div class="pricing-tier" data-i18n="tier-free">Free</div>
-        <div class="pricing-price">€0</div>
-        <div class="pricing-note" data-i18n="price-free-note">Forever free</div>
-        <ul class="pricing-list">
-          <li data-i18n="pf1">Full file manager</li>
-          <li data-i18n="pf2">Encrypted vault (500 MB)</li>
-          <li data-i18n="pf3">Password + biometric unlock</li>
-          <li data-i18n="pf4">4 cleaning tools</li>
-          <li class="locked" data-i18n="pf5">ZIP export</li>
-          <li class="locked" data-i18n="pf6">Mood Stickers</li>
-          <li class="locked" data-i18n="pf7">Duplicates & WhatsApp cleaning</li>
-        </ul>
+    <div class="feat-card reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/><path d="M14.12 14.12a3 3 0 11-4.24-4.24"/></svg>
       </div>
-      <div class="pricing-card premium">
-        <div class="pricing-tier">Premium</div>
-        <div class="pricing-price">€1.99</div>
-        <div class="pricing-note" data-i18n="price-prem-note">One-time purchase — no subscription</div>
-        <ul class="pricing-list">
-          <li data-i18n="pp1">Everything in Free</li>
-          <li data-i18n="pp2">Unlimited vault storage</li>
-          <li data-i18n="pp3">ZIP Standard export</li>
-          <li data-i18n="pp4">6 Mood Stickers</li>
-          <li data-i18n="pp5">Duplicates finder</li>
-          <li data-i18n="pp6">WhatsApp cleaner</li>
-          <li data-i18n="pp7">Screenshot protection</li>
-        </ul>
+      <h3 data-i18n="f6-t">Zero Analytics</h3>
+      <p data-i18n="f6-d">No telemetry. No stats. No ads. We literally cannot see your files.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== HOW IT WORKS ======== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="label" data-i18n="how-label">// How it works</div>
+    <h2 class="t-section" data-i18n="how-title">Four steps to privacy.</h2>
+  </div>
+
+  <div class="steps-row stagger">
+    <div class="step reveal">
+      <div class="step-num">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
+      <span class="step-count" data-i18n="step-1">Step 01</span>
+      <h3 data-i18n="s1-t">Create Your Vault</h3>
+      <p data-i18n="s1-d">Set a strong password. Your encrypted vault is ready.</p>
     </div>
-  </section>
-
-  <!-- ============ PRIVACY ============ -->
-  <section class="privacy-section">
-    <h2 class="section-title" data-i18n="priv-title">Privacy by Design</h2>
-    <p class="section-subtitle" data-i18n="priv-sub">Built from the ground up with one mission: protect your privacy without compromise.</p>
-    <div class="privacy-badges">
-      <div class="p-badge">✅ <span data-i18n="pb1">No Account Required</span></div>
-      <div class="p-badge">✅ <span data-i18n="pb2">No Internet Access</span></div>
-      <div class="p-badge">✅ <span data-i18n="pb3">No Data Collection</span></div>
-      <div class="p-badge">✅ <span data-i18n="pb4">GDPR & CCPA Compliant</span></div>
+    <div class="step reveal">
+      <div class="step-num">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <span class="step-count" data-i18n="step-2">Step 02</span>
+      <h3 data-i18n="s2-t">Import Your Files</h3>
+      <p data-i18n="s2-d">Photos, videos, documents — encrypted instantly on import.</p>
     </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <img src="/logo.svg" alt="QuietStor" class="footer-logo">
-
-    <div class="lang-selector">
-      <span class="globe">🌐</span>
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 <span class="lang-text">English</span></button>
-      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">🇫🇷 <span class="lang-text">Français</span></button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸 <span class="lang-text">Español</span></button>
-      <button class="lang-btn" data-lang="de" onclick="setLang('de')">🇩🇪 <span class="lang-text">Deutsch</span></button>
+    <div class="step reveal">
+      <div class="step-num">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <span class="step-count" data-i18n="step-3">Step 03</span>
+      <h3 data-i18n="s3-t">Lock &amp; Protect</h3>
+      <p data-i18n="s3-d">Password + biometric. 5-minute auto-lock. Anti-screenshot.</p>
     </div>
-
-    <div class="footer-links">
-      <a href="/faq.html" data-i18n="nav-faq">FAQ</a>
-      <a href="/privacy.html" data-i18n="nav-privacy">Privacy Policy</a>
-      <a href="/terms.html" data-i18n="nav-terms">Terms of Service</a>
-      <a href="/refund.html" data-i18n="nav-refund">Refund Policy</a>
+    <div class="step reveal">
+      <div class="step-num">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 8V5a2 2 0 00-2-2H5a2 2 0 00-2 2v3"/><path d="M21 16v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3"/><path d="M4 12h16"/><path d="M12 3v18"/></svg>
+      </div>
+      <span class="step-count" data-i18n="step-4">Step 04</span>
+      <h3 data-i18n="s4-t">Export as ZIP</h3>
+      <p data-i18n="s4-d">Standard encrypted ZIP. Open on any PC, Mac, or Linux.</p>
     </div>
-    <div class="footer-contact">
-      <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a>
+  </div>
+</section>
+
+<!-- ======== PRICING ======== -->
+<section class="section" id="pricing">
+  <div class="section-header reveal">
+    <div class="label" data-i18n="price-label">// Pricing</div>
+    <h2 class="t-section" data-i18n="price-title">Pay once. Keep forever.</h2>
+  </div>
+
+  <div class="price-grid">
+    <!-- Free -->
+    <div class="price-card free reveal">
+      <div class="price-tag" data-i18n="p-free-tag">Free</div>
+      <div class="price-amount">€0</div>
+      <div class="price-note" data-i18n="p-free-note">Forever</div>
+      <ul class="price-list">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pf1">Full file manager</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pf2">Encrypted vault (500 MB)</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pf3">Password + biometric unlock</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pf4">4 cleaning tools</span></li>
+        <li class="dim"><span class="check"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span data-i18n="pf5x">ZIP export</span></li>
+        <li class="dim"><span class="check"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span data-i18n="pf6x">Mood Stickers</span></li>
+      </ul>
     </div>
-    <p class="copyright">© 2025–2026 QuietStor. <span data-i18n="rights">All rights reserved.</span></p>
-  </footer>
+    <!-- Premium -->
+    <div class="price-card premium reveal">
+      <div class="price-tag" data-i18n="p-prem-tag">Premium</div>
+      <div class="price-amount">€1.99</div>
+      <div class="price-note" data-i18n="p-prem-note">One-time — no subscription</div>
+      <ul class="price-list">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp0">Everything in Free</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp1">Unlimited vault storage</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp2">ZIP Standard export</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp3">6 Mood Stickers</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp4">Duplicates finder</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp5">WhatsApp cleaner</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span data-i18n="pp6">Auto-backup camera</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- ============ TRANSLATIONS ============ -->
-  <script>
-    const T = {
-      en: {
-        'tagline': 'Your files. Your format. <span class="highlight">Forever portable.</span>',
-        'sub': 'Keep your sensitive files safe, offline, and accessible only by you. Export to standard ZIP\u00a0— open on any PC or Mac.',
-        'cta': 'Coming Soon on Google Play',
-        'b1': 'AES-256 Encryption', 'b2': '100% Offline', 'b3': 'Standard ZIP Export', 'b4': '\u20ac1.99 One-Time',
-        'feat-title': 'Why QuietStor?',
-        'feat-sub': 'Six reasons users choose us over the rest.',
-        'unique': 'Unique', 
-        'f1-t': 'ZIP Standard Export', 'f1-d': 'Export your vault to a standard encrypted ZIP. Open with 7-Zip, WinRAR, or macOS\u00a0\u2014 no lock-in, ever.',
-        'f2-t': 'Encrypted Vault', 'f2-d': 'AES-256-GCM encryption with password and biometric unlock. Zero-knowledge\u00a0\u2014 forgot your password? Data is gone. By design.',
-        'f3-t': 'Storage Guardian', 'f3-d': '6 smart cleaning tools: duplicates, large files, old screenshots, APKs, empty folders, WhatsApp media.',
-        'f4-t': '100% Offline', 'f4-d': 'No internet, no cloud, no servers, no tracking. Your files never leave your device.',
-        'f5-t': 'Mood Stickers', 'f5-d': 'Tag your vault files with 6 emotional stickers for visual organization. A feature no competitor has.',
-        'f6-t': 'Zero Analytics', 'f6-d': 'No telemetry, no usage stats, no personal data. We literally cannot see your files.',
-        'how-title': 'How It Works', 'how-sub': 'From install to secure backup in 4 steps.',
-        's1-t': 'Create Your Vault', 's1-d': 'Set a strong password. Your encrypted vault is ready.',
-        's2-t': 'Add Your Files', 's2-d': 'Import photos, documents, videos\u00a0\u2014 anything you want private.',
-        's3-t': 'Files Are Encrypted', 's3-d': 'AES-256-GCM encrypts each file instantly. Only you can access them.',
-        's4-t': 'Export as Standard ZIP', 's4-d': 'Export to a password-protected ZIP you can open on any computer. Your files work everywhere.',
-        'price-title': 'Simple Pricing', 'price-sub': 'Privacy is free. Power is \u20ac1.99\u00a0\u2014 once, forever.',
-        'tier-free': 'Free', 'price-free-note': 'Forever free',
-        'pf1': 'Full file manager', 'pf2': 'Encrypted vault (500\u00a0MB)', 'pf3': 'Password + biometric unlock', 'pf4': '4 cleaning tools',
-        'pf5': 'ZIP export', 'pf6': 'Mood Stickers', 'pf7': 'Duplicates & WhatsApp cleaning',
-        'price-prem-note': 'One-time purchase\u00a0\u2014 no subscription',
-        'pp1': 'Everything in Free', 'pp2': 'Unlimited vault storage', 'pp3': 'ZIP Standard export',
-        'pp4': '6 Mood Stickers', 'pp5': 'Duplicates finder', 'pp6': 'WhatsApp cleaner', 'pp7': 'Screenshot protection',
-        'priv-title': 'Privacy by Design', 'priv-sub': 'Built from the ground up with one mission: protect your privacy without compromise.',
-        'pb1': 'No Account Required', 'pb2': 'No Internet Access', 'pb3': 'No Data Collection', 'pb4': 'GDPR & CCPA Compliant',
-        'nav-faq': 'FAQ', 'nav-privacy': 'Privacy Policy', 'nav-terms': 'Terms of Service', 'nav-refund': 'Refund Policy',
-        'rights': 'All rights reserved.'
-      },
-      fr: {
-        'tagline': 'Vos fichiers. Votre format. <span class="highlight">Portables pour toujours.</span>',
-        'sub': 'Gardez vos fichiers sensibles en s\u00e9curit\u00e9, hors-ligne, accessibles uniquement par vous. Exportez en ZIP standard\u00a0\u2014 ouvrable sur PC ou Mac.',
-        'cta': 'Bient\u00f4t sur Google Play',
-        'b1': 'Chiffrement AES-256', 'b2': '100% Hors-ligne', 'b3': 'Export ZIP standard', 'b4': '1,99\u00a0\u20ac unique',
-        'feat-title': 'Pourquoi QuietStor\u00a0?',
-        'feat-sub': 'Six raisons de nous choisir plut\u00f4t que le reste.',
-        'unique': 'Unique',
-        'f1-t': 'Export ZIP Standard', 'f1-d': 'Exportez votre coffre-fort en ZIP chiffr\u00e9 standard. Ouvrable avec 7-Zip, WinRAR ou macOS\u00a0\u2014 aucun verrouillage propri\u00e9taire.',
-        'f2-t': 'Coffre-fort chiffr\u00e9', 'f2-d': 'Chiffrement AES-256-GCM avec mot de passe et biom\u00e9trie. Z\u00e9ro-knowledge\u00a0\u2014 mot de passe oubli\u00e9\u00a0? Donn\u00e9es perdues. Par conception.',
-        'f3-t': 'Storage Guardian', 'f3-d': '6 outils de nettoyage\u00a0: doublons, gros fichiers, vieilles captures, APK, dossiers vides, WhatsApp.',
-        'f4-t': '100% Hors-ligne', 'f4-d': 'Pas d\u2019internet, pas de cloud, pas de serveurs, pas de tracking. Vos fichiers restent sur votre appareil.',
-        'f5-t': 'Mood Stickers', 'f5-d': 'Tagguez vos fichiers coffre-fort avec 6 stickers \u00e9motionnels. Une fonctionnalit\u00e9 qu\u2019aucun concurrent ne propose.',
-        'f6-t': 'Z\u00e9ro analytics', 'f6-d': 'Pas de t\u00e9l\u00e9m\u00e9trie, pas de statistiques, aucune donn\u00e9e personnelle. Nous ne pouvons litt\u00e9ralement pas voir vos fichiers.',
-        'how-title': 'Comment \u00e7a marche', 'how-sub': 'De l\u2019installation \u00e0 la sauvegarde en 4 \u00e9tapes.',
-        's1-t': 'Cr\u00e9ez votre coffre-fort', 's1-d': 'D\u00e9finissez un mot de passe fort. Votre coffre-fort chiffr\u00e9 est pr\u00eat.',
-        's2-t': 'Ajoutez vos fichiers', 's2-d': 'Importez photos, documents, vid\u00e9os\u00a0\u2014 tout ce que vous voulez prot\u00e9ger.',
-        's3-t': 'Fichiers chiffr\u00e9s', 's3-d': 'Chaque fichier est chiffr\u00e9 instantan\u00e9ment en AES-256-GCM. Vous seul y avez acc\u00e8s.',
-        's4-t': 'Exportez en ZIP standard', 's4-d': 'Exportez en ZIP prot\u00e9g\u00e9 par mot de passe, ouvrable sur n\u2019importe quel ordinateur. Vos fichiers marchent partout.',
-        'price-title': 'Tarification simple', 'price-sub': 'La confidentialit\u00e9 est gratuite. La puissance co\u00fbte 1,99\u00a0\u20ac\u00a0\u2014 une fois, pour toujours.',
-        'tier-free': 'Gratuit', 'price-free-note': 'Gratuit pour toujours',
-        'pf1': 'Gestionnaire de fichiers complet', 'pf2': 'Coffre-fort chiffr\u00e9 (500\u00a0Mo)', 'pf3': 'Mot de passe + biom\u00e9trie', 'pf4': '4 outils de nettoyage',
-        'pf5': 'Export ZIP', 'pf6': 'Mood Stickers', 'pf7': 'Doublons & nettoyage WhatsApp',
-        'price-prem-note': 'Achat unique\u00a0\u2014 aucun abonnement',
-        'pp1': 'Tout le gratuit', 'pp2': 'Stockage coffre-fort illimit\u00e9', 'pp3': 'Export ZIP Standard',
-        'pp4': '6 Mood Stickers', 'pp5': 'D\u00e9tecteur de doublons', 'pp6': 'Nettoyeur WhatsApp', 'pp7': 'Protection anti-capture',
-        'priv-title': 'Confidentialit\u00e9 par conception', 'priv-sub': 'Con\u00e7u d\u00e8s le d\u00e9part avec une seule mission\u00a0: prot\u00e9ger votre vie priv\u00e9e sans compromis.',
-        'pb1': 'Pas de compte requis', 'pb2': 'Pas d\u2019acc\u00e8s internet', 'pb3': 'Aucune collecte de donn\u00e9es', 'pb4': 'Conforme RGPD & CCPA',
-        'nav-faq': 'FAQ', 'nav-privacy': 'Politique de confidentialit\u00e9', 'nav-terms': 'Conditions d\u2019utilisation', 'nav-refund': 'Politique de remboursement',
-        'rights': 'Tous droits r\u00e9serv\u00e9s.'
-      },
-      es: {
-        'tagline': 'Tus archivos. Tu formato. <span class="highlight">Siempre portables.</span>',
-        'sub': 'Mant\u00e9n tus archivos sensibles seguros, sin conexi\u00f3n, accesibles solo por ti. Exporta en ZIP est\u00e1ndar\u00a0\u2014 abre en cualquier PC o Mac.',
-        'cta': 'Pr\u00f3ximamente en Google Play',
-        'b1': 'Cifrado AES-256', 'b2': '100% Sin conexi\u00f3n', 'b3': 'Export ZIP est\u00e1ndar', 'b4': '1,99\u00a0\u20ac \u00fanico',
-        'feat-title': '\u00bfPor qu\u00e9 QuietStor?',
-        'feat-sub': 'Seis razones para elegirnos.',
-        'unique': '\u00danico',
-        'f1-t': 'Export ZIP Est\u00e1ndar', 'f1-d': 'Exporta tu b\u00f3veda en ZIP cifrado est\u00e1ndar. Abre con 7-Zip, WinRAR o macOS\u00a0\u2014 sin bloqueo propietario.',
-        'f2-t': 'B\u00f3veda cifrada', 'f2-d': 'Cifrado AES-256-GCM con contrase\u00f1a y biometr\u00eda. Zero-knowledge\u00a0\u2014 \u00bfolvidaste tu contrase\u00f1a? Datos perdidos. Por dise\u00f1o.',
-        'f3-t': 'Storage Guardian', 'f3-d': '6 herramientas de limpieza: duplicados, archivos grandes, capturas antiguas, APK, carpetas vac\u00edas, WhatsApp.',
-        'f4-t': '100% Sin conexi\u00f3n', 'f4-d': 'Sin internet, sin nube, sin servidores, sin rastreo. Tus archivos nunca salen de tu dispositivo.',
-        'f5-t': 'Mood Stickers', 'f5-d': 'Etiqueta tus archivos con 6 stickers emocionales. Una funci\u00f3n que ning\u00fan competidor tiene.',
-        'f6-t': 'Cero analytics', 'f6-d': 'Sin telemetr\u00eda, sin estad\u00edsticas, sin datos personales. Literalmente no podemos ver tus archivos.',
-        'how-title': 'C\u00f3mo funciona', 'how-sub': 'De la instalaci\u00f3n a la copia de seguridad en 4 pasos.',
-        's1-t': 'Crea tu b\u00f3veda', 's1-d': 'Configura una contrase\u00f1a segura. Tu b\u00f3veda cifrada est\u00e1 lista.',
-        's2-t': 'A\u00f1ade tus archivos', 's2-d': 'Importa fotos, documentos, v\u00eddeos\u00a0\u2014 todo lo que quieras proteger.',
-        's3-t': 'Archivos cifrados', 's3-d': 'Cada archivo se cifra instant\u00e1neamente con AES-256-GCM. Solo t\u00fa puedes acceder.',
-        's4-t': 'Exporta como ZIP est\u00e1ndar', 's4-d': 'Exporta en ZIP protegido con contrase\u00f1a, que puedes abrir en cualquier ordenador.',
-        'price-title': 'Precio simple', 'price-sub': 'La privacidad es gratis. El poder cuesta 1,99\u00a0\u20ac\u00a0\u2014 una vez, para siempre.',
-        'tier-free': 'Gratis', 'price-free-note': 'Gratis para siempre',
-        'pf1': 'Gestor de archivos completo', 'pf2': 'B\u00f3veda cifrada (500\u00a0MB)', 'pf3': 'Contrase\u00f1a + biometr\u00eda',
-        'pf5': 'Export ZIP', 'pf6': 'Mood Stickers', 'pf7': 'Duplicados y limpieza WhatsApp',
-        'price-prem-note': 'Compra \u00fanica\u00a0\u2014 sin suscripci\u00f3n',
-        'pp1': 'Todo lo gratis', 'pp2': 'B\u00f3veda ilimitada', 'pp3': 'Export ZIP Est\u00e1ndar',
-        'pp4': '6 Mood Stickers', 'pp5': 'Detector de duplicados', 'pp6': 'Limpiador WhatsApp', 'pp7': 'Protecci\u00f3n anti-captura',
-        'priv-title': 'Privacidad por dise\u00f1o', 'priv-sub': 'Construido desde cero con una misi\u00f3n: proteger tu privacidad sin compromisos.',
-        'pb1': 'Sin cuenta requerida', 'pb2': 'Sin acceso a internet', 'pb3': 'Sin recolecci\u00f3n de datos', 'pb4': 'Cumple GDPR y CCPA',
-        'nav-faq': 'FAQ', 'nav-privacy': 'Pol\u00edtica de privacidad', 'nav-terms': 'T\u00e9rminos de servicio', 'nav-refund': 'Pol\u00edtica de reembolso',
-        'rights': 'Todos los derechos reservados.'
-      },
-      de: {
-        'tagline': 'Deine Dateien. Dein Format. <span class="highlight">F\u00fcr immer portabel.</span>',
-        'sub': 'Halte deine sensiblen Dateien sicher, offline und nur f\u00fcr dich zug\u00e4nglich. Exportiere als Standard-ZIP\u00a0\u2014 \u00f6ffne auf jedem PC oder Mac.',
-        'cta': 'Bald auf Google Play',
-        'b1': 'AES-256-Verschl\u00fcsselung', 'b2': '100% Offline', 'b3': 'Standard-ZIP-Export', 'b4': '1,99\u00a0\u20ac einmalig',
-        'feat-title': 'Warum QuietStor?',
-        'feat-sub': 'Sechs Gr\u00fcnde, uns zu w\u00e4hlen.',
-        'unique': 'Einzigartig',
-        'f1-t': 'ZIP-Standard-Export', 'f1-d': 'Exportiere deinen Tresor als verschl\u00fcsseltes Standard-ZIP. \u00d6ffne mit 7-Zip, WinRAR oder macOS\u00a0\u2014 kein Vendor Lock-in.',
-        'f2-t': 'Verschl\u00fcsselter Tresor', 'f2-d': 'AES-256-GCM-Verschl\u00fcsselung mit Passwort und Biometrie. Zero-Knowledge\u00a0\u2014 Passwort vergessen? Daten weg. Gewollt.',
-        'f3-t': 'Storage Guardian', 'f3-d': '6 intelligente Reinigungstools: Duplikate, gro\u00dfe Dateien, alte Screenshots, APKs, leere Ordner, WhatsApp.',
-        'f4-t': '100% Offline', 'f4-d': 'Kein Internet, keine Cloud, keine Server, kein Tracking. Deine Dateien verlassen nie dein Ger\u00e4t.',
-        'f5-t': 'Mood Stickers', 'f5-d': 'Markiere deine Tresor-Dateien mit 6 emotionalen Stickern. Ein Feature, das kein Wettbewerber hat.',
-        'f6-t': 'Keine Analyse', 'f6-d': 'Keine Telemetrie, keine Statistiken, keine pers\u00f6nlichen Daten. Wir k\u00f6nnen deine Dateien buchst\u00e4blich nicht sehen.',
-        'how-title': 'So funktioniert es', 'how-sub': 'Von der Installation zum sicheren Backup in 4 Schritten.',
-        's1-t': 'Tresor erstellen', 's1-d': 'Lege ein starkes Passwort fest. Dein verschl\u00fcsselter Tresor ist bereit.',
-        's2-t': 'Dateien hinzuf\u00fcgen', 's2-d': 'Importiere Fotos, Dokumente, Videos\u00a0\u2014 alles, was du sch\u00fctzen willst.',
-        's3-t': 'Dateien werden verschl\u00fcsselt', 's3-d': 'Jede Datei wird sofort mit AES-256-GCM verschl\u00fcsselt. Nur du hast Zugriff.',
-        's4-t': 'Als Standard-ZIP exportieren', 's4-d': 'Exportiere als passwortgesch\u00fctztes ZIP, das du auf jedem Computer \u00f6ffnen kannst.',
-        'price-title': 'Einfache Preise', 'price-sub': 'Datenschutz ist kostenlos. Power kostet 1,99\u00a0\u20ac\u00a0\u2014 einmal, f\u00fcr immer.',
-        'tier-free': 'Kostenlos', 'price-free-note': 'F\u00fcr immer kostenlos',
-        'pf1': 'Vollst\u00e4ndiger Dateimanager', 'pf2': 'Verschl\u00fcsselter Tresor (500\u00a0MB)', 'pf3': 'Passwort + Biometrie', 'pf4': '4 Reinigungstools',
-        'pf5': 'ZIP-Export', 'pf6': 'Mood Stickers', 'pf7': 'Duplikate & WhatsApp-Reinigung',
-        'price-prem-note': 'Einmalkauf\u00a0\u2014 kein Abo',
-        'pp1': 'Alles aus Kostenlos', 'pp2': 'Unbegrenzter Tresor', 'pp3': 'ZIP-Standard-Export',
-        'pp4': '6 Mood Stickers', 'pp5': 'Duplikat-Finder', 'pp6': 'WhatsApp-Reiniger', 'pp7': 'Screenshot-Schutz',
-        'priv-title': 'Datenschutz by Design', 'priv-sub': 'Von Grund auf mit einer Mission entwickelt: deinen Datenschutz ohne Kompromisse zu sch\u00fctzen.',
-        'pb1': 'Kein Konto erforderlich', 'pb2': 'Kein Internetzugang', 'pb3': 'Keine Datenerhebung', 'pb4': 'DSGVO- & CCPA-konform',
-        'nav-faq': 'FAQ', 'nav-privacy': 'Datenschutzerkl\u00e4rung', 'nav-terms': 'Nutzungsbedingungen', 'nav-refund': 'R\u00fcckerstattung',
-        'rights': 'Alle Rechte vorbehalten.'
-      }
-    };
+<!-- ======== PRIVACY ======== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="label" data-i18n="priv-label">// Privacy by design</div>
+    <h2 class="t-section" data-i18n="priv-title">Not just a promise.</h2>
+  </div>
 
-    function getLang() {
-      const s = localStorage.getItem('quietstor-lang');
-      if (s && T[s]) return s;
-      const n = (navigator.language || '').slice(0, 2);
-      if (n === 'fr') return 'fr';
-      if (n === 'es') return 'es';
-      if (n === 'de') return 'de';
-      return 'en';
+  <div class="privacy-badges stagger">
+    <div class="priv-badge reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <span data-i18n="pb1">Zero-knowledge encryption</span>
+    </div>
+    <div class="priv-badge reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+      </div>
+      <span data-i18n="pb2">No internet required</span>
+    </div>
+    <div class="priv-badge reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <span data-i18n="pb3">5-min auto-lock</span>
+    </div>
+    <div class="priv-badge reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+      </div>
+      <span data-i18n="pb4">Anti-screenshot (FLAG_SECURE)</span>
+    </div>
+    <div class="priv-badge reveal">
+      <div class="icon-wrap">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span data-i18n="pb5">Hardware-backed keys (TEE)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CTA ======== -->
+<section class="cta-banner reveal">
+  <h2 data-i18n="cta-title">Ready to take control?</h2>
+  <p data-i18n="cta-sub">QuietStor is coming soon to Google Play.</p>
+  <a href="#" class="btn-primary" data-i18n-html="cta-btn">
+    <svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg>
+    Coming Soon
+  </a>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="site-footer">
+  <div>
+    <div class="footer-brand">
+      <img src="/logo.svg" alt="QuietStor" width="28" height="28">
+      <span>QuietStor</span>
+    </div>
+    <p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p>
+  </div>
+  <div class="footer-links">
+    <a href="/faq.html" data-i18n="nav-faq">FAQ</a>
+    <a href="/privacy.html" data-i18n="nav-privacy">Privacy</a>
+    <a href="/terms.html" data-i18n="nav-terms">Terms</a>
+    <a href="/refund.html" data-i18n="nav-refund">Refund</a>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025&ndash;2026 QuietStor. <span data-i18n="footer-rights">All rights reserved.</span></span>
+    <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a>
+  </div>
+</footer>
+
+<!-- ======== i18n + Scroll Reveal ======== -->
+<script>
+const T = {
+  en: {
+    'nav-faq': 'FAQ', 'nav-privacy': 'Privacy', 'nav-terms': 'Terms', 'nav-refund': 'Refund',
+    'hero-title': 'Your files.<br>Your format.<br><em class="t-accent">Forever portable.</em>',
+    'hero-sub': 'The private file manager that respects you. AES-256 encrypted vault, standard ZIP export, zero tracking. \u20ac1.99 once\u00a0\u2014 no subscription.',
+    'hero-cta': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Coming Soon',
+    'hero-cta2': 'Learn more',
+    'trust-1': 'AES-256', 'trust-2': '100% Offline', 'trust-3': 'ZIP Standard', 'trust-4': 'Made in EU',
+    'feat-label': '// Features', 'feat-title': 'Six reasons to switch.',
+    'f1-t': 'ZIP Standard Export', 'f1-d': 'Export to encrypted ZIP. Open with 7-Zip, WinRAR, macOS. No vendor lock-in, ever.',
+    'f2-t': 'Encrypted Vault', 'f2-d': 'AES-256-GCM encryption with password and biometric unlock. Zero-knowledge\u00a0\u2014 forgot your password? Data is gone. By design.',
+    'f3-t': 'Storage Guardian', 'f3-d': '6 smart cleaning tools: duplicates, large files, old screenshots, APKs, empty folders, WhatsApp media.',
+    'f4-t': '100% Offline', 'f4-d': 'No internet. No cloud. No servers. Your files never leave your device.',
+    'f5-t': 'Mood Stickers', 'f5-d': 'Tag vault files with 6 emotional stickers. Visual organization\u00a0\u2014 a feature no competitor has.',
+    'f6-t': 'Zero Analytics', 'f6-d': 'No telemetry. No stats. No ads. We literally cannot see your files.',
+    'how-label': '// How it works', 'how-title': 'Four steps to privacy.',
+    'step-1': 'Step 01', 'step-2': 'Step 02', 'step-3': 'Step 03', 'step-4': 'Step 04',
+    's1-t': 'Create Your Vault', 's1-d': 'Set a strong password. Your encrypted vault is ready.',
+    's2-t': 'Import Your Files', 's2-d': 'Photos, videos, documents\u00a0\u2014 encrypted instantly on import.',
+    's3-t': 'Lock & Protect', 's3-d': 'Password + biometric. 5-minute auto-lock. Anti-screenshot.',
+    's4-t': 'Export as ZIP', 's4-d': 'Standard encrypted ZIP. Open on any PC, Mac, or Linux.',
+    'price-label': '// Pricing', 'price-title': 'Pay once. Keep forever.',
+    'p-free-tag': 'Free', 'p-free-note': 'Forever',
+    'p-prem-tag': 'Premium', 'p-prem-note': 'One-time\u00a0\u2014 no subscription',
+    'pf1': 'Full file manager', 'pf2': 'Encrypted vault (500\u00a0MB)', 'pf3': 'Password + biometric unlock', 'pf4': '4 cleaning tools', 'pf5x': 'ZIP export', 'pf6x': 'Mood Stickers',
+    'pp0': 'Everything in Free', 'pp1': 'Unlimited vault storage', 'pp2': 'ZIP Standard export', 'pp3': '6 Mood Stickers', 'pp4': 'Duplicates finder', 'pp5': 'WhatsApp cleaner', 'pp6': 'Auto-backup camera',
+    'priv-label': '// Privacy by design', 'priv-title': 'Not just a promise.',
+    'pb1': 'Zero-knowledge encryption', 'pb2': 'No internet required', 'pb3': '5-min auto-lock', 'pb4': 'Anti-screenshot (FLAG_SECURE)', 'pb5': 'Hardware-backed keys (TEE)',
+    'cta-title': 'Ready to take control?', 'cta-sub': 'QuietStor is coming soon to Google Play.',
+    'cta-btn': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Coming Soon',
+    'footer-tag': 'Your files. Your format. Forever portable.', 'footer-rights': 'All rights reserved.'
+  },
+  fr: {
+    'nav-faq': 'FAQ', 'nav-privacy': 'Confidentialit\u00e9', 'nav-terms': 'Conditions', 'nav-refund': 'Remboursement',
+    'hero-title': 'Vos fichiers.<br>Votre format.<br><em class="t-accent">Toujours portable.</em>',
+    'hero-sub': 'Le gestionnaire de fichiers qui vous respecte. Coffre-fort AES-256, export ZIP standard, z\u00e9ro tracking. 1,99\u00a0\u20ac une fois\u00a0\u2014 sans abonnement.',
+    'hero-cta': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Bient\u00f4t disponible',
+    'hero-cta2': 'En savoir plus',
+    'trust-1': 'AES-256', 'trust-2': '100% Hors-ligne', 'trust-3': 'ZIP Standard', 'trust-4': 'Made in EU',
+    'feat-label': '// Fonctionnalit\u00e9s', 'feat-title': 'Six raisons de changer.',
+    'f1-t': 'Export ZIP Standard', 'f1-d': 'Exportez en ZIP chiffr\u00e9. Ouvrez avec 7-Zip, WinRAR, macOS. Z\u00e9ro verrouillage propri\u00e9taire.',
+    'f2-t': 'Coffre-fort chiffr\u00e9', 'f2-d': 'Chiffrement AES-256-GCM avec mot de passe et biom\u00e9trie. Zero-knowledge\u00a0\u2014 mot de passe oubli\u00e9\u00a0? Donn\u00e9es perdues. Par conception.',
+    'f3-t': 'Storage Guardian', 'f3-d': '6 outils de nettoyage\u00a0: doublons, gros fichiers, captures, APK, dossiers vides, WhatsApp.',
+    'f4-t': '100% Hors-ligne', 'f4-d': 'Aucun internet. Aucun cloud. Aucun serveur. Vos fichiers ne quittent jamais votre appareil.',
+    'f5-t': 'Mood Stickers', 'f5-d': 'Marquez vos fichiers avec 6 stickers \u00e9motionnels. Organisation visuelle unique.',
+    'f6-t': 'Z\u00e9ro analytique', 'f6-d': 'Pas de t\u00e9l\u00e9m\u00e9trie. Pas de stats. Pas de pubs. Nous ne pouvons pas voir vos fichiers.',
+    'how-label': '// Comment \u00e7a marche', 'how-title': 'Quatre \u00e9tapes vers la vie priv\u00e9e.',
+    'step-1': '\u00c9tape 01', 'step-2': '\u00c9tape 02', 'step-3': '\u00c9tape 03', 'step-4': '\u00c9tape 04',
+    's1-t': 'Cr\u00e9ez votre coffre', 's1-d': 'D\u00e9finissez un mot de passe fort. Votre coffre chiffr\u00e9 est pr\u00eat.',
+    's2-t': 'Importez vos fichiers', 's2-d': 'Photos, vid\u00e9os, documents\u00a0\u2014 chiffr\u00e9s instantan\u00e9ment.',
+    's3-t': 'Verrouillez', 's3-d': 'Mot de passe + biom\u00e9trie. Verrouillage auto 5\u00a0min. Anti-capture.',
+    's4-t': 'Exportez en ZIP', 's4-d': 'ZIP chiffr\u00e9 standard. Ouvrez sur PC, Mac ou Linux.',
+    'price-label': '// Tarifs', 'price-title': 'Payez une fois. Gardez pour toujours.',
+    'p-free-tag': 'Gratuit', 'p-free-note': 'Pour toujours',
+    'p-prem-tag': 'Premium', 'p-prem-note': 'Achat unique\u00a0\u2014 sans abonnement',
+    'pf1': 'Gestionnaire de fichiers', 'pf2': 'Coffre chiffr\u00e9 (500\u00a0Mo)', 'pf3': 'Mot de passe + biom\u00e9trie', 'pf4': '4 outils de nettoyage', 'pf5x': 'Export ZIP', 'pf6x': 'Mood Stickers',
+    'pp0': 'Tout le gratuit inclus', 'pp1': 'Stockage illimit\u00e9', 'pp2': 'Export ZIP Standard', 'pp3': '6 Mood Stickers', 'pp4': 'D\u00e9tecteur de doublons', 'pp5': 'Nettoyeur WhatsApp', 'pp6': 'Sauvegarde auto cam\u00e9ra',
+    'priv-label': '// Vie priv\u00e9e par conception', 'priv-title': 'Pas juste une promesse.',
+    'pb1': 'Chiffrement zero-knowledge', 'pb2': 'Aucun internet requis', 'pb3': 'Verrouillage auto 5\u00a0min', 'pb4': 'Anti-capture (FLAG_SECURE)', 'pb5': 'Cl\u00e9s mat\u00e9rielles (TEE)',
+    'cta-title': 'Pr\u00eat \u00e0 reprendre le contr\u00f4le\u00a0?', 'cta-sub': 'QuietStor arrive bient\u00f4t sur Google Play.',
+    'cta-btn': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Bient\u00f4t disponible',
+    'footer-tag': 'Vos fichiers. Votre format. Toujours portable.', 'footer-rights': 'Tous droits r\u00e9serv\u00e9s.'
+  },
+  es: {
+    'nav-faq': 'FAQ', 'nav-privacy': 'Privacidad', 'nav-terms': 'T\u00e9rminos', 'nav-refund': 'Reembolso',
+    'hero-title': 'Tus archivos.<br>Tu formato.<br><em class="t-accent">Siempre portable.</em>',
+    'hero-sub': 'El gestor de archivos que te respeta. B\u00f3veda AES-256, exportaci\u00f3n ZIP est\u00e1ndar, cero rastreo. 1,99\u00a0\u20ac una vez\u00a0\u2014 sin suscripci\u00f3n.',
+    'hero-cta': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Pr\u00f3ximamente',
+    'hero-cta2': 'Saber m\u00e1s',
+    'trust-1': 'AES-256', 'trust-2': '100% Sin conexi\u00f3n', 'trust-3': 'ZIP Est\u00e1ndar', 'trust-4': 'Hecho en UE',
+    'feat-label': '// Funciones', 'feat-title': 'Seis razones para cambiar.',
+    'f1-t': 'Exportaci\u00f3n ZIP Est\u00e1ndar', 'f1-d': 'Exporta en ZIP cifrado. Abre con 7-Zip, WinRAR, macOS. Sin bloqueo de proveedor.',
+    'f2-t': 'B\u00f3veda cifrada', 'f2-d': 'Cifrado AES-256-GCM con contrase\u00f1a y biometr\u00eda. Zero-knowledge\u00a0\u2014 \u00bfolvidaste tu contrase\u00f1a? Datos perdidos. Por dise\u00f1o.',
+    'f3-t': 'Storage Guardian', 'f3-d': '6 herramientas de limpieza: duplicados, archivos grandes, capturas, APKs, carpetas vac\u00edas, WhatsApp.',
+    'f4-t': '100% Sin conexi\u00f3n', 'f4-d': 'Sin internet. Sin nube. Sin servidores. Tus archivos nunca salen de tu dispositivo.',
+    'f5-t': 'Mood Stickers', 'f5-d': 'Etiqueta archivos con 6 stickers emocionales. Organizaci\u00f3n visual \u00fanica.',
+    'f6-t': 'Cero anal\u00edticas', 'f6-d': 'Sin telemetr\u00eda. Sin estad\u00edsticas. Sin anuncios. No podemos ver tus archivos.',
+    'how-label': '// C\u00f3mo funciona', 'how-title': 'Cuatro pasos hacia la privacidad.',
+    'step-1': 'Paso 01', 'step-2': 'Paso 02', 'step-3': 'Paso 03', 'step-4': 'Paso 04',
+    's1-t': 'Crea tu b\u00f3veda', 's1-d': 'Configura una contrase\u00f1a segura. Tu b\u00f3veda cifrada est\u00e1 lista.',
+    's2-t': 'Importa tus archivos', 's2-d': 'Fotos, v\u00eddeos, documentos\u00a0\u2014 cifrados al instante.',
+    's3-t': 'Bloquea y protege', 's3-d': 'Contrase\u00f1a + biometr\u00eda. Bloqueo auto 5\u00a0min. Anti-captura.',
+    's4-t': 'Exporta como ZIP', 's4-d': 'ZIP cifrado est\u00e1ndar. Abre en cualquier PC, Mac o Linux.',
+    'price-label': '// Precios', 'price-title': 'Paga una vez. Conserva para siempre.',
+    'p-free-tag': 'Gratis', 'p-free-note': 'Para siempre',
+    'p-prem-tag': 'Premium', 'p-prem-note': 'Compra \u00fanica\u00a0\u2014 sin suscripci\u00f3n',
+    'pf1': 'Gestor de archivos completo', 'pf2': 'B\u00f3veda cifrada (500\u00a0MB)', 'pf3': 'Contrase\u00f1a + biometr\u00eda', 'pf4': '4 herramientas de limpieza', 'pf5x': 'Exportaci\u00f3n ZIP', 'pf6x': 'Mood Stickers',
+    'pp0': 'Todo lo gratuito incluido', 'pp1': 'Almacenamiento ilimitado', 'pp2': 'Exportaci\u00f3n ZIP Est\u00e1ndar', 'pp3': '6 Mood Stickers', 'pp4': 'Detector de duplicados', 'pp5': 'Limpiador WhatsApp', 'pp6': 'Respaldo autom\u00e1tico c\u00e1mara',
+    'priv-label': '// Privacidad por dise\u00f1o', 'priv-title': 'No es solo una promesa.',
+    'pb1': 'Cifrado zero-knowledge', 'pb2': 'Sin internet necesario', 'pb3': 'Bloqueo auto 5\u00a0min', 'pb4': 'Anti-captura (FLAG_SECURE)', 'pb5': 'Claves en hardware (TEE)',
+    'cta-title': '\u00bfListo para tomar el control?', 'cta-sub': 'QuietStor llega pronto a Google Play.',
+    'cta-btn': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Pr\u00f3ximamente',
+    'footer-tag': 'Tus archivos. Tu formato. Siempre portable.', 'footer-rights': 'Todos los derechos reservados.'
+  },
+  de: {
+    'nav-faq': 'FAQ', 'nav-privacy': 'Datenschutz', 'nav-terms': 'AGB', 'nav-refund': 'Erstattung',
+    'hero-title': 'Deine Dateien.<br>Dein Format.<br><em class="t-accent">F\u00fcr immer portabel.</em>',
+    'hero-sub': 'Der Dateimanager, der dich respektiert. AES-256-Tresor, ZIP-Standard-Export, kein Tracking. Einmalig 1,99\u00a0\u20ac\u00a0\u2014 kein Abo.',
+    'hero-cta': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Bald verf\u00fcgbar',
+    'hero-cta2': 'Mehr erfahren',
+    'trust-1': 'AES-256', 'trust-2': '100% Offline', 'trust-3': 'ZIP Standard', 'trust-4': 'Made in EU',
+    'feat-label': '// Funktionen', 'feat-title': 'Sechs Gr\u00fcnde zum Wechseln.',
+    'f1-t': 'ZIP-Standard-Export', 'f1-d': 'Export als verschl\u00fcsseltes ZIP. \u00d6ffne mit 7-Zip, WinRAR, macOS. Kein Vendor Lock-in.',
+    'f2-t': 'Verschl\u00fcsselter Tresor', 'f2-d': 'AES-256-GCM mit Passwort und Biometrie. Zero-Knowledge\u00a0\u2014 Passwort vergessen? Daten weg. Gewollt.',
+    'f3-t': 'Storage Guardian', 'f3-d': '6 Reinigungstools: Duplikate, gro\u00dfe Dateien, Screenshots, APKs, leere Ordner, WhatsApp.',
+    'f4-t': '100% Offline', 'f4-d': 'Kein Internet. Keine Cloud. Keine Server. Deine Dateien verlassen nie dein Ger\u00e4t.',
+    'f5-t': 'Mood Stickers', 'f5-d': 'Markiere Dateien mit 6 emotionalen Stickern. Visuelle Organisation\u00a0\u2014 einzigartig.',
+    'f6-t': 'Keine Analytik', 'f6-d': 'Keine Telemetrie. Keine Statistiken. Keine Werbung. Wir k\u00f6nnen deine Dateien nicht sehen.',
+    'how-label': '// So funktioniert es', 'how-title': 'Vier Schritte zur Privatsph\u00e4re.',
+    'step-1': 'Schritt 01', 'step-2': 'Schritt 02', 'step-3': 'Schritt 03', 'step-4': 'Schritt 04',
+    's1-t': 'Tresor erstellen', 's1-d': 'Lege ein starkes Passwort fest. Dein Tresor ist bereit.',
+    's2-t': 'Dateien importieren', 's2-d': 'Fotos, Videos, Dokumente\u00a0\u2014 sofort verschl\u00fcsselt.',
+    's3-t': 'Sperren & Sch\u00fctzen', 's3-d': 'Passwort + Biometrie. 5-Min-Autosperre. Anti-Screenshot.',
+    's4-t': 'Als ZIP exportieren', 's4-d': 'Standard-verschl\u00fcsseltes ZIP. \u00d6ffne auf jedem PC, Mac oder Linux.',
+    'price-label': '// Preise', 'price-title': 'Einmal zahlen. F\u00fcr immer behalten.',
+    'p-free-tag': 'Kostenlos', 'p-free-note': 'F\u00fcr immer',
+    'p-prem-tag': 'Premium', 'p-prem-note': 'Einmalkauf\u00a0\u2014 kein Abo',
+    'pf1': 'Dateimanager', 'pf2': 'Tresor (500\u00a0MB)', 'pf3': 'Passwort + Biometrie', 'pf4': '4 Reinigungstools', 'pf5x': 'ZIP-Export', 'pf6x': 'Mood Stickers',
+    'pp0': 'Alles aus Kostenlos', 'pp1': 'Unbegrenzter Tresor', 'pp2': 'ZIP-Standard-Export', 'pp3': '6 Mood Stickers', 'pp4': 'Duplikat-Finder', 'pp5': 'WhatsApp-Reiniger', 'pp6': 'Auto-Backup Kamera',
+    'priv-label': '// Datenschutz durch Design', 'priv-title': 'Nicht nur ein Versprechen.',
+    'pb1': 'Zero-Knowledge-Verschl\u00fcsselung', 'pb2': 'Kein Internet n\u00f6tig', 'pb3': 'Autosperre 5\u00a0Min', 'pb4': 'Anti-Screenshot (FLAG_SECURE)', 'pb5': 'Hardware-Schl\u00fcssel (TEE)',
+    'cta-title': 'Bereit, die Kontrolle zu \u00fcbernehmen?', 'cta-sub': 'QuietStor kommt bald in den Google Play Store.',
+    'cta-btn': '<svg class="icon-svg sm" viewBox="0 0 24 24" style="stroke:var(--bg)"><path d="M5 3l14 9-14 9V3z"/></svg> Bald verf\u00fcgbar',
+    'footer-tag': 'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights': 'Alle Rechte vorbehalten.'
+  }
+};
+
+/* --- Language Switcher --- */
+let currentLang = (() => {
+  try { return localStorage.getItem('qs-lang'); } catch(e) { return null; }
+})() || (navigator.language || '').slice(0,2);
+if (!T[currentLang]) currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  try { localStorage.setItem('qs-lang', lang); } catch(e) {}
+  applyLang();
+}
+
+function applyLang() {
+  const t = T[currentLang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key]) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === currentLang);
+  });
+  document.documentElement.lang = currentLang;
+}
+
+applyLang();
+
+/* --- Scroll Reveal (IntersectionObserver) --- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    function setLang(l) {
-      localStorage.setItem('quietstor-lang', l);
-      applyLang(l);
-    }
-
-    function applyLang(l) {
-      const t = T[l];
-      // tagline uses innerHTML (contains <span>)
-      const tagEl = document.querySelector('.hero-tagline');
-      if (tagEl && t['tagline']) tagEl.innerHTML = t['tagline'];
-
-      // all other data-i18n elements
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.dataset.i18n;
-        if (k === 'tagline') return; // handled above
-        if (t[k]) el.textContent = t[k];
-      });
-
-      // active lang button
-      document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.lang === l);
-      });
-      document.documentElement.lang = l;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
-  </script>
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
 </body>
 </html>

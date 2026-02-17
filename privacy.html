@@ -1,247 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — QuietStor</title>
-  <meta name="description" content="QuietStor privacy policy. We collect zero data. 100% offline, zero-knowledge architecture.">
-  <link rel="icon" href="/logo.svg">
-  <link rel="canonical" href="https://quietstor.app/privacy.html">
-  <meta property="og:title" content="Privacy Policy — QuietStor">
-  <meta property="og:url" content="https://quietstor.app/privacy.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
-  <style>[data-content-lang] { display: none; } [data-content-lang].active { display: block; }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuietStor — Privacy Policy</title>
+<link rel="canonical" href="https://quietstor.app/privacy.html">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span>QuietStor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a><a href="/faq.html" class="hide-mobile">FAQ</a>
+    <div class="lang-sel"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('de')">DE</button></div>
+  </nav>
+</header>
 
-  <div class="page-header">
-    <a href="/"><img src="/logo.svg" alt="QuietStor" class="header-logo"></a>
-    <h1 data-i18n="title">Privacy Policy</h1>
-    <p class="last-updated" data-i18n="updated">Last updated: February 16, 2026</p>
-  </div>
-
-  <!-- EN -->
-  <div class="page-content" data-content-lang="en">
-
-    <div class="highlight-box">
-      <strong>Summary:</strong> QuietStor collects <strong>zero data</strong>. No accounts, no analytics, no telemetry, no network requests. Your files are encrypted locally and never leave your device.
-    </div>
-
-    <h2>1. Who We Are</h2>
-    <p>QuietStor is developed and published by an independent developer based in the European Union. Contact: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>2. Data We Collect</h2>
-    <p><strong>None.</strong> QuietStor is designed with a zero-knowledge architecture:</p>
-    <ul>
-      <li>No user accounts or registration</li>
-      <li>No analytics, telemetry, or usage tracking</li>
-      <li>No network requests — the app works 100% offline</li>
-      <li>No access to contacts, camera, microphone, or location</li>
-      <li>No advertising SDKs or third-party trackers</li>
-    </ul>
-
-    <h2>3. Your Files & Encryption</h2>
+<div class="legal-wrap">
+  <div class="lang-content active" data-lang="en">
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: February 16, 2026</p>
+    <h2>Data Collection</h2>
+    <p><strong>QuietStor collects zero user data.</strong> No accounts, no analytics, no telemetry, no advertising identifiers. The app is 100% offline and makes no network requests.</p>
+    <h2>Encryption</h2>
     <p>All vault files are encrypted using <strong>AES-256-GCM</strong> and stored exclusively on your device. Encryption keys are stored in the Android Keystore (hardware-backed TEE/StrongBox). We have no access to your files, your password, your encryption keys, or any metadata.</p>
-
-    <div class="warning-box">
-      <strong>⚠️ Zero-knowledge means zero recovery.</strong> If you forget your password, your encrypted data is permanently lost. There is no "Forgot Password" option, no backdoor, and no way for us to help recover your data.
-    </div>
-
-    <h2>4. Google Play Billing</h2>
-    <p>If you purchase QuietStor Premium, the transaction is processed entirely by <strong>Google Play</strong>. We do not receive or store your payment information (credit card, billing address, etc.). We only receive a purchase confirmation token from Google to verify your Premium status locally on your device.</p>
-
-    <h2>5. Crash Reporting (Opt-in Only)</h2>
-    <p>QuietStor includes an <strong>optional, opt-in</strong> crash reporting feature powered by Firebase Crashlytics. This is <strong>disabled by default</strong> and only activated if you explicitly choose to help improve the app. Crash reports contain technical information only (device model, OS version, stack trace) — never file names, vault contents, or personal data.</p>
-
-    <h2>6. Children's Privacy</h2>
-    <p>QuietStor does not knowingly collect any data from children under 13 (or the applicable age in your jurisdiction). Since we collect no data at all, this concern is moot by design.</p>
-
-    <h2>7. Your Rights (GDPR, CCPA, DSGVO)</h2>
-    <p>Since QuietStor collects no personal data, there is nothing to access, rectify, delete, or port. If you wish to delete all local data, simply uninstall the app or use "Reset Vault" in Settings. For any questions, contact us at <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a>.</p>
-
-    <h2>8. Changes to This Policy</h2>
-    <p>We may update this policy from time to time. Changes will be posted on this page with an updated date. Continued use of the app constitutes acceptance of the updated policy.</p>
-
-    <h2>9. Contact</h2>
-    <p>For any privacy-related questions:<br><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge means zero recovery.</strong> If you forget your password, your encrypted data is permanently lost. There is no "Forgot Password" option, no backdoor, and no way for us to help recover your data.</div>
+    <h2>Optional Crashlytics</h2>
+    <p>QuietStor includes Firebase Crashlytics for crash reporting, <strong>disabled by default</strong>. If you choose to enable it in Settings, only crash reports (stack traces, device model, OS version) are sent. No file content, names, passwords, or encryption keys are ever included.</p>
+    <h2>Google Play Billing</h2>
+    <p>Premium purchases are processed by Google Play. We do not receive or store any payment information. Purchase verification is done locally on device.</p>
+    <h2>Your Rights</h2>
+    <p>Under GDPR, CCPA, and similar regulations, you have the right to access, correct, and delete your personal data. Since we collect none, there is nothing to access, correct, or delete. Your data exists only on your device, under your control.</p>
+    <div class="legal-contact">Questions? Contact us at <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- FR -->
-  <div class="page-content" data-content-lang="fr">
-
-    <div class="highlight-box">
-      <strong>Résumé :</strong> QuietStor ne collecte <strong>aucune donnée</strong>. Pas de compte, pas d'analytics, pas de télémétrie, aucune requête réseau. Vos fichiers sont chiffrés localement et ne quittent jamais votre appareil.
-    </div>
-
-    <h2>1. Qui sommes-nous</h2>
-    <p>QuietStor est développé et publié par un développeur indépendant basé dans l'Union européenne. Contact : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>2. Données collectées</h2>
-    <p><strong>Aucune.</strong> QuietStor est conçu avec une architecture zero-knowledge :</p>
-    <ul>
-      <li>Pas de compte utilisateur ni d'inscription</li>
-      <li>Pas d'analytics, de télémétrie ou de suivi d'utilisation</li>
-      <li>Aucune requête réseau — l'app fonctionne 100% hors-ligne</li>
-      <li>Pas d'accès aux contacts, caméra, microphone ou localisation</li>
-      <li>Aucun SDK publicitaire ni tracker tiers</li>
-    </ul>
-
-    <h2>3. Vos fichiers et le chiffrement</h2>
-    <p>Tous les fichiers du coffre-fort sont chiffrés en <strong>AES-256-GCM</strong> et stockés exclusivement sur votre appareil. Les clés de chiffrement sont dans le Android Keystore (matériel TEE/StrongBox). Nous n'avons aucun accès à vos fichiers, votre mot de passe, vos clés, ou vos métadonnées.</p>
-
-    <div class="warning-box">
-      <strong>⚠️ Zero-knowledge signifie zéro récupération.</strong> Si vous oubliez votre mot de passe, vos données chiffrées sont définitivement perdues. Pas d'option « Mot de passe oublié », pas de porte dérobée.
-    </div>
-
-    <h2>4. Google Play Billing</h2>
-    <p>L'achat Premium est traité intégralement par <strong>Google Play</strong>. Nous ne recevons ni ne stockons vos informations de paiement. Seul un jeton de confirmation est utilisé localement pour vérifier votre statut Premium.</p>
-
-    <h2>5. Rapports de crash (opt-in uniquement)</h2>
-    <p>QuietStor inclut un rapport de crash <strong>optionnel, désactivé par défaut</strong> (Firebase Crashlytics). Activé uniquement si vous le choisissez. Les rapports contiennent uniquement des informations techniques — jamais de noms de fichiers ou de contenus du coffre-fort.</p>
-
-    <h2>6. Vie privée des enfants</h2>
-    <p>QuietStor ne collecte sciemment aucune donnée d'enfants de moins de 13 ans. Puisque nous ne collectons aucune donnée, cette préoccupation est résolue par conception.</p>
-
-    <h2>7. Vos droits (RGPD, CCPA)</h2>
-    <p>Aucune donnée personnelle n'étant collectée, il n'y a rien à consulter, rectifier, supprimer ou transférer. Pour supprimer toutes les données locales : désinstallez l'app ou utilisez « Réinitialiser le coffre-fort ». Contact : <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>8. Modifications</h2>
-    <p>Cette politique peut être mise à jour. Les modifications seront publiées sur cette page avec une date actualisée.</p>
-
-    <h2>9. Contact</h2>
-    <p>Pour toute question relative à la confidentialité :<br><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+  <div class="lang-content" data-lang="fr">
+    <h1>Politique de confidentialité</h1>
+    <p class="legal-updated">Dernière mise à jour : 16 février 2026</p>
+    <h2>Collecte de données</h2>
+    <p><strong>QuietStor ne collecte aucune donnée utilisateur.</strong> Pas de comptes, pas d'analytique, pas de télémétrie, pas d'identifiants publicitaires. L'app est 100% hors-ligne et n'effectue aucune requête réseau.</p>
+    <h2>Chiffrement</h2>
+    <p>Tous les fichiers du coffre sont chiffrés en <strong>AES-256-GCM</strong> et stockés exclusivement sur votre appareil. Les clés sont dans le Android Keystore (TEE/StrongBox). Nous n'avons aucun accès à vos fichiers, votre mot de passe, vos clés, ou vos métadonnées.</p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge signifie zéro récupération.</strong> Si vous oubliez votre mot de passe, vos données chiffrées sont définitivement perdues. Pas d'option « Mot de passe oublié », pas de porte dérobée.</div>
+    <h2>Crashlytics optionnel</h2>
+    <p>Firebase Crashlytics est inclus mais <strong>désactivé par défaut</strong>. Si activé dans les Paramètres, seuls les rapports de crash sont envoyés. Aucun contenu, nom de fichier, mot de passe ou clé n'est jamais inclus.</p>
+    <h2>Vos droits</h2>
+    <p>En vertu du RGPD et réglementations similaires, vous avez le droit d'accès, correction et suppression. Comme nous ne collectons rien, il n'y a rien à supprimer. Vos données n'existent que sur votre appareil.</p>
+    <div class="legal-contact">Questions ? Contactez-nous à <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- ES -->
-  <div class="page-content" data-content-lang="es">
-
-    <div class="highlight-box">
-      <strong>Resumen:</strong> QuietStor no recoge <strong>ningún dato</strong>. Sin cuentas, sin analytics, sin telemetría, sin solicitudes de red. Tus archivos se cifran localmente y nunca salen de tu dispositivo.
-    </div>
-
-    <h2>1. Quiénes somos</h2>
-    <p>QuietStor es desarrollado por un desarrollador independiente en la Unión Europea. Contacto: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>2. Datos recopilados</h2>
-    <p><strong>Ninguno.</strong> QuietStor tiene una arquitectura zero-knowledge: sin cuentas, sin analytics, sin red, sin acceso a contactos/cámara/ubicación, sin SDKs publicitarios.</p>
-
-    <h2>3. Tus archivos y cifrado</h2>
-    <p>Todos los archivos de la bóveda están cifrados con <strong>AES-256-GCM</strong> y almacenados exclusivamente en tu dispositivo. Las claves están en el Android Keystore (hardware TEE/StrongBox).</p>
-
-    <div class="warning-box">
-      <strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanentemente.
-    </div>
-
-    <h2>4. Google Play Billing</h2>
-    <p>La compra Premium es procesada por <strong>Google Play</strong>. No recibimos ni almacenamos información de pago.</p>
-
-    <h2>5. Informes de errores (solo opt-in)</h2>
-    <p>Función opcional y desactivada por defecto (Firebase Crashlytics). Solo información técnica, nunca contenido personal.</p>
-
-    <h2>6. Privacidad infantil</h2>
-    <p>No recopilamos datos de menores de 13 años. Como no recopilamos ningún dato, esto se resuelve por diseño.</p>
-
-    <h2>7. Tus derechos (GDPR, CCPA)</h2>
-    <p>No se recopilan datos personales. Para eliminar datos locales: desinstala la app o usa "Restablecer bóveda". Contacto: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>8. Cambios</h2>
-    <p>Esta política puede actualizarse. Los cambios se publicarán en esta página.</p>
-
-    <h2>9. Contacto</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+  <div class="lang-content" data-lang="es">
+    <h1>Política de Privacidad</h1>
+    <p class="legal-updated">Última actualización: 16 de febrero de 2026</p>
+    <h2>Recopilación de datos</h2>
+    <p><strong>QuietStor no recopila datos de usuario.</strong> Sin cuentas, sin analíticas, sin telemetría. La app es 100% sin conexión.</p>
+    <h2>Cifrado</h2>
+    <p>Todos los archivos están cifrados con <strong>AES-256-GCM</strong> y almacenados exclusivamente en tu dispositivo. Las claves están en el Android Keystore (TEE/StrongBox).</p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanentemente.</div>
+    <h2>Tus derechos</h2>
+    <p>Bajo GDPR/CCPA, tienes derecho a acceder, corregir y eliminar tus datos. Como no recopilamos nada, no hay nada que eliminar.</p>
+    <div class="legal-contact">¿Preguntas? Contáctanos en <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
 
-  <!-- DE -->
-  <div class="page-content" data-content-lang="de">
-
-    <div class="highlight-box">
-      <strong>Zusammenfassung:</strong> QuietStor erhebt <strong>keinerlei Daten</strong>. Kein Konto, keine Analyse, keine Telemetrie, keine Netzwerkanfragen. Ihre Dateien werden lokal verschlüsselt und verlassen nie Ihr Gerät.
-    </div>
-
-    <h2>1. Wer wir sind</h2>
-    <p>QuietStor wird von einem unabhängigen Entwickler in der Europäischen Union entwickelt und veröffentlicht. Kontakt: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>2. Erhobene Daten</h2>
-    <p><strong>Keine.</strong> QuietStor basiert auf einer Zero-Knowledge-Architektur:</p>
-    <ul>
-      <li>Kein Benutzerkonto oder Registrierung</li>
-      <li>Keine Analyse, Telemetrie oder Nutzungsverfolgung</li>
-      <li>Keine Netzwerkanfragen — die App funktioniert 100% offline</li>
-      <li>Kein Zugriff auf Kontakte, Kamera, Mikrofon oder Standort</li>
-      <li>Keine Werbe-SDKs oder Tracker von Drittanbietern</li>
-    </ul>
-
-    <h2>3. Ihre Dateien & Verschlüsselung</h2>
-    <p>Alle Tresor-Dateien werden mit <strong>AES-256-GCM</strong> verschlüsselt und ausschließlich auf Ihrem Gerät gespeichert. Schlüssel befinden sich im Android Keystore (Hardware TEE/StrongBox). Wir haben keinen Zugriff auf Ihre Dateien, Ihr Passwort, Ihre Schlüssel oder Metadaten.</p>
-
-    <div class="warning-box">
-      <strong>⚠️ Zero-Knowledge bedeutet keine Wiederherstellung.</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre verschlüsselten Daten dauerhaft verloren.
-    </div>
-
-    <h2>4. Google Play Billing</h2>
-    <p>Der Premium-Kauf wird vollständig von <strong>Google Play</strong> abgewickelt. Wir erhalten und speichern keine Zahlungsinformationen.</p>
-
-    <h2>5. Absturzberichte (nur Opt-in)</h2>
-    <p>QuietStor enthält eine <strong>optionale, standardmäßig deaktivierte</strong> Absturzberichtsfunktion (Firebase Crashlytics). Nur technische Informationen — nie Dateinamen oder Tresor-Inhalte.</p>
-
-    <h2>6. Datenschutz von Kindern</h2>
-    <p>Wir erheben wissentlich keine Daten von Kindern unter 13 Jahren. Da wir keinerlei Daten erheben, ist dies konstruktionsbedingt gelöst.</p>
-
-    <h2>7. Ihre Rechte (DSGVO, CCPA)</h2>
-    <p>Da keine personenbezogenen Daten erhoben werden, gibt es nichts einzusehen, zu berichtigen, zu löschen oder zu übertragen. Zum Löschen lokaler Daten: App deinstallieren oder „Tresor zurücksetzen" in den Einstellungen. Kontakt: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
-
-    <h2>8. Änderungen</h2>
-    <p>Diese Richtlinie kann aktualisiert werden. Änderungen werden auf dieser Seite veröffentlicht.</p>
-
-    <h2>9. Kontakt</h2>
-    <p><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></p>
+  <div class="lang-content" data-lang="de">
+    <h1>Datenschutzrichtlinie</h1>
+    <p class="legal-updated">Zuletzt aktualisiert: 16. Februar 2026</p>
+    <h2>Datenerfassung</h2>
+    <p><strong>QuietStor erfasst keine Nutzerdaten.</strong> Keine Konten, keine Analytik, keine Telemetrie. Die App ist 100% offline.</p>
+    <h2>Verschlüsselung</h2>
+    <p>Alle Dateien werden mit <strong>AES-256-GCM</strong> verschlüsselt und ausschließlich auf Ihrem Gerät gespeichert. Schlüssel im Android Keystore (TEE/StrongBox).</p>
+    <div class="warn-box"><strong>⚠️ Zero-Knowledge bedeutet keine Wiederherstellung.</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre Daten dauerhaft verloren.</div>
+    <h2>Ihre Rechte</h2>
+    <p>Unter DSGVO haben Sie das Recht auf Zugang, Berichtigung und Löschung. Da wir nichts erfassen, gibt es nichts zu löschen.</p>
+    <div class="legal-contact">Fragen? Kontakt: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <img src="/logo.svg" alt="QuietStor" class="footer-logo">
-    <div class="lang-selector">
-      <span class="globe">🌐</span>
-      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 <span class="lang-text">English</span></button>
-      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">🇫🇷 <span class="lang-text">Français</span></button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸 <span class="lang-text">Español</span></button>
-      <button class="lang-btn" data-lang="de" onclick="setLang('de')">🇩🇪 <span class="lang-text">Deutsch</span></button>
-    </div>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/terms.html">Terms</a>
-      <a href="/refund.html">Refund</a>
-    </div>
-    <div class="footer-contact"><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
-    <p class="copyright">© 2025–2026 QuietStor. All rights reserved.</p>
-  </footer>
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span>QuietStor</span></div></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/faq.html">FAQ</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+</footer>
 
-  <script>
-    const TITLES = { en: 'Privacy Policy', fr: 'Politique de confidentialité', es: 'Política de privacidad', de: 'Datenschutzerklärung' };
-    const UPDATED = { en: 'Last updated: February 16, 2026', fr: 'Dernière mise à jour : 16 février 2026', es: 'Última actualización: 16 de febrero de 2026', de: 'Zuletzt aktualisiert: 16. Februar 2026' };
-
-    function getLang() {
-      const s = localStorage.getItem('quietstor-lang');
-      if (s && ['en','fr','es','de'].includes(s)) return s;
-      const n = (navigator.language || '').slice(0, 2);
-      return ['fr','es','de'].includes(n) ? n : 'en';
-    }
-
-    function setLang(l) { localStorage.setItem('quietstor-lang', l); applyLang(l); }
-
-    function applyLang(l) {
-      document.querySelectorAll('[data-content-lang]').forEach(el => el.classList.toggle('active', el.dataset.contentLang === l));
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
-      const t = document.querySelector('[data-i18n="title"]'); if (t) t.textContent = TITLES[l];
-      const u = document.querySelector('[data-i18n="updated"]'); if (u) u.textContent = UPDATED[l];
-      document.documentElement.lang = l;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
-  </script>
+<script>
+let currentLang = localStorage.getItem('qs-lang') || (navigator.language||'').slice(0,2);
+if (!['en','fr','es','de'].includes(currentLang)) currentLang = 'en';
+function setLang(l) { currentLang=l; localStorage.setItem('qs-lang',l); applyLang(); }
+function applyLang() {
+  document.querySelectorAll('.lang-content').forEach(e => e.classList.toggle('active', e.dataset.lang===currentLang));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase()===currentLang));
+  document.documentElement.lang = currentLang;
+}
+applyLang();
+</script>
 </body>
 </html>
