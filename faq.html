@@ -1,1221 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - QuietStor</title>
-    <meta name="description" content="Frequently Asked Questions about QuietStor - Private File Manager for Android">
-    <link rel="icon" href="/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #7B2D8E;
-            --primary-light: #9F7AEA;
-            --secondary: #4ECDC4;
-            --green: #48BB78;
-            --green-light: #68D391;
-            --teal: #38B2AC;
-            --accent: #F6AD55;
-            --bg-dark: #1A1A2E;
-            --bg-card: #16213E;
-            --text: #E2E8F0;
-            --text-muted: #A0AEC0;
-            --error: #FC8181;
-        }
-        
-        body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F23 100%);
-            border-bottom: 1px solid rgba(72, 187, 120, 0.2);
-        }
-        
-        .header-logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 50%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .header p { color: var(--text-muted); margin-top: 0.5rem; }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .faq-section { margin: 2rem 0; }
-        
-        .faq-category { margin-bottom: 2.5rem; }
-        
-        .faq-category h2 {
-            color: var(--text);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--green);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid rgba(72, 187, 120, 0.15);
-            border-radius: 1rem;
-            margin-bottom: 0.75rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            border-color: var(--green);
-            box-shadow: 0 4px 20px rgba(72, 187, 120, 0.15);
-        }
-        
-        .faq-question {
-            width: 100%;
-            padding: 1.25rem 1.5rem;
-            background: transparent;
-            border: none;
-            text-align: left;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Outfit', sans-serif;
-        }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: var(--green);
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.open .faq-question::after { transform: rotate(45deg); }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 1.5rem;
-            color: var(--text-muted);
-        }
-        
-        .faq-item.open .faq-answer {
-            max-height: 2000px;
-            padding: 0 1.5rem 1.5rem;
-        }
-        
-        .faq-answer p { margin-bottom: 0.75rem; }
-        .faq-answer ul, .faq-answer ol { margin: 0.75rem 0; padding-left: 1.5rem; }
-        .faq-answer li { margin-bottom: 0.5rem; }
-        .faq-answer h4 { color: var(--text); margin: 1rem 0 0.5rem; }
-        
-        .warning-box {
-            background: rgba(246, 173, 85, 0.15);
-            border-left: 4px solid var(--accent);
-            padding: 1rem 1.25rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-            margin: 1rem 0;
-        }
-        
-        .error-box {
-            background: rgba(252, 129, 129, 0.15);
-            border-left: 4px solid var(--error);
-            padding: 1rem 1.25rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-            margin: 1rem 0;
-        }
-        
-        /* Transfer Animation */
-        .transfer-diagram {
-            background: var(--bg-dark);
-            border: 1px solid rgba(72, 187, 120, 0.2);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        
-        .transfer-diagram h3 {
-            color: var(--green);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .devices-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 1.5rem 0;
-        }
-        
-        .device {
-            width: 100px;
-            height: 170px;
-            background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
-            border-radius: 16px;
-            padding: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        
-        .device-screen {
-            width: 100%;
-            height: 140px;
-            background: var(--bg-card);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .device-label {
-            margin-top: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            font-size: 0.9rem;
-        }
-        
-        .qr-code {
-            width: 50px;
-            height: 50px;
-            background: 
-                linear-gradient(90deg, var(--green) 30%, transparent 30%),
-                linear-gradient(180deg, var(--green) 30%, transparent 30%);
-            background-size: 8px 8px;
-            border-radius: 4px;
-            animation: qrPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes qrPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        
-        .code-display {
-            font-family: monospace;
-            font-size: 12px;
-            color: var(--green);
-            margin-top: 8px;
-            letter-spacing: 2px;
-        }
-        
-        .transfer-arrow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .arrow-line {
-            width: 60px;
-            height: 4px;
-            background: var(--green);
-            position: relative;
-            border-radius: 2px;
-        }
-        
-        .arrow-head {
-            width: 0;
-            height: 0;
-            border-left: 10px solid var(--green);
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
-            position: absolute;
-            right: -10px;
-            top: -5px;
-        }
-        
-        .data-packets {
-            position: absolute;
-            top: -2px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            overflow: hidden;
-        }
-        
-        .packet {
-            width: 8px;
-            height: 8px;
-            background: var(--secondary);
-            border-radius: 50%;
-            position: absolute;
-            animation: movePacket 1.5s linear infinite;
-        }
-        
-        .packet:nth-child(2) { animation-delay: 0.5s; }
-        .packet:nth-child(3) { animation-delay: 1s; }
-        
-        @keyframes movePacket {
-            0% { left: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
-        }
-        
-        .transfer-status {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-        
-        .camera-viewfinder {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--green);
-            border-radius: 6px;
-            position: relative;
-            animation: cameraScan 2s ease-in-out infinite;
-        }
-        
-        .scan-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--secondary);
-            top: 0;
-            animation: scanMove 2s ease-in-out infinite;
-        }
-        
-        @keyframes scanMove {
-            0%, 100% { top: 0; }
-            50% { top: calc(100% - 2px); }
-        }
-        
-        @keyframes cameraScan {
-            0%, 100% { border-color: var(--green); }
-            50% { border-color: var(--secondary); }
-        }
-        
-        .progress-container {
-            width: 70%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            margin: 10px auto 0;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--green), var(--teal));
-            border-radius: 3px;
-            animation: progress 3s ease-in-out infinite;
-        }
-        
-        @keyframes progress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-        
-        .transfer-steps {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(72, 187, 120, 0.15);
-            border-radius: 50px;
-            font-size: 0.85rem;
-        }
-        
-        .step-number {
-            width: 22px;
-            height: 22px;
-            background: var(--green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.75rem;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .back-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(72, 187, 120, 0.15);
-            margin-top: 3rem;
-            background: var(--bg-card);
-        }
-        
-        .lang-selector {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
-            padding: 4px;
-            gap: 4px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .lang-selector .globe {
-            padding: 0.5rem 0.75rem;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-        
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        
-        .lang-btn:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .lang-btn.active {
-            background: var(--green);
-            color: white;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover { color: var(--green); }
-        
-        @media (max-width: 600px) {
-            .devices-container { flex-direction: column; gap: 1.5rem; }
-            .transfer-arrow { transform: rotate(90deg); margin: 1rem 0; }
-            .device { width: 90px; height: 150px; }
-            .device-screen { height: 120px; }
-            .header h1 { font-size: 2rem; }
-            .transfer-steps { flex-direction: column; align-items: center; }
-            .lang-btn span.lang-text { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — QuietStor</title>
+  <meta name="description" content="Frequently asked questions about QuietStor — private file manager with encrypted vault for Android.">
+  <link rel="icon" href="/logo.svg">
+  <link rel="canonical" href="https://quietstor.app/faq.html">
+  <meta property="og:title" content="FAQ — QuietStor">
+  <meta property="og:description" content="Answers to common questions about QuietStor's encrypted vault, pricing, and privacy.">
+  <meta property="og:url" content="https://quietstor.app/faq.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .faq-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    .faq-section { margin-bottom: 2.5rem; }
+    .faq-section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-family: var(--font); font-size: 1rem; font-weight: 600;
+      padding: 1.1rem 0; text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--text3); transition: transform 0.2s; }
+    .faq-q.open::after { content: '−'; color: var(--accent); }
+    .faq-a { display: none; padding: 0 0 1.25rem; color: var(--text2); font-size: 0.92rem; line-height: 1.7; }
+    .faq-a.open { display: block; }
+    .faq-a strong { color: var(--text); }
+    .faq-a ul { margin: 0.5rem 0 0.5rem 1.25rem; }
+    .faq-a li { margin-bottom: 0.3rem; }
+
+    /* Lang content toggle */
+    [data-faq-lang] { display: none; }
+    [data-faq-lang].active { display: block; }
+  </style>
 </head>
 <body>
 
-    <header class="header">
-        <a href="/"><img src="/logo.png" alt="QuietStor" class="header-logo"></a>
-        <h1>FAQ</h1>
-        <p data-i18n="header-subtitle">Frequently Asked Questions</p>
-    </header>
+  <!-- Header -->
+  <div class="page-header">
+    <a href="/"><img src="/logo.svg" alt="QuietStor" class="header-logo"></a>
+    <h1 data-i18n="page-title">FAQ</h1>
+  </div>
 
-    <div class="container">
+  <!-- EN -->
+  <div class="faq-container" data-faq-lang="en">
 
-        <!-- ENGLISH -->
-        <div id="faq-en" class="faq-section">
-            
-            <div class="faq-category">
-                <h2>🚀 Getting Started</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What is QuietStor?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor is a privacy-first file manager for Android. It helps you browse your files, analyze storage usage, and protect sensitive files in an encrypted vault.</p>
-                        <ul>
-                            <li>✅ Clean file browsing interface</li>
-                            <li>✅ Storage analysis by category</li>
-                            <li>✅ Military-grade encrypted vault (AES-256)</li>
-                            <li>✅ 100% offline - no data leaves your device</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Is QuietStor free?</button>
-                    <div class="faq-answer">
-                        <p>Yes! Core features are completely free: file browsing, storage analysis, and vault (limited to 50 files).</p>
-                        <p>Premium unlocks unlimited vault files and priority support.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Does QuietStor need internet?</button>
-                    <div class="faq-answer">
-                        <p><strong>No.</strong> QuietStor works 100% offline. Your files never leave your device.</p>
-                        <p>We don't have servers. We don't collect data. We can't see your files.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="faq-section">
+      <div class="faq-section-title">📱 General</div>
 
-            <div class="faq-category">
-                <h2>🔐 Private Vault & PIN</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What is the Private Vault?</button>
-                    <div class="faq-answer">
-                        <p>The Private Vault is an encrypted space where you can store sensitive files:</p>
-                        <ul>
-                            <li>🔐 Encrypted with military-grade encryption (AES-256-GCM)</li>
-                            <li>🔑 Protected by your 6-digit PIN</li>
-                            <li>👆 Accessible with fingerprint (optional)</li>
-                            <li>👁️ Hidden from other apps and file managers</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">⚠️ What if I forget my PIN?</button>
-                    <div class="faq-answer">
-                        <div class="error-box">
-                            <strong>Your files will be permanently lost.</strong>
-                        </div>
-                        <p>This is not a bug — it's a security feature:</p>
-                        <ul>
-                            <li>❌ We never see your PIN</li>
-                            <li>❌ There's no "Forgot PIN" option</li>
-                            <li>❌ We can't help recover it</li>
-                        </ul>
-                        <p><strong>How to protect yourself:</strong></p>
-                        <ul>
-                            <li>✅ Choose a PIN you'll remember</li>
-                            <li>✅ Enable fingerprint as backup</li>
-                            <li>✅ Create a vault backup (.qsv file)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is QuietStor?</button>
+        <div class="faq-a">QuietStor is a <strong>privacy-first file manager for Android</strong> with an encrypted vault, smart storage cleaning, and portable ZIP export. Everything runs 100% offline — no cloud, no servers, no tracking.</div>
+      </div>
 
-            <div class="faq-category">
-                <h2>📱 Changing Devices</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">How do I transfer my vault to a new phone?</button>
-                    <div class="faq-answer">
-                        <p>You have <strong>two options</strong>:</p>
-                        
-                        <h4>Option A: Direct Transfer (Recommended) 👍</h4>
-                        <p>If you still have your old phone:</p>
-                        
-                        <div class="transfer-diagram">
-                            <h3>📲 Direct Transfer via QR Code</h3>
-                            
-                            <div class="devices-container">
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="qr-code"></div>
-                                            <div class="code-display">847 291</div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">Old Phone</div>
-                                </div>
-                                
-                                <div class="transfer-arrow">
-                                    <div class="arrow-line">
-                                        <div class="arrow-head"></div>
-                                        <div class="data-packets">
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                        </div>
-                                    </div>
-                                    <div class="transfer-status">Encrypted transfer</div>
-                                </div>
-                                
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="camera-viewfinder">
-                                                <div class="scan-line"></div>
-                                            </div>
-                                            <div class="progress-container">
-                                                <div class="progress-bar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">New Phone</div>
-                                </div>
-                            </div>
-                            
-                            <div class="transfer-steps">
-                                <div class="step"><span class="step-number">1</span> Scan QR</div>
-                                <div class="step"><span class="step-number">2</span> Transfer</div>
-                                <div class="step"><span class="step-number">3</span> New PIN</div>
-                                <div class="step"><span class="step-number">4</span> Done! ✅</div>
-                            </div>
-                        </div>
-                        
-                        <h4>Option B: Restore from Backup</h4>
-                        <p>If your old phone is lost or broken, you need a .qsv backup file created beforehand.</p>
-                        <div class="warning-box">
-                            ⚠️ <strong>No backup = No recovery.</strong> Always create backups!
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>💾 Backup & Export</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">How do I create a vault backup?</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Go to <strong>Settings > Export Vault Backup</strong></li>
-                            <li>Enter your PIN</li>
-                            <li>Create a <strong>backup password</strong> (different from PIN!)</li>
-                            <li>Choose where to save the .qsv file</li>
-                            <li>Store this file safely (Google Drive, USB, etc.)</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🛡️ Security & Privacy</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">How secure is QuietStor?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor uses industry-standard security:</p>
-                        <ul>
-                            <li><strong>Encryption:</strong> AES-256-GCM (military-grade)</li>
-                            <li><strong>Key storage:</strong> Android Keystore (hardware-backed)</li>
-                            <li><strong>PIN hashing:</strong> PBKDF2 with 600,000 iterations</li>
-                            <li><strong>Biometrics:</strong> Android BiometricPrompt (Class 3)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">What data does QuietStor collect?</button>
-                    <div class="faq-answer">
-                        <p><strong>None.</strong></p>
-                        <ul>
-                            <li>❌ No analytics</li>
-                            <li>❌ No crash reports with personal data</li>
-                            <li>❌ No usage tracking</li>
-                            <li>❌ No advertising</li>
-                            <li>❌ No network requests</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🔧 Troubleshooting</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">I'm locked out after wrong PIN attempts</button>
-                    <div class="faq-answer">
-                        <p>This is a security feature. After failed attempts:</p>
-                        <ul>
-                            <li>3 failures → 30 second wait</li>
-                            <li>5 failures → 2 minute wait</li>
-                            <li>10 failures → 30 minute wait</li>
-                        </ul>
-                        <p>Wait for the timer, then try with your correct PIN.</p>
-                    </div>
-                </div>
-            </div>
-
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is QuietStor free?</button>
+        <div class="faq-a">
+          Yes! Core features are completely free: full file manager, encrypted vault (up to <strong>500 MB</strong>), PIN + biometric unlock, and 4 cleaning tools.<br><br>
+          <strong>Premium (€1.99 / $1.99 — one-time purchase, no subscription)</strong> unlocks unlimited vault storage, ZIP export, Mood Stickers, duplicate finder, WhatsApp cleaner, and break-in alerts.
         </div>
+      </div>
 
-        <!-- FRANÇAIS -->
-        <div id="faq-fr" class="faq-section" style="display: none;">
-            
-            <div class="faq-category">
-                <h2>🚀 Démarrage</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Qu'est-ce que QuietStor ?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor est un gestionnaire de fichiers axé sur la confidentialité pour Android. Il vous aide à parcourir vos fichiers, analyser l'utilisation du stockage et protéger vos fichiers sensibles dans un coffre-fort chiffré.</p>
-                        <ul>
-                            <li>✅ Interface de navigation claire</li>
-                            <li>✅ Analyse du stockage par catégorie</li>
-                            <li>✅ Coffre-fort avec chiffrement militaire (AES-256)</li>
-                            <li>✅ 100% hors-ligne - aucune donnée ne quitte votre appareil</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">QuietStor est-il gratuit ?</button>
-                    <div class="faq-answer">
-                        <p>Oui ! Les fonctionnalités de base sont entièrement gratuites : navigation, analyse du stockage et coffre-fort (limité à 50 fichiers).</p>
-                        <p>Premium débloque les fichiers illimités et le support prioritaire.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">QuietStor a-t-il besoin d'internet ?</button>
-                    <div class="faq-answer">
-                        <p><strong>Non.</strong> QuietStor fonctionne 100% hors-ligne. Vos fichiers ne quittent jamais votre appareil.</p>
-                        <p>Nous n'avons pas de serveurs. Nous ne collectons pas de données. Nous ne pouvons pas voir vos fichiers.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🔐 Coffre-fort & PIN</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Qu'est-ce que le coffre-fort privé ?</button>
-                    <div class="faq-answer">
-                        <p>Le coffre-fort privé est un espace chiffré où vous pouvez stocker vos fichiers sensibles :</p>
-                        <ul>
-                            <li>🔐 Chiffrés avec un chiffrement de qualité militaire (AES-256-GCM)</li>
-                            <li>🔑 Protégés par votre code PIN à 6 chiffres</li>
-                            <li>👆 Accessibles avec l'empreinte digitale (optionnel)</li>
-                            <li>👁️ Cachés des autres applications</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">⚠️ Que se passe-t-il si j'oublie mon PIN ?</button>
-                    <div class="faq-answer">
-                        <div class="error-box">
-                            <strong>Vos fichiers seront définitivement perdus.</strong>
-                        </div>
-                        <p>Ce n'est pas un bug — c'est une fonctionnalité de sécurité :</p>
-                        <ul>
-                            <li>❌ Nous ne voyons jamais votre PIN</li>
-                            <li>❌ Il n'y a pas d'option "PIN oublié"</li>
-                            <li>❌ Nous ne pouvons pas vous aider à le récupérer</li>
-                        </ul>
-                        <p><strong>Comment vous protéger :</strong></p>
-                        <ul>
-                            <li>✅ Choisissez un PIN dont vous vous souviendrez</li>
-                            <li>✅ Activez l'empreinte digitale comme secours</li>
-                            <li>✅ Créez une sauvegarde du coffre-fort (fichier .qsv)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>📱 Changement d'appareil</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Comment transférer mon coffre-fort vers un nouveau téléphone ?</button>
-                    <div class="faq-answer">
-                        <p>Vous avez <strong>deux options</strong> :</p>
-                        
-                        <h4>Option A : Transfert direct (Recommandé) 👍</h4>
-                        <p>Si vous avez encore votre ancien téléphone :</p>
-                        
-                        <div class="transfer-diagram">
-                            <h3>📲 Transfert direct via QR Code</h3>
-                            
-                            <div class="devices-container">
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="qr-code"></div>
-                                            <div class="code-display">847 291</div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">Ancien tél.</div>
-                                </div>
-                                
-                                <div class="transfer-arrow">
-                                    <div class="arrow-line">
-                                        <div class="arrow-head"></div>
-                                        <div class="data-packets">
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                        </div>
-                                    </div>
-                                    <div class="transfer-status">Transfert chiffré</div>
-                                </div>
-                                
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="camera-viewfinder">
-                                                <div class="scan-line"></div>
-                                            </div>
-                                            <div class="progress-container">
-                                                <div class="progress-bar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">Nouveau tél.</div>
-                                </div>
-                            </div>
-                            
-                            <div class="transfer-steps">
-                                <div class="step"><span class="step-number">1</span> Scanner QR</div>
-                                <div class="step"><span class="step-number">2</span> Transfert</div>
-                                <div class="step"><span class="step-number">3</span> Nouveau PIN</div>
-                                <div class="step"><span class="step-number">4</span> Terminé ! ✅</div>
-                            </div>
-                        </div>
-                        
-                        <h4>Option B : Restaurer depuis une sauvegarde</h4>
-                        <p>Si votre ancien téléphone est perdu ou cassé, vous avez besoin d'un fichier .qsv créé au préalable.</p>
-                        <div class="warning-box">
-                            ⚠️ <strong>Pas de sauvegarde = Pas de récupération.</strong> Créez toujours des sauvegardes !
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>💾 Sauvegarde & Export</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Comment créer une sauvegarde ?</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Allez dans <strong>Paramètres > Exporter la sauvegarde</strong></li>
-                            <li>Entrez votre PIN</li>
-                            <li>Créez un <strong>mot de passe de sauvegarde</strong> (différent du PIN !)</li>
-                            <li>Choisissez où enregistrer le fichier .qsv</li>
-                            <li>Stockez ce fichier en sécurité (Google Drive, USB, etc.)</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🛡️ Sécurité & Confidentialité</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">QuietStor est-il sécurisé ?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor utilise des standards de sécurité reconnus :</p>
-                        <ul>
-                            <li><strong>Chiffrement :</strong> AES-256-GCM (qualité militaire)</li>
-                            <li><strong>Stockage des clés :</strong> Android Keystore (matériel sécurisé)</li>
-                            <li><strong>Hachage du PIN :</strong> PBKDF2 avec 600 000 itérations</li>
-                            <li><strong>Biométrie :</strong> Android BiometricPrompt (Classe 3)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Quelles données QuietStor collecte-t-il ?</button>
-                    <div class="faq-answer">
-                        <p><strong>Aucune.</strong></p>
-                        <ul>
-                            <li>❌ Pas d'analytics</li>
-                            <li>❌ Pas de rapports de crash avec données personnelles</li>
-                            <li>❌ Pas de suivi d'utilisation</li>
-                            <li>❌ Pas de publicité</li>
-                            <li>❌ Pas de requêtes réseau</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🔧 Dépannage</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Je suis bloqué après plusieurs tentatives</button>
-                    <div class="faq-answer">
-                        <p>C'est une fonctionnalité de sécurité. Après des échecs :</p>
-                        <ul>
-                            <li>3 échecs → 30 secondes d'attente</li>
-                            <li>5 échecs → 2 minutes d'attente</li>
-                            <li>10 échecs → 30 minutes d'attente</li>
-                        </ul>
-                        <p>Attendez la fin du délai, puis réessayez avec votre PIN correct.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- ESPAÑOL -->
-        <div id="faq-es" class="faq-section" style="display: none;">
-            
-            <div class="faq-category">
-                <h2>🚀 Primeros pasos</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué es QuietStor?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor es un gestor de archivos centrado en la privacidad para Android. Te ayuda a explorar tus archivos, analizar el uso del almacenamiento y proteger archivos sensibles en una bóveda cifrada.</p>
-                        <ul>
-                            <li>✅ Interfaz de navegación limpia</li>
-                            <li>✅ Análisis de almacenamiento por categoría</li>
-                            <li>✅ Bóveda con cifrado militar (AES-256)</li>
-                            <li>✅ 100% sin conexión - ningún dato sale de tu dispositivo</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿QuietStor es gratis?</button>
-                    <div class="faq-answer">
-                        <p>¡Sí! Las funciones principales son completamente gratis: navegación de archivos, análisis de almacenamiento y bóveda (limitada a 50 archivos).</p>
-                        <p>Premium desbloquea archivos ilimitados y soporte prioritario.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿QuietStor necesita internet?</button>
-                    <div class="faq-answer">
-                        <p><strong>No.</strong> QuietStor funciona 100% sin conexión. Tus archivos nunca salen de tu dispositivo.</p>
-                        <p>No tenemos servidores. No recopilamos datos. No podemos ver tus archivos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🔐 Bóveda privada y PIN</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué es la Bóveda Privada?</button>
-                    <div class="faq-answer">
-                        <p>La Bóveda Privada es un espacio cifrado donde puedes guardar archivos sensibles:</p>
-                        <ul>
-                            <li>🔐 Cifrados con encriptación de grado militar (AES-256-GCM)</li>
-                            <li>🔑 Protegidos por tu PIN de 6 dígitos</li>
-                            <li>👆 Accesibles con huella digital (opcional)</li>
-                            <li>👁️ Ocultos de otras aplicaciones</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">⚠️ ¿Qué pasa si olvido mi PIN?</button>
-                    <div class="faq-answer">
-                        <div class="error-box">
-                            <strong>Tus archivos se perderán permanentemente.</strong>
-                        </div>
-                        <p>Esto no es un error — es una función de seguridad:</p>
-                        <ul>
-                            <li>❌ Nunca vemos tu PIN</li>
-                            <li>❌ No hay opción "Olvidé mi PIN"</li>
-                            <li>❌ No podemos ayudarte a recuperarlo</li>
-                        </ul>
-                        <p><strong>Cómo protegerte:</strong></p>
-                        <ul>
-                            <li>✅ Elige un PIN que recordarás</li>
-                            <li>✅ Activa la huella digital como respaldo</li>
-                            <li>✅ Crea una copia de seguridad (archivo .qsv)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>📱 Cambio de dispositivo</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Cómo transfiero mi bóveda a un nuevo teléfono?</button>
-                    <div class="faq-answer">
-                        <p>Tienes <strong>dos opciones</strong>:</p>
-                        
-                        <h4>Opción A: Transferencia directa (Recomendada) 👍</h4>
-                        <p>Si aún tienes tu teléfono antiguo:</p>
-                        
-                        <div class="transfer-diagram">
-                            <h3>📲 Transferencia directa vía código QR</h3>
-                            
-                            <div class="devices-container">
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="qr-code"></div>
-                                            <div class="code-display">847 291</div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">Tel. antiguo</div>
-                                </div>
-                                
-                                <div class="transfer-arrow">
-                                    <div class="arrow-line">
-                                        <div class="arrow-head"></div>
-                                        <div class="data-packets">
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                            <div class="packet"></div>
-                                        </div>
-                                    </div>
-                                    <div class="transfer-status">Transferencia cifrada</div>
-                                </div>
-                                
-                                <div>
-                                    <div class="device">
-                                        <div class="device-screen">
-                                            <div class="camera-viewfinder">
-                                                <div class="scan-line"></div>
-                                            </div>
-                                            <div class="progress-container">
-                                                <div class="progress-bar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="device-label">Tel. nuevo</div>
-                                </div>
-                            </div>
-                            
-                            <div class="transfer-steps">
-                                <div class="step"><span class="step-number">1</span> Escanear QR</div>
-                                <div class="step"><span class="step-number">2</span> Transferir</div>
-                                <div class="step"><span class="step-number">3</span> Nuevo PIN</div>
-                                <div class="step"><span class="step-number">4</span> ¡Listo! ✅</div>
-                            </div>
-                        </div>
-                        
-                        <h4>Opción B: Restaurar desde copia de seguridad</h4>
-                        <p>Si tu teléfono antiguo está perdido o roto, necesitas un archivo .qsv creado previamente.</p>
-                        <div class="warning-box">
-                            ⚠️ <strong>Sin copia de seguridad = Sin recuperación.</strong> ¡Siempre crea copias de seguridad!
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>💾 Copia de seguridad</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Cómo creo una copia de seguridad?</button>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Ve a <strong>Ajustes > Exportar copia de seguridad</strong></li>
-                            <li>Ingresa tu PIN</li>
-                            <li>Crea una <strong>contraseña de respaldo</strong> (¡diferente del PIN!)</li>
-                            <li>Elige dónde guardar el archivo .qsv</li>
-                            <li>Guarda este archivo de forma segura (Google Drive, USB, etc.)</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🛡️ Seguridad y privacidad</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué tan seguro es QuietStor?</button>
-                    <div class="faq-answer">
-                        <p>QuietStor utiliza estándares de seguridad de la industria:</p>
-                        <ul>
-                            <li><strong>Cifrado:</strong> AES-256-GCM (grado militar)</li>
-                            <li><strong>Almacenamiento de claves:</strong> Android Keystore (respaldado por hardware)</li>
-                            <li><strong>Hash del PIN:</strong> PBKDF2 con 600,000 iteraciones</li>
-                            <li><strong>Biometría:</strong> Android BiometricPrompt (Clase 3)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">¿Qué datos recopila QuietStor?</button>
-                    <div class="faq-answer">
-                        <p><strong>Ninguno.</strong></p>
-                        <ul>
-                            <li>❌ Sin analíticas</li>
-                            <li>❌ Sin informes de errores con datos personales</li>
-                            <li>❌ Sin seguimiento de uso</li>
-                            <li>❌ Sin publicidad</li>
-                            <li>❌ Sin solicitudes de red</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-category">
-                <h2>🔧 Solución de problemas</h2>
-                
-                <div class="faq-item">
-                    <button class="faq-question">Estoy bloqueado después de varios intentos</button>
-                    <div class="faq-answer">
-                        <p>Esto es una función de seguridad. Después de fallos:</p>
-                        <ul>
-                            <li>3 fallos → 30 segundos de espera</li>
-                            <li>5 fallos → 2 minutos de espera</li>
-                            <li>10 fallos → 30 minutos de espera</li>
-                        </ul>
-                        <p>Espera a que termine el temporizador, luego intenta con tu PIN correcto.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <a href="/" class="back-link" data-i18n="back">← Back to QuietStor</a>
-
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Which Android versions are supported?</button>
+        <div class="faq-a">QuietStor requires <strong>Android 7.0</strong> (API 24) or higher. It runs on all major brands: Samsung, Xiaomi, Google Pixel, OnePlus, etc.</div>
+      </div>
     </div>
 
-    <footer>
-        <div class="lang-selector">
-            <span class="globe">🌐</span>
-            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">
-                🇬🇧 <span class="lang-text">English</span>
-            </button>
-            <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">
-                🇫🇷 <span class="lang-text">Français</span>
-            </button>
-            <button class="lang-btn" data-lang="es" onclick="setLang('es')">
-                🇪🇸 <span class="lang-text">Español</span>
-            </button>
+    <div class="faq-section">
+      <div class="faq-section-title">🔐 Vault & Security</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does the vault encryption work?</button>
+        <div class="faq-a">
+          QuietStor uses industry-standard security:
+          <ul>
+            <li><strong>AES-256-GCM</strong> — the same standard used by banks and governments</li>
+            <li><strong>Unique key per file</strong> — derived via HKDF from your device's hardware Keystore</li>
+            <li><strong>PIN hashing:</strong> PBKDF2 with 600,000 iterations</li>
+            <li><strong>Biometric unlock</strong> via Android BiometricPrompt</li>
+          </ul>
+          Keys are stored in your device's <strong>Trusted Execution Environment (TEE)</strong> or <strong>StrongBox</strong> — they never leave the hardware.
         </div>
-        
-        <div class="footer-links">
-            <a href="/privacy.html" data-i18n="footer-privacy">Privacy Policy</a>
-            <a href="/terms.html" data-i18n="footer-terms">Terms of Service</a>
-            <a href="/refund.html" data-i18n="footer-refund">Refund Policy</a>
-            <a href="mailto:app.quietstor@gmail.com" data-i18n="footer-contact">Contact</a>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ What if I forget my PIN?</button>
+        <div class="faq-a">
+          <strong>Your data is permanently lost.</strong> This is by design (zero-knowledge architecture):
+          <ul>
+            <li>❌ We never see your PIN</li>
+            <li>❌ There's no "Forgot PIN" option</li>
+            <li>❌ No backdoor, no recovery, no server to contact</li>
+          </ul>
+          <strong>Tip:</strong> Choose a PIN you'll remember, and create a ZIP backup (Premium) stored safely on your PC.
         </div>
-        <p>© 2025 QuietStor. <span data-i18n="copyright">All rights reserved.</span></p>
-    </footer>
+      </div>
+    </div>
 
-    <script>
-        const TRANSLATIONS = {
-            en: {
-                'header-subtitle': 'Frequently Asked Questions',
-                'back': '← Back to QuietStor',
-                'footer-privacy': 'Privacy Policy',
-                'footer-terms': 'Terms of Service',
-                'footer-refund': 'Refund Policy',
-                'footer-contact': 'Contact',
-                'copyright': 'All rights reserved.'
-            },
-            fr: {
-                'header-subtitle': 'Questions fréquentes',
-                'back': '← Retour à QuietStor',
-                'footer-privacy': 'Politique de confidentialité',
-                'footer-terms': "Conditions d'utilisation",
-                'footer-refund': 'Politique de remboursement',
-                'footer-contact': 'Contact',
-                'copyright': 'Tous droits réservés.'
-            },
-            es: {
-                'header-subtitle': 'Preguntas frecuentes',
-                'back': '← Volver a QuietStor',
-                'footer-privacy': 'Política de privacidad',
-                'footer-terms': 'Términos de servicio',
-                'footer-refund': 'Política de reembolso',
-                'footer-contact': 'Contacto',
-                'copyright': 'Todos los derechos reservados.'
-            }
-        };
+    <div class="faq-section">
+      <div class="faq-section-title">🧹 Storage Guardian</div>
 
-        function getLang() {
-            const stored = localStorage.getItem('quietstor-lang');
-            if (stored) return stored;
-            const nav = navigator.language || navigator.userLanguage;
-            if (nav.startsWith('fr')) return 'fr';
-            if (nav.startsWith('es')) return 'es';
-            return 'en';
-        }
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is Storage Guardian?</button>
+        <div class="faq-a">
+          Storage Guardian is QuietStor's <strong>smart cleaning hub</strong> with 6 tools:
+          <ul>
+            <li>🗂 <strong>Large files</strong> (>50 MB) — Free</li>
+            <li>📸 <strong>Old screenshots</strong> (>30 days) — Free</li>
+            <li>📁 <strong>Empty folders</strong> — Free</li>
+            <li>📦 <strong>Old APKs</strong> — Free</li>
+            <li>👥 <strong>Duplicate finder</strong> — Premium</li>
+            <li>💬 <strong>WhatsApp media cleaner</strong> — Premium</li>
+          </ul>
+          Files are classified using a Trust Gradient (Safe / Review / Sensitive) so you always know what's safe to delete.
+        </div>
+      </div>
+    </div>
 
-        function setLang(lang) {
-            localStorage.setItem('quietstor-lang', lang);
-            applyLang(lang);
-        }
+    <div class="faq-section">
+      <div class="faq-section-title">📦 Export & Backup</div>
 
-        function applyLang(lang) {
-            const t = TRANSLATIONS[lang];
-            
-            // Show/hide FAQ sections
-            document.getElementById('faq-en').style.display = lang === 'en' ? 'block' : 'none';
-            document.getElementById('faq-fr').style.display = lang === 'fr' ? 'block' : 'none';
-            document.getElementById('faq-es').style.display = lang === 'es' ? 'block' : 'none';
-            
-            // Update all elements with data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (t[key]) {
-                    el.textContent = t[key];
-                }
-            });
-            
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-            
-            // Update html lang attribute
-            document.documentElement.lang = lang;
-        }
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does ZIP export work?</button>
+        <div class="faq-a">
+          Premium users can export their vault as a <strong>standard encrypted ZIP file</strong> protected by a strong password (8+ characters, at least 1 letter + 1 digit — separate from your vault PIN).<br><br>
+          This ZIP can be opened with <strong>7-Zip, WinRAR, or macOS native</strong> — no special software needed. Save it to USB, Google Drive, Dropbox, or anywhere. <strong>Your files work everywhere, forever.</strong>
+        </div>
+      </div>
 
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isOpen = item.classList.contains('open');
-                item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-                if (!isOpen) item.classList.add('open');
-            });
-        });
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I transfer my vault to a new phone?</button>
+        <div class="faq-a">
+          Yes, using ZIP export:
+          <ul>
+            <li>Export your vault as a ZIP file on your old phone</li>
+            <li>Transfer the ZIP to your new phone (USB, cloud, email…)</li>
+            <li>Install QuietStor on the new phone and import the ZIP</li>
+          </ul>
+          <strong>Important:</strong> If your old phone is lost or broken, you need a ZIP backup created beforehand. There is no cloud sync.
+        </div>
+      </div>
+    </div>
 
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', () => {
-            applyLang(getLang());
-        });
-    </script>
+    <div class="faq-section">
+      <div class="faq-section-title">🔒 Data & Privacy</div>
 
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What data does QuietStor collect?</button>
+        <div class="faq-a"><strong>None. Zero. Nothing.</strong> No telemetry, no analytics, no usage stats, no personal information. QuietStor makes zero network requests. We literally cannot see your files or know you exist.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I delete my data?</button>
+        <div class="faq-a">Yes — uninstall the app or use "Reset Vault" in Settings. All encrypted files and metadata are permanently deleted. Since we collect no data, there's nothing to delete on our end.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FR -->
+  <div class="faq-container" data-faq-lang="fr">
+
+    <div class="faq-section">
+      <div class="faq-section-title">📱 Général</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que QuietStor ?</button>
+        <div class="faq-a">QuietStor est un <strong>gestionnaire de fichiers privé pour Android</strong> avec un coffre-fort chiffré, un nettoyage intelligent du stockage et un export ZIP portable. Tout fonctionne 100% hors-ligne — pas de cloud, pas de serveurs, pas de tracking.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">QuietStor est-il gratuit ?</button>
+        <div class="faq-a">
+          Oui ! Les fonctionnalités principales sont gratuites : gestionnaire de fichiers complet, coffre-fort chiffré (jusqu'à <strong>500 Mo</strong>), PIN + biométrie, et 4 outils de nettoyage.<br><br>
+          <strong>Premium (1,99 € / $1.99 — achat unique, aucun abonnement)</strong> débloque le stockage illimité, l'export ZIP, les Mood Stickers, le détecteur de doublons, le nettoyeur WhatsApp et les alertes intrusion.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Quelles versions Android sont supportées ?</button>
+        <div class="faq-a">QuietStor nécessite <strong>Android 7.0</strong> (API 24) ou supérieur. Compatible avec Samsung, Xiaomi, Google Pixel, OnePlus, etc.</div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔐 Coffre-fort & Sécurité</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment fonctionne le chiffrement du coffre-fort ?</button>
+        <div class="faq-a">
+          QuietStor utilise des standards de sécurité reconnus :
+          <ul>
+            <li><strong>AES-256-GCM</strong> — le même standard utilisé par les banques et gouvernements</li>
+            <li><strong>Clé unique par fichier</strong> — dérivée via HKDF depuis le Keystore matériel</li>
+            <li><strong>Hachage du PIN :</strong> PBKDF2 avec 600 000 itérations</li>
+            <li><strong>Déverrouillage biométrique</strong> via Android BiometricPrompt</li>
+          </ul>
+          Les clés sont stockées dans le <strong>TEE</strong> (Trusted Execution Environment) ou <strong>StrongBox</strong> de votre appareil — elles ne quittent jamais le matériel.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Que se passe-t-il si j'oublie mon PIN ?</button>
+        <div class="faq-a">
+          <strong>Vos données sont définitivement perdues.</strong> C'est voulu (architecture zero-knowledge) :
+          <ul>
+            <li>❌ Nous ne voyons jamais votre PIN</li>
+            <li>❌ Pas d'option « PIN oublié »</li>
+            <li>❌ Aucune porte dérobée, aucune récupération, aucun serveur à contacter</li>
+          </ul>
+          <strong>Conseil :</strong> Choisissez un PIN mémorable et créez une sauvegarde ZIP (Premium) stockée en sécurité sur votre PC.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🧹 Storage Guardian</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que Storage Guardian ?</button>
+        <div class="faq-a">
+          Storage Guardian est le <strong>hub de nettoyage intelligent</strong> de QuietStor avec 6 outils :
+          <ul>
+            <li>🗂 <strong>Gros fichiers</strong> (>50 Mo) — Gratuit</li>
+            <li>📸 <strong>Vieilles captures d'écran</strong> (>30 jours) — Gratuit</li>
+            <li>📁 <strong>Dossiers vides</strong> — Gratuit</li>
+            <li>📦 <strong>Vieux APK</strong> — Gratuit</li>
+            <li>👥 <strong>Détecteur de doublons</strong> — Premium</li>
+            <li>💬 <strong>Nettoyeur WhatsApp</strong> — Premium</li>
+          </ul>
+          Les fichiers sont classés par un Trust Gradient (Sûr / À vérifier / Sensible) pour savoir ce qui est sûr à supprimer.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">📦 Export & Sauvegarde</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment fonctionne l'export ZIP ?</button>
+        <div class="faq-a">
+          Les utilisateurs Premium peuvent exporter leur coffre-fort en <strong>fichier ZIP chiffré standard</strong> protégé par un mot de passe fort (8+ caractères, au moins 1 lettre + 1 chiffre — différent de votre PIN).<br><br>
+          Ce ZIP s'ouvre avec <strong>7-Zip, WinRAR ou macOS nativement</strong> — aucun logiciel spécial nécessaire. Sauvegardez-le sur USB, Google Drive, Dropbox, ou ailleurs. <strong>Vos fichiers marchent partout, pour toujours.</strong>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Puis-je transférer mon coffre-fort vers un nouveau téléphone ?</button>
+        <div class="faq-a">
+          Oui, via l'export ZIP :
+          <ul>
+            <li>Exportez votre coffre-fort en ZIP sur l'ancien téléphone</li>
+            <li>Transférez le ZIP vers le nouveau (USB, cloud, email…)</li>
+            <li>Installez QuietStor et importez le ZIP</li>
+          </ul>
+          <strong>Important :</strong> Si votre ancien téléphone est perdu ou cassé, il faut un backup ZIP créé au préalable. Il n'y a pas de synchronisation cloud.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔒 Données & Confidentialité</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Quelles données QuietStor collecte-t-il ?</button>
+        <div class="faq-a"><strong>Aucune. Zéro. Rien.</strong> Pas de télémétrie, pas d'analytics, pas de statistiques, aucune information personnelle. QuietStor ne fait aucune requête réseau. Nous ne pouvons littéralement pas voir vos fichiers.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Puis-je supprimer mes données ?</button>
+        <div class="faq-a">Oui — désinstallez l'app ou utilisez « Réinitialiser le coffre-fort » dans Paramètres. Tous les fichiers chiffrés et métadonnées sont définitivement supprimés. Puisque nous ne collectons rien, il n'y a rien à supprimer de notre côté.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ES -->
+  <div class="faq-container" data-faq-lang="es">
+
+    <div class="faq-section">
+      <div class="faq-section-title">📱 General</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué es QuietStor?</button>
+        <div class="faq-a">QuietStor es un <strong>gestor de archivos privado para Android</strong> con bóveda cifrada, limpieza inteligente de almacenamiento y exportación ZIP portátil. Todo funciona 100% sin conexión — sin nube, sin servidores, sin rastreo.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Es QuietStor gratis?</button>
+        <div class="faq-a">
+          ¡Sí! Las funciones principales son gratis: gestor de archivos completo, bóveda cifrada (hasta <strong>500 MB</strong>), PIN + biometría, y 4 herramientas de limpieza.<br><br>
+          <strong>Premium (1,99 € / $1.99 — compra única, sin suscripción)</strong> desbloquea almacenamiento ilimitado, exportación ZIP, Mood Stickers, detector de duplicados, limpiador WhatsApp y alertas de intrusión.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué versiones de Android son compatibles?</button>
+        <div class="faq-a">QuietStor requiere <strong>Android 7.0</strong> (API 24) o superior. Compatible con Samsung, Xiaomi, Google Pixel, OnePlus, etc.</div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔐 Bóveda y Seguridad</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona el cifrado?</button>
+        <div class="faq-a">
+          QuietStor usa estándares de seguridad reconocidos:
+          <ul>
+            <li><strong>AES-256-GCM</strong> — el mismo estándar de bancos y gobiernos</li>
+            <li><strong>Clave única por archivo</strong> — derivada via HKDF desde el Keystore hardware</li>
+            <li><strong>Hash del PIN:</strong> PBKDF2 con 600.000 iteraciones</li>
+            <li><strong>Desbloqueo biométrico</strong> vía Android BiometricPrompt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ ¿Qué pasa si olvido mi PIN?</button>
+        <div class="faq-a">
+          <strong>Tus datos se pierden permanentemente.</strong> Es por diseño (arquitectura zero-knowledge):
+          <ul>
+            <li>❌ Nunca vemos tu PIN</li>
+            <li>❌ No hay opción "Olvidé mi PIN"</li>
+            <li>❌ Sin puerta trasera, sin recuperación</li>
+          </ul>
+          <strong>Consejo:</strong> Elige un PIN memorable y crea un backup ZIP (Premium) guardado en tu PC.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🧹 Storage Guardian</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué es Storage Guardian?</button>
+        <div class="faq-a">
+          Storage Guardian es el <strong>hub de limpieza inteligente</strong> con 6 herramientas: archivos grandes, capturas antiguas, carpetas vacías, APKs (gratis) + duplicados y WhatsApp (Premium). Los archivos se clasifican por Trust Gradient (Seguro / Revisar / Sensible).
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">📦 Exportación y Backup</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona la exportación ZIP?</button>
+        <div class="faq-a">
+          Los usuarios Premium pueden exportar su bóveda como <strong>archivo ZIP cifrado estándar</strong> protegido con contraseña fuerte (8+ caracteres). Se abre con <strong>7-Zip, WinRAR o macOS</strong> — sin software especial. <strong>Tus archivos funcionan en todas partes, para siempre.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔒 Datos y Privacidad</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué datos recoge QuietStor?</button>
+        <div class="faq-a"><strong>Ninguno. Cero. Nada.</strong> Sin telemetría, sin analytics, sin información personal. QuietStor no hace ninguna solicitud de red.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DE -->
+  <div class="faq-container" data-faq-lang="de">
+
+    <div class="faq-section">
+      <div class="faq-section-title">📱 Allgemein</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Was ist QuietStor?</button>
+        <div class="faq-a">QuietStor ist ein <strong>datenschutzorientierter Dateimanager für Android</strong> mit verschlüsseltem Tresor, intelligenter Speicherbereinigung und portablem ZIP-Export. Alles läuft 100% offline — keine Cloud, keine Server, kein Tracking.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Ist QuietStor kostenlos?</button>
+        <div class="faq-a">
+          Ja! Die Kernfunktionen sind komplett kostenlos: vollständiger Dateimanager, verschlüsselter Tresor (bis <strong>500 MB</strong>), PIN + Biometrie und 4 Reinigungstools.<br><br>
+          <strong>Premium (1,99 € / $1.99 — Einmalkauf, kein Abo)</strong> schaltet unbegrenzten Tresor, ZIP-Export, Mood Stickers, Duplikat-Finder, WhatsApp-Reiniger und Einbruch-Warnungen frei.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Welche Android-Versionen werden unterstützt?</button>
+        <div class="faq-a">QuietStor erfordert <strong>Android 7.0</strong> (API 24) oder höher. Kompatibel mit Samsung, Xiaomi, Google Pixel, OnePlus usw.</div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔐 Tresor & Sicherheit</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Wie funktioniert die Verschlüsselung?</button>
+        <div class="faq-a">
+          QuietStor verwendet anerkannte Sicherheitsstandards:
+          <ul>
+            <li><strong>AES-256-GCM</strong> — derselbe Standard wie bei Banken und Behörden</li>
+            <li><strong>Einzigartiger Schlüssel pro Datei</strong> — abgeleitet via HKDF aus dem Hardware-Keystore</li>
+            <li><strong>PIN-Hashing:</strong> PBKDF2 mit 600.000 Iterationen</li>
+            <li><strong>Biometrische Entsperrung</strong> über Android BiometricPrompt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">⚠️ Was passiert, wenn ich meine PIN vergesse?</button>
+        <div class="faq-a">
+          <strong>Ihre Daten sind dauerhaft verloren.</strong> Das ist beabsichtigt (Zero-Knowledge-Architektur):
+          <ul>
+            <li>❌ Wir sehen Ihre PIN nie</li>
+            <li>❌ Keine „PIN vergessen"-Option</li>
+            <li>❌ Keine Hintertür, keine Wiederherstellung</li>
+          </ul>
+          <strong>Tipp:</strong> Wählen Sie eine einprägsame PIN und erstellen Sie ein ZIP-Backup (Premium), das sicher auf Ihrem PC gespeichert ist.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🧹 Storage Guardian</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Was ist Storage Guardian?</button>
+        <div class="faq-a">
+          Storage Guardian ist der <strong>intelligente Reinigungs-Hub</strong> mit 6 Tools: große Dateien, alte Screenshots, leere Ordner, APKs (kostenlos) + Duplikate und WhatsApp (Premium). Dateien werden nach Trust Gradient klassifiziert (Sicher / Prüfen / Sensibel).
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">📦 Export & Backup</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Wie funktioniert der ZIP-Export?</button>
+        <div class="faq-a">
+          Premium-Nutzer können ihren Tresor als <strong>verschlüsselte Standard-ZIP-Datei</strong> exportieren, geschützt mit einem starken Passwort (8+ Zeichen). Öffnen mit <strong>7-Zip, WinRAR oder macOS</strong> — keine Spezialsoftware nötig. <strong>Ihre Dateien funktionieren überall, für immer.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">🔒 Daten & Datenschutz</div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Welche Daten sammelt QuietStor?</button>
+        <div class="faq-a"><strong>Keine. Null. Nichts.</strong> Keine Telemetrie, keine Analyse, keine persönlichen Informationen. QuietStor macht keine Netzwerkanfragen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <img src="/logo.svg" alt="QuietStor" class="footer-logo">
+    <div class="lang-selector">
+      <span class="globe">🌐</span>
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 <span class="lang-text">English</span></button>
+      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">🇫🇷 <span class="lang-text">Français</span></button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸 <span class="lang-text">Español</span></button>
+      <button class="lang-btn" data-lang="de" onclick="setLang('de')">🇩🇪 <span class="lang-text">Deutsch</span></button>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/refund.html">Refund</a>
+    </div>
+    <div class="footer-contact"><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+    <p class="copyright">© 2025–2026 QuietStor. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const wasOpen = btn.classList.contains('open');
+      // close all in same container
+      btn.closest('.faq-container').querySelectorAll('.faq-q').forEach(q => {
+        q.classList.remove('open');
+        q.nextElementSibling.classList.remove('open');
+      });
+      if (!wasOpen) {
+        btn.classList.add('open');
+        btn.nextElementSibling.classList.add('open');
+      }
+    }
+
+    function getLang() {
+      const s = localStorage.getItem('quietstor-lang');
+      if (s && ['en','fr','es','de'].includes(s)) return s;
+      const n = (navigator.language || '').slice(0, 2);
+      if (n === 'fr') return 'fr';
+      if (n === 'es') return 'es';
+      if (n === 'de') return 'de';
+      return 'en';
+    }
+
+    function setLang(l) {
+      localStorage.setItem('quietstor-lang', l);
+      applyLang(l);
+    }
+
+    function applyLang(l) {
+      document.querySelectorAll('[data-faq-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.faqLang === l);
+      });
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === l);
+      });
+      document.documentElement.lang = l;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => applyLang(getLang()));
+  </script>
 </body>
 </html>
