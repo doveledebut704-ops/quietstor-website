@@ -654,6 +654,807 @@ body::before {
 @media (max-width: 900px) {
   .export-grid { gap: 1.25rem; }
 }
+
+/* =============================================
+   ACTIVE PROTECTION SECTION
+   ============================================= */
+
+/* Badge "NEW" */
+.badge-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: var(--radius-pill);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.15); }
+  50% { box-shadow: 0 0 20px 4px rgba(34,197,94,0.08); }
+}
+
+.badge-new .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: dotBlink 2s ease-in-out infinite;
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Shield Layout */
+.shield-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  min-height: 560px;
+}
+
+.shield-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
+.shield-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 340px; height: 340px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(34,197,94,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.shield-ring {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring-1 {
+  width: 200px; height: 200px;
+  border: 1px solid rgba(34,197,94,0.14);
+  animation: ringPulse 4s ease-in-out infinite;
+}
+.ring-2 {
+  width: 290px; height: 290px;
+  border: 1px solid rgba(34,197,94,0.09);
+  animation: ringPulse 4s ease-in-out infinite 1s;
+}
+.ring-3 {
+  width: 380px; height: 380px;
+  border: 1px solid rgba(34,197,94,0.05);
+  animation: ringPulse 4s ease-in-out infinite 2s;
+}
+.ring-4 {
+  width: 470px; height: 470px;
+  border: 1px solid rgba(34,197,94,0.025);
+  animation: ringPulse 4s ease-in-out infinite 3s;
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.02); }
+}
+
+/* Premium Device */
+.device {
+  width: 116px;
+  height: 232px;
+  position: relative;
+  z-index: 10;
+  animation: deviceFloat 6s ease-in-out infinite;
+}
+
+@keyframes deviceFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.device-frame {
+  width: 100%; height: 100%;
+  border-radius: 24px;
+  position: relative;
+  background: linear-gradient(165deg, rgba(34,197,94,0.12) 0%, rgba(34,197,94,0.04) 40%, rgba(255,255,255,0.03) 100%);
+  padding: 1.5px;
+  box-shadow: 0 0 60px rgba(34,197,94,0.06), 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.device-body {
+  width: 100%; height: 100%;
+  border-radius: 22.5px;
+  background: #0c0b0f;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.device-body::before {
+  content: '';
+  position: absolute;
+  top: -60%; left: -40%;
+  width: 180%; height: 60%;
+  background: linear-gradient(200deg, transparent 30%, rgba(255,255,255,0.025) 48%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.025) 52%, transparent 70%);
+  transform: rotate(-20deg);
+  pointer-events: none;
+  z-index: 20;
+  animation: glassReflect 8s ease-in-out infinite;
+}
+
+@keyframes glassReflect {
+  0%, 100% { transform: rotate(-20deg) translateY(0); }
+  50% { transform: rotate(-20deg) translateY(15px); }
+}
+
+.device-island {
+  width: 40px; height: 12px;
+  border-radius: 10px;
+  background: #000;
+  margin-top: 10px;
+  position: relative;
+  z-index: 15;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.device-island::after {
+  content: '';
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(34,197,94,0.15), #111 60%);
+  box-shadow: 0 0 0 0.5px rgba(255,255,255,0.08);
+}
+
+.device-screen {
+  flex: 1;
+  width: calc(100% - 10px);
+  margin: 6px 5px 12px;
+  border-radius: 4px;
+  background: rgba(34,197,94,0.015);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.device-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(34,197,94,0.008) 3px, rgba(34,197,94,0.008) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.device-shield {
+  position: relative;
+  z-index: 2;
+  width: 36px; height: 36px;
+}
+
+.device-shield svg {
+  width: 36px; height: 36px;
+  stroke: var(--green);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(0 0 8px rgba(34,197,94,0.2));
+  animation: shieldBreath 3s ease-in-out infinite;
+}
+
+@keyframes shieldBreath {
+  0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 6px rgba(34,197,94,0.15)); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 12px rgba(34,197,94,0.3)); }
+}
+
+.device-check {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -48%);
+}
+
+.device-check svg {
+  width: 14px; height: 14px;
+  stroke: var(--green);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: none;
+  animation: checkPop 3s ease-in-out infinite;
+}
+
+@keyframes checkPop {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 0.9; transform: scale(1); }
+}
+
+.device-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(34,197,94,0.35);
+  z-index: 2;
+}
+
+.device-status {
+  position: absolute;
+  top: 6px; right: 8px;
+  display: flex;
+  gap: 3px;
+  z-index: 2;
+}
+
+.device-status span {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.2);
+}
+
+.device-home {
+  width: 36px; height: 3px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 5;
+}
+
+.device-btn {
+  position: absolute;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-radius: 1px;
+  z-index: 5;
+}
+
+.device-btn-power { right: -2.5px; top: 72px; width: 2px; height: 28px; }
+.device-btn-vol1 { left: -2.5px; top: 56px; width: 2px; height: 18px; }
+.device-btn-vol2 { left: -2.5px; top: 80px; width: 2px; height: 18px; }
+
+/* Feature Cards */
+.shield-features {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.shield-features.left { align-items: flex-end; }
+.shield-features.right { align-items: flex-start; }
+
+.shield-feat {
+  max-width: 300px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s;
+  position: relative;
+}
+
+.shield-feat:hover {
+  border-color: var(--border-green);
+  transform: translateY(-4px);
+}
+
+.shield-feat::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.3);
+  transform: translateY(-50%);
+}
+
+.shield-features.left .shield-feat::before { right: -3px; }
+.shield-features.right .shield-feat::before { left: -3px; }
+
+.feat-anim {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: rgba(34,197,94,0.015);
+  border-bottom: 1px solid var(--border);
+}
+
+.feat-text {
+  padding: 1.5rem 1.75rem;
+}
+
+.feat-text h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.feat-text p {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.feat-text .feat-detail {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(34,197,94,0.45);
+}
+
+/* --- ANIM 1: Shake to Lock --- */
+.anim-shake { display: flex; align-items: center; gap: 16px; }
+
+.shake-phone {
+  width: 38px; height: 68px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(34,197,94,0.3);
+  background: rgba(34,197,94,0.04);
+  position: relative;
+  animation: phoneShake 3.5s ease-in-out infinite;
+}
+
+.shake-phone::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 2px;
+  border-radius: 2px;
+  background: rgba(34,197,94,0.15);
+}
+
+.shake-lines {
+  position: absolute;
+  top: 50%; left: -14px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shake-lines span {
+  display: block;
+  height: 1px;
+  background: rgba(34,197,94,0.3);
+  animation: shakeLine 3.5s ease-in-out infinite;
+}
+
+.shake-lines span:nth-child(1) { width: 10px; animation-delay: 0.05s; }
+.shake-lines span:nth-child(2) { width: 7px; animation-delay: 0.1s; }
+.shake-lines span:nth-child(3) { width: 10px; animation-delay: 0.15s; }
+
+.shake-lines.right { left: auto; right: -14px; }
+
+@keyframes shakeLine {
+  0%, 45%, 100% { opacity: 0; }
+  10%, 35% { opacity: 1; }
+}
+
+@keyframes phoneShake {
+  0%, 45% { transform: rotate(0deg); }
+  5%  { transform: rotate(-12deg); }
+  10% { transform: rotate(12deg); }
+  15% { transform: rotate(-10deg); }
+  20% { transform: rotate(8deg); }
+  25% { transform: rotate(-4deg); }
+  30% { transform: rotate(0deg); }
+}
+
+.shake-arrow-wrap svg {
+  width: 16px; height: 16px;
+  stroke: var(--green); stroke-width: 1.5; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0;
+  animation: arrowFade 3.5s ease-in-out infinite;
+}
+
+@keyframes arrowFade {
+  0%, 30%, 100% { opacity: 0; transform: translateX(-3px); }
+  40%, 85% { opacity: 0.5; transform: translateX(0); }
+}
+
+.shake-lock {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(0.7);
+  animation: lockAppear 3.5s ease-in-out infinite;
+}
+
+.shake-lock svg {
+  width: 16px; height: 16px;
+  stroke: var(--green); stroke-width: 1.8; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+@keyframes lockAppear {
+  0%, 30% { opacity: 0; transform: scale(0.7); }
+  40% { opacity: 1; transform: scale(1.1); }
+  50%, 85% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0.7); }
+}
+
+/* --- ANIM 2: Face-down Lock --- */
+.anim-facedown { display: flex; align-items: center; gap: 18px; perspective: 300px; }
+
+.fd-phone-wrap { width: 42px; perspective: 300px; }
+
+.fd-phone {
+  width: 42px; height: 72px;
+  border-radius: 9px;
+  border: 1.5px solid rgba(34,197,94,0.3);
+  background: rgba(34,197,94,0.04);
+  position: relative;
+  transform-origin: center bottom;
+  animation: phoneFlip 4.5s ease-in-out infinite;
+}
+
+.fd-phone::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 16px; height: 2px;
+  border-radius: 2px;
+  background: rgba(34,197,94,0.15);
+}
+
+.fd-phone::after {
+  content: '';
+  position: absolute;
+  top: 14px; left: 6px; right: 6px; bottom: 10px;
+  border-radius: 3px;
+  background: rgba(34,197,94,0.06);
+  animation: screenFade 4.5s ease-in-out infinite;
+}
+
+@keyframes phoneFlip {
+  0%, 20% { transform: rotateX(0deg); }
+  40%, 65% { transform: rotateX(180deg); }
+  85%, 100% { transform: rotateX(0deg); }
+}
+
+@keyframes screenFade {
+  0%, 20% { opacity: 1; }
+  35%, 70% { opacity: 0; }
+  85%, 100% { opacity: 1; }
+}
+
+.fd-surface {
+  position: absolute;
+  bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  width: 70px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,197,94,0.15), transparent);
+}
+
+.fd-arrow svg {
+  width: 16px; height: 16px;
+  stroke: var(--green); stroke-width: 1.5; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0;
+  animation: fdArrowFade 4.5s ease-in-out infinite;
+}
+
+@keyframes fdArrowFade {
+  0%, 35%, 100% { opacity: 0; }
+  45%, 80% { opacity: 0.5; }
+}
+
+.fd-lock {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  animation: fdLockAppear 4.5s ease-in-out infinite;
+}
+
+.fd-lock svg {
+  width: 16px; height: 16px;
+  stroke: var(--green); stroke-width: 1.8; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+@keyframes fdLockAppear {
+  0%, 38% { opacity: 0; transform: scale(0.7); }
+  48% { opacity: 1; transform: scale(1.1); }
+  55%, 80% { opacity: 1; transform: scale(1); }
+  92%, 100% { opacity: 0; transform: scale(0.7); }
+}
+
+/* --- ANIM 3: Intruder Selfie --- */
+.anim-intruder {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  position: relative;
+}
+
+.pin-dots { display: flex; gap: 6px; margin-bottom: 4px; }
+
+.pin-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(239,68,68,0.3);
+  background: transparent;
+  animation: pinFill 4s ease-in-out infinite;
+}
+
+.pin-dot:nth-child(1) { animation-delay: 0s; }
+.pin-dot:nth-child(2) { animation-delay: 0.25s; }
+.pin-dot:nth-child(3) { animation-delay: 0.5s; }
+.pin-dot:nth-child(4) { animation-delay: 0.75s; }
+
+@keyframes pinFill {
+  0%, 5% { background: transparent; border-color: rgba(239,68,68,0.2); }
+  12%, 42% { background: rgba(239,68,68,0.5); border-color: rgba(239,68,68,0.5); }
+  52% { background: transparent; border-color: rgba(239,68,68,0.2); }
+}
+
+.pin-x {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem; letter-spacing: 1px;
+  color: rgba(239,68,68,0.5);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: pinXShow 4s ease-in-out infinite;
+}
+
+@keyframes pinXShow {
+  0%, 42% { opacity: 0; }
+  50%, 60% { opacity: 1; }
+  72%, 100% { opacity: 0; }
+}
+
+.flash-overlay {
+  position: absolute; inset: 0;
+  background: white;
+  opacity: 0; pointer-events: none;
+  animation: flashPop 4s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+@keyframes flashPop {
+  0%, 54% { opacity: 0; }
+  56% { opacity: 0.35; }
+  62% { opacity: 0; }
+}
+
+.captured-photo {
+  width: 50px; height: 50px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(34,197,94,0.25);
+  background: rgba(34,197,94,0.04);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.6) translateY(8px);
+  animation: photoCapture 4s ease-in-out infinite;
+}
+
+.captured-photo svg {
+  width: 20px; height: 20px;
+  stroke: var(--green); stroke-width: 1.5; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.captured-photo::after {
+  content: 'AES';
+  position: absolute;
+  bottom: -4px; right: -4px;
+  padding: 1px 4px;
+  background: var(--green);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.35rem; font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+}
+
+@keyframes photoCapture {
+  0%, 58% { opacity: 0; transform: scale(0.6) translateY(8px); }
+  68% { opacity: 1; transform: scale(1.05) translateY(0); }
+  75%, 88% { opacity: 1; transform: scale(1) translateY(0); }
+  96%, 100% { opacity: 0; transform: scale(0.8) translateY(4px); }
+}
+
+/* --- ANIM 4: Decoy Vault --- */
+.anim-decoy { display: flex; align-items: center; gap: 10px; }
+
+.decoy-pins { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+.decoy-pin {
+  display: flex; align-items: center; gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.decoy-pin.real-pin {
+  border-color: rgba(34,197,94,0.2);
+  background: rgba(34,197,94,0.03);
+  opacity: 0;
+  animation: realPinShow 6s ease-in-out infinite;
+}
+
+.decoy-pin.fake-pin {
+  border-color: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  opacity: 0;
+  animation: fakePinShow 6s ease-in-out infinite;
+}
+
+@keyframes realPinShow {
+  0%, 48% { opacity: 0; }
+  55%, 90% { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+
+@keyframes fakePinShow {
+  0%, 2% { opacity: 0; }
+  8%, 42% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.decoy-pin .pin-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.4rem; letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 32px;
+}
+
+.decoy-pin.real-pin .pin-label { color: rgba(34,197,94,0.6); }
+.decoy-pin.fake-pin .pin-label { color: var(--text-ghost); }
+
+.decoy-pin .pin-stars {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 3px;
+}
+
+.decoy-pin.real-pin .pin-stars { color: var(--green); }
+.decoy-pin.fake-pin .pin-stars { color: var(--text-dim); }
+
+.decoy-arrow svg {
+  width: 14px; height: 14px;
+  stroke: var(--text-ghost); stroke-width: 1.5; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.decoy-vaults { position: relative; width: 60px; height: 80px; }
+
+.d-vault {
+  position: absolute;
+  width: 52px; height: 70px;
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px;
+}
+
+.d-vault svg {
+  width: 18px; height: 18px;
+  stroke-width: 1.5; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.d-vault-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.38rem; letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.d-vault.real-vault {
+  background: rgba(34,197,94,0.06);
+  border: 1px solid rgba(34,197,94,0.2);
+  z-index: 2;
+  animation: realVaultSwitch 6s ease-in-out infinite;
+}
+
+.d-vault.real-vault svg { stroke: var(--green); }
+.d-vault.real-vault .d-vault-label { color: rgba(34,197,94,0.5); }
+
+.d-vault.fake-vault {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  z-index: 1;
+  animation: fakeVaultSwitch 6s ease-in-out infinite;
+}
+
+.d-vault.fake-vault svg { stroke: var(--text-dim); }
+.d-vault.fake-vault .d-vault-label { color: var(--text-ghost); }
+
+@keyframes realVaultSwitch {
+  0%, 8% { transform: translate(0, 0) scale(1); opacity: 1; z-index: 2; }
+  20%, 45% { transform: translate(6px, -6px) scale(0.9); opacity: 0.4; z-index: 1; }
+  58%, 92% { transform: translate(0, 0) scale(1); opacity: 1; z-index: 2; }
+}
+
+@keyframes fakeVaultSwitch {
+  0%, 8% { transform: translate(6px, -6px) scale(0.9); opacity: 0.4; z-index: 1; }
+  20%, 45% { transform: translate(0, 0) scale(1); opacity: 1; z-index: 2; }
+  58%, 92% { transform: translate(6px, -6px) scale(0.9); opacity: 0.4; z-index: 1; }
+}
+
+/* Stats bar */
+.shield-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.shield-stat { text-align: center; }
+
+.shield-stat .stat-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem; font-weight: 800;
+  color: var(--green); letter-spacing: -1px;
+}
+
+.shield-stat .stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+/* Active Protection Responsive */
+@media (max-width: 960px) {
+  .shield-layout { grid-template-columns: 1fr; gap: 0; }
+  .shield-center { height: 300px; order: -1; margin-bottom: 2.5rem; }
+  .device { transform: scale(0.85); }
+  .ring-3, .ring-4 { display: none; }
+  .shield-features {
+    flex-direction: row; flex-wrap: wrap;
+    justify-content: center; gap: 1rem;
+  }
+  .shield-features.left, .shield-features.right { align-items: stretch; }
+  .shield-feat { max-width: 100%; flex: 1; min-width: 260px; }
+  .shield-feat::before { display: none; }
+  .shield-stats { gap: 2rem; flex-wrap: wrap; }
+}
+
+@media (max-width: 600px) {
+  .shield-feat { min-width: 100%; }
+  .shield-stats { gap: 1.5rem; }
+  .shield-stat .stat-value { font-size: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -764,6 +1565,173 @@ body::before {
       </div>
       <h3 data-i18n="f6-t">Zero Analytics</h3>
       <p data-i18n="f6-d">No telemetry. No stats. No ads. We literally cannot see your files.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ACTIVE PROTECTION ======== -->
+<section class="section" id="protection">
+  <div class="section-header reveal">
+    <div class="badge-new"><span class="dot"></span> <span data-i18n="ap-badge">Active Protection</span></div>
+    <div class="label" data-i18n="ap-label">// Your vault fights back</div>
+    <h2 class="t-section" data-i18n-html="ap-title">Four layers of <em class="t-accent">invisible armor.</em></h2>
+  </div>
+
+  <div class="shield-layout">
+
+    <div class="shield-features left">
+      <div class="shield-feat reveal">
+        <div class="feat-anim">
+          <div class="anim-shake">
+            <div style="position:relative">
+              <div class="shake-phone">
+                <div class="shake-lines"><span></span><span></span><span></span></div>
+                <div class="shake-lines right"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="shake-arrow-wrap">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <div class="shake-lock">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="feat-text">
+          <h3 data-i18n="ap1-t">Shake to Lock</h3>
+          <p data-i18n="ap1-d">Phone snatched? The sudden movement locks the vault before they see anything.</p>
+          <span class="feat-detail" data-i18n="ap1-detail">Accelerometer · &lt;100ms</span>
+        </div>
+      </div>
+
+      <div class="shield-feat reveal">
+        <div class="feat-anim">
+          <div class="flash-overlay"></div>
+          <div class="anim-intruder">
+            <div class="pin-dots">
+              <div class="pin-dot"></div><div class="pin-dot"></div>
+              <div class="pin-dot"></div><div class="pin-dot"></div>
+            </div>
+            <div class="pin-x" data-i18n="ap3-wrong">Wrong PIN</div>
+            <div class="captured-photo">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="feat-text">
+          <h3 data-i18n="ap3-t">Intruder Selfie</h3>
+          <p data-i18n="ap3-d">Wrong PIN triggers a silent photo. Encrypted, timestamped — only you can see who tried.</p>
+          <span class="feat-detail" data-i18n="ap3-detail">Silent CameraX · AES-256</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shield-center">
+      <div class="shield-glow"></div>
+      <div class="shield-ring ring-4"></div>
+      <div class="shield-ring ring-3"></div>
+      <div class="shield-ring ring-2"></div>
+      <div class="shield-ring ring-1"></div>
+      <div class="device">
+        <div class="device-frame">
+          <div class="device-body">
+            <div class="device-island"></div>
+            <div class="device-screen">
+              <div class="device-status"><span></span><span></span><span></span></div>
+              <div class="device-shield">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div class="device-check">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+              <span class="device-label" data-i18n="ap-device">Protected</span>
+            </div>
+            <div class="device-home"></div>
+          </div>
+        </div>
+        <div class="device-btn device-btn-power"></div>
+        <div class="device-btn device-btn-vol1"></div>
+        <div class="device-btn device-btn-vol2"></div>
+      </div>
+    </div>
+
+    <div class="shield-features right">
+      <div class="shield-feat reveal">
+        <div class="feat-anim">
+          <div class="anim-facedown">
+            <div class="fd-phone-wrap" style="position:relative">
+              <div class="fd-phone"></div>
+              <div class="fd-surface"></div>
+            </div>
+            <div class="fd-arrow">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <div class="fd-lock">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="feat-text">
+          <h3 data-i18n="ap2-t">Face-down Lock</h3>
+          <p data-i18n="ap2-d">Flip your phone face-down — vault locks in 1 second. The most natural panic gesture.</p>
+          <span class="feat-detail" data-i18n="ap2-detail">Proximity + Gyroscope · 1s</span>
+        </div>
+      </div>
+
+      <div class="shield-feat reveal">
+        <div class="feat-anim">
+          <div class="anim-decoy">
+            <div class="decoy-pins">
+              <div class="decoy-pin fake-pin">
+                <span class="pin-label" data-i18n="ap4-decoy">Decoy</span>
+                <span class="pin-stars">••••</span>
+              </div>
+              <div class="decoy-pin real-pin">
+                <span class="pin-label" data-i18n="ap4-real">Real</span>
+                <span class="pin-stars">••••</span>
+              </div>
+            </div>
+            <div class="decoy-arrow">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="decoy-vaults">
+              <div class="d-vault fake-vault">
+                <svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+                <span class="d-vault-label" data-i18n="ap4-decoy">Decoy</span>
+              </div>
+              <div class="d-vault real-vault">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span class="d-vault-label" data-i18n="ap4-real">Real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="feat-text">
+          <h3 data-i18n="ap4-t">Decoy Vault</h3>
+          <p data-i18n="ap4-d">A second PIN opens a fake vault. They see harmless files — your real data stays hidden.</p>
+          <span class="feat-detail" data-i18n="ap4-detail">Separate PIN · Identical UI</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="shield-stats stagger">
+    <div class="shield-stat reveal">
+      <div class="stat-value">4</div>
+      <div class="stat-label" data-i18n="ap-s1">Active defenses</div>
+    </div>
+    <div class="shield-stat reveal">
+      <div class="stat-value">&lt;1s</div>
+      <div class="stat-label" data-i18n="ap-s2">Response time</div>
+    </div>
+    <div class="shield-stat reveal">
+      <div class="stat-value">0</div>
+      <div class="stat-label" data-i18n="ap-s3">Setup required</div>
+    </div>
+    <div class="shield-stat reveal">
+      <div class="stat-value">100%</div>
+      <div class="stat-label" data-i18n="ap-s4">Offline</div>
     </div>
   </div>
 </section>
@@ -987,6 +1955,14 @@ const T = {
     'f4-t': '100% Offline', 'f4-d': 'No internet. No cloud. No servers. Your files never leave your device.',
     'f5-t': 'Mood Stickers', 'f5-d': 'Tag vault files with 6 emotional stickers. Visual organization\u00a0\u2014 a feature no competitor has.',
     'f6-t': 'Zero Analytics', 'f6-d': 'No telemetry. No stats. No ads. We literally cannot see your files.',
+    'ap-badge': 'Active Protection', 'ap-label': '// Your vault fights back',
+    'ap-title': 'Four layers of <em class="t-accent">invisible armor.</em>',
+    'ap-device': 'Protected',
+    'ap1-t': 'Shake to Lock', 'ap1-d': 'Phone snatched? The sudden movement locks the vault before they see anything.', 'ap1-detail': 'Accelerometer \u00b7 <100ms',
+    'ap2-t': 'Face-down Lock', 'ap2-d': 'Flip your phone face-down \u2014 vault locks in 1 second. The most natural panic gesture.', 'ap2-detail': 'Proximity + Gyroscope \u00b7 1s',
+    'ap3-t': 'Intruder Selfie', 'ap3-d': 'Wrong PIN triggers a silent photo. Encrypted, timestamped \u2014 only you can see who tried.', 'ap3-detail': 'Silent CameraX \u00b7 AES-256', 'ap3-wrong': 'Wrong PIN',
+    'ap4-t': 'Decoy Vault', 'ap4-d': 'A second PIN opens a fake vault. They see harmless files \u2014 your real data stays hidden.', 'ap4-detail': 'Separate PIN \u00b7 Identical UI', 'ap4-decoy': 'Decoy', 'ap4-real': 'Real',
+    'ap-s1': 'Active defenses', 'ap-s2': 'Response time', 'ap-s3': 'Setup required', 'ap-s4': 'Offline',
     'how-label': '// How it works', 'how-title': 'Four steps to privacy.',
     'step-1': 'Step 01', 'step-2': 'Step 02', 'step-3': 'Step 03', 'step-4': 'Step 04',
     's1-t': 'Create Your Vault', 's1-d': 'Set a strong password. Your encrypted vault is ready.',
@@ -1033,6 +2009,14 @@ const T = {
     'f4-t': '100% Hors-ligne', 'f4-d': 'Aucun internet. Aucun cloud. Aucun serveur. Vos fichiers ne quittent jamais votre appareil.',
     'f5-t': 'Mood Stickers', 'f5-d': 'Marquez vos fichiers avec 6 stickers \u00e9motionnels. Organisation visuelle unique.',
     'f6-t': 'Z\u00e9ro analytique', 'f6-d': 'Pas de t\u00e9l\u00e9m\u00e9trie. Pas de stats. Pas de pubs. Nous ne pouvons pas voir vos fichiers.',
+    'ap-badge': 'Protection Active', 'ap-label': '// Votre coffre se d\u00e9fend',
+    'ap-title': 'Quatre couches d\u2019<em class="t-accent">armure invisible.</em>',
+    'ap-device': 'Prot\u00e9g\u00e9',
+    'ap1-t': 'Secousse = Verrouillage', 'ap1-d': 'T\u00e9l\u00e9phone arrach\u00e9\u00a0? Le mouvement brusque verrouille le coffre avant qu\u2019on voie quoi que ce soit.', 'ap1-detail': 'Acc\u00e9l\u00e9rom\u00e8tre \u00b7 <100ms',
+    'ap2-t': 'Retourner = Verrouiller', 'ap2-d': 'Posez votre t\u00e9l\u00e9phone face vers le bas\u00a0\u2014 le coffre se verrouille en 1 seconde. Le geste de panique le plus naturel.', 'ap2-detail': 'Proximit\u00e9 + Gyroscope \u00b7 1s',
+    'ap3-t': 'Selfie de l\u2019intrus', 'ap3-d': 'Mauvais PIN\u00a0? Photo silencieuse, chiffr\u00e9e, horodat\u00e9e\u00a0\u2014 vous seul pouvez voir qui a essay\u00e9.', 'ap3-detail': 'CameraX silencieux \u00b7 AES-256', 'ap3-wrong': 'Mauvais PIN',
+    'ap4-t': 'Coffre leurre', 'ap4-d': 'Un second PIN ouvre un faux coffre. Ils voient des fichiers anodins\u00a0\u2014 vos vraies donn\u00e9es restent cach\u00e9es.', 'ap4-detail': 'PIN s\u00e9par\u00e9 \u00b7 Interface identique', 'ap4-decoy': 'Leurre', 'ap4-real': 'R\u00e9el',
+    'ap-s1': 'D\u00e9fenses actives', 'ap-s2': 'Temps de r\u00e9ponse', 'ap-s3': 'Config requise', 'ap-s4': 'Hors ligne',
     'how-label': '// Comment \u00e7a marche', 'how-title': 'Quatre \u00e9tapes vers la vie priv\u00e9e.',
     'step-1': '\u00c9tape 01', 'step-2': '\u00c9tape 02', 'step-3': '\u00c9tape 03', 'step-4': '\u00c9tape 04',
     's1-t': 'Cr\u00e9ez votre coffre', 's1-d': 'D\u00e9finissez un mot de passe fort. Votre coffre chiffr\u00e9 est pr\u00eat.',
@@ -1079,6 +2063,14 @@ const T = {
     'f4-t': '100% Sin conexi\u00f3n', 'f4-d': 'Sin internet. Sin nube. Sin servidores. Tus archivos nunca salen de tu dispositivo.',
     'f5-t': 'Mood Stickers', 'f5-d': 'Etiqueta archivos con 6 stickers emocionales. Organizaci\u00f3n visual \u00fanica.',
     'f6-t': 'Cero anal\u00edticas', 'f6-d': 'Sin telemetr\u00eda. Sin estad\u00edsticas. Sin anuncios. No podemos ver tus archivos.',
+    'ap-badge': 'Protecci\u00f3n Activa', 'ap-label': '// Tu b\u00f3veda contraataca',
+    'ap-title': 'Cuatro capas de <em class="t-accent">armadura invisible.</em>',
+    'ap-device': 'Protegido',
+    'ap1-t': 'Agitar = Bloquear', 'ap1-d': '\u00bfTe arrebataron el tel\u00e9fono? El movimiento brusco bloquea la b\u00f3veda antes de que vean nada.', 'ap1-detail': 'Aceler\u00f3metro \u00b7 <100ms',
+    'ap2-t': 'Boca abajo = Bloquear', 'ap2-d': 'Pon tu tel\u00e9fono boca abajo\u00a0\u2014 la b\u00f3veda se bloquea en 1 segundo. El gesto de p\u00e1nico m\u00e1s natural.', 'ap2-detail': 'Proximidad + Giroscopio \u00b7 1s',
+    'ap3-t': 'Selfie del intruso', 'ap3-d': '\u00bfPIN incorrecto? Foto silenciosa, cifrada, con marca de tiempo\u00a0\u2014 solo t\u00fa puedes ver qui\u00e9n lo intent\u00f3.', 'ap3-detail': 'CameraX silencioso \u00b7 AES-256', 'ap3-wrong': 'PIN incorrecto',
+    'ap4-t': 'B\u00f3veda se\u00f1uelo', 'ap4-d': 'Un segundo PIN abre una b\u00f3veda falsa. Ven archivos inofensivos\u00a0\u2014 tus datos reales permanecen ocultos.', 'ap4-detail': 'PIN separado \u00b7 Interfaz id\u00e9ntica', 'ap4-decoy': 'Se\u00f1uelo', 'ap4-real': 'Real',
+    'ap-s1': 'Defensas activas', 'ap-s2': 'Tiempo de respuesta', 'ap-s3': 'Config necesaria', 'ap-s4': 'Sin conexi\u00f3n',
     'how-label': '// C\u00f3mo funciona', 'how-title': 'Cuatro pasos hacia la privacidad.',
     'step-1': 'Paso 01', 'step-2': 'Paso 02', 'step-3': 'Paso 03', 'step-4': 'Paso 04',
     's1-t': 'Crea tu b\u00f3veda', 's1-d': 'Configura una contrase\u00f1a segura. Tu b\u00f3veda cifrada est\u00e1 lista.',
@@ -1125,6 +2117,14 @@ const T = {
     'f4-t': '100% Offline', 'f4-d': 'Kein Internet. Keine Cloud. Keine Server. Deine Dateien verlassen nie dein Ger\u00e4t.',
     'f5-t': 'Mood Stickers', 'f5-d': 'Markiere Dateien mit 6 emotionalen Stickern. Visuelle Organisation\u00a0\u2014 einzigartig.',
     'f6-t': 'Keine Analytik', 'f6-d': 'Keine Telemetrie. Keine Statistiken. Keine Werbung. Wir k\u00f6nnen deine Dateien nicht sehen.',
+    'ap-badge': 'Aktiver Schutz', 'ap-label': '// Dein Tresor wehrt sich',
+    'ap-title': 'Vier Schichten <em class="t-accent">unsichtbarer R\u00fcstung.</em>',
+    'ap-device': 'Gesch\u00fctzt',
+    'ap1-t': 'Sch\u00fctteln = Sperren', 'ap1-d': 'Handy geraubt? Die pl\u00f6tzliche Bewegung sperrt den Tresor, bevor jemand etwas sieht.', 'ap1-detail': 'Beschleunigungssensor \u00b7 <100ms',
+    'ap2-t': 'Umdrehen = Sperren', 'ap2-d': 'Lege dein Handy mit dem Display nach unten\u00a0\u2014 der Tresor sperrt in 1 Sekunde. Die nat\u00fcrlichste Panikgeste.', 'ap2-detail': 'N\u00e4herung + Gyroskop \u00b7 1s',
+    'ap3-t': 'Eindringling-Selfie', 'ap3-d': 'Falscher PIN? Stilles Foto, verschl\u00fcsselt, mit Zeitstempel\u00a0\u2014 nur du kannst sehen, wer es versucht hat.', 'ap3-detail': 'Stille CameraX \u00b7 AES-256', 'ap3-wrong': 'Falscher PIN',
+    'ap4-t': 'K\u00f6der-Tresor', 'ap4-d': 'Ein zweiter PIN \u00f6ffnet einen falschen Tresor. Sie sehen harmlose Dateien\u00a0\u2014 deine echten Daten bleiben verborgen.', 'ap4-detail': 'Separater PIN \u00b7 Identische Oberfl\u00e4che', 'ap4-decoy': 'K\u00f6der', 'ap4-real': 'Echt',
+    'ap-s1': 'Aktive Abwehr', 'ap-s2': 'Reaktionszeit', 'ap-s3': 'Einrichtung n\u00f6tig', 'ap-s4': 'Offline',
     'how-label': '// So funktioniert es', 'how-title': 'Vier Schritte zur Privatsph\u00e4re.',
     'step-1': 'Schritt 01', 'step-2': 'Schritt 02', 'step-3': 'Schritt 03', 'step-4': 'Schritt 04',
     's1-t': 'Tresor erstellen', 's1-d': 'Lege ein starkes Passwort fest. Dein Tresor ist bereit.',
