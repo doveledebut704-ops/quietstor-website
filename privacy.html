@@ -21,87 +21,437 @@
 </header>
 
 <div class="legal-wrap">
+
+  <!-- ============= ENGLISH ============= -->
   <div class="lang-content active" data-lang="en">
     <h1>Privacy Policy</h1>
-    <p class="legal-updated">Last updated: February 16, 2026</p>
-    <h2>Data Collection</h2>
-    <p><strong>QuietStor collects zero user data.</strong> No accounts, no analytics, no telemetry, no advertising identifiers. The app is 100% offline and makes no network requests.</p>
-    <h2>Encryption</h2>
-    <p>All vault files are encrypted using <strong>AES-256-GCM</strong> and stored exclusively on your device. Encryption keys are stored in the Android Keystore (hardware-backed TEE/StrongBox). We have no access to your files, your password, your encryption keys, or any metadata.</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge means zero recovery.</strong> If you forget your password, your encrypted data is permanently lost. There is no "Forgot Password" option, no backdoor, and no way for us to help recover your data.</div>
-    <h2>Optional Crashlytics</h2>
-    <p>QuietStor includes Firebase Crashlytics for crash reporting, <strong>disabled by default</strong>. If you choose to enable it in Settings, only crash reports (stack traces, device model, OS version) are sent. No file content, names, passwords, or encryption keys are ever included.</p>
-    <h2>Google Play Billing</h2>
-    <p>Premium purchases are processed by Google Play. We do not receive or store any payment information. Purchase verification is done locally on device.</p>
-    <h2>Your Rights</h2>
-    <p>Under GDPR, CCPA, and similar regulations, you have the right to access, correct, and delete your personal data. Since we collect none, there is nothing to access, correct, or delete. Your data exists only on your device, under your control.</p>
-    <div class="legal-contact">Questions? Contact us at <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+    <p class="legal-updated">Effective date: 2026-04-16 · Last updated: 2026-04-16</p>
+
+    <h2>1. Data Controller</h2>
+    <p>The data controller for QuietStor (“the app”) is:</p>
+    <ul>
+      <li><strong>DELOUPROD</strong> (David DELOUMEAUX EI)</li>
+      <li>SIRET: 102 120 573 00013</li>
+      <li>Registered address: 60 rue François Ier, 75008 Paris, France</li>
+      <li>Contact: <a href="mailto:support@quietstor.app">support@quietstor.app</a></li>
+    </ul>
+
+    <h2>2. Our Commitment: Zero Data Collection</h2>
+    <p><strong>QuietStor collects zero personal data by default.</strong> No accounts, no analytics, no telemetry, no advertising identifiers, no location tracking. The app operates 100% offline. Your files, file names, folder structure, photos, encryption keys, passwords, and vault metadata never leave your device.</p>
+    <p>We have no servers that store your data. We have no backdoor, no recovery mechanism, and no way to access your vault.</p>
+
+    <h2>3. Android Permissions We Request</h2>
+    <p>QuietStor uses the following permissions, strictly for on-device operations:</p>
+    <ul>
+      <li><strong>INTERNET</strong>: required only for Google Play Billing (premium purchase verification). No other network traffic occurs.</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO</strong>: to display files in the file browser. Files are read locally only.</li>
+      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</strong> (on older Android versions): same purpose, reading and writing files locally.</li>
+      <li><strong>CAMERA</strong>: used exclusively by the optional Intruder Selfie feature (Premium). See section 5.</li>
+      <li><strong>USE_BIOMETRIC</strong>: for optional biometric vault unlock. No biometric data leaves the Android Keystore.</li>
+      <li><strong>FOREGROUND_SERVICE</strong>: for optional Auto-Backup Camera feature (Premium). See section 6.</li>
+      <li><strong>POST_NOTIFICATIONS</strong>: for local notifications (auto-backup progress, intruder alerts). No push notifications from any server.</li>
+      <li><strong>VIBRATE</strong>: for haptic feedback during app interaction.</li>
+    </ul>
+
+    <h2>4. Encryption &amp; Local Storage</h2>
+    <p>All vault files are encrypted using <strong>AES-256-GCM</strong> (V3 ChunkedGCM format). Encryption keys are stored in the Android Keystore (hardware-backed TEE/StrongBox where available). Your vault PIN is never stored in plaintext — it is hashed with PBKDF2-SHA256 using 600,000 iterations. Export ZIP files are encrypted using ZIP Standard AES-256 with a password you define (minimum 8 characters, at least 1 letter and 1 digit).</p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge means zero recovery.</strong> If you forget your PIN or export password, your encrypted data is permanently lost. There is no “Forgot Password” option, no backdoor, and no way for us to help recover your data.</div>
+
+    <h2>5. Intruder Selfie (Optional Premium Feature)</h2>
+    <p>When you explicitly enable Intruder Selfie in Settings:</p>
+    <ul>
+      <li>After 3 failed PIN attempts, the front camera captures a photo silently.</li>
+      <li>The photo is <strong>stored locally only</strong>, in an encrypted SQLCipher database on your device.</li>
+      <li>The photo is <strong>never uploaded</strong> to any server.</li>
+      <li>The photo is <strong>never shared</strong> with DELOUPROD, Google, or any third party.</li>
+      <li>You can view and delete intruder photos at any time from inside the unlocked vault.</li>
+      <li>Disabling the feature deletes all stored intruder photos.</li>
+    </ul>
+
+    <h2>6. Auto-Backup Camera (Optional Premium Feature)</h2>
+    <p>When you explicitly enable Auto-Backup Camera:</p>
+    <ul>
+      <li>Photos taken by your device camera are automatically copied into your encrypted vault.</li>
+      <li>All encryption happens locally on your device.</li>
+      <li>No photo data is transmitted to any server.</li>
+      <li>You can disable this feature at any time in Settings.</li>
+    </ul>
+
+    <h2>7. Optional Crash Reports (Off by Default)</h2>
+    <p>QuietStor includes Firebase Crashlytics, <strong>disabled by default and strictly opt-in</strong>. The Crashlytics library is only initialized after you explicitly enable crash reporting in Settings. Before opt-in, no crash data is collected or transmitted.</p>
+    <p>If you opt in, the following diagnostic data may be sent to Google (Firebase Crashlytics, operating as our sub-processor):</p>
+    <ul>
+      <li>Device model and Android version</li>
+      <li>App version and build number</li>
+      <li>Technical crash information (stack traces, non-fatal exceptions)</li>
+      <li>Firebase Installation ID (pseudonymous)</li>
+    </ul>
+    <p><strong>Crash reports never include:</strong> file names, file paths, file content, PIN codes, encryption keys, vault metadata, intruder photos, or any personal information.</p>
+    <p>You can disable crash reporting at any time in Settings. Firebase data retention follows Google’s Firebase Crashlytics policy (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
+
+    <h2>8. Google Play Billing</h2>
+    <p>Premium purchases (one-time €1.99) are processed by <strong>Google Play Billing</strong>. DELOUPROD does not receive, process, or store any payment information (no card number, no billing address). Purchase verification is performed locally on your device using Google Play’s signed receipts. Google Play acts as an independent data controller for payment data — please refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s Privacy Policy</a>.</p>
+
+    <h2>9. Data Retention</h2>
+    <p>Because we do not collect any data by default, there is nothing to retain on our side. Data on your device is retained until you delete it:</p>
+    <ul>
+      <li>Vault files: retained until you remove them or uninstall the app.</li>
+      <li>Intruder photos (if enabled): retained until you delete them or disable the feature.</li>
+      <li>Crash reports (if opted in): retained by Google Firebase for up to 90 days, per Firebase Crashlytics policy.</li>
+    </ul>
+
+    <h2>10. Data Deletion &amp; Your Rights</h2>
+    <p>Under the GDPR (EU Regulation 2016/679), CCPA, and similar regulations, you have the right to access, rectify, and delete your personal data, to restrict processing, to data portability, and to lodge a complaint with a supervisory authority.</p>
+    <p><strong>Since we do not collect personal data, there is nothing for us to access, rectify, or delete on our side.</strong> Your data exists only on your device, under your control.</p>
+    <p>To delete all QuietStor data from your device:</p>
+    <ul>
+      <li>Uninstalling the app removes all vault files, encryption keys, and local databases.</li>
+      <li>To export your data before deletion, use the ZIP export feature (Premium).</li>
+      <li>To revoke crash reporting consent (if previously given), disable it in Settings before uninstalling.</li>
+    </ul>
+    <p>If you have opted into crash reports, you can contact us at <a href="mailto:support@quietstor.app">support@quietstor.app</a> to request deletion of your Firebase Installation ID from Google’s systems.</p>
+
+    <h2>11. EU Users: Complaint Rights</h2>
+    <p>If you are located in the European Union and believe we have not adequately addressed your privacy concerns, you have the right to lodge a complaint with your national data protection authority. In France, the supervisory authority is the <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+
+    <h2>12. Children’s Privacy</h2>
+    <p>QuietStor is not directed at children under 13 (or under 16 in the EU where applicable). We do not knowingly collect any data from children. If you believe a child has provided information to us, please contact us.</p>
+
+    <h2>13. International Transfers</h2>
+    <p>No data is transferred internationally by default, because no data is collected. If you opt into crash reports, Firebase Crashlytics data may be processed by Google in the United States under Standard Contractual Clauses approved by the European Commission.</p>
+
+    <h2>14. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy to reflect changes in our practices or for legal reasons. Material changes will be announced in the app and on this page. The “Effective date” at the top of this policy will always reflect the current version.</p>
+
+    <div class="legal-contact">Questions about this Privacy Policy? Contact us at <a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
   </div>
 
+  <!-- ============= FRANÇAIS ============= -->
   <div class="lang-content" data-lang="fr">
     <h1>Politique de confidentialité</h1>
-    <p class="legal-updated">Dernière mise à jour : 16 février 2026</p>
-    <h2>Collecte de données</h2>
-    <p><strong>QuietStor ne collecte aucune donnée utilisateur.</strong> Pas de comptes, pas d'analytique, pas de télémétrie, pas d'identifiants publicitaires. L'app est 100% hors-ligne et n'effectue aucune requête réseau.</p>
-    <h2>Chiffrement</h2>
-    <p>Tous les fichiers du coffre sont chiffrés en <strong>AES-256-GCM</strong> et stockés exclusivement sur votre appareil. Les clés sont dans le Android Keystore (TEE/StrongBox). Nous n'avons aucun accès à vos fichiers, votre mot de passe, vos clés, ou vos métadonnées.</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge signifie zéro récupération.</strong> Si vous oubliez votre mot de passe, vos données chiffrées sont définitivement perdues. Pas d'option « Mot de passe oublié », pas de porte dérobée.</div>
-    <h2>Crashlytics optionnel</h2>
-    <p>Firebase Crashlytics est inclus mais <strong>désactivé par défaut</strong>. Si activé dans les Paramètres, seuls les rapports de crash sont envoyés. Aucun contenu, nom de fichier, mot de passe ou clé n'est jamais inclus.</p>
-    <h2>Google Play Billing</h2>
-    <p>Les achats Premium sont traités par Google Play. Nous ne recevons et ne stockons aucune information de paiement. La vérification d'achat est effectuée localement sur l'appareil.</p>
-    <h2>Vos droits</h2>
-    <p>En vertu du RGPD et réglementations similaires, vous avez le droit d'accès, correction et suppression. Comme nous ne collectons rien, il n'y a rien à supprimer. Vos données n'existent que sur votre appareil.</p>
-    <div class="legal-contact">Questions ? Contactez-nous à <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+    <p class="legal-updated">Date d’entrée en vigueur : 2026-04-16 · Dernière mise à jour : 2026-04-16</p>
+
+    <h2>1. Responsable de traitement</h2>
+    <p>Le responsable de traitement pour QuietStor (« l’app ») est :</p>
+    <ul>
+      <li><strong>DELOUPROD</strong> (David DELOUMEAUX EI)</li>
+      <li>SIRET : 102 120 573 00013</li>
+      <li>Adresse du siège : 60 rue François Ier, 75008 Paris, France</li>
+      <li>Contact : <a href="mailto:support@quietstor.app">support@quietstor.app</a></li>
+    </ul>
+
+    <h2>2. Notre engagement : zéro collecte de données</h2>
+    <p><strong>QuietStor ne collecte aucune donnée personnelle par défaut.</strong> Pas de comptes, pas d’analytique, pas de télémétrie, pas d’identifiants publicitaires, pas de géolocalisation. L’app fonctionne 100 % hors-ligne. Vos fichiers, noms de fichiers, arborescence, photos, clés de chiffrement, mots de passe et métadonnées du coffre ne quittent jamais votre appareil.</p>
+    <p>Nous n’avons aucun serveur stockant vos données. Nous n’avons aucune porte dérobée, aucun mécanisme de récupération, et aucun moyen d’accéder à votre coffre.</p>
+
+    <h2>3. Permissions Android demandées</h2>
+    <p>QuietStor utilise les permissions suivantes, strictement pour des opérations sur l’appareil :</p>
+    <ul>
+      <li><strong>INTERNET</strong> : requise uniquement pour Google Play Billing (vérification d’achat premium). Aucun autre trafic réseau.</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO</strong> : pour afficher les fichiers dans l’explorateur. Lecture locale uniquement.</li>
+      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</strong> (Android plus ancien) : même usage, lecture et écriture locales.</li>
+      <li><strong>CAMERA</strong> : utilisée exclusivement par la fonction optionnelle Selfie d’intrus (Premium). Voir section 5.</li>
+      <li><strong>USE_BIOMETRIC</strong> : pour le déverrouillage biométrique optionnel. Aucune donnée biométrique ne quitte le Android Keystore.</li>
+      <li><strong>FOREGROUND_SERVICE</strong> : pour la sauvegarde automatique des photos (Premium). Voir section 6.</li>
+      <li><strong>POST_NOTIFICATIONS</strong> : pour les notifications locales (progression de sauvegarde, alertes d’intrus). Aucune notification push depuis un serveur.</li>
+      <li><strong>VIBRATE</strong> : pour le retour haptique lors de l’utilisation.</li>
+    </ul>
+
+    <h2>4. Chiffrement et stockage local</h2>
+    <p>Tous les fichiers du coffre sont chiffrés en <strong>AES-256-GCM</strong> (format V3 ChunkedGCM). Les clés de chiffrement sont stockées dans le Android Keystore (adossé au matériel TEE/StrongBox lorsque disponible). Votre code PIN n’est jamais stocké en clair — il est haché avec PBKDF2-SHA256 et 600 000 itérations. Les exports ZIP sont chiffrés en ZIP Standard AES-256 avec un mot de passe que vous définissez (minimum 8 caractères, au moins 1 lettre et 1 chiffre).</p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge = zéro récupération.</strong> Si vous oubliez votre PIN ou votre mot de passe d’export, vos données chiffrées sont définitivement perdues. Pas d’option « Mot de passe oublié », pas de porte dérobée, et aucun moyen de vous aider à récupérer vos données.</div>
+
+    <h2>5. Selfie d’intrus (fonction Premium optionnelle)</h2>
+    <p>Lorsque vous activez explicitement le Selfie d’intrus dans les Paramètres :</p>
+    <ul>
+      <li>Après 3 échecs de PIN, la caméra frontale prend une photo silencieusement.</li>
+      <li>La photo est <strong>stockée localement uniquement</strong>, dans une base SQLCipher chiffrée sur votre appareil.</li>
+      <li>La photo n’est <strong>jamais envoyée</strong> à un serveur.</li>
+      <li>La photo n’est <strong>jamais partagée</strong> avec DELOUPROD, Google ou un tiers.</li>
+      <li>Vous pouvez consulter et supprimer ces photos à tout moment après déverrouillage du coffre.</li>
+      <li>Désactiver la fonction supprime toutes les photos d’intrus stockées.</li>
+    </ul>
+
+    <h2>6. Sauvegarde automatique des photos (fonction Premium optionnelle)</h2>
+    <p>Lorsque vous activez explicitement la Sauvegarde automatique :</p>
+    <ul>
+      <li>Les photos prises par votre appareil sont automatiquement copiées dans votre coffre chiffré.</li>
+      <li>Tout le chiffrement se fait localement sur votre appareil.</li>
+      <li>Aucune donnée de photo n’est transmise à un serveur.</li>
+      <li>Vous pouvez désactiver la fonction à tout moment dans les Paramètres.</li>
+    </ul>
+
+    <h2>7. Rapports de crash optionnels (désactivés par défaut)</h2>
+    <p>QuietStor inclut Firebase Crashlytics, <strong>désactivé par défaut et strictement opt-in</strong>. La bibliothèque Crashlytics n’est initialisée qu’après votre activation explicite dans les Paramètres. Avant opt-in, aucune donnée de crash n’est collectée ni transmise.</p>
+    <p>Si vous activez les rapports, les données de diagnostic suivantes peuvent être envoyées à Google (Firebase Crashlytics, agissant comme sous-traitant) :</p>
+    <ul>
+      <li>Modèle d’appareil et version Android</li>
+      <li>Version de l’app et numéro de build</li>
+      <li>Informations techniques de crash (stack traces, exceptions non fatales)</li>
+      <li>Identifiant d’installation Firebase (pseudonyme)</li>
+    </ul>
+    <p><strong>Les rapports de crash ne contiennent jamais :</strong> noms ou chemins de fichiers, contenu de fichiers, codes PIN, clés de chiffrement, métadonnées du coffre, photos d’intrus, ou toute information personnelle.</p>
+    <p>Vous pouvez désactiver les rapports à tout moment dans les Paramètres. La conservation des données Firebase suit la politique de Firebase Crashlytics (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
+
+    <h2>8. Google Play Billing</h2>
+    <p>Les achats Premium (paiement unique de 1,99 €) sont traités par <strong>Google Play Billing</strong>. DELOUPROD ne reçoit, ne traite et ne stocke aucune information de paiement (pas de numéro de carte, pas d’adresse de facturation). La vérification est effectuée localement sur votre appareil via les reçus signés de Google Play. Google Play agit en responsable de traitement indépendant pour les données de paiement — voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.</p>
+
+    <h2>9. Durée de conservation</h2>
+    <p>Comme nous ne collectons aucune donnée par défaut, rien n’est conservé de notre côté. Les données sur votre appareil sont conservées jusqu’à ce que vous les supprimiez :</p>
+    <ul>
+      <li>Fichiers du coffre : conservés jusqu’à suppression ou désinstallation.</li>
+      <li>Photos d’intrus (si activées) : conservées jusqu’à suppression manuelle ou désactivation de la fonction.</li>
+      <li>Rapports de crash (si activés) : conservés par Google Firebase jusqu’à 90 jours selon la politique Firebase Crashlytics.</li>
+    </ul>
+
+    <h2>10. Suppression des données et vos droits</h2>
+    <p>En vertu du RGPD (Règlement UE 2016/679), du CCPA et des réglementations similaires, vous disposez des droits d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité, et du droit d’introduire une réclamation auprès d’une autorité de contrôle.</p>
+    <p><strong>Puisque nous ne collectons pas de données personnelles, nous n’avons rien à consulter, rectifier ou supprimer de notre côté.</strong> Vos données n’existent que sur votre appareil, sous votre contrôle.</p>
+    <p>Pour supprimer toutes les données QuietStor de votre appareil :</p>
+    <ul>
+      <li>La désinstallation de l’app supprime tous les fichiers du coffre, clés et bases locales.</li>
+      <li>Pour exporter vos données avant suppression, utilisez l’export ZIP (Premium).</li>
+      <li>Pour retirer votre consentement aux rapports de crash (si donné précédemment), désactivez-les dans les Paramètres avant désinstallation.</li>
+    </ul>
+    <p>Si vous avez activé les rapports de crash, vous pouvez nous contacter à <a href="mailto:support@quietstor.app">support@quietstor.app</a> pour demander la suppression de votre identifiant d’installation Firebase chez Google.</p>
+
+    <h2>11. Utilisateurs UE : droit de réclamation</h2>
+    <p>Si vous résidez dans l’Union européenne et estimez que nous n’avons pas adressé correctement vos préoccupations de vie privée, vous avez le droit d’introduire une réclamation auprès de votre autorité nationale. En France, l’autorité de contrôle est la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+
+    <h2>12. Confidentialité des enfants</h2>
+    <p>QuietStor ne cible pas les enfants de moins de 13 ans (ou 16 ans dans l’UE selon les cas). Nous ne collectons pas sciemment de données d’enfants. Si vous pensez qu’un enfant nous a fourni des informations, contactez-nous.</p>
+
+    <h2>13. Transferts internationaux</h2>
+    <p>Aucun transfert international par défaut, puisqu’aucune donnée n’est collectée. Si vous activez les rapports de crash, les données Firebase Crashlytics peuvent être traitées par Google aux États-Unis sous les Clauses Contractuelles Types approuvées par la Commission européenne.</p>
+
+    <h2>14. Modifications de cette politique</h2>
+    <p>Nous pouvons mettre à jour cette Politique pour refléter l’évolution de nos pratiques ou pour des raisons légales. Les modifications importantes seront annoncées dans l’app et sur cette page. La « Date d’entrée en vigueur » en haut de la page reflète toujours la version actuelle.</p>
+
+    <div class="legal-contact">Des questions sur cette Politique ? Contactez-nous à <a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
   </div>
 
+  <!-- ============= ESPAÑOL ============= -->
   <div class="lang-content" data-lang="es">
     <h1>Política de Privacidad</h1>
-    <p class="legal-updated">Última actualización: 16 de febrero de 2026</p>
-    <h2>Recopilación de datos</h2>
-    <p><strong>QuietStor no recopila datos de usuario.</strong> Sin cuentas, sin analíticas, sin telemetría. La app es 100% sin conexión.</p>
-    <h2>Cifrado</h2>
-    <p>Todos los archivos están cifrados con <strong>AES-256-GCM</strong> y almacenados exclusivamente en tu dispositivo. Las claves están en el Android Keystore (TEE/StrongBox).</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu contraseña, tus datos cifrados se pierden permanentemente. No hay opción "Olvidé mi contraseña", ni puerta trasera.</div>
-    <h2>Crashlytics opcional</h2>
-    <p>QuietStor incluye Firebase Crashlytics para informes de errores, <strong>desactivado por defecto</strong>. Si decides activarlo en Ajustes, solo se envían informes de errores (stack traces, modelo del dispositivo, versión del SO). Nunca se incluyen contenidos, nombres, contraseñas ni claves.</p>
-    <h2>Google Play Billing</h2>
-    <p>Las compras Premium se procesan a través de Google Play. No recibimos ni almacenamos información de pago. La verificación de compra se realiza localmente en el dispositivo.</p>
-    <h2>Tus derechos</h2>
-    <p>Bajo GDPR/CCPA, tienes derecho a acceder, corregir y eliminar tus datos. Como no recopilamos nada, no hay nada que eliminar.</p>
-    <div class="legal-contact">¿Preguntas? Contáctanos en <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+    <p class="legal-updated">Fecha de entrada en vigor: 2026-04-16 · Última actualización: 2026-04-16</p>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de QuietStor (“la app”) es:</p>
+    <ul>
+      <li><strong>DELOUPROD</strong> (David DELOUMEAUX EI)</li>
+      <li>SIRET: 102 120 573 00013</li>
+      <li>Dirección registrada: 60 rue François Ier, 75008 Paris, France</li>
+      <li>Contacto: <a href="mailto:support@quietstor.app">support@quietstor.app</a></li>
+    </ul>
+
+    <h2>2. Nuestro compromiso: cero recopilación de datos</h2>
+    <p><strong>QuietStor no recopila datos personales por defecto.</strong> Sin cuentas, sin analíticas, sin telemetría, sin identificadores publicitarios, sin geolocalización. La app funciona 100 % sin conexión. Tus archivos, nombres, estructura de carpetas, fotos, claves de cifrado, contraseñas y metadatos del cofre nunca salen de tu dispositivo.</p>
+    <p>No tenemos servidores que almacenen tus datos. Sin puerta trasera, sin mecanismo de recuperación, sin forma de acceder a tu cofre.</p>
+
+    <h2>3. Permisos Android solicitados</h2>
+    <p>QuietStor utiliza los siguientes permisos, estrictamente para operaciones locales:</p>
+    <ul>
+      <li><strong>INTERNET</strong>: requerido solo para Google Play Billing (verificación de compra premium).</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO</strong>: para mostrar archivos en el explorador. Lectura local únicamente.</li>
+      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</strong> (Android antiguo): mismo uso, lectura y escritura locales.</li>
+      <li><strong>CAMERA</strong>: usado exclusivamente por la función opcional Selfie de Intruso (Premium). Ver sección 5.</li>
+      <li><strong>USE_BIOMETRIC</strong>: para desbloqueo biométrico opcional. Ningún dato biométrico sale del Android Keystore.</li>
+      <li><strong>FOREGROUND_SERVICE</strong>: para la copia de seguridad automática de fotos (Premium). Ver sección 6.</li>
+      <li><strong>POST_NOTIFICATIONS</strong>: para notificaciones locales. Sin notificaciones push desde ningún servidor.</li>
+      <li><strong>VIBRATE</strong>: para retroalimentación háptica.</li>
+    </ul>
+
+    <h2>4. Cifrado y almacenamiento local</h2>
+    <p>Todos los archivos del cofre se cifran con <strong>AES-256-GCM</strong> (formato V3 ChunkedGCM). Las claves se almacenan en el Android Keystore (respaldado por hardware TEE/StrongBox cuando está disponible). El PIN nunca se almacena en texto claro — se procesa con PBKDF2-SHA256 y 600 000 iteraciones. Los ZIP exportados se cifran con ZIP Standard AES-256 con una contraseña que tú defines (mínimo 8 caracteres, al menos 1 letra y 1 dígito).</p>
+    <div class="warn-box"><strong>⚠️ Zero-knowledge = sin recuperación.</strong> Si olvidas tu PIN o tu contraseña de exportación, los datos cifrados se pierden permanentemente. No hay opción “Contraseña olvidada”, ni puerta trasera, ni forma de ayudarte a recuperar datos.</div>
+
+    <h2>5. Selfie de Intruso (función Premium opcional)</h2>
+    <p>Cuando activas explícitamente el Selfie de Intruso en Ajustes:</p>
+    <ul>
+      <li>Tras 3 intentos fallidos de PIN, la cámara frontal captura una foto silenciosamente.</li>
+      <li>La foto se <strong>almacena solo localmente</strong>, en una base SQLCipher cifrada en tu dispositivo.</li>
+      <li>La foto <strong>nunca se envía</strong> a ningún servidor.</li>
+      <li>La foto <strong>nunca se comparte</strong> con DELOUPROD, Google ni terceros.</li>
+      <li>Puedes ver y eliminar estas fotos en cualquier momento tras desbloquear el cofre.</li>
+      <li>Desactivar la función elimina todas las fotos de intruso almacenadas.</li>
+    </ul>
+
+    <h2>6. Copia automática de fotos (función Premium opcional)</h2>
+    <p>Cuando activas explícitamente la Copia automática:</p>
+    <ul>
+      <li>Las fotos tomadas por tu cámara se copian automáticamente a tu cofre cifrado.</li>
+      <li>Todo el cifrado ocurre localmente en tu dispositivo.</li>
+      <li>Ningún dato se transmite a servidor alguno.</li>
+      <li>Puedes desactivar la función cuando quieras en Ajustes.</li>
+    </ul>
+
+    <h2>7. Informes de error opcionales (desactivados por defecto)</h2>
+    <p>QuietStor incluye Firebase Crashlytics, <strong>desactivado por defecto y estrictamente opt-in</strong>. La biblioteca Crashlytics solo se inicializa tras tu activación explícita. Antes del opt-in, no se recopila ni transmite ningún dato.</p>
+    <p>Si activas los informes, los datos de diagnóstico siguientes pueden enviarse a Google (Firebase Crashlytics, como encargado del tratamiento):</p>
+    <ul>
+      <li>Modelo de dispositivo y versión de Android</li>
+      <li>Versión de la app y número de compilación</li>
+      <li>Información técnica del fallo (stack traces, excepciones no fatales)</li>
+      <li>Identificador de instalación de Firebase (seudónimo)</li>
+    </ul>
+    <p><strong>Los informes nunca incluyen:</strong> nombres ni rutas de archivos, contenido, PIN, claves, metadatos del cofre, fotos de intruso, ni información personal.</p>
+    <p>Puedes desactivar los informes cuando quieras en Ajustes. La conservación de datos sigue la política de Firebase Crashlytics (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
+
+    <h2>8. Google Play Billing</h2>
+    <p>Las compras Premium (pago único de 1,99 €) se procesan mediante <strong>Google Play Billing</strong>. DELOUPROD no recibe, procesa ni almacena información de pago. La verificación se hace localmente en tu dispositivo con recibos firmados de Google Play. Google Play actúa como responsable independiente — consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</p>
+
+    <h2>9. Conservación de datos</h2>
+    <p>Como no recopilamos datos por defecto, no hay nada que conservar de nuestro lado. Los datos en tu dispositivo se conservan hasta que tú los borres:</p>
+    <ul>
+      <li>Archivos del cofre: hasta eliminación o desinstalación.</li>
+      <li>Fotos de intruso (si activadas): hasta eliminación manual o desactivación de la función.</li>
+      <li>Informes de error (si activados): hasta 90 días por Google Firebase según su política.</li>
+    </ul>
+
+    <h2>10. Eliminación de datos y tus derechos</h2>
+    <p>Bajo el RGPD (Reglamento UE 2016/679), CCPA y regulaciones similares, tienes derecho a acceder, rectificar, suprimir, limitar el tratamiento, la portabilidad, y a presentar una reclamación ante una autoridad de control.</p>
+    <p><strong>Como no recopilamos datos personales, no tenemos nada que consultar, rectificar o eliminar de nuestro lado.</strong> Tus datos existen solo en tu dispositivo, bajo tu control.</p>
+    <p>Para eliminar todos los datos de QuietStor de tu dispositivo:</p>
+    <ul>
+      <li>Desinstalar la app elimina todos los archivos, claves y bases locales.</li>
+      <li>Para exportar antes de eliminar, usa la exportación ZIP (Premium).</li>
+      <li>Para retirar el consentimiento a los informes de error, desactívalos en Ajustes antes de desinstalar.</li>
+    </ul>
+    <p>Si activaste los informes de error, puedes contactarnos en <a href="mailto:support@quietstor.app">support@quietstor.app</a> para solicitar la eliminación de tu ID de instalación de Firebase en Google.</p>
+
+    <h2>11. Usuarios UE: derecho de reclamación</h2>
+    <p>Si te encuentras en la Unión Europea y crees que no hemos atendido adecuadamente tus preocupaciones, tienes derecho a reclamar ante tu autoridad nacional de protección de datos. En Francia, la autoridad es la <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+
+    <h2>12. Privacidad de los niños</h2>
+    <p>QuietStor no está dirigido a menores de 13 años (o 16 años en la UE según corresponda). No recopilamos datos de niños de forma consciente. Si crees que un niño nos ha proporcionado datos, contáctanos.</p>
+
+    <h2>13. Transferencias internacionales</h2>
+    <p>Sin transferencias internacionales por defecto, al no recopilar datos. Si activas los informes de error, los datos de Firebase Crashlytics pueden procesarse por Google en Estados Unidos bajo las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea.</p>
+
+    <h2>14. Cambios en esta política</h2>
+    <p>Podemos actualizar esta Política para reflejar cambios en nuestras prácticas o por razones legales. Los cambios importantes se anunciarán en la app y en esta página. La “Fecha de entrada en vigor” arriba refleja siempre la versión actual.</p>
+
+    <div class="legal-contact">¿Preguntas sobre esta Política? Contáctanos en <a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
   </div>
 
+  <!-- ============= DEUTSCH ============= -->
   <div class="lang-content" data-lang="de">
     <h1>Datenschutzrichtlinie</h1>
-    <p class="legal-updated">Zuletzt aktualisiert: 16. Februar 2026</p>
-    <h2>Datenerfassung</h2>
-    <p><strong>QuietStor erfasst keine Nutzerdaten.</strong> Keine Konten, keine Analytik, keine Telemetrie. Die App ist 100% offline.</p>
-    <h2>Verschlüsselung</h2>
-    <p>Alle Dateien werden mit <strong>AES-256-GCM</strong> verschlüsselt und ausschließlich auf Ihrem Gerät gespeichert. Schlüssel im Android Keystore (TEE/StrongBox).</p>
-    <div class="warn-box"><strong>⚠️ Zero-Knowledge bedeutet keine Wiederherstellung.</strong> Wenn Sie Ihr Passwort vergessen, sind Ihre Daten dauerhaft verloren. Keine „Passwort vergessen"-Option, keine Hintertür.</div>
-    <h2>Optionale Crashlytics</h2>
-    <p>QuietStor enthält Firebase Crashlytics für Fehlerberichte, <strong>standardmäßig deaktiviert</strong>. Wenn Sie es in den Einstellungen aktivieren, werden nur Absturzberichte (Stack-Traces, Gerätemodell, OS-Version) gesendet. Keine Dateiinhalte, Namen, Passwörter oder Schlüssel.</p>
-    <h2>Google Play Billing</h2>
-    <p>Premium-Käufe werden über Google Play abgewickelt. Wir erhalten oder speichern keine Zahlungsinformationen. Die Kaufverifizierung erfolgt lokal auf dem Gerät.</p>
-    <h2>Ihre Rechte</h2>
-    <p>Unter DSGVO haben Sie das Recht auf Zugang, Berichtigung und Löschung. Da wir nichts erfassen, gibt es nichts zu löschen.</p>
-    <div class="legal-contact">Fragen? Kontakt: <a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+    <p class="legal-updated">Inkrafttreten: 2026-04-16 · Zuletzt aktualisiert: 2026-04-16</p>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>Verantwortlicher für QuietStor („die App“) ist:</p>
+    <ul>
+      <li><strong>DELOUPROD</strong> (David DELOUMEAUX EI)</li>
+      <li>SIRET: 102 120 573 00013</li>
+      <li>Eingetragene Adresse: 60 rue François Ier, 75008 Paris, France</li>
+      <li>Kontakt: <a href="mailto:support@quietstor.app">support@quietstor.app</a></li>
+    </ul>
+
+    <h2>2. Unser Versprechen: Keine Datenerfassung</h2>
+    <p><strong>QuietStor erfasst standardmäßig keine personenbezogenen Daten.</strong> Keine Konten, keine Analytik, keine Telemetrie, keine Werbe-IDs, keine Standortdaten. Die App arbeitet 100 % offline. Ihre Dateien, Dateinamen, Ordnerstruktur, Fotos, Schlüssel, Passwörter und Tresor-Metadaten verlassen niemals Ihr Gerät.</p>
+    <p>Wir haben keine Server, die Ihre Daten speichern. Keine Hintertür, keine Wiederherstellung, keine Möglichkeit, auf Ihren Tresor zuzugreifen.</p>
+
+    <h2>3. Angeforderte Android-Berechtigungen</h2>
+    <p>QuietStor nutzt folgende Berechtigungen, ausschließlich für Vorgänge auf dem Gerät:</p>
+    <ul>
+      <li><strong>INTERNET</strong>: nur für Google Play Billing (Kaufverifizierung). Kein weiterer Netzverkehr.</li>
+      <li><strong>READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO</strong>: zur Anzeige von Dateien. Nur lokales Lesen.</li>
+      <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</strong> (ältere Android-Versionen): gleicher Zweck.</li>
+      <li><strong>CAMERA</strong>: ausschließlich für die optionale Funktion Eindringling-Selfie (Premium). Siehe Abschnitt 5.</li>
+      <li><strong>USE_BIOMETRIC</strong>: für optionales biometrisches Entsperren. Keine biometrischen Daten verlassen den Android Keystore.</li>
+      <li><strong>FOREGROUND_SERVICE</strong>: für die automatische Foto-Sicherung (Premium). Siehe Abschnitt 6.</li>
+      <li><strong>POST_NOTIFICATIONS</strong>: für lokale Benachrichtigungen. Keine Push-Benachrichtigungen von Servern.</li>
+      <li><strong>VIBRATE</strong>: für haptisches Feedback.</li>
+    </ul>
+
+    <h2>4. Verschlüsselung und lokale Speicherung</h2>
+    <p>Alle Dateien werden mit <strong>AES-256-GCM</strong> (V3 ChunkedGCM-Format) verschlüsselt. Schlüssel werden im Android Keystore gespeichert (hardwaregestützt TEE/StrongBox wenn verfügbar). Die PIN wird nie im Klartext gespeichert — sie wird mit PBKDF2-SHA256 und 600 000 Iterationen gehasht. ZIP-Exporte werden mit ZIP Standard AES-256 und einem von Ihnen definierten Passwort verschlüsselt (mindestens 8 Zeichen, mindestens 1 Buchstabe und 1 Ziffer).</p>
+    <div class="warn-box"><strong>⚠️ Zero-Knowledge = keine Wiederherstellung.</strong> Wenn Sie Ihre PIN oder Ihr Export-Passwort vergessen, sind Ihre verschlüsselten Daten dauerhaft verloren. Keine „Passwort vergessen“-Option, keine Hintertür, keine Möglichkeit zur Wiederherstellung.</div>
+
+    <h2>5. Eindringling-Selfie (optionale Premium-Funktion)</h2>
+    <p>Wenn Sie das Eindringling-Selfie in den Einstellungen aktivieren:</p>
+    <ul>
+      <li>Nach 3 fehlgeschlagenen PIN-Versuchen macht die Frontkamera still ein Foto.</li>
+      <li>Das Foto wird <strong>nur lokal</strong> in einer verschlüsselten SQLCipher-Datenbank auf Ihrem Gerät gespeichert.</li>
+      <li>Das Foto wird <strong>niemals</strong> an einen Server gesendet.</li>
+      <li>Das Foto wird <strong>niemals</strong> mit DELOUPROD, Google oder Dritten geteilt.</li>
+      <li>Sie können die Fotos jederzeit nach Entsperren des Tresors ansehen und löschen.</li>
+      <li>Deaktivieren der Funktion löscht alle gespeicherten Eindringling-Fotos.</li>
+    </ul>
+
+    <h2>6. Automatische Foto-Sicherung (optionale Premium-Funktion)</h2>
+    <p>Wenn Sie die Automatische Sicherung aktivieren:</p>
+    <ul>
+      <li>Mit Ihrer Kamera aufgenommene Fotos werden automatisch in Ihren verschlüsselten Tresor kopiert.</li>
+      <li>Die gesamte Verschlüsselung erfolgt lokal auf Ihrem Gerät.</li>
+      <li>Keine Fotodaten werden an einen Server übertragen.</li>
+      <li>Sie können die Funktion jederzeit in den Einstellungen deaktivieren.</li>
+    </ul>
+
+    <h2>7. Optionale Absturzberichte (standardmäßig aus)</h2>
+    <p>QuietStor enthält Firebase Crashlytics, <strong>standardmäßig deaktiviert und strikt opt-in</strong>. Die Crashlytics-Bibliothek wird nur nach Ihrer ausdrücklichen Aktivierung initialisiert. Vor der Aktivierung werden keine Absturzdaten erfasst oder übertragen.</p>
+    <p>Wenn Sie zustimmen, können folgende Diagnosedaten an Google (Firebase Crashlytics, als Auftragsverarbeiter) gesendet werden:</p>
+    <ul>
+      <li>Gerätemodell und Android-Version</li>
+      <li>App-Version und Build-Nummer</li>
+      <li>Technische Absturzinformationen (Stack-Traces, nicht-fatale Ausnahmen)</li>
+      <li>Firebase-Installation-ID (pseudonym)</li>
+    </ul>
+    <p><strong>Absturzberichte enthalten niemals:</strong> Dateinamen oder -pfade, Dateiinhalte, PINs, Schlüssel, Tresor-Metadaten, Eindringling-Fotos oder persönliche Informationen.</p>
+    <p>Sie können Absturzberichte jederzeit in den Einstellungen deaktivieren. Die Datenaufbewahrung folgt der Firebase-Crashlytics-Richtlinie (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
+
+    <h2>8. Google Play Billing</h2>
+    <p>Premium-Käufe (einmalig 1,99 €) werden über <strong>Google Play Billing</strong> abgewickelt. DELOUPROD erhält, verarbeitet und speichert keine Zahlungsinformationen. Die Verifizierung erfolgt lokal auf Ihrem Gerät über signierte Belege von Google Play. Google Play fungiert als eigenständiger Verantwortlicher — siehe <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzerklärung</a>.</p>
+
+    <h2>9. Aufbewahrungsdauer</h2>
+    <p>Da wir standardmäßig keine Daten erfassen, gibt es unsererseits nichts aufzubewahren. Daten auf Ihrem Gerät bleiben, bis Sie sie löschen:</p>
+    <ul>
+      <li>Tresor-Dateien: bis zur Löschung oder Deinstallation.</li>
+      <li>Eindringling-Fotos (falls aktiviert): bis zur manuellen Löschung oder Deaktivierung.</li>
+      <li>Absturzberichte (falls aktiviert): bis zu 90 Tage bei Google Firebase gemäß Firebase-Crashlytics-Richtlinie.</li>
+    </ul>
+
+    <h2>10. Datenlöschung und Ihre Rechte</h2>
+    <p>Nach DSGVO (EU-Verordnung 2016/679), CCPA und ähnlichen Vorschriften haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde.</p>
+    <p><strong>Da wir keine personenbezogenen Daten erfassen, gibt es unsererseits nichts abzufragen, zu berichtigen oder zu löschen.</strong> Ihre Daten existieren nur auf Ihrem Gerät, unter Ihrer Kontrolle.</p>
+    <p>So löschen Sie alle QuietStor-Daten von Ihrem Gerät:</p>
+    <ul>
+      <li>Deinstallation entfernt alle Tresor-Dateien, Schlüssel und lokalen Datenbanken.</li>
+      <li>Zum Exportieren vor der Löschung die ZIP-Exportfunktion nutzen (Premium).</li>
+      <li>Zur Rücknahme der Einwilligung in Absturzberichte: vor der Deinstallation in den Einstellungen deaktivieren.</li>
+    </ul>
+    <p>Wenn Sie Absturzberichten zugestimmt haben, können Sie uns unter <a href="mailto:support@quietstor.app">support@quietstor.app</a> kontaktieren, um die Löschung Ihrer Firebase-Installation-ID bei Google anzufordern.</p>
+
+    <h2>11. EU-Nutzer: Beschwerderecht</h2>
+    <p>Wenn Sie in der Europäischen Union ansässig sind und der Ansicht sind, dass wir Ihre Datenschutzanliegen nicht ausreichend berücksichtigt haben, können Sie eine Beschwerde bei Ihrer nationalen Datenschutzbehörde einreichen. In Frankreich ist die Aufsichtsbehörde die <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a>.</p>
+
+    <h2>12. Datenschutz für Kinder</h2>
+    <p>QuietStor richtet sich nicht an Kinder unter 13 Jahren (oder 16 Jahren in der EU, je nach Fall). Wir erfassen wissentlich keine Daten von Kindern. Falls Sie glauben, ein Kind habe uns Daten übermittelt, kontaktieren Sie uns.</p>
+
+    <h2>13. Internationale Übermittlungen</h2>
+    <p>Keine internationalen Übermittlungen standardmäßig, da keine Daten erfasst werden. Wenn Sie Absturzberichte aktivieren, können Firebase-Crashlytics-Daten von Google in den USA unter den von der Europäischen Kommission genehmigten Standardvertragsklauseln verarbeitet werden.</p>
+
+    <h2>14. Änderungen dieser Richtlinie</h2>
+    <p>Wir können diese Richtlinie aktualisieren, um Änderungen unserer Praktiken oder aus rechtlichen Gründen widerzuspiegeln. Wesentliche Änderungen werden in der App und auf dieser Seite angekündigt. Das „Inkrafttreten“-Datum oben spiegelt immer die aktuelle Version wider.</p>
+
+    <div class="legal-contact">Fragen zu dieser Richtlinie? Kontakt: <a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
   </div>
+
 </div>
 
 <footer class="site-footer">
   <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p></div>
-  <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" data-i18n="nav-faq">FAQ</a><a href="/terms.html" data-i18n="nav-terms">Terms</a><a href="/refund.html" data-i18n="nav-refund">Refund</a></div>
-  <div class="footer-bottom"><span>© 2025–2026 QuietStor.</span><a href="mailto:app.quietstor@gmail.com">app.quietstor@gmail.com</a></div>
+  <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" data-i18n="nav-faq">FAQ</a><a href="/terms.html" data-i18n="nav-terms">Terms</a><a href="/refund.html" data-i18n="nav-refund">Refund</a><a href="/legal.html" data-i18n="nav-legal">Legal</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 DELOUPROD (David DELOUMEAUX EI).</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
 </footer>
 
 <script>
 const UI = {
-  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
-  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
-  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
-  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
+  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'nav-legal':'Legal', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
+  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'nav-legal':'Mentions l\u00e9gales', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
+  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'nav-legal':'Aviso legal', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
+  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'nav-legal':'Impressum', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
 };
 
 let currentLang = (()=>{try{return localStorage.getItem('qs-lang')}catch(e){return null}})() || (navigator.language||'').slice(0,2);
