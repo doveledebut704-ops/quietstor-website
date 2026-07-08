@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuietStor — Privacy Policy</title>
 <link rel="canonical" href="https://quietstor.app/privacy.html">
-<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="icon" type="image/svg+xml" href="/door-logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ds13.css">
 </head>
 <body>
 <header class="site-header">
-  <a href="/" class="site-logo"><img src="/logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
+  <a href="/" class="site-logo"><img src="/door-logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
   <nav class="site-nav">
     <a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" class="hide-mobile" data-i18n="nav-faq">FAQ</a>
     <div class="lang-sel"><button class="lang-btn active" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('fr')">FR</button><button class="lang-btn" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('de')">DE</button></div>
@@ -55,7 +56,7 @@
 
     <h2>4. Encryption &amp; Local Storage</h2>
     <p>All vault files are encrypted using <strong>AES-256-GCM</strong> (V3 ChunkedGCM format). Encryption keys are stored in the Android Keystore (hardware-backed TEE/StrongBox where available). Your vault PIN is never stored in plaintext — it is hashed with PBKDF2-SHA256 using 600,000 iterations. Export ZIP files are encrypted using ZIP Standard AES-256 with a password you define (minimum 8 characters, at least 1 letter and 1 digit).</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge means zero recovery.</strong> If you forget your PIN or export password, your encrypted data is permanently lost. There is no “Forgot Password” option, no backdoor, and no way for us to help recover your data.</div>
+    <div class="warn-box"><strong>Zero-knowledge means we can never access or recover your data ourselves.</strong> Only your PIN — or your 12-word recovery phrase — can unlock your vault. Losing both means the data is unrecoverable, by design.</div>
 
     <h2>5. Intruder Selfie (Optional Premium Feature)</h2>
     <p>When you explicitly enable Intruder Selfie in Settings:</p>
@@ -90,7 +91,7 @@
     <p>You can disable crash reporting at any time in Settings. Firebase data retention follows Google’s Firebase Crashlytics policy (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
 
     <h2>8. Google Play Billing</h2>
-    <p>Premium purchases (one-time €1.99) are processed by <strong>Google Play Billing</strong>. DELOUPROD does not receive, process, or store any payment information (no card number, no billing address). Purchase verification is performed locally on your device using Google Play’s signed receipts. Google Play acts as an independent data controller for payment data — please refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s Privacy Policy</a>.</p>
+    <p>Premium purchases (one-time purchase) are processed by <strong>Google Play Billing</strong>. DELOUPROD does not receive, process, or store any payment information (no card number, no billing address). Purchase verification is performed locally on your device using Google Play’s signed receipts. Google Play acts as an independent data controller for payment data — please refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s Privacy Policy</a>.</p>
 
     <h2>9. Data Retention</h2>
     <p>Because we do not collect any data by default, there is nothing to retain on our side. Data on your device is retained until you delete it:</p>
@@ -159,7 +160,7 @@
 
     <h2>4. Chiffrement et stockage local</h2>
     <p>Tous les fichiers du coffre sont chiffrés en <strong>AES-256-GCM</strong> (format V3 ChunkedGCM). Les clés de chiffrement sont stockées dans le Android Keystore (adossé au matériel TEE/StrongBox lorsque disponible). Votre code PIN n’est jamais stocké en clair — il est haché avec PBKDF2-SHA256 et 600 000 itérations. Les exports ZIP sont chiffrés en ZIP Standard AES-256 avec un mot de passe que vous définissez (minimum 8 caractères, au moins 1 lettre et 1 chiffre).</p>
-    <div class="warn-box"><strong>⚠️ Zero-knowledge = zéro récupération.</strong> Si vous oubliez votre PIN ou votre mot de passe d’export, vos données chiffrées sont définitivement perdues. Pas d’option « Mot de passe oublié », pas de porte dérobée, et aucun moyen de vous aider à récupérer vos données.</div>
+    <div class="warn-box"><strong>Zero-knowledge signifie que nous ne pouvons jamais accéder ni récupérer vos données nous-mêmes.</strong> Seul votre PIN — ou votre phrase de récupération de 12 mots — peut déverrouiller votre coffre. Perdre les deux signifie que les données sont irrécupérables, par conception.</div>
 
     <h2>5. Selfie d’intrus (fonction Premium optionnelle)</h2>
     <p>Lorsque vous activez explicitement le Selfie d’intrus dans les Paramètres :</p>
@@ -194,7 +195,7 @@
     <p>Vous pouvez désactiver les rapports à tout moment dans les Paramètres. La conservation des données Firebase suit la politique de Firebase Crashlytics (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
 
     <h2>8. Google Play Billing</h2>
-    <p>Les achats Premium (paiement unique de 1,99 €) sont traités par <strong>Google Play Billing</strong>. DELOUPROD ne reçoit, ne traite et ne stocke aucune information de paiement (pas de numéro de carte, pas d’adresse de facturation). La vérification est effectuée localement sur votre appareil via les reçus signés de Google Play. Google Play agit en responsable de traitement indépendant pour les données de paiement — voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.</p>
+    <p>Les achats Premium (paiement unique) sont traités par <strong>Google Play Billing</strong>. DELOUPROD ne reçoit, ne traite et ne stocke aucune information de paiement (pas de numéro de carte, pas d’adresse de facturation). La vérification est effectuée localement sur votre appareil via les reçus signés de Google Play. Google Play agit en responsable de traitement indépendant pour les données de paiement — voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.</p>
 
     <h2>9. Durée de conservation</h2>
     <p>Comme nous ne collectons aucune donnée par défaut, rien n’est conservé de notre côté. Les données sur votre appareil sont conservées jusqu’à ce que vous les supprimiez :</p>
@@ -298,7 +299,7 @@
     <p>Puedes desactivar los informes cuando quieras en Ajustes. La conservación de datos sigue la política de Firebase Crashlytics (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
 
     <h2>8. Google Play Billing</h2>
-    <p>Las compras Premium (pago único de 1,99 €) se procesan mediante <strong>Google Play Billing</strong>. DELOUPROD no recibe, procesa ni almacena información de pago. La verificación se hace localmente en tu dispositivo con recibos firmados de Google Play. Google Play actúa como responsable independiente — consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</p>
+    <p>Las compras Premium (compra única) se procesan mediante <strong>Google Play Billing</strong>. DELOUPROD no recibe, procesa ni almacena información de pago. La verificación se hace localmente en tu dispositivo con recibos firmados de Google Play. Google Play actúa como responsable independiente — consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</p>
 
     <h2>9. Conservación de datos</h2>
     <p>Como no recopilamos datos por defecto, no hay nada que conservar de nuestro lado. Los datos en tu dispositivo se conservan hasta que tú los borres:</p>
@@ -402,7 +403,7 @@
     <p>Sie können Absturzberichte jederzeit in den Einstellungen deaktivieren. Die Datenaufbewahrung folgt der Firebase-Crashlytics-Richtlinie (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>).</p>
 
     <h2>8. Google Play Billing</h2>
-    <p>Premium-Käufe (einmalig 1,99 €) werden über <strong>Google Play Billing</strong> abgewickelt. DELOUPROD erhält, verarbeitet und speichert keine Zahlungsinformationen. Die Verifizierung erfolgt lokal auf Ihrem Gerät über signierte Belege von Google Play. Google Play fungiert als eigenständiger Verantwortlicher — siehe <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzerklärung</a>.</p>
+    <p>Premium-Käufe (Einmalkauf) werden über <strong>Google Play Billing</strong> abgewickelt. DELOUPROD erhält, verarbeitet und speichert keine Zahlungsinformationen. Die Verifizierung erfolgt lokal auf Ihrem Gerät über signierte Belege von Google Play. Google Play fungiert als eigenständiger Verantwortlicher — siehe <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzerklärung</a>.</p>
 
     <h2>9. Aufbewahrungsdauer</h2>
     <p>Da wir standardmäßig keine Daten erfassen, gibt es unsererseits nichts aufzubewahren. Daten auf Ihrem Gerät bleiben, bis Sie sie löschen:</p>
@@ -441,17 +442,17 @@
 </div>
 
 <footer class="site-footer">
-  <div><div class="footer-brand"><img src="/logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline" data-i18n="footer-tag">Your files. Your format. Forever portable.</p></div>
+  <div><div class="footer-brand"><img src="/door-logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline" data-i18n="footer-tag">Safe, never hostage.</p></div>
   <div class="footer-links"><a href="/" data-i18n="nav-home">Home</a><a href="/faq.html" data-i18n="nav-faq">FAQ</a><a href="/terms.html" data-i18n="nav-terms">Terms</a><a href="/refund.html" data-i18n="nav-refund">Refund</a><a href="/legal.html" data-i18n="nav-legal">Legal</a></div>
   <div class="footer-bottom"><span>© 2025–2026 DELOUPROD (David DELOUMEAUX EI).</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
 </footer>
 
 <script>
 const UI = {
-  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'nav-legal':'Legal', 'footer-tag':'Your files. Your format. Forever portable.', 'footer-rights':'All rights reserved.' },
-  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'nav-legal':'Mentions l\u00e9gales', 'footer-tag':'Vos fichiers. Votre format. Toujours portable.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
-  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'nav-legal':'Aviso legal', 'footer-tag':'Tus archivos. Tu formato. Siempre portable.', 'footer-rights':'Todos los derechos reservados.' },
-  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'nav-legal':'Impressum', 'footer-tag':'Deine Dateien. Dein Format. F\u00fcr immer portabel.', 'footer-rights':'Alle Rechte vorbehalten.' }
+  en: { 'nav-home':'Home', 'nav-faq':'FAQ', 'nav-privacy':'Privacy', 'nav-terms':'Terms', 'nav-refund':'Refund', 'nav-legal':'Legal', 'footer-tag':'Safe, never hostage.', 'footer-rights':'All rights reserved.' },
+  fr: { 'nav-home':'Accueil', 'nav-faq':'FAQ', 'nav-privacy':'Confidentialit\u00e9', 'nav-terms':'Conditions', 'nav-refund':'Remboursement', 'nav-legal':'Mentions l\u00e9gales', 'footer-tag':'En s\u00e9curit\u00e9, jamais en otage.', 'footer-rights':'Tous droits r\u00e9serv\u00e9s.' },
+  es: { 'nav-home':'Inicio', 'nav-faq':'FAQ', 'nav-privacy':'Privacidad', 'nav-terms':'T\u00e9rminos', 'nav-refund':'Reembolso', 'nav-legal':'Aviso legal', 'footer-tag':'Seguro, nunca reh\u00e9n.', 'footer-rights':'Todos los derechos reservados.' },
+  de: { 'nav-home':'Startseite', 'nav-faq':'FAQ', 'nav-privacy':'Datenschutz', 'nav-terms':'AGB', 'nav-refund':'Erstattung', 'nav-legal':'Impressum', 'footer-tag':'Sicher \u2014 und nie in Geiselhaft.', 'footer-rights':'Alle Rechte vorbehalten.' }
 };
 
 let currentLang = (()=>{try{return localStorage.getItem('qs-lang')}catch(e){return null}})() || (navigator.language||'').slice(0,2);

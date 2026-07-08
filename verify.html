@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Verify Any Photo Vault in 5 Minutes — QuietStor</title>
+<meta name="description" content="Five checks anyone can run on any photo vault app: airplane mode, permissions, tracker scan, privacy-policy audit, export test. No expertise required.">
+<link rel="canonical" href="https://quietstor.app/verify.html">
+<link rel="icon" href="/door-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ds13.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to verify any photo vault app in 5 minutes",
+  "step": [
+    { "@type": "HowToStep", "name": "The airplane test", "text": "Enable airplane mode, then use the vault fully: import, view, export. If anything breaks or nags, your photos depend on a server." },
+    { "@type": "HowToStep", "name": "The permission check", "text": "In Android settings, open the app's permissions. A vault needs photo/media access — it does not need your contacts, your location, or unrestricted network access." },
+    { "@type": "HowToStep", "name": "The tracker scan", "text": "Look the app up on Exodus Privacy (reports.exodus-privacy.eu.org). It lists every tracking SDK bundled in the APK. 'No ads' means little if five trackers ship anyway." },
+    { "@type": "HowToStep", "name": "The privacy-policy audit", "text": "Open the privacy policy and search for 'cloud', 'server', 'third party', 'share'. What a company admits in its policy is usually worse in practice, never better." },
+    { "@type": "HowToStep", "name": "The exit test", "text": "Try to get your files OUT. If the only export is a proprietary format that needs the app — or a subscription — your memories are hostages, not files." }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/door-logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/security-model.html" class="hide-mobile">Security model</a>
+    <a href="/privacy.html" class="hide-mobile">Privacy</a>
+  </nav>
+</header>
+
+<main class="page-article">
+  <p class="page-eyebrow">Verify, don't trust</p>
+  <h1>How to verify any photo vault<span class="door-slit" aria-hidden="true"></span><br><em>in five minutes.</em></h1>
+  <p class="lede">You don't need to be an engineer to know whether a privacy app deserves the name. These five checks work on any vault — including ours. Especially ours.</p>
+
+  <hr class="threshold">
+
+  <div class="check-card">
+    <h3>1 · The airplane test</h3>
+    <p class="how"><strong>How:</strong> enable airplane mode, then use the vault fully — import a photo, view it, export it. <strong>Good looks like:</strong> everything works, nothing nags. If features break offline, your photos depend on someone's server.</p>
+    <p class="answer"><span class="who">QuietStor:</span> works entirely offline — the app can't reach the network at all (see check 2). <span class="chip pass">passes</span></p>
+  </div>
+
+  <div class="check-card">
+    <h3>2 · The permission check</h3>
+    <p class="how"><strong>How:</strong> Android Settings → Apps → the vault → Permissions. <strong>Good looks like:</strong> media access and little else. A photo vault does not need your contacts or your location — and the strongest signal of all is an app that doesn't even hold the INTERNET permission.</p>
+    <p class="answer"><span class="who">QuietStor:</span> the INTERNET permission is absent from the app. Not unused — absent. Android itself enforces that nothing can be sent. <span class="chip pass">passes</span></p>
+  </div>
+
+  <div class="check-card">
+    <h3>3 · The tracker scan</h3>
+    <p class="how"><strong>How:</strong> look the app up on <a href="https://reports.exodus-privacy.eu.org" rel="noopener" style="color: var(--green);">Exodus Privacy</a> — an independent scanner that lists every tracking SDK bundled inside an APK. <strong>Good looks like:</strong> zero trackers. "No ads" means little if five analytics SDKs ship anyway.</p>
+    <p class="answer"><span class="who">QuietStor:</span> zero trackers, zero analytics, zero third-party SDKs phoning home. <!-- [TO-VERIFY at J0: link the Exodus report for the published package] --> <span class="chip pass">passes</span></p>
+  </div>
+
+  <div class="check-card">
+    <h3>4 · The privacy-policy audit</h3>
+    <p class="how"><strong>How:</strong> open the privacy policy and search (Ctrl+F) for <code>cloud</code>, <code>server</code>, <code>third party</code>, <code>share</code>. <strong>Good looks like:</strong> nothing to disclose. What a company admits in its own policy is usually the floor, not the ceiling.</p>
+    <p class="answer"><span class="who">QuietStor:</span> our <a href="/privacy.html" style="color: var(--green);">policy</a> is short for a simple reason — there is no collection to describe. <span class="chip pass">passes</span></p>
+  </div>
+
+  <div class="check-card">
+    <h3>5 · The exit test</h3>
+    <p class="how"><strong>How:</strong> before trusting a vault with years of memories, try to get one photo <em>out</em>, in a format that opens without the app. <strong>Good looks like:</strong> a standard, documented export. If leaving requires a subscription or a proprietary format, your files are hostages.</p>
+    <p class="answer"><span class="who">QuietStor:</span> sealed exports are standard AES-256 ZIP — they open with 7-Zip, WinRAR or macOS, with your password, no QuietStor required. Leaving with everything is a feature, not a loophole. <span class="chip pass">passes</span></p>
+  </div>
+
+  <h2>Why we publish this</h2>
+  <p>Because the five checks are the argument. A vault that fears this page has something to hide; a vault built for it has nothing else to prove. Full details of how QuietStor is engineered are on the <a href="/security-model.html" style="color: var(--green);">security model</a> page.</p>
+</main>
+
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/door-logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline">Safe, never hostage.</p></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a><a href="/legal.html">Legal</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 DELOUPROD (David DELOUMEAUX EI).</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
+</footer>
+
+</body>
+</html>

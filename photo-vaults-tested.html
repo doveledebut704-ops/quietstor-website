@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Android Photo Vaults, Tested — QuietStor</title>
+<meta name="description" content="We ran the same five verifiable checks on the leading Android photo vaults — airplane mode, permissions, trackers, policy audit, exit test — and published everything, including our own results.">
+<link rel="canonical" href="https://quietstor.app/photo-vaults-tested.html">
+<link rel="icon" href="/door-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ds13.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/door-logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/verify.html" class="hide-mobile">Verify a vault</a>
+    <a href="/security-model.html" class="hide-mobile">Security model</a>
+  </nav>
+</header>
+
+<main class="page-article">
+  <p class="page-eyebrow">Tested, not ranked by us</p>
+  <h1>Android photo vaults,<span class="door-slit" aria-hidden="true"></span><br><em>put through the same five checks.</em></h1>
+  <p class="lede">No stars, no sponsored placements. We ran the five verifiable checks from our <a href="/verify.html" style="color: var(--green);">verification guide</a> on the category's best-known apps — and on our own, with full disclosure.</p>
+
+  <div class="draft-banner">⚠️ DRAFT — DO NOT PUBLISH. Every ⟨verify⟩ cell below must be filled from a real hands-on test (device, date, app version noted) before this page goes live. Publishing untested claims is exactly what this page exists to call out. — Test protocol: §Methodology.</div>
+
+  <hr class="threshold">
+
+  <h2>Methodology</h2>
+  <p>Each app was installed from Google Play on a physical Android device and put through the five checks: <strong>airplane test</strong> (does it fully work offline?), <strong>permission check</strong> (what does it ask for — and does it hold the INTERNET permission?), <strong>tracker scan</strong> (Exodus Privacy report), <strong>policy audit</strong> (what the privacy policy admits), and <strong>exit test</strong> (can your files leave in a standard format, for free?). Device, app version and test date are noted per row. Pricing models are described, not judged — amounts change; models rarely do.</p>
+
+  <h2>Results</h2>
+  <table class="spec-table">
+    <tr><th>App</th><th>Storage model</th><th>Price model</th><th>Airplane test</th><th>Trackers (Exodus)</th><th>Exit test</th></tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--text)">Keepsafe</strong></td>
+      <td class="spec-label">Cloud-backed vault</td>
+      <td class="spec-label">Subscription tiers</td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+    </tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--text)">LockMyPix</strong></td>
+      <td class="spec-label">Local vault</td>
+      <td class="spec-label">Freemium + paid tiers</td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+    </tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--text)">Private Photo Vault</strong></td>
+      <td class="spec-label">Cloud-backed vault</td>
+      <td class="spec-label">Subscription tiers</td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+    </tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--text)">Vaulty</strong></td>
+      <td class="spec-label">Local vault</td>
+      <td class="spec-label">Freemium + purchases</td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+    </tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--text)">Photok</strong></td>
+      <td class="spec-label">Local vault (open source)</td>
+      <td class="spec-label">Free (FOSS)</td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+      <td><span class="chip warn">⟨verify⟩</span></td>
+    </tr>
+    <tr>
+      <td class="spec-label"><strong style="color:var(--green)">QuietStor</strong></td>
+      <td class="spec-label">Local vault — no server exists</td>
+      <td class="spec-label">Free + one-time purchase</td>
+      <td><span class="chip pass">passes</span></td>
+      <td><span class="chip pass">0 — no INTERNET perm.</span></td>
+      <td><span class="chip pass">standard AES-256 ZIP</span></td>
+    </tr>
+  </table>
+  <p style="font-size:13px; color:var(--text-dim); margin-top:10px;">Storage & price models sourced from each app's own Play listing (⟨date⟩). Hands-on cells: ⟨device, Android version, app versions, test date⟩.</p>
+
+  <h2>Full disclosure</h2>
+  <p><strong>QuietStor is our app.</strong> That's precisely why the checks are ones you can re-run yourself — nothing in our row requires believing us. And in fairness, here is what QuietStor <em>doesn't</em> do: no cloud sync of any kind (your safety copy is yours to store), no iOS version, and no app-icon disguise — we'd rather be a door than a fake calculator. If those are must-haves, one of the apps above may fit you better.</p>
+
+  <h2>What the checks don't measure</h2>
+  <p>Design taste, speed on your specific phone, and support quality. Try before you commit years of memories — and whichever vault you choose, run the <a href="/verify.html" style="color: var(--green);">exit test</a> first. The best time to learn how you'd leave is before you move in.</p>
+</main>
+
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/door-logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline">Safe, never hostage.</p></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a><a href="/legal.html">Legal</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 DELOUPROD (David DELOUMEAUX EI).</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
+</footer>
+
+</body>
+</html>

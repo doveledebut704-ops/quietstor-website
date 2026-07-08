@@ -1,0 +1,145 @@
+/* =====================================================
+   QuietStor — DS V13 Web Patch ("The Door")
+   Aligns the site with the app design system (canon 🔒):
+   bg #0b0c0c · card #141615 · action green #27c860 (reserved)
+   violet #a78bfa (Give/Donner only) · Fraunces + Hanken Grotesk
+   Load AFTER style.css on every page:
+   <link rel="stylesheet" href="/style.css">
+   <link rel="stylesheet" href="/ds13.css">
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,550;9..144,650&family=Hanken+Grotesk:wght@400;500;600&display=swap');
+
+:root {
+  /* --- Token realignment (app DS V13) --- */
+  --bg: #0b0c0c;
+  --bg-raised: #141615;
+  --bg-card: #141615;
+  --green: #27c860;
+  --green-dim: rgba(39, 200, 96, 0.12);
+  --green-glow: rgba(39, 200, 96, 0.28);
+  --green-subtle: rgba(39, 200, 96, 0.06);
+  --border-green: rgba(39, 200, 96, 0.2);
+  --violet: #a78bfa;               /* reserved: "Give / Donner" concepts */
+  --violet-dim: rgba(167, 139, 250, 0.12);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Hanken Grotesk', 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+body { font-family: var(--font-body); }
+
+h1, h2, h3, .hero-title, .section-title, .price-name {
+  font-family: var(--font-display);
+  font-weight: 550;
+  letter-spacing: -0.01em;
+}
+
+h1 em, .hero-title em, .t-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 450;
+}
+
+/* Action-reserved green: keep green for actions & verdicts, not decor.
+   Neutralize decorative green borders inherited from Liquid Noir. */
+.card-decorative { border-color: var(--border) !important; }
+
+/* --- The Door signature ------------------------------------
+   One per page: a vertical slit of light escaping the doorway.
+   Breathes at the app's lock-screen rhythm (2s in, 2s out). */
+.door-slit {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  vertical-align: -0.12em;
+  margin: 0 0.08em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, transparent, var(--green) 30%, var(--green) 70%, transparent);
+  box-shadow: 0 0 12px var(--green-glow);
+  animation: doorBreath 4s ease-in-out infinite;
+}
+@keyframes doorBreath {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .door-slit { animation: none; opacity: 0.85; }
+}
+
+/* Threshold rule: hairline with a short lit segment at the left —
+   the light under the door. Use on section openers. */
+.threshold {
+  border: 0;
+  height: 1px;
+  margin: 56px 0 40px;
+  background: linear-gradient(90deg, var(--green) 0, var(--green) 48px, var(--border) 48px, var(--border) 100%);
+}
+
+/* --- Spec rows (security model / verify pages) --- */
+.spec-table { width: 100%; border-collapse: collapse; }
+.spec-table th, .spec-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.spec-table th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.spec-value { font-family: var(--font-mono); font-size: 13.5px; color: var(--text); }
+.spec-label { color: var(--text-mid); font-size: 14.5px; }
+
+/* Verdict chips — green is a verdict, not a decoration */
+.chip { display: inline-block; padding: 3px 10px; border-radius: 60px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; }
+.chip.pass { background: var(--green-dim); color: var(--green); }
+.chip.warn { background: rgba(240, 180, 60, 0.12); color: #e8b64c; }
+.chip.info { background: rgba(255,255,255,0.06); color: var(--text-mid); }
+.chip.give { background: var(--violet-dim); color: var(--violet); }
+
+/* Draft banner (comparison page until hands-on slots are filled) */
+.draft-banner {
+  border: 1px dashed rgba(240, 180, 60, 0.4);
+  background: rgba(240, 180, 60, 0.06);
+  color: #e8b64c;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 13.5px;
+  margin: 24px 0;
+}
+
+/* Article layout for the three R2 pages */
+.page-article { max-width: 860px; margin: 0 auto; padding: 120px 24px 80px; }
+.page-eyebrow {
+  font-family: var(--font-body); font-weight: 600; font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--green);
+  margin-bottom: 14px;
+}
+.page-article h1 { font-size: clamp(34px, 5.4vw, 52px); line-height: 1.08; margin-bottom: 18px; }
+.page-article .lede { font-size: 18px; color: var(--text-mid); max-width: 640px; margin-bottom: 8px; }
+.page-article h2 { font-size: 26px; margin: 48px 0 14px; }
+.page-article p { color: var(--text-mid); margin: 0 0 16px; max-width: 720px; }
+.page-article p strong { color: var(--text); }
+.page-article code { font-family: var(--font-mono); font-size: 0.9em; background: rgba(255,255,255,0.05); padding: 1px 6px; border-radius: 6px; }
+
+/* Checklist cards (/verify) */
+.check-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--green);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  margin: 18px 0;
+}
+.check-card h3 { font-size: 19px; margin-bottom: 8px; }
+.check-card .how { font-size: 14.5px; color: var(--text-mid); }
+.check-card .answer {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--text-mid);
+}
+.check-card .answer .who { font-weight: 600; color: var(--text); }

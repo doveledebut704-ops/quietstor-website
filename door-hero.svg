@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- QuietStor — The Door (hero, 120px)
+     Light slit breathes at the app lock-screen rhythm (2s + 2s).
+     Swap the door group with the canonical DoorIcon.tsx path for pixel-parity. -->
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QuietStor">
+  <title>QuietStor</title>
+  <defs>
+    <linearGradient id="h-bg" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#161817"/>
+      <stop offset="100%" stop-color="#0b0c0c"/>
+    </linearGradient>
+    <linearGradient id="h-slit" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%"  stop-color="#27c860" stop-opacity="0"/>
+      <stop offset="28%" stop-color="#27c860" stop-opacity="0.95"/>
+      <stop offset="72%" stop-color="#27c860" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#27c860" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="h-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#27c860" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#27c860" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .breath { animation: b 4s ease-in-out infinite; }
+      @keyframes b { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+      @media (prefers-reduced-motion: reduce) { .breath { animation:none; opacity:.85 } }
+    </style>
+  </defs>
+
+  <!-- tile -->
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#h-bg)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- door frame -->
+  <rect x="38" y="28" width="44" height="64" rx="6" fill="none" stroke="rgba(240,237,232,0.5)" stroke-width="3"/>
+
+  <!-- door leaf, ajar -->
+  <path d="M42.5 32.5 L71.5 37.5 L71.5 87 L42.5 86 Z" fill="#141615" stroke="rgba(240,237,232,0.75)" stroke-width="2.6" stroke-linejoin="round"/>
+  <!-- handle -->
+  <circle cx="65.5" cy="61" r="2.8" fill="#f0ede8" opacity="0.85"/>
+
+  <!-- glow behind the opening -->
+  <ellipse cx="76.5" cy="60" rx="16" ry="34" fill="url(#h-glow)" class="breath"/>
+  <!-- light escaping through the opening edge -->
+  <rect x="75" y="31.5" width="4.4" height="55" rx="2.2" fill="url(#h-slit)" class="breath"/>
+</svg>

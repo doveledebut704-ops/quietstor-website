@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Model — QuietStor</title>
+<meta name="description" content="How QuietStor protects your photos and documents: AES-256-GCM on-device encryption, hardware-backed keys, a 12-word recovery phrase, and no network activity at all. Every claim here is verifiable.">
+<link rel="canonical" href="https://quietstor.app/security-model.html">
+<link rel="icon" href="/door-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ds13.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is QuietStor really offline?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Android INTERNET permission is not present in the app. There is no server component, no account, and no network activity — this is enforced by the operating system, not by a promise." }
+    },
+    {
+      "@type": "Question",
+      "name": "What encryption does QuietStor use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Files are encrypted with AES-256-GCM using chunked streaming, with keys protected by the Android Keystore (hardware-backed where the device supports it). Metadata lives in an SQLCipher database. Exports use the standard ZIP AES-256 (AE-2) format, openable with common tools." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I forget my PIN?",
+      "acceptedAnswer": { "@type": "Answer", "text": "When you create your vault, QuietStor gives you a 12-word recovery phrase. The phrase restores access on this phone or a new one. QuietStor itself can never recover anything for you: it never sees your PIN, your phrase or your files." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can QuietStor or anyone else see my files?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Decrypted bytes never leave the app's own process. There are no trackers, no analytics and no third-party SDKs receiving data, and the app cannot reach the network at all." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/door-logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/verify.html" class="hide-mobile">Verify a vault</a>
+    <a href="/privacy.html" class="hide-mobile">Privacy</a>
+  </nav>
+</header>
+
+<main class="page-article">
+  <p class="page-eyebrow">Security model</p>
+  <h1>Nothing leaves this device.<span class="door-slit" aria-hidden="true"></span><br><em>And you can verify that.</em></h1>
+  <p class="lede">Most privacy claims ask for your trust. This page asks for your scrutiny instead: here is exactly how QuietStor is built, in terms you can check.</p>
+
+  <hr class="threshold">
+
+  <h2>The one rule everything follows</h2>
+  <p><strong>Decrypted bytes never leave the app's own process.</strong> Not to a server (there is none), not to an analytics SDK (there are none), not even to other system services. Every design decision below exists to keep that sentence true.</p>
+
+  <h2>The specifications</h2>
+  <table class="spec-table">
+    <tr><th>Layer</th><th>Implementation</th></tr>
+    <tr><td class="spec-label">File encryption</td><td class="spec-value">AES-256-GCM, chunked streaming (large videos are encrypted and played without temporary plaintext files)</td></tr>
+    <tr><td class="spec-label">Key protection</td><td class="spec-value">Android Keystore — hardware-backed (TEE / StrongBox) where the device supports it</td></tr>
+    <tr><td class="spec-label">Key derivation</td><td class="spec-value">PBKDF2-SHA256, 600,000 iterations</td></tr>
+    <tr><td class="spec-label">Metadata</td><td class="spec-value">SQLCipher encrypted database</td></tr>
+    <tr><td class="spec-label">Recovery</td><td class="spec-value">12-word recovery phrase (BIP39 wordlist), generated on-device at vault creation</td></tr>
+    <tr><td class="spec-label">Exports</td><td class="spec-value">Standard ZIP AES-256 (AE-2) — opens with 7-Zip, WinRAR, macOS. No proprietary format</td></tr>
+    <tr><td class="spec-label">Network</td><td class="spec-value">INTERNET permission absent from the app — enforced by Android, not by policy</td></tr>
+    <tr><td class="spec-label">Screen protection</td><td class="spec-value">FLAG_SECURE (no screenshots, no screen recording of vault content) + auto-lock</td></tr>
+  </table>
+
+  <h2>What "no cloud" means here</h2>
+  <p>Some vaults say "no cloud" and mean "optional cloud". QuietStor has no server component at all: nothing to sync to, nothing to breach, nothing to subpoena. If you want an off-device copy, <strong>you</strong> make one — a sealed, encrypted export that you store wherever you choose, and that stays unreadable without your password.</p>
+
+  <h2>What we can never do</h2>
+  <p>We cannot see your files, reset your PIN, or recover your data. Zero-knowledge is a limitation we chose on purpose. Your safety net is yours: the 12-word phrase restores access on any phone, and the safety copy protects you against loss or theft of the device itself. Keep both, and you can always come back.</p>
+
+  <h2>Don't take our word for it</h2>
+  <p>Run the same five checks we apply to every vault — airplane mode, permissions, tracker scan, privacy-policy audit, export test — on the <a href="/verify.html" style="color: var(--green);">verification page</a>. QuietStor is built to pass all five with the app's own tools.</p>
+  <!-- [TO-VERIFY at J0] Add the Exodus Privacy report link for the published package here:
+       <p>Independent tracker scan: <a href="https://reports.exodus-privacy.eu.org/...">Exodus Privacy report</a> — zero trackers.</p> -->
+
+  <p style="margin-top: 48px; font-size: 13.5px; color: var(--text-dim);">Made in France · GDPR is architecture here, not an afterthought · Questions: support@quietstor.app</p>
+</main>
+
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/door-logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline">Safe, never hostage.</p></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a><a href="/legal.html">Legal</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 DELOUPROD (David DELOUMEAUX EI).</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
+</footer>
+
+</body>
+</html>
