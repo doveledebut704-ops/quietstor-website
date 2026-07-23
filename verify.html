@@ -46,13 +46,13 @@
   <div class="check-card">
     <h3>1 · The airplane test</h3>
     <p class="how"><strong>How:</strong> enable airplane mode, then use the vault fully — import a photo, view it, export it. <strong>Good looks like:</strong> everything works, nothing nags. If features break offline, your photos depend on someone's server.</p>
-    <p class="answer"><span class="who">QuietStor:</span> works entirely offline — the app can't reach the network at all (see check 2). <span class="chip pass">passes</span></p>
+    <p class="answer"><span class="who">QuietStor:</span> vault use works fully offline (see check 2 for the sole network component). <span class="chip pass">passes</span></p>
   </div>
 
   <div class="check-card">
     <h3>2 · The permission check</h3>
     <p class="how"><strong>How:</strong> Android Settings → Apps → the vault → Permissions. <strong>Good looks like:</strong> media access and little else. A photo vault does not need your contacts or your location — and the strongest signal of all is an app that doesn't even hold the INTERNET permission.</p>
-    <p class="answer"><span class="who">QuietStor:</span> the INTERNET permission is absent from the app. Not unused — absent. Android itself enforces that nothing can be sent. <span class="chip pass">passes</span></p>
+    <p class="answer"><span class="who">QuietStor:</span> INTERNET is present only for Google Play Billing (one-time purchase). No QuietStor server, no account, no trackers, no analytics SDK — decrypted bytes never leave the app process. <span class="chip pass">passes</span></p>
   </div>
 
   <div class="check-card">
