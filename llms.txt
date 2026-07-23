@@ -31,6 +31,9 @@
 - [How to verify any photo vault in 5 minutes](https://quietstor.app/verify.html):
   five checks anyone can run on any vault app — airplane mode, permissions,
   tracker scan, policy audit, exit test
+- [Google Photos Locked Folder: can you recover lost photos?](https://quietstor.app/google-photos-locked-folder-recovery.html):
+  the honest decision tree — what's recoverable, what isn't, and the five
+  rules to never lose hidden photos again
 - [FAQ](https://quietstor.app/faq.html)
 - [Privacy policy](https://quietstor.app/privacy.html): short, because
   there is no data collection to describe
