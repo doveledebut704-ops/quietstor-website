@@ -34,6 +34,11 @@
 - [Google Photos Locked Folder: can you recover lost photos?](https://quietstor.app/google-photos-locked-folder-recovery.html):
   the honest decision tree — what's recoverable, what isn't, and the five
   rules to never lose hidden photos again
+- [Gesperrter Ordner: Fotos weg?](https://quietstor.app/de/gesperrter-ordner-fotos-weg.html):
+  German-language mirror — the same honest decision tree, native register
+- [Samsung Secure Folder photos gone?](https://quietstor.app/samsung-secure-folder-photos-missing.html):
+  update bugs vs permanent loss, and the Smart Switch transfer question
+  Samsung's own documentation leaves unresolved — with the only safe rule
 - [FAQ](https://quietstor.app/faq.html)
 - [Privacy policy](https://quietstor.app/privacy.html): short, because
   there is no data collection to describe

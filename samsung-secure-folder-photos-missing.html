@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samsung Secure Folder Photos Gone? The Honest Answer — QuietStor</title>
+<meta name="description" content="After an update, your Secure Folder photos are often recoverable. After a phone change without preparation, they usually aren't — and Samsung's own documentation contradicts itself on transfers. The honest map.">
+<link rel="canonical" href="https://quietstor.app/samsung-secure-folder-photos-missing.html">
+<link rel="icon" href="/door-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ds13.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Samsung Secure Folder photos gone? The honest answer.",
+  "datePublished": "2026-07-23",
+  "dateModified": "2026-07-23",
+  "author": { "@type": "Organization", "name": "DELOUPROD" },
+  "publisher": { "@type": "Organization", "name": "QuietStor" }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo"><img src="/door-logo.svg" alt="QuietStor" width="36" height="36"><span><span class="brand-q">Quiet</span>Stor</span></a>
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/security-model.html" class="hide-mobile">Security model</a>
+    <a href="/verify.html" class="hide-mobile">Verify any vault</a>
+  </nav>
+</header>
+
+<main class="page-article">
+  <p class="page-eyebrow">The honest answer</p>
+  <h1>Samsung Secure Folder:<span class="door-slit" aria-hidden="true"></span><br><em>photos gone?</em></h1>
+  <p class="lede"><strong>Two very different situations look identical.</strong> If your Secure Folder photos vanished <em>after an update on the same phone</em>, they are often still there — hidden by a known display-bug class, and recoverable with the steps below. If they vanished <em>after switching phones, uninstalling, or resetting</em> without moving them out first, they are usually gone for good. And on the one question that decides device changes — does Smart Switch carry Secure Folder content? — <strong>Samsung's own documentation disagrees with itself.</strong> Here is the honest map, sources linked.</p>
+
+  <p class="how"><em>Last verified July 23, 2026, against Samsung's official support documentation (linked below, with their own page dates). This analysis is documentation-based; an on-device verification of the transfer path is planned, and this page will be updated with the results — changelog at the bottom.</em></p>
+
+  <hr class="threshold">
+
+  <h2>Which situation are you in?</h2>
+
+  <div class="check-card">
+    <h3>🟡 Case A — Photos disappeared after an update, same phone</h3>
+    <p class="how"><strong>Often recoverable.</strong> In order: <strong>1)</strong> restart the phone, reopen Secure Folder <strong>2)</strong> inside Secure Folder, open the Gallery app and check its own Trash (Secure Folder has its own, separate one) <strong>3)</strong> inside Secure Folder, open My Files and browse DCIM / Pictures — items sometimes stop appearing in Gallery while the files remain <strong>4)</strong> clear the <em>cache</em> of the Secure Folder app — <strong>never "clear data" and never uninstall</strong>: on Secure Folder, both destroy your content. User reports across Samsung's forums describe photos reappearing after exactly these steps following One UI updates.</p>
+    <p class="answer">If your photos come back: read the five rules below. The next update, phone change, or one wrong tap plays this game again — without the happy ending.</p>
+  </div>
+
+  <div class="check-card">
+    <h3>⚠️ Case B — You switched phones: the contradiction Samsung won't resolve for you</h3>
+    <p class="how"><strong>Sourced, both sides:</strong> Samsung's US support pages state that Secure Folder content can move to a new Galaxy via <strong>Smart Switch</strong>, provided the old device is accessible and unlocked. Samsung's own community guidance — including answers marked as solutions — states the opposite: that Smart Switch does <em>not</em> carry Secure Folder content, and users report arriving on their new phone with an empty Secure Folder. Both positions are linked below; as of this page's date, no single authoritative Samsung statement resolves them.</p>
+    <p class="answer"><strong>The only safe rule is the one that's true under both readings: treat Secure Folder as non-transferable.</strong> Before any phone change: move everything out of Secure Folder first (or export it to storage you control), verify it arrived, and only then wipe the old phone. If your model still offers Secure Folder's own backup <em>restore</em> (Samsung states new backups are discontinued — "Secure Folder no longer supports backing up data" — while restoring from previous backups remains), restoring on the new device may work; never bet your only copy on it. <strong>Never wipe the old phone before your photos are confirmed elsewhere.</strong></p>
+  </div>
+
+  <div class="check-card">
+    <h3>❌ Case C — Uninstalled, reset, or Knox-locked</h3>
+    <p class="how"><strong>Sourced:</strong> uninstalling Secure Folder offers a checkbox — "Move media files out of Secure Folder" — and if it's left unchecked, all Secure Folder data is deleted. A factory reset without moving items out has the same effect. Samsung also states that modifying the phone's software (rooting, custom firmware) causes Secure Folder to be <strong>automatically locked and inaccessible</strong> — Knox tamper protection, by design. And one line from Samsung settles a whole category of false hope: Secure Folder <em>"cannot be accessed from the web or a computer."</em></p>
+    <p class="answer"><strong>In these situations, the photos are not recoverable</strong> — and any service claiming to recover Secure Folder content "from the web" or "from your Samsung account" without a prior backup is describing something Samsung says doesn't exist.</p>
+  </div>
+
+  <h2>Why recovery software can't help — and why we'd tell you if it could</h2>
+  <p><strong>Sourced facts:</strong> Secure Folder is protected by Knox, is inaccessible from web or computer, and its uninstall/reset behavior deletes un-moved content (Samsung's documentation, linked below).</p>
+  <p><strong>Reasoned inference</strong> (we label it as such): Secure Folder content lives in an encrypted, Knox-protected container. A file-scanning tool on a non-rooted device cannot reach or decrypt that container — and rooting the device to try would itself trigger the Knox lock described above. Generic "Secure Folder recovery software" cannot do what its marketing implies for Cases B-without-backup and C.</p>
+  <p><strong>Our advice, with nothing to sell you in this moment: don't pay for recovery software in those cases.</strong> Put the money into prevention — or into nothing at all.</p>
+
+  <h2>Never again: the five rules</h2>
+  <div class="check-card">
+    <h3>1 · Never keep the <em>only</em> copy in any hidden or locked location</h3>
+    <p class="how">Hidden storage is for privacy, not durability. Keep a second copy — encrypted, exportable, somewhere <em>you</em> control.</p>
+  </div>
+  <div class="check-card">
+    <h3>2 · Treat Secure Folder as non-transferable</h3>
+    <p class="how">Whatever Smart Switch does or doesn't carry on your model and version, the safe procedure is the same: move items out before switching, verify, then wipe.</p>
+  </div>
+  <div class="check-card">
+    <h3>3 · Never wipe the old phone until your photos are confirmed elsewhere</h3>
+    <p class="how">Most permanent losses in this category happen in the minutes between "the new phone works" and "let me reset the old one."</p>
+  </div>
+  <div class="check-card">
+    <h3>4 · Clear cache, never data — and never uninstall Secure Folder "to fix it"</h3>
+    <p class="how">On this app, "clear data" and uninstall are deletion, not troubleshooting.</p>
+  </div>
+  <div class="check-card">
+    <h3>5 · Prefer tools that can prove your photos survive them</h3>
+    <p class="how">Export that works without the app, backups you can open yourself, no account required to get your own files back. Whatever vault you use, run the <a href="/verify.html" style="color: var(--green);">five-minute verification</a> on it first.</p>
+  </div>
+
+  <h2>Why this page exists</h2>
+  <p>We're building <strong>QuietStor</strong> — a private photo vault designed around the exact failure modes on this page: your photos stay on your device, encrypted (AES-256-GCM), with a verifiable safety copy you can open <em>without our app</em>, portable sealed exports built for phone changes, no account, paid once. How it's engineered is public on the <a href="/security-model.html" style="color: var(--green);">security model</a> page. If losing hidden photos brought you here, we'd rather you leave with your problem honestly answered. QuietStor is coming to Google Play — <a href="/" style="color: var(--green);">see what it does</a>.</p>
+
+  <h2>Sources &amp; verification</h2>
+  <p>Samsung support — <a href="https://www.samsung.com/us/support/answer/ANS10001401/" rel="noopener" style="color: var(--green);">"What is Secure Folder"</a> (page dated 2025-08-25: backup discontinuation, uninstall behavior, no web/computer access) · <a href="https://www.samsung.com/us/support/owners/app/smart-switch" rel="noopener" style="color: var(--green);">Smart Switch official page</a> (2024-11-20) · Samsung community threads (EU, 2021→2026) documenting the opposing transfer guidance and post-update recoveries. Method: claims marked <em>sourced</em> cite Samsung's documentation with its own page dates; claims marked <em>reasoned inference</em> are our technical analysis, labeled as such. Published by DELOUPROD.</p>
+  <p class="how"><strong>Changelog</strong> — 2026-07-23: first publication, documentation-based. Planned: on-device verification of the Smart Switch transfer path on current One UI; results will be added here with the test date.</p>
+</main>
+
+<footer class="site-footer">
+  <div><div class="footer-brand"><img src="/door-logo.svg" alt="QuietStor" width="28" height="28"><span><span class="brand-q">Quiet</span>Stor</span></div><p class="footer-tagline">Safe, never hostage.</p></div>
+  <div class="footer-links"><a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/refund.html">Refund</a><a href="/legal.html">Legal</a></div>
+  <div class="footer-bottom"><span>© 2025–2026 DELOUPROD.</span><a href="mailto:support@quietstor.app">support@quietstor.app</a></div>
+</footer>
+
+</body>
+</html>
