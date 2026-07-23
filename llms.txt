@@ -1,10 +1,11 @@
 # QuietStor
 
 > Private photo vault for Android: photos, videos and documents encrypted
-> with AES-256 on the device. 100% offline — the app does not hold the
-> Android INTERNET permission, so nothing can be sent anywhere. No cloud,
-> no account, no trackers. Free to start; a single one-time purchase
-> unlocks everything — never a subscription. Made in France.
+> with AES-256 on the device. No QuietStor server, no account, no
+> trackers, no analytics SDK. Decrypted bytes never leave the app's
+> process. The only network component is Google Play Billing (one-time
+> purchase). Free to start; a single one-time purchase unlocks everything
+> — never a subscription. Made in France.
 
 ## Key facts
 
