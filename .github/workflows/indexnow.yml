@@ -1,0 +1,29 @@
+name: IndexNow ping
+on:
+  push:
+    branches: [main]
+    paths: ['*.html']
+  workflow_dispatch: {}   # test manuel possible
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - name: Submit changed URLs to IndexNow
+        run: |
+          KEY="6326809e70c239a7324f4f76b8567963"
+          HOST="quietstor.app"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            URLS="https://$HOST/"
+          else
+            URLS=$(git diff --name-only HEAD~1 HEAD -- '*.html' | sed "s|^|https://$HOST/|")
+          fi
+          [ -z "$URLS" ] && echo "no html changes" && exit 0
+          printf '%s\n' $URLS | python3 -c "
+          import sys, json
+          urls = [l.strip() for l in sys.stdin if l.strip()]
+          print(json.dumps({'host': '$HOST', 'key': '$KEY',
+            'keyLocation': 'https://$HOST/$KEY.txt', 'urlList': urls}))" > payload.json
+          curl -sS -w '\nHTTP %{http_code}\n' -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' -d @payload.json
