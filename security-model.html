@@ -18,7 +18,7 @@
     {
       "@type": "Question",
       "name": "Is QuietStor really offline?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes for vault use. There is no QuietStor server, no account, and no analytics or tracking SDK. Decrypted bytes never leave the app's own process. The only network component is Google Play Billing for the one-time purchase." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes for vault use. QuietStor has no server and no account. The only parts of the app that talk to the outside are handled by Google Play: the one-time purchase, and the optional in-app review prompt. Your photos never travel through either. Decrypted bytes never leave the app's own process." }
     },
     {
       "@type": "Question",
@@ -33,7 +33,7 @@
     {
       "@type": "Question",
       "name": "Can QuietStor or anyone else see my files?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Decrypted bytes never leave the app's own process. There is no QuietStor server, no account, and no analytics or tracking SDK. The only network component is Google Play Billing for the one-time purchase." }
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Decrypted bytes never leave the app's own process. QuietStor has no server and no account. The only parts of the app that talk to the outside are handled by Google Play: the one-time purchase, and the optional in-app review prompt. Your photos never travel through either." }
     }
   ]
 }
@@ -69,7 +69,7 @@
     <tr><td class="spec-label">Metadata</td><td class="spec-value">SQLCipher encrypted database</td></tr>
     <tr><td class="spec-label">Recovery</td><td class="spec-value">12-word recovery phrase (BIP39 wordlist), generated on-device at vault creation</td></tr>
     <tr><td class="spec-label">Exports</td><td class="spec-value">Standard ZIP AES-256 (AE-2) — opens with 7-Zip, WinRAR, macOS. No proprietary format</td></tr>
-    <tr><td class="spec-label">Network</td><td class="spec-value">Google Play Billing only (one-time purchase) — no QuietStor server, no account, no trackers, no analytics SDK</td></tr>
+    <tr><td class="spec-label">Network</td><td class="spec-value">Google Play only: one-time purchase and optional in-app review — no QuietStor server, no account; photos never travel through either</td></tr>
     <tr><td class="spec-label">Screen protection</td><td class="spec-value">FLAG_SECURE (no screenshots, no screen recording of vault content) + auto-lock</td></tr>
   </table>
 
