@@ -8,8 +8,6 @@
    <link rel="stylesheet" href="/ds13.css">
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,550;9..144,650&family=Hanken+Grotesk:wght@400;500;600&display=swap');
-
 :root {
   /* --- Token realignment (app DS V13) --- */
   --bg: #0b0c0c;
