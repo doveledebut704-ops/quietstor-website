@@ -33,7 +33,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -60,7 +60,7 @@ img { max-width: 100%; display: block; }
 
 /* --- Labels & Tags --- */
 .label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 3.5px;
   text-transform: uppercase;
@@ -70,21 +70,21 @@ img { max-width: 100%; display: block; }
 
 /* --- Typography --- */
 .t-display {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 1.05;
 }
 
 .t-accent {
-  font-family: 'Instrument Serif', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   color: var(--green);
 }
 
 .t-section {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 2.8rem;
   letter-spacing: -1px;
@@ -101,7 +101,7 @@ img { max-width: 100%; display: block; }
   color: var(--bg);
   border: none;
   border-radius: var(--radius-pill);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
@@ -122,7 +122,7 @@ img { max-width: 100%; display: block; }
   color: var(--text-mid);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -152,7 +152,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: -0.5px;
@@ -182,7 +182,7 @@ img { max-width: 100%; display: block; }
 
 .lang-btn {
   padding: 6px 10px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 1px;
   background: none;
@@ -211,7 +211,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
@@ -300,7 +300,7 @@ img { max-width: 100%; display: block; }
 }
 
 .feat-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -348,7 +348,7 @@ img { max-width: 100%; display: block; }
 }
 
 .price-tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -359,7 +359,7 @@ img { max-width: 100%; display: block; }
 .price-card.premium .price-tag { color: var(--green); }
 
 .price-amount {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 800;
   margin-bottom: 0.2rem;
@@ -421,7 +421,7 @@ img { max-width: 100%; display: block; }
 .faq-section { margin-bottom: 2.5rem; }
 
 .faq-section-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -442,7 +442,7 @@ img { max-width: 100%; display: block; }
   background: none;
   border: none;
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -492,7 +492,7 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-wrap > h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 800;
   letter-spacing: -1px;
@@ -514,7 +514,7 @@ img { max-width: 100%; display: block; }
 }
 
 .legal-wrap h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -1px;
@@ -530,7 +530,7 @@ img { max-width: 100%; display: block; }
 }
 
 .legal-wrap h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
   margin-top: 2.5rem;
