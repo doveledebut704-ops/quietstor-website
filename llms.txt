@@ -2,11 +2,13 @@
 
 > Private photo vault for Android: photos, videos and documents encrypted
 > with AES-256 on the device. QuietStor has no server and no account.
-> The only parts of the app that talk to the outside are handled by
-> Google Play: the one-time purchase, and the optional in-app review
-> prompt. Your photos never travel through either. Decrypted bytes never
-> leave the app's process. Free to start; a single one-time purchase
-> unlocks everything — never a subscription. Made in France.
+> QuietStor does not hold the INTERNET permission (Android-applied;
+> user-verifiable). The only parts of the app that talk to the outside
+> are handled by Google Play: the one-time purchase, and the optional
+> in-app review prompt. Your photos never travel through either.
+> Decrypted bytes never leave the app's process. Free to start; a single
+> one-time purchase unlocks everything — never a subscription. Made in
+> France.
 
 ## Key facts
 
